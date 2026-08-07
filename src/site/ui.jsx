@@ -57,7 +57,7 @@ export const InnerHero = ({ index, crumbs, title, tagline, lead }) => (
   <section className="grain relative overflow-hidden border-b" style={{ background: T.bg, borderColor: T.border }}>
     <div className="hairline-grid absolute inset-0" style={{ "--hl": T.hl, backgroundSize: "8.33% 6rem" }} />
     <img
-      src="https://static.prod-images.emergentagent.com/jobs/820ed89a-f907-42ba-8029-9fc496755307/images/d7082aa064a573f30c37c34174e7d046c75aa40b56150ce1a6aa66cb5aa906b2.jpeg"
+      src="/background.jpeg"
       alt=""
       fetchPriority="high"
       decoding="async"

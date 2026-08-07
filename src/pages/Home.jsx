@@ -102,7 +102,7 @@ export default function Home() {
   return (
     <div style={{ background: T.bg, color: T.text }} className="font-archivo">
       <section className="grain relative min-h-screen overflow-hidden">
-        <img src="https://static.prod-images.emergentagent.com/jobs/820ed89a-f907-42ba-8029-9fc496755307/images/d7082aa064a573f30c37c34174e7d046c75aa40b56150ce1a6aa66cb5aa906b2.jpeg" alt="" className="pointer-events-none absolute right-0 top-0 hidden h-full w-2/3 object-cover object-right opacity-90 md:block" style={{ maskImage: "linear-gradient(90deg,transparent,#000 55%)", WebkitMaskImage: "linear-gradient(90deg,transparent,#000 55%)" }} />
+        <img src="/background.jpeg" alt="" className="pointer-events-none absolute right-0 top-0 hidden h-full w-2/3 object-cover object-right opacity-90 md:block" style={{ maskImage: "linear-gradient(90deg,transparent,#000 55%)", WebkitMaskImage: "linear-gradient(90deg,transparent,#000 55%)" }} />
         <div className="hairline-grid absolute inset-0" style={{ "--hl": T.hl, backgroundSize: "8.33% 6rem" }} />
         <div className="pointer-events-none absolute -left-40 top-1/3 h-[520px] w-[520px] rounded-full" style={{ background: T.signal, filter: "blur(220px)", opacity: 0.04 }} />
         <div className="relative mx-auto flex min-h-screen max-w-[1400px] flex-col justify-center px-6 pt-28 pb-20 md:px-12">

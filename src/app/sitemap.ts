@@ -1,5 +1,7 @@
 import type { MetadataRoute } from "next";
 
+export const dynamic = "force-static";
+
 const routes = [
   "", "/solutions", "/solutions/core-banking", "/solutions/fahim-ai", "/solutions/mbuke",
   "/solutions/managed-services", "/solutions/banking-systems", "/solutions/software-management-systems",

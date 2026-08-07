@@ -1,4 +1,6 @@
-import { useParams, Link } from "react-router-dom";
+"use client";
+
+import Link from "next/link";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { Reveal } from "@/site/motion";
 import { InnerHero } from "@/site/ui";
@@ -6,8 +8,7 @@ import { ContactSection } from "@/site/ContactSection";
 import { T } from "@/site/theme";
 import { getPost, POSTS } from "./blogData";
 
-export default function BlogArticle() {
-  const { slug } = useParams();
+export default function BlogArticle({ slug }) {
   const post = getPost(slug);
 
   if (!post) {
@@ -15,7 +16,7 @@ export default function BlogArticle() {
       <div style={{ background: T.bg, color: T.text }} className="font-archivo">
         <InnerHero index="05.x" crumbs={["Home", "Blogs and Resources", "Not Found"]} title="Article Not Found" />
         <div className="mx-auto max-w-[900px] px-6 py-24 md:px-12">
-          <Link to="/blog" className="inline-flex items-center gap-2 font-jbmono text-[12px] uppercase tracking-widest" style={{ color: T.signal }}><ArrowLeft size={14} /> Back to all posts</Link>
+          <Link href="/blog" className="inline-flex items-center gap-2 font-jbmono text-[12px] uppercase tracking-widest" style={{ color: T.signal }}><ArrowLeft size={14} /> Back to all posts</Link>
         </div>
       </div>
     );
@@ -35,7 +36,6 @@ export default function BlogArticle() {
         </Reveal>
         {post.titleFlag && (
           <Reveal>
-            {/* NEEDS VERIFICATION — visible reviewer flag */}
             <div className="mt-6 rounded-lg border px-4 py-3 font-jbmono text-[11px] uppercase tracking-wider" style={{ borderColor: "rgba(13,90,140,0.35)", color: T.faint }}>⚑ {post.titleFlag}</div>
           </Reveal>
         )}
@@ -57,18 +57,17 @@ export default function BlogArticle() {
         </div>
         <Reveal>
           <div className="mt-14 border-t pt-6" style={{ borderColor: T.border }}>
-            <Link to="/blog" className="inline-flex items-center gap-2 font-jbmono text-[12px] uppercase tracking-widest" style={{ color: T.signal }}><ArrowLeft size={14} /> Back to all posts</Link>
+            <Link href="/blog" className="inline-flex items-center gap-2 font-jbmono text-[12px] uppercase tracking-widest" style={{ color: T.signal }}><ArrowLeft size={14} /> Back to all posts</Link>
           </div>
         </Reveal>
       </article>
 
-      {/* MORE POSTS */}
       <section className="border-t px-6 py-20 md:px-12" style={{ borderColor: T.border, background: T.panel }}>
         <div className="mx-auto max-w-[1400px]">
           <div className="mb-8 font-jbmono text-[12px] uppercase tracking-[0.25em]" style={{ color: T.signal }}>More Posts</div>
           <div className="grid grid-cols-1 gap-px overflow-hidden rounded-lg border md:grid-cols-2" style={{ borderColor: T.border, background: T.border }}>
             {more.map((p) => (
-              <Link key={p.slug} to={`/blog/${p.slug}`} className="group p-8" style={{ background: T.bg }}>
+              <Link key={p.slug} href={`/blog/${p.slug}`} className="group p-8" style={{ background: T.bg }}>
                 <div className="font-jbmono text-[11px] uppercase tracking-widest" style={{ color: T.faint }}>{p.date}</div>
                 <h3 className="mt-3 text-lg font-semibold leading-snug group-hover:text-[#0D5A8C]" style={{ transition: "color .2s" }}>{p.title}</h3>
                 <span className="mt-4 inline-flex items-center gap-2 font-jbmono text-[11px] uppercase tracking-widest" style={{ color: T.signal }}>Read <ArrowUpRight size={13} /></span>

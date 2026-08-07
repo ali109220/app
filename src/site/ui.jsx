@@ -1,5 +1,7 @@
+"use client";
+
 import { useEffect, useRef, useState } from "react";
-import { useInView } from "framer-motion";
+import { useInView, useReducedMotion } from "framer-motion";
 import { Reveal, LineReveal } from "./motion";
 import { T } from "./theme";
 
@@ -9,31 +11,59 @@ export const SectionLabel = ({ children }) => (
   </div>
 );
 
+// Render the real value in SSR so SEO/first paint never exposes a broken "0".
+// After hydration, counters that are still below the fold reset to zero and
+// animate when they enter the viewport. If hydration is delayed, the correct
+// final value remains visible instead of waiting for a user interaction.
 export const CountUp = ({ to, prefix = "", suffix = "" }) => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
-  const [v, setV] = useState(0);
+  const reduceMotion = useReducedMotion();
+  const [v, setV] = useState(to);
+  const [ready, setReady] = useState(false);
+
   useEffect(() => {
-    if (!inView) return;
-    let raf, start;
+    setReady(true);
+    if (!reduceMotion && !inView) setV(0);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  useEffect(() => {
+    if (!ready || !inView || reduceMotion) {
+      if (reduceMotion) setV(to);
+      return;
+    }
+
+    let raf;
+    let start;
+    const from = v >= to ? 0 : v;
     const dur = 1600;
+
     const step = (ts) => {
       if (!start) start = ts;
       const p = Math.min(1, (ts - start) / dur);
-      setV(Math.floor((1 - Math.pow(1 - p, 3)) * to));
+      const eased = 1 - Math.pow(1 - p, 3);
+      setV(Math.floor(from + (to - from) * eased));
       if (p < 1) raf = requestAnimationFrame(step);
     };
+
     raf = requestAnimationFrame(step);
     return () => cancelAnimationFrame(raf);
-  }, [inView, to]);
+  }, [inView, ready, reduceMotion, to]); // v intentionally excluded: animation owns it
+
   return <span ref={ref}>{prefix}{v}{suffix}</span>;
 };
 
-// Consistent inner-page hero: breadcrumb + title + optional tagline/lead.
 export const InnerHero = ({ index, crumbs, title, tagline, lead }) => (
   <section className="grain relative overflow-hidden border-b" style={{ background: T.bg, borderColor: T.border }}>
     <div className="hairline-grid absolute inset-0" style={{ "--hl": T.hl, backgroundSize: "8.33% 6rem" }} />
-    <img src="https://static.prod-images.emergentagent.com/jobs/820ed89a-f907-42ba-8029-9fc496755307/images/d7082aa064a573f30c37c34174e7d046c75aa40b56150ce1a6aa66cb5aa906b2.jpeg" alt="" className="pointer-events-none absolute right-0 top-0 hidden h-full w-1/2 object-cover object-right opacity-70 md:block" style={{ maskImage: "linear-gradient(90deg,transparent,#000 75%)", WebkitMaskImage: "linear-gradient(90deg,transparent,#000 75%)" }} />
+    <img
+      src="https://static.prod-images.emergentagent.com/jobs/820ed89a-f907-42ba-8029-9fc496755307/images/d7082aa064a573f30c37c34174e7d046c75aa40b56150ce1a6aa66cb5aa906b2.jpeg"
+      alt=""
+      fetchPriority="high"
+      decoding="async"
+      className="pointer-events-none absolute right-0 top-0 hidden h-full w-1/2 object-cover object-right opacity-70 md:block"
+      style={{ maskImage: "linear-gradient(90deg,transparent,#000 75%)", WebkitMaskImage: "linear-gradient(90deg,transparent,#000 75%)" }}
+    />
     <div className="pointer-events-none absolute -left-40 top-0 h-[420px] w-[420px] rounded-full" style={{ background: T.signal, filter: "blur(220px)", opacity: 0.05 }} />
     <div className="relative mx-auto max-w-[1400px] px-6 pt-36 pb-20 md:px-12 md:pt-44">
       <Reveal>

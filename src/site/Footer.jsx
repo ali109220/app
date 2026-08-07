@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { Logo } from "./Logo";
 import { SOLUTIONS, T } from "./theme";
 
@@ -8,7 +8,7 @@ const Col = ({ title, links }) => (
     <ul className="space-y-2.5">
       {links.map((l) => (
         <li key={l.to}>
-          <Link to={l.to} className="text-sm transition-colors hover:text-white" style={{ color: T.muted }} data-testid={`footer-${l.to.replace(/\//g, "-")}`}>{l.label}</Link>
+          <Link href={l.to} className="text-sm transition-colors hover:text-white" style={{ color: T.muted }} data-testid={`footer-${l.to.replace(/\//g, "-")}`}>{l.label}</Link>
         </li>
       ))}
     </ul>
@@ -21,7 +21,6 @@ export const Footer = () => (
       <div className="grid grid-cols-2 gap-10 md:grid-cols-5">
         <div className="col-span-2 md:col-span-1">
           <Logo />
-          {/* SOURCED — footer tagline from live site */}
           <p className="mt-5 max-w-xs text-sm leading-relaxed" style={{ color: T.faint }}>
             Tayseer is a premier fintech company based in Saudi Arabia and the UAE with an aim to spearhead the AI and digital banking revolution in the region.
           </p>
@@ -30,7 +29,6 @@ export const Footer = () => (
         <Col title="Company" links={[{ label: "About", to: "/about" }, { label: "Careers", to: "/careers" }, { label: "Blog", to: "/blog" }, { label: "Connect", to: "/connect" }]} />
         <Col title="Legal" links={[{ label: "Privacy Policy", to: "/privacy" }, { label: "Terms & Conditions", to: "/terms" }]} />
         <div>
-          {/* SOURCED — offices, phones, email from live site footer */}
           <div className="mb-4 font-jbmono text-[11px] uppercase tracking-[0.25em]" style={{ color: T.faint }}>Contact Us</div>
           <div className="space-y-4 text-sm" style={{ color: T.muted }}>
             <p className="leading-relaxed">Saudi Arabia — Office 7, 2nd Floor, Selam Building, Prince Saad bin Abdulrahman Alawal Branch Road, Al Rawabi, Riyadh, KSA</p>
@@ -44,9 +42,7 @@ export const Footer = () => (
         </div>
       </div>
       <div className="mt-14 flex flex-col items-start justify-between gap-4 border-t pt-6 font-jbmono text-[11px] uppercase tracking-widest md:flex-row md:items-center" style={{ borderColor: T.border, color: T.faint }}>
-        {/* SOURCED — copyright from live site */}
         <span>© Tayseer Innovations. All Rights Reserved.</span>
-        {/* NOT A CLAIM — brand line, true by design */}
         <span>Built on proof, not inflated claims</span>
       </div>
     </div>

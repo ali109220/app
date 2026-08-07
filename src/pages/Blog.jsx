@@ -1,4 +1,6 @@
-import { Link } from "react-router-dom";
+"use client";
+
+import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { Reveal } from "@/site/motion";
 import { InnerHero } from "@/site/ui";
@@ -16,12 +18,11 @@ export default function Blog() {
           <div className="grid grid-cols-1 gap-px overflow-hidden rounded-lg border md:grid-cols-2" style={{ borderColor: T.border, background: T.border }}>
             {POSTS.map((post, i) => (
               <Reveal key={post.slug} delay={i * 0.06}>
-                <Link to={`/blog/${post.slug}`} data-testid={`blog-card-${i}`} className="group flex h-full flex-col justify-between p-10 transition-colors" style={{ background: T.panel }}>
+                <Link href={`/blog/${post.slug}`} data-testid={`blog-card-${i}`} className="group flex h-full flex-col justify-between p-10 transition-colors" style={{ background: T.panel }}>
                   <div>
                     <div className="font-jbmono text-[11px] uppercase tracking-widest" style={{ color: T.signal }}>{post.date}</div>
                     <h2 className="mt-4 text-2xl font-semibold leading-snug group-hover:text-[#0D5A8C]" style={{ transition: "color .2s" }}>{post.title}</h2>
                     {post.titleFlag && (
-                      // NEEDS VERIFICATION — visible reviewer note (remove once title confirmed)
                       <p className="mt-3 rounded border px-3 py-1.5 font-jbmono text-[10px] uppercase tracking-wider" style={{ borderColor: "rgba(13,90,140,0.35)", color: T.faint }}>⚑ {post.titleFlag}</p>
                     )}
                     <p className="mt-4 text-sm leading-relaxed" style={{ color: T.muted }}>{post.excerpt}</p>

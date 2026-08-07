@@ -1,4 +1,6 @@
-import { Link } from "react-router-dom";
+"use client";
+
+import Link from "next/link";
 import { ArrowUpRight, Zap, Heart, ShieldCheck, Rocket } from "lucide-react";
 import { Reveal } from "@/site/motion";
 import { InnerHero, SectionLabel } from "@/site/ui";
@@ -38,7 +40,7 @@ export default function Solutions() {
           <div className="grid grid-cols-1 gap-px overflow-hidden rounded-lg border sm:grid-cols-2 lg:grid-cols-3" style={{ borderColor: T.border, background: T.border }}>
             {SOLUTIONS.map((s, i) => (
               <Reveal key={s.name} delay={i * 0.05}>
-                <Link to={s.to} data-testid={`sol-card-${i}`} className="group flex h-full flex-col justify-between p-8 transition-colors" style={{ background: T.panel }}>
+                <Link href={s.to} data-testid={`sol-card-${i}`} className="group flex h-full flex-col justify-between p-8 transition-colors" style={{ background: T.panel }}>
                   <div>
                     <div className="font-jbmono text-[11px]" style={{ color: T.faint }}>0{i + 1}</div>
                     <h3 className="mt-4 text-xl font-semibold group-hover:text-[#0D5A8C]" style={{ transition: "color .2s" }}>{s.name}</h3>

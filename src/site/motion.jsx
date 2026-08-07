@@ -1,42 +1,58 @@
-import { motion } from "framer-motion";
+"use client";
 
-// Section scroll-reveal + kinetic primitives for Direction B.
+import { useEffect, useRef, useState } from "react";
+import { motion, useInView, useReducedMotion } from "framer-motion";
+
+// Progressive reveal: content is visible in the server HTML and on the first
+// client paint. Once hydration is complete, only content that is still below
+// the viewport is hidden and revealed when it enters view. This prevents a
+// slow/delayed hydration from leaving real content or images stuck at opacity 0.
 export const Reveal = ({ children, delay = 0, y = 24, className = "", as = "div" }) => {
+  const ref = useRef(null);
+  const [hydrated, setHydrated] = useState(false);
+  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const reduceMotion = useReducedMotion();
   const M = motion[as] || motion.div;
+
+  useEffect(() => {
+    setHydrated(true);
+  }, []);
+
+  const visible = !hydrated || inView || reduceMotion;
+
   return (
     <M
+      ref={ref}
       className={className}
-      initial={{ opacity: 0, y }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.8, delay, ease: [0.16, 1, 0.3, 1] }}
+      initial={false}
+      animate={{ opacity: visible ? 1 : 0, y: visible ? 0 : y }}
+      transition={{ duration: reduceMotion ? 0 : 0.8, delay: visible ? delay : 0, ease: [0.16, 1, 0.3, 1] }}
     >
       {children}
     </M>
   );
 };
 
-// Masked line-by-line reveal used in hero headlines.
-export const LineReveal = ({ lines, className = "", stagger = 0.11, animate = "onload" }) => {
-  const variants = {
-    hidden: { y: "110%" },
-    show: (i) => ({ y: 0, transition: { duration: 0.9, delay: 0.15 + i * stagger, ease: [0.16, 1, 0.3, 1] } }),
-  };
-  const trigger = animate === "onload" ? { initial: "hidden", animate: "show" } : { initial: "hidden", whileInView: "show", viewport: { once: true } };
-  return (
-    <span className={className}>
-      {lines.map((t, i) => (
-        <span key={i} className="block overflow-hidden">
-          <motion.span variants={variants} custom={i} {...trigger} className="block">
-            {t}
-          </motion.span>
-        </span>
-      ))}
-    </span>
-  );
-};
+// Hero text must also be readable before JavaScript hydrates. We intentionally
+// render it in its final position on the server and apply only client-side
+// motion after hydration.
+export const LineReveal = ({ lines, className = "", stagger = 0.11 }) => (
+  <span className={className}>
+    {lines.map((t, i) => (
+      <span key={i} className="block overflow-hidden">
+        <motion.span
+          initial={false}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.9, delay: 0.15 + i * stagger, ease: [0.16, 1, 0.3, 1] }}
+          className="block"
+        >
+          {t}
+        </motion.span>
+      </span>
+    ))}
+  </span>
+);
 
-// Slow editorial marquee.
 export const Marquee = ({ items, speed = 40, className = "", sep = "/" }) => (
   <div className={`overflow-hidden ${className}`}>
     <motion.div

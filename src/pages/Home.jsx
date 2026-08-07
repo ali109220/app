@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import NextLink from "next/link";
 import { motion, useInView } from "framer-motion";
 import {
   ArrowRight, ArrowUpRight, Sparkles, BarChart3, ShieldCheck, Workflow, Target,
@@ -9,6 +9,8 @@ import { Reveal, LineReveal, Marquee } from "@/site/motion";
 import { toast } from "sonner";
 import { T } from "@/site/theme";
 import { DataGridArt, ContactAccentArt } from "@/site/DecorativeArt";
+
+const Link = ({ to, children, ...props }) => <NextLink href={to} {...props}>{children}</NextLink>;
 
 // ALL copy below is SOURCED from the live tayseer.me mirror unless tagged otherwise.
 
@@ -47,8 +49,6 @@ const DEPLOY = [
   { t: "Cloud Deployment", d: "Designed for agility, scalability, cost-effectiveness and enhanced operational efficiency.", icon: Cloud },
 ];
 
-// SOURCED — 4 named individual endorsements present in live site HTML.
-// NEEDS VERIFICATION — these read as named endorsements; carried verbatim, unaltered.
 const TESTIMONIALS = [
   { name: "Saber Alkahtani", role: "Head of Individual Services Sector", q: "Tayseer Innovations has been a key partner in driving growth and innovation within our individual banking services. Their solutions empower us to stay ahead of the curve and cater to the evolving needs of our customers." },
   { name: "Abdulla Alttowi", role: "Manager – R&D", q: "By partnering with Tayseer Innovations, our bank is well-positioned for the future. Their innovative FinTech solutions provide a robust foundation for continuous improvement and adaptation within the ever-evolving financial landscape." },
@@ -101,8 +101,6 @@ export default function Home() {
   };
   return (
     <div style={{ background: T.bg, color: T.text }} className="font-archivo">
-      {/* ===== HERO ===== */}
-      {/* SOURCED: Eyebrow "Innovative approach" / H1 "Future-ready AI & Digital Solutions" */}
       <section className="grain relative min-h-screen overflow-hidden">
         <img src="https://static.prod-images.emergentagent.com/jobs/820ed89a-f907-42ba-8029-9fc496755307/images/d7082aa064a573f30c37c34174e7d046c75aa40b56150ce1a6aa66cb5aa906b2.jpeg" alt="" className="pointer-events-none absolute right-0 top-0 hidden h-full w-2/3 object-cover object-right opacity-90 md:block" style={{ maskImage: "linear-gradient(90deg,transparent,#000 55%)", WebkitMaskImage: "linear-gradient(90deg,transparent,#000 55%)" }} />
         <div className="hairline-grid absolute inset-0" style={{ "--hl": T.hl, backgroundSize: "8.33% 6rem" }} />
@@ -126,8 +124,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== SERVICES OVERVIEW ===== */}
-      {/* SOURCED: "We Have All Your Business Needs Covered" / "View All Services" + 6 cards */}
       <section className="relative border-t px-6 py-24 md:px-12" style={{ borderColor: T.border }}>
         <div className="mx-auto max-w-[1400px]">
           <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
@@ -158,8 +154,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== ABOUT ===== */}
-      {/* SOURCED: About Us / "Born from Innovation, Backed by Strength" + body + "Read More" */}
       <section className="relative border-t px-6 py-24 md:px-12" style={{ borderColor: T.border }}>
         <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-14 lg:grid-cols-12">
           <div className="lg:col-span-5">
@@ -181,8 +175,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== STATS ===== */}
-      {/* SOURCED: "Tayseer By Numbers" — values from data-count attributes */}
       <section className="relative overflow-hidden border-t px-6 py-20 md:px-12" style={{ borderColor: T.border, background: T.panel }}>
         <DataGridArt className="pointer-events-none absolute right-6 top-6 hidden h-40 w-56 opacity-60 lg:block" />
         <div className="mx-auto max-w-[1400px]">
@@ -198,8 +190,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== VALUE PROPS ===== */}
-      {/* SOURCED: "Become Future – Ready With Our Cutting Edge Products & Services" + 5 props */}
       <section className="relative border-t px-6 py-24 md:px-12" style={{ borderColor: T.border }}>
         <div className="mx-auto max-w-[1400px]">
           <Reveal><SectionLabel>Why Tayseer</SectionLabel></Reveal>
@@ -221,8 +211,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== SUCCESS MANTRA ===== */}
-      {/* SOURCED: "Our Success Mantra" + 3 items */}
       <section className="relative border-t px-6 py-24 md:px-12" style={{ borderColor: T.border, background: T.panel }}>
         <div className="mx-auto max-w-[1400px]">
           <Reveal><SectionLabel>How We Work</SectionLabel></Reveal>
@@ -241,8 +229,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== DEPLOYMENT FLEXIBILITY ===== */}
-      {/* SOURCED: "We Pioneer Flexible Technology" + On-Site / Cloud */}
       <section className="relative border-t px-6 py-24 md:px-12" style={{ borderColor: T.border }}>
         <div className="mx-auto max-w-[1400px]">
           <Reveal><SectionLabel>Deployment</SectionLabel></Reveal>
@@ -261,8 +247,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== TESTIMONIALS ===== */}
-      {/* SOURCED: "Our Client Speak" + 4 named testimonials, carried verbatim */}
       <section className="relative border-t px-6 py-24 md:px-12" style={{ borderColor: T.border, background: T.panel }}>
         <div className="mx-auto max-w-[1400px]">
           <Reveal><SectionLabel>Our Client Speak</SectionLabel></Reveal>
@@ -283,9 +267,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== CONTACT / LEAD ===== */}
-      {/* SOURCED: "Talk To Us" / "How May We Help You!" / button "Submit" */}
-      {/* DRAFTED, NOT SOURCED — exact form field labels not extracted; NEEDS VERIFICATION */}
       <section className="relative overflow-hidden border-t px-6 py-24 md:px-12" style={{ borderColor: T.border }}>
         <ContactAccentArt className="pointer-events-none absolute -right-10 top-0 hidden h-64 w-64 opacity-70 lg:block" />
         <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-14 lg:grid-cols-12">
@@ -302,12 +283,7 @@ export default function Home() {
           </div>
           <div className="lg:col-span-7">
             <Reveal delay={0.1}>
-              <form
-                data-testid="home-contact-form"
-                onSubmit={handleContact}
-                className="grid grid-cols-1 gap-4 sm:grid-cols-2"
-              >
-                {/* NEEDS VERIFICATION — placeholder field labels */}
+              <form data-testid="home-contact-form" onSubmit={handleContact} className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <input name="name" required placeholder="Name" data-testid="contact-name" className="rounded-md border bg-transparent px-4 py-3.5 text-sm outline-none focus:border-[#0D5A8C]" style={{ borderColor: T.border, color: T.text }} />
                 <input name="email" type="email" required placeholder="Email" data-testid="contact-email" className="rounded-md border bg-transparent px-4 py-3.5 text-sm outline-none focus:border-[#0D5A8C]" style={{ borderColor: T.border, color: T.text }} />
                 <input name="company" placeholder="Company (optional)" data-testid="contact-company" className="rounded-md border bg-transparent px-4 py-3.5 text-sm outline-none focus:border-[#0D5A8C] sm:col-span-2" style={{ borderColor: T.border, color: T.text }} />

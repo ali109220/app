@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { ArrowRight } from "lucide-react";
 import { toast } from "sonner";
@@ -6,8 +8,6 @@ import { SectionLabel } from "./ui";
 import { T } from "./theme";
 import { ContactAccentArt } from "./DecorativeArt";
 
-// Shared "How May We Help You!" section, consistent across inner pages.
-// SOURCED: heading "How May We Help You!" + "Submit" + offices/phones/email from footer.
 export const ContactSection = () => {
   const [sending, setSending] = useState(false);
   const handleSubmit = async (e) => {
@@ -55,11 +55,7 @@ export const ContactSection = () => {
       </div>
       <div className="lg:col-span-7">
         <Reveal delay={0.1}>
-          <form
-            data-testid="contact-form"
-            onSubmit={handleSubmit}
-            className="grid grid-cols-1 gap-4 sm:grid-cols-2"
-          >
+          <form data-testid="contact-form" onSubmit={handleSubmit} className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <input name="name" required placeholder="Name" data-testid="cs-name" className="rounded-md border bg-transparent px-4 py-3.5 text-sm outline-none focus:border-[#0D5A8C]" style={{ borderColor: T.border, color: T.text }} />
             <input name="email" type="email" required placeholder="Email" data-testid="cs-email" className="rounded-md border bg-transparent px-4 py-3.5 text-sm outline-none focus:border-[#0D5A8C]" style={{ borderColor: T.border, color: T.text }} />
             <input name="company" placeholder="Company (optional)" data-testid="cs-company" className="rounded-md border bg-transparent px-4 py-3.5 text-sm outline-none focus:border-[#0D5A8C] sm:col-span-2" style={{ borderColor: T.border, color: T.text }} />

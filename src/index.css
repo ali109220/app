@@ -78,6 +78,18 @@
   }
 }
 
+@keyframes route-progress {
+  0% {
+    transform: translateX(-140%);
+  }
+  50% {
+    transform: translateX(160%);
+  }
+  100% {
+    transform: translateX(360%);
+  }
+}
+
 /* --- Reconstructed decorative utilities ---
    Not present in the recovered source map; `grain` and `hairline-grid`
    classNames appear throughout src/site and src/pages with no matching CSS.

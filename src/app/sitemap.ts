@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { SITE_URL } from "@/lib/site";
 
 export const dynamic = "force-static";
 
@@ -11,7 +12,7 @@ const routes = [
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
   return routes.map((route) => ({
-    url: `https://tayseer.me${route}`,
+    url: `${SITE_URL}${route}`,
     lastModified: now,
     changeFrequency: route === "" ? "weekly" : "monthly",
     priority: route === "" ? 1 : route.startsWith("/solutions") ? 0.8 : 0.6

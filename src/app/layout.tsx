@@ -2,9 +2,10 @@ import type { Metadata, Viewport } from "next";
 import "@/index.css";
 import "@/App.css";
 import SiteChrome from "@/site/SiteChrome";
+import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://tayseer.me"),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Tayseer Innovations | AI & Digital Banking Solutions",
     template: "%s | Tayseer Innovations"

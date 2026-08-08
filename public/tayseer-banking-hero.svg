@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 480" role="img" aria-labelledby="title desc">
+  <title id="title">Tayseer banking technology ecosystem</title>
+  <desc id="desc">A digital banking illustration with a central bank on a mobile device connected to AI, payments, digital channels, integration and managed services.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#06152b"/>
+      <stop offset="0.55" stop-color="#0b3559"/>
+      <stop offset="1" stop-color="#0d5a8c"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="45%" r="55%">
+      <stop offset="0" stop-color="#2b83bd" stop-opacity=".5"/>
+      <stop offset="1" stop-color="#2b83bd" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="720" height="480" rx="28" fill="url(#bg)"/>
+  <circle cx="382" cy="225" r="190" fill="url(#glow)"/>
+  <g opacity=".16" stroke="#d9f0ff" fill="none">
+    <path d="M0 86H720M0 166H720M0 246H720M0 326H720M0 406H720"/>
+    <path d="M80 0V480M180 0V480M280 0V480M380 0V480M480 0V480M580 0V480M680 0V480"/>
+  </g>
+  <g stroke="#8fd1ff" stroke-width="2" opacity=".78">
+    <path d="M360 220L165 120M360 220L555 110M360 220L610 250M360 220L535 380M360 220L175 370M360 220L108 248"/>
+  </g>
+  <g transform="translate(278 82)">
+    <rect width="164" height="300" rx="30" fill="#07152a" stroke="#b7e4ff" stroke-width="3"/>
+    <rect x="13" y="20" width="138" height="250" rx="20" fill="#0a2f50"/>
+    <circle cx="82" cy="146" r="91" fill="#0d5a8c" opacity=".28"/>
+    <circle cx="82" cy="146" r="72" fill="none" stroke="#d9f4ff" stroke-width="4"/>
+    <circle cx="82" cy="146" r="58" fill="none" stroke="#5ab2ea" stroke-width="10" stroke-dasharray="23 12"/>
+    <g transform="translate(39 104)" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M2 34L43 8l41 26M10 36h66M16 38v49M31 38v49M47 38v49M63 38v49M8 88h72"/>
+    </g>
+    <rect x="61" y="282" width="42" height="5" rx="3" fill="#7bc6f5"/>
+  </g>
+  <g fill="#0a3155" stroke="#bde8ff" stroke-width="3">
+    <circle cx="165" cy="120" r="48"/><circle cx="555" cy="110" r="48"/><circle cx="610" cy="250" r="48"/>
+    <circle cx="535" cy="380" r="48"/><circle cx="175" cy="370" r="48"/><circle cx="108" cy="248" r="48"/>
+  </g>
+  <g fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <g transform="translate(165 120)"><rect x="-17" y="-25" width="34" height="50" rx="6"/><circle cy="8" r="8"/><path d="M-8-13h16"/></g>
+    <g transform="translate(555 110)"><path d="M-24 8c13-24 35-24 48 0M-17 15c9-15 25-15 34 0M-8 23c4-7 12-7 16 0"/><circle cy="30" r="3" fill="#fff" stroke="none"/></g>
+    <g transform="translate(610 250)"><rect x="-22" y="-16" width="44" height="32" rx="4"/><circle r="8"/></g>
+    <g transform="translate(535 380)"><rect x="-24" y="-23" width="48" height="46" rx="8"/><path d="M-14-9h28M-14 0h28M-14 9h28"/></g>
+    <g transform="translate(108 248)"><path d="M-22-6h13v-13M22 6H9v13M-9-19l-13 13M9 19L22 6"/><circle cx="-4" cy="4" r="6"/><circle cx="7" cy="-7" r="6"/></g>
+  </g>
+  <g transform="translate(175 370)" font-family="Arial,sans-serif" text-anchor="middle" fill="#fff">
+    <rect x="-22" y="-22" width="44" height="44" rx="8" fill="none" stroke="#fff" stroke-width="3"/>
+    <text y="7" font-size="18" font-weight="700">AI</text>
+  </g>
+</svg>

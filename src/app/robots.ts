@@ -9,7 +9,7 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/api/"]
     },
-    sitemap: "https://tayseer.me/sitemap.xml",
+    sitemap: `${SITE_URL}/sitemap.xml`,
     host: SITE_URL
   };
 }

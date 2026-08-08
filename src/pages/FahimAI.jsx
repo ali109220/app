@@ -1,164 +1,73 @@
-import { CheckCircle2, XCircle, Target, ScanFace, MessagesSquare, Gauge, Plug, Boxes } from "lucide-react";
-import { Reveal } from "@/site/motion";
-import { InnerHero, SectionLabel, CountUp } from "@/site/ui";
-import { ContactSection } from "@/site/ContactSection";
+import { Target, ScanFace, MessagesSquare, Gauge, Plug, Boxes, BrainCircuit, FileCheck2, Workflow, UserRoundCheck } from "lucide-react";
+import { EnterpriseSolutionPage } from "@/site/phase8/EnterpriseSolutionLayout";
 import { T } from "@/site/theme";
-import { DataGridArt } from "@/site/DecorativeArt";
 
-// ALL copy SOURCED from fahim-ai.html.
 const HOW_FAHIM = [
   { icon: Target, h: "Goal-Oriented Execution", p: "Contemplates instructions intelligently, then executes end-to-end business operations with accuracy and speed." },
-  { icon: ScanFace, h: "Intelligent Onboarding/KYC", p: "Uses its ‘Who You Are’ functions to conduct onboarding processes, including analysis of documents and verification of authenticity, ensuring compliance and security." },
-  { icon: MessagesSquare, h: "Tailored Interactive Experience", p: "Delivers a smart interactive experience and enhanced customer experience through a simple UI and human-like interaction, making it a tailor-made solution for various business localization needs." },
-  { icon: Gauge, h: "Resource-Efficient Scalability", p: "Operates as a light-weighted, resource-optimized solution, ensuring both on-demand scalability and faster execution of tasks." },
-  { icon: Plug, h: "Flexible Integration", p: "Connects seamlessly with your existing systems and business modules, without any major disruption." },
-  { icon: Boxes, h: "Flexible Deployment", p: "Deploy on-premise or containerized based on your security and infrastructure requirements." },
+  { icon: ScanFace, h: "Intelligent Onboarding / KYC", p: "Analyzes documents and verifies authenticity as part of customer onboarding, supporting compliance and security requirements." },
+  { icon: MessagesSquare, h: "Voice & Chat Experience", p: "Supports human-like interaction through simple conversational experiences tailored for business and localization needs." },
+  { icon: Gauge, h: "Resource-Efficient Scalability", p: "Designed as a lightweight, resource-optimized solution supporting on-demand scalability and faster task execution." },
+  { icon: Plug, h: "Flexible Integration", p: "Connects with existing systems and business modules without requiring major disruption to the surrounding technology landscape." },
+  { icon: Boxes, h: "Flexible Deployment", p: "Supports on-premise or containerized deployment based on security, infrastructure, and operating requirements." },
 ];
 
-const JOURNEY = [
-  { h: "Customer Onboarding Capabilities", items: [
-    "Seamless account setup process, ensuring customers are onboarded without friction or delay.",
-    "Intelligent document scanning and verification, completing KYC quickly while meeting compliance standards.",
-    "Simple, personalized onboarding journey with smart guidance through every step, keeping customers engaged throughout the process.",
-  ] },
-  { h: "Voice and Chat Enabled Navigation & Task Execution", items: [
-    "Customers can choose voice and chat channels, enhancing engagement and satisfaction.",
-    "Fast task resolution without hold times or transfers, streamlining customer experience and operational efficiency.",
-    "Native support in natural Arabic (in different dialects) and English, eliminating communication barriers and expanding accessibility for all customers.",
-  ] },
-  { h: "Intelligent Escalation with Full Context", items: [
-    "Capacity to resolve routine and complex inquiries autonomously.",
-    "Special cases escalated to human specialists with complete documentation.",
-    "Human specialists receive full interaction history and recommended next steps.",
-  ] },
-];
-
-const OLD_WAY = [
-  "40% of calls go unanswered",
-  "Long wait times frustrate customers",
-  "Low customer satisfaction rate",
-  "High operational costs",
-  "High customer churn",
-];
-
-// NEEDS VERIFICATION — live site contradiction: this prose says "94%" satisfaction
-// while the "Key Performance Areas" counters below say "95%". Carried verbatim from
-// source; owner to confirm the correct figure before publishing.
-const FAHIM_WAY = [
-  "99% response rate, 24/7 availability",
-  "Less than 30 seconds response time with zero queues",
-  "94% Customer Satisfaction Rate",
-  "Improve Business Efficiency by 300%",
-  "Improve customer retention by 20% – 30%",
-];
-
-// SOURCED — data-count values (real, from source attributes).
-const KPIS = [
-  { to: 99, suffix: "%", label: "Response Rate" },
-  { to: 30, prefix: "<", suffix: "", label: "Secs Response Time" },
-  { to: 95, suffix: "%", label: "Customer Satisfaction" }, // NEEDS VERIFICATION vs 94% in prose above
-  { to: 300, suffix: "%", label: "Improvement in Efficiency" },
-];
+function FahimVisual() {
+  const steps = [
+    { icon: FileCheck2, label: "Understand" },
+    { icon: BrainCircuit, label: "Reason" },
+    { icon: Workflow, label: "Execute" },
+    { icon: UserRoundCheck, label: "Resolve" },
+  ];
+  return (
+    <div className="relative mx-auto max-w-[620px] overflow-hidden rounded-2xl border p-6" style={{ borderColor: T.border, background: "radial-gradient(circle at 50% 45%, rgba(13,90,140,.18), rgba(13,90,140,.03) 48%, transparent 72%)" }}>
+      <div className="flex min-h-80 items-center justify-center">
+        <div className="relative flex h-44 w-44 items-center justify-center rounded-full border" style={{ borderColor: "rgba(13,90,140,.35)" }}>
+          <div className="absolute h-32 w-32 rounded-full border" style={{ borderColor: "rgba(104,166,60,.28)" }} />
+          <div className="relative z-10 text-center"><BrainCircuit className="mx-auto" size={42} style={{ color: T.signal }} /><div className="mt-3 text-lg font-semibold">Fahim AI</div><div className="mt-1 font-jbmono text-[9px] uppercase tracking-widest" style={{ color: T.faint }}>Agentic workflow</div></div>
+        </div>
+      </div>
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+        {steps.map(({ icon: Icon, label }, index) => <div key={label} className="border p-3 text-center" style={{ borderColor: T.border, background: T.bg }}><Icon className="mx-auto" size={18} style={{ color: index === 3 ? T.green : T.signal }} aria-hidden="true" /><div className="mt-2 text-[11px] font-medium">{label}</div></div>)}
+      </div>
+    </div>
+  );
+}
 
 export default function FahimAI() {
   return (
-    <div style={{ background: T.bg, color: T.text }} className="font-archivo">
-      <InnerHero
-        index="01.2"
-        crumbs={["Home", "Solutions", "Fahim AI"]}
-        title="Fahim AI"
-        tagline="Fahim: The Agentic AI Solution to Transform Your Customer Experience"
-        lead="Fahim is an Agentic AI platform engineered to manage and optimize end-to-end business operations designed for achieving defined rules and providing an enhanced customer experience. It offers a tailor-made solution customized for specific business needs and localization, deployed as a light-weighted, resource-optimized system with both on-demand scalability and the flexibility of on-premise, containerized deployment, which continuously optimizes based on outcomes."
-      />
-
-      {/* HOW FAHIM WORKS */}
-      <section className="px-6 py-24 md:px-12">
-        <div className="mx-auto max-w-[1400px]">
-          <Reveal><SectionLabel>How Fahim Works</SectionLabel></Reveal>
-          <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {HOW_FAHIM.map((f, i) => (
-              <Reveal key={f.h} delay={(i % 3) * 0.05}>
-                <div className="h-full rounded-lg border p-7" style={{ borderColor: T.border, background: T.panel }}>
-                  <f.icon size={22} style={{ color: T.signal }} />
-                  <h3 className="mt-5 text-lg font-semibold">{f.h}</h3>
-                  <p className="mt-2 text-sm leading-relaxed" style={{ color: T.muted }}>{f.p}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* END-TO-END JOURNEY */}
-      <section className="border-t px-6 py-24 md:px-12" style={{ borderColor: T.border, background: T.panel }}>
-        <div className="mx-auto max-w-[1400px]">
-          <Reveal><SectionLabel>End-to-End Journey Management</SectionLabel></Reveal>
-          <div className="mt-10 grid grid-cols-1 gap-8 md:grid-cols-3">
-            {JOURNEY.map((j, i) => (
-              <Reveal key={j.h} delay={i * 0.08}>
-                <div className="h-full border-t pt-6" style={{ borderColor: "rgba(13,90,140,0.4)" }}>
-                  <h3 className="text-lg font-semibold">{j.h}</h3>
-                  <ul className="mt-4 space-y-3">
-                    {j.items.map((it) => (
-                      <li key={it} className="flex gap-3 text-sm leading-relaxed" style={{ color: T.muted }}>
-                        <CheckCircle2 size={16} className="mt-0.5 shrink-0" style={{ color: T.signal }} />{it}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* BUSINESS IMPACT */}
-      <section className="border-t px-6 py-24 md:px-12" style={{ borderColor: T.border }}>
-        <div className="mx-auto max-w-[1400px]">
-          <Reveal><SectionLabel>Business Impact</SectionLabel></Reveal>
-          <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">
-            <Reveal>
-              <div className="h-full rounded-lg border p-8" style={{ borderColor: "rgba(192,57,43,0.3)", background: T.panel }}>
-                <h3 className="text-xl font-semibold" style={{ color: "#C0392B" }}>The Old Way</h3>
-                <ul className="mt-5 space-y-3">
-                  {OLD_WAY.map((o) => (
-                    <li key={o} className="flex gap-3 text-sm" style={{ color: T.muted }}><XCircle size={16} className="mt-0.5 shrink-0" style={{ color: "#C0392B" }} />{o}</li>
-                  ))}
-                </ul>
-              </div>
-            </Reveal>
-            <Reveal delay={0.08}>
-              <div className="h-full rounded-lg border p-8" style={{ borderColor: "rgba(13,90,140,0.4)", background: T.panel }}>
-                <h3 className="text-xl font-semibold" style={{ color: T.signal }}>The Fahim Way</h3>
-                <ul className="mt-5 space-y-3">
-                  {FAHIM_WAY.map((o) => (
-                    <li key={o} className="flex gap-3 text-sm" style={{ color: T.text }}><CheckCircle2 size={16} className="mt-0.5 shrink-0" style={{ color: T.signal }} />{o}</li>
-                  ))}
-                </ul>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* KEY PERFORMANCE AREAS */}
-      <section className="relative overflow-hidden border-t px-6 py-20 md:px-12" style={{ borderColor: T.border, background: T.panel }}>
-        <DataGridArt className="pointer-events-none absolute right-6 top-6 hidden h-40 w-56 opacity-60 lg:block" />
-        <div className="mx-auto max-w-[1400px]">
-          <Reveal><SectionLabel>Key Performance Areas</SectionLabel></Reveal>
-          <Reveal delay={0.05}><p className="max-w-2xl text-lg" style={{ color: T.muted }}>Fahim AI enhances your customer experience while reducing total cost of ownership through faster time to market.</p></Reveal>
-          <div className="mt-10 grid grid-cols-2 gap-px overflow-hidden lg:grid-cols-4" style={{ background: T.border }}>
-            {KPIS.map((k, i) => (
-              <div key={k.label} data-testid={`kpi-${i}`} className="p-8" style={{ background: T.panel }}>
-                <div className="text-5xl font-extrabold tracking-tight sm:text-6xl" style={{ color: T.signal }}><CountUp to={k.to} prefix={k.prefix || ""} suffix={k.suffix} /></div>
-                <div className="mt-3 font-jbmono text-[12px] uppercase tracking-widest" style={{ color: T.muted }}>{k.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <ContactSection />
-    </div>
+    <EnterpriseSolutionPage
+      hero={{
+        eyebrow: "Fahim AI",
+        title: "AI That Moves Work Forward.",
+        tagline: "An agentic AI platform designed to understand goals, execute business operations, and improve customer interactions.",
+        lead: "Fahim combines intelligent onboarding, conversational interaction, flexible integration, scalable execution, and deployment flexibility in a solution tailored for specific business and localization needs.",
+        visual: <FahimVisual />,
+      }}
+      challenges={[
+        "Customer journeys often span multiple systems, documents, service teams, and repetitive manual steps.",
+        "Traditional support experiences can create queues, handoffs, and fragmented context between automated and human service.",
+        "AI adoption must fit existing systems, security requirements, infrastructure constraints, and localized customer experiences.",
+      ]}
+      outcomes={[
+        "End-to-end task execution",
+        "Smarter onboarding and KYC support",
+        "Voice and chat interaction",
+        "Context-aware human escalation",
+        "Flexible system integration",
+        "On-premise or containerized deployment",
+      ]}
+      capabilityTitle="From Intent to Execution"
+      capabilityIntro="Fahim is positioned around completing business goals rather than simply answering questions, connecting customer interaction with operational execution."
+      capabilities={HOW_FAHIM}
+      architecture={{
+        title: "A Goal-Oriented AI Journey",
+        steps: ["Customer Intent", "Context & Documents", "AI Reasoning", "Business-System Execution", "Resolution or Human Escalation"],
+      }}
+      related={[
+        { title: "Core Banking", href: "/solutions/core-banking", description: "Connect AI-enabled workflows to the broader banking operating foundation." },
+        { title: "MBuke", href: "/solutions/mbuke", description: "Bring intelligent customer interaction into modern digital banking journeys." },
+        { title: "Banking Systems", href: "/solutions/banking-systems", description: "Extend AI-enabled experiences across supporting enterprise banking systems." },
+      ]}
+    />
   );
 }

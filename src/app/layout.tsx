@@ -1,17 +1,16 @@
 import type { Metadata, Viewport } from "next";
 import "@/index.css";
 import "@/App.css";
+import "@/performance.css";
 import { Header } from "@/site/Header";
 import { Footer } from "@/site/Footer";
-import ClientRuntime from "@/site/ClientRuntime";
 import StructuredData from "@/site/StructuredData";
 import { T } from "@/site/theme";
 import { SITE_URL } from "@/lib/site";
 
-const siteUrl = SITE_URL;
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Tayseer Innovations | AI & Digital Banking Solutions",
     template: "%s | Tayseer Innovations"
@@ -60,10 +59,10 @@ export const viewport: Viewport = {
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "@id": `${siteUrl}/#organization`,
+  "@id": `${SITE_URL}/#organization`,
   name: "Tayseer Innovations",
-  url: siteUrl,
-  logo: `${siteUrl}/logo-light.svg`,
+  url: SITE_URL,
+  logo: `${SITE_URL}/logo-light.svg`,
   email: "info@tayseer.me",
   telephone: ["+966555203079", "+97143997558"],
   description: "Tayseer Innovations provides AI, digital banking, core banking, managed services and financial technology solutions for financial institutions.",
@@ -89,25 +88,18 @@ const organizationSchema = {
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "@id": `${siteUrl}/#website`,
-  url: siteUrl,
+  "@id": `${SITE_URL}/#website`,
+  url: SITE_URL,
   name: "Tayseer Innovations",
-  publisher: { "@id": `${siteUrl}/#organization` },
+  publisher: { "@id": `${SITE_URL}/#organization` },
   inLanguage: "en"
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" suppressHydrationWarning>      <head>
-        {/* Both fonts are referenced only from inside index.css's @font-face
-            rules, so without a preload the browser can't start fetching them
-            until it has downloaded and parsed that CSS. That delay pushes the
-            font-display:swap swap to ~2.4s in, well after first paint — late
-            enough that swapping in Archivo/JetBrains Mono (used almost
-            everywhere via font-archivo/font-jbmono) reflows most of the page
-            at once and shows up as a huge, single layout shift in CLS. */}
+    <html lang="en" suppressHydrationWarning>
+      <head>
         <link rel="preload" href="/fonts/Archivo-Variable.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
-        <link rel="preload" href="/fonts/JetBrainsMono-Variable.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
       </head>
       <body suppressHydrationWarning>
         <StructuredData data={[organizationSchema, websiteSchema]} />
@@ -119,7 +111,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <main id="main-content" tabIndex={-1} data-testid="page-main">{children}</main>
           <Footer />
         </div>
-        <ClientRuntime />
       </body>
     </html>
   );

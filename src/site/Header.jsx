@@ -24,10 +24,25 @@ export const Header = () => {
   const solutionsTriggerRef = useRef(null);
   const mobileToggleRef = useRef(null);
   const mobileNavRef = useRef(null);
+  const isInitialRoute = useRef(true);
 
   const warmRoute = (href) => router.prefetch(href);
 
-  useEffect(() => { setOpen(false); setMSol(false); setSolOpen(false); }, [pathname]);
+  useEffect(() => {
+    setOpen(false);
+    setMSol(false);
+    setSolOpen(false);
+
+    if (isInitialRoute.current) {
+      isInitialRoute.current = false;
+      return;
+    }
+
+    const frame = requestAnimationFrame(() => {
+      document.getElementById("main-content")?.focus({ preventScroll: true });
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [pathname]);
 
   useEffect(() => {
     if (!open) return;

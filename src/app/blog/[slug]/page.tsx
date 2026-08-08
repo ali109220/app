@@ -3,9 +3,8 @@ import { notFound } from "next/navigation";
 import BlogArticle from "@/pages/BlogArticle";
 import { getPost, POSTS } from "@/pages/blogData";
 import StructuredData from "@/site/StructuredData";
-import { SITE_URL } from "@/lib/site";
 
-const siteUrl = SITE_URL;
+const siteUrl = "https://tayseer.me";
 
 export function generateStaticParams() {
   return POSTS.map((post) => ({ slug: post.slug }));

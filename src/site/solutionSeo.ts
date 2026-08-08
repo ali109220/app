@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import { SITE_URL } from "@/lib/site";
 
-const siteUrl = SITE_URL;
+const siteUrl = "https://tayseer.me";
 const socialImage = "/opengraph-image";
 
 export type SolutionSeoKey =
@@ -107,23 +106,41 @@ export function buildSolutionMetadata(key: SolutionSeoKey): Metadata {
 export function buildSolutionSchemas(key: Exclude<SolutionSeoKey, "solutions">) {
   const item = solutionSeo[key];
   const pageUrl = `${siteUrl}${item.path}`;
+  const pageId = `${pageUrl}#webpage`;
+  const serviceId = `${pageUrl}#service`;
+
+  const webPage = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": pageId,
+    url: pageUrl,
+    name: item.title,
+    description: item.description,
+    isPartOf: { "@id": `${siteUrl}/#website` },
+    about: { "@id": serviceId },
+    breadcrumb: { "@id": `${pageUrl}#breadcrumb` },
+    inLanguage: "en"
+  };
 
   const service = {
     "@context": "https://schema.org",
     "@type": "Service",
-    "@id": `${pageUrl}#service`,
+    "@id": serviceId,
     name: item.name,
     serviceType: item.serviceType,
     description: item.description,
     url: pageUrl,
+    mainEntityOfPage: { "@id": pageId },
     provider: { "@id": `${siteUrl}/#organization` },
     areaServed: ["Saudi Arabia", "United Arab Emirates", "Middle East"],
-    category: "Financial Technology"
+    category: "Financial Technology",
+    audience: { "@type": "BusinessAudience", audienceType: "Financial institutions and enterprise technology teams" }
   };
 
   const breadcrumb = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
+    "@id": `${pageUrl}#breadcrumb`,
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
       { "@type": "ListItem", position: 2, name: "Solutions", item: `${siteUrl}/solutions` },
@@ -131,7 +148,7 @@ export function buildSolutionSchemas(key: Exclude<SolutionSeoKey, "solutions">) 
     ]
   };
 
-  return [service, breadcrumb];
+  return [webPage, service, breadcrumb];
 }
 
 export function buildSolutionsIndexSchemas() {

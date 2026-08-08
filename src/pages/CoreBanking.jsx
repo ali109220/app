@@ -1,52 +1,76 @@
 import { CreditCard, Send, Users, ShieldCheck, LineChart, ScrollText, Wallet, Landmark } from "lucide-react";
-import { Reveal } from "@/site/motion";
-import { InnerHero } from "@/site/ui";
-import { ContactSection } from "@/site/ContactSection";
+import { EnterpriseSolutionPage } from "@/site/phase8/EnterpriseSolutionLayout";
 import { T } from "@/site/theme";
 
-// ALL copy SOURCED from core-banking.html.
 const CAPS = [
-  { icon: CreditCard, h: "Payments", p: "Empower your customers with a modern and convenient way to manage their finances. Streamline your payments processing with our comprehensive solutions encompassing cards, mobile wallets, and app-based payments. Our secure and efficient platform ensures seamless transactions for your customers, reducing processing times and improving satisfaction." },
-  { icon: Send, h: "Remittance Solutions", p: "Offer a reliable and affordable money transfer service to cater to your global customers. Enable fast, secure, and cost-effective money transfers for your domestic and international customers. Our user-friendly platform simplifies the remittance process, fostering financial inclusion and building customer loyalty." },
-  { icon: Users, h: "Consumer Banking & the Evolution of Core Banking Systems", p: "Deliver a seamless and personalized banking experience that keeps your customers engaged. Empower your customers with a modern and user-friendly banking experience. Our solutions provide convenient access to account information, online banking features, and mobile banking applications." },
-  { icon: ShieldCheck, h: "Security & Compliance", p: "Operate with peace of mind, knowing your data and systems are secure and compliant. Safeguard your data and operations with robust security solutions that meet evolving industry regulations. Our comprehensive security features protect against cyber threats, ensuring financial integrity and customer trust." },
-  { icon: LineChart, h: "CRM & BI Systems", p: "Transform customer data into actionable insights for smarter decision-making and improved customer relationships. Leverage powerful Customer Relationship Management (CRM) and Business Intelligence (BI) tools to gain valuable insights into customer behavior. By understanding your customers' needs and preferences, you can optimize marketing strategies, personalize product offerings, and drive customer loyalty." },
-  { icon: ScrollText, h: "Audit & Legislation", p: "To operate with confidence, knowing you are compliant with industry regulations and best practices. Ensure compliance with evolving regulations and maintain financial integrity with our comprehensive audit and legislative support tools. Our solutions help you stay ahead of regulatory changes, minimize risk, and build trust with your customers." },
-  { icon: Wallet, h: "Financial Management Tools", p: "Gain a clear picture of your financial performance and make data-driven decisions for sustainable growth. Make informed decisions with comprehensive financial management solutions that provide real-time insights into your cash flow, profitability, and overall financial health. Our tools empower you to optimize resource allocation, manage risk effectively, and achieve your financial goals." },
-  { icon: Landmark, h: "Funds & Treasury Tools", p: "Gain greater control over your financial resources and maximize profitability. Manage your liquidity and optimize your funds with advanced tools for cash forecasting, investment management, and foreign exchange transactions. Our solutions empower you to make informed financial decisions, reduce costs, and maximize returns." },
+  { icon: CreditCard, h: "Payments", p: "Empower your customers with a modern and convenient way to manage their finances. Streamline payments processing across cards, mobile wallets, and app-based payments with a secure and efficient platform." },
+  { icon: Send, h: "Remittance Solutions", p: "Enable fast, secure, and cost-effective domestic and international money transfers through a user-friendly remittance experience." },
+  { icon: Users, h: "Consumer Banking", p: "Deliver a seamless and personalized banking experience with convenient access to account information, online banking features, and mobile applications." },
+  { icon: ShieldCheck, h: "Security & Compliance", p: "Safeguard data and operations with security capabilities designed to support evolving industry regulations, financial integrity, and customer trust." },
+  { icon: LineChart, h: "CRM & BI Systems", p: "Turn customer data into actionable insight using CRM and Business Intelligence capabilities that support smarter decisions and more relevant customer experiences." },
+  { icon: ScrollText, h: "Audit & Legislation", p: "Support regulatory compliance and financial integrity with audit and legislative tooling designed to help institutions stay aligned with changing requirements." },
+  { icon: Wallet, h: "Financial Management", p: "Improve visibility into cash flow, profitability, and financial performance to support informed resource allocation and risk management." },
+  { icon: Landmark, h: "Funds & Treasury", p: "Manage liquidity and funds with tools that support forecasting, investment management, and foreign exchange operations." },
 ];
+
+function CoreBankingVisual() {
+  return (
+    <div className="relative mx-auto max-w-[620px] overflow-hidden rounded-2xl border p-5" style={{ borderColor: T.border, background: "linear-gradient(145deg, rgba(13,90,140,.10), rgba(255,255,255,.01))" }}>
+      <div className="grid gap-3 sm:grid-cols-[1fr_1.3fr_1fr] sm:items-center">
+        <div className="space-y-3">
+          {["Digital Channels", "Payments", "Remittance"].map((item) => <div key={item} className="border px-4 py-3 text-xs" style={{ borderColor: T.border, background: T.bg }}>{item}</div>)}
+        </div>
+        <div className="relative flex min-h-64 items-center justify-center">
+          <div className="absolute h-48 w-48 rounded-full border" style={{ borderColor: "rgba(13,90,140,.22)" }} />
+          <div className="absolute h-36 w-36 rounded-full border" style={{ borderColor: "rgba(13,90,140,.35)" }} />
+          <div className="relative z-10 flex h-28 w-28 items-center justify-center rounded-full text-center text-sm font-semibold uppercase tracking-wide" style={{ background: T.signal, color: T.bg }}>Core<br/>Banking</div>
+        </div>
+        <div className="space-y-3">
+          {["Customer Data", "Treasury", "Compliance"].map((item) => <div key={item} className="border px-4 py-3 text-xs" style={{ borderColor: T.border, background: T.bg }}>{item}</div>)}
+        </div>
+      </div>
+      <div className="mt-5 grid grid-cols-3 gap-2 font-jbmono text-[9px] uppercase tracking-wider" style={{ color: T.faint }}>
+        <span>Secure</span><span className="text-center">Connected</span><span className="text-right">Scalable</span>
+      </div>
+    </div>
+  );
+}
 
 export default function CoreBanking() {
   return (
-    <div style={{ background: T.bg, color: T.text }} className="font-archivo">
-      <InnerHero
-        index="01.1"
-        crumbs={["Home", "Solutions", "Core Banking"]}
-        title="Core Banking"
-        tagline="Streamline your Core Banking, Unlock Innovation."
-        lead="Our robust core banking platform handles the heavy lifting, so you can dedicate resources to customer-centric innovation."
-      />
-
-      <section className="px-6 py-24 md:px-12">
-        <div className="mx-auto max-w-[1400px]">
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-            {CAPS.map((c, i) => (
-              <Reveal key={c.h} delay={(i % 2) * 0.06}>
-                <div data-testid={`cap-${i}`} className="group flex h-full flex-col rounded-lg border p-8 transition-colors hover:border-[#0D5A8C]" style={{ borderColor: T.border, background: T.panel }}>
-                  <div className="flex items-center gap-4">
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-md" style={{ background: "rgba(13,90,140,0.12)", color: T.signal }}><c.icon size={22} /></div>
-                    <div className="font-jbmono text-[11px]" style={{ color: T.faint }}>{String(i + 1).padStart(2, "0")}</div>
-                  </div>
-                  <h3 className="mt-5 text-xl font-semibold">{c.h}</h3>
-                  <p className="mt-3 text-sm leading-relaxed" style={{ color: T.muted }}>{c.p}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <ContactSection />
-    </div>
+    <EnterpriseSolutionPage
+      hero={{
+        eyebrow: "Core Banking",
+        title: "The Banking Core, Modernized.",
+        tagline: "Streamline your core banking foundation and create room for customer-focused innovation.",
+        lead: "Tayseer's core banking capabilities bring payments, remittance, customer banking, treasury, financial management, compliance, and intelligence into a connected operating foundation.",
+        visual: <CoreBankingVisual />,
+      }}
+      challenges={[
+        "Legacy banking environments can make change slower and increase the effort required to launch new customer experiences.",
+        "Critical capabilities such as payments, remittance, treasury, compliance, and customer insight often operate across disconnected systems.",
+        "Financial institutions need a dependable core while still being able to evolve digital services and operational processes.",
+      ]}
+      outcomes={[
+        "Connected banking capabilities",
+        "Faster operational decision-making",
+        "Stronger customer experience foundations",
+        "Improved financial visibility",
+        "Security and compliance support",
+        "Greater flexibility for digital innovation",
+      ]}
+      capabilityTitle="One Core. Multiple Banking Capabilities."
+      capabilityIntro="The existing Tayseer core banking offering spans the operational capabilities financial institutions need to run, manage, and evolve their banking services."
+      capabilities={CAPS}
+      architecture={{
+        title: "A Connected Banking Foundation",
+        steps: ["Customer Channels", "Payments & Remittance", "Core Banking Services", "Financial & Treasury Operations", "Data, CRM & Compliance"],
+      }}
+      related={[
+        { title: "MBuke", href: "/solutions/mbuke", description: "Extend the core with digital banking experiences across modern customer channels." },
+        { title: "Fahim AI", href: "/solutions/fahim-ai", description: "Add intelligence and automation to banking workflows and decision support." },
+        { title: "Managed Services", href: "/solutions/managed-services", description: "Support banking platforms with ongoing operational and technology expertise." },
+      ]}
+    />
   );
 }

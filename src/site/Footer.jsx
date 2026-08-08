@@ -36,7 +36,7 @@ export const Footer = () => (
             <div className="flex flex-col items-start font-jbmono text-[12px]">
               <a href="tel:+966555203079" className="inline-block py-2 hover:text-white">+966 555203079</a>
               <a href="tel:+97143997558" className="inline-block py-2 hover:text-white">+971 43997558</a>
-              <a href="mailto:info@tayseer.me" className="inline-block py-2 hover:text-white">info@tayseer.me</a>
+              <a href="mailto:info@tayseerdemo.xyz" className="inline-block py-2 hover:text-white">info@tayseerdemo.xyz</a>
             </div>
           </div>
         </div>

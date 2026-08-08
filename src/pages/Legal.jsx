@@ -45,7 +45,7 @@ function LegalShell({ index, title, updated, sections }) {
         <Reveal delay={0.1}>
           <div className="mt-14 border-t pt-6 font-jbmono text-[11px] uppercase tracking-widest" style={{ borderColor: T.border, color: T.faint }}>
             {/* SOURCED — contact from live site footer */}
-            Questions? info@tayseer.me · +966 555203079 · +971 43997558
+            Questions? info@tayseerdemo.xyz · +966 555203079 · +971 43997558
           </div>
         </Reveal>
       </div>
@@ -61,10 +61,10 @@ const PRIVACY = [
   { h: "Introduction", p: "This policy describes how Tayseer Innovations handles information you submit through this website. It reflects how the site actually works today and is provided for transparency while awaiting formal legal review." },
   { h: "Information We Collect", p: "Through our Connect form we collect your name, email, phone (optional), organization, and message. Through our Careers form we collect your name, phone (optional), email, the position you are applying for, your résumé/CV file, and an optional message. We do not collect this information in any other way on the site." },
   { h: "How We Use Your Information", p: "We use the information solely to respond to your enquiry or to assess your job application. We do not use it for advertising or sell it to third parties." },
-  { h: "How It Is Handled & Stored", p: "Submissions are not stored in any database on this website. They are transmitted over an encrypted connection to a serverless function that forwards them as a single email to info@tayseer.me via Resend, our email-delivery provider, and retains nothing afterwards. Résumé files are passed through only as an email attachment and are never stored on the website or with any form-service. Your information then resides only within Tayseer's email systems." },
+  { h: "How It Is Handled & Stored", p: "Submissions are not stored in any database on this website. They are transmitted over an encrypted connection to a serverless function that forwards them as a single email to info@tayseerdemo.xyz via Resend, our email-delivery provider, and retains nothing afterwards. Résumé files are passed through only as an email attachment and are never stored on the website or with any form-service. Your information then resides only within Tayseer's email systems." },
   { h: "Third Parties", p: "Resend processes your message in transit purely to deliver the email. No advertising or analytics trackers receive this form data." },
   { h: "Data Retention", p: "Submitted information is retained only within Tayseer's internal email systems in line with company policy." },
-  { h: "Your Rights & Contact", p: "To request access to, correction of, or deletion of the information you submitted, contact info@tayseer.me." },
+  { h: "Your Rights & Contact", p: "To request access to, correction of, or deletion of the information you submitted, contact info@tayseerdemo.xyz." },
 ];
 
 const TERMS = [

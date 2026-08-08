@@ -63,7 +63,7 @@ const organizationSchema = {
   name: "Tayseer Innovations",
   url: SITE_URL,
   logo: `${SITE_URL}/logo-light.svg`,
-  email: "info@tayseer.me",
+  email: "info@tayseerdemo.xyz",
   telephone: ["+966555203079", "+97143997558"],
   description: "Tayseer Innovations provides AI, digital banking, core banking, managed services and financial technology solutions for financial institutions.",
   areaServed: ["Saudi Arabia", "United Arab Emirates", "Middle East"],

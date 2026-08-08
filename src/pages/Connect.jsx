@@ -33,7 +33,7 @@ export default function Connect() {
       clearErrors();
     } catch {
       toast.message("Opening your email app to send your message…");
-      window.location.href = `mailto:info@tayseer.me?subject=${encodeURIComponent("Connect - " + (p.name || ""))}&body=${encodeURIComponent((p.message || "") + "\n\n" + (p.email || "") + " " + (p.phone || "") + "\nOrganization: " + (p.organization || ""))}`;
+      window.location.href = `mailto:info@tayseerdemo.xyz?subject=${encodeURIComponent("Connect - " + (p.name || ""))}&body=${encodeURIComponent((p.message || "") + "\n\n" + (p.email || "") + " " + (p.phone || "") + "\nOrganization: " + (p.organization || ""))}`;
     } finally {
       setSending(false);
     }
@@ -56,7 +56,7 @@ export default function Connect() {
                   </address>
                 </Reveal>
               ))}
-              <Reveal delay={0.1}><div className="space-y-1 font-jbmono text-sm" style={{ color: T.muted }}><div><a href="mailto:info@tayseer.me" className="rounded-sm hover:text-white">info@tayseer.me</a></div><div><a href="tel:+966555203079" className="rounded-sm hover:text-white">+966 555203079</a></div><div><a href="tel:+97143997558" className="rounded-sm hover:text-white">+971 43997558</a></div></div></Reveal>
+              <Reveal delay={0.1}><div className="space-y-1 font-jbmono text-sm" style={{ color: T.muted }}><div><a href="mailto:info@tayseerdemo.xyz" className="rounded-sm hover:text-white">info@tayseerdemo.xyz</a></div><div><a href="tel:+966555203079" className="rounded-sm hover:text-white">+966 555203079</a></div><div><a href="tel:+97143997558" className="rounded-sm hover:text-white">+971 43997558</a></div></div></Reveal>
             </div>
           </div>
           <div className="lg:col-span-7">

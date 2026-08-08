@@ -41,7 +41,7 @@ export default function HomeContactForm() {
       clearErrors();
     } catch {
       toast.message("Opening your email app to send your message…");
-      window.location.href = `mailto:info@tayseer.me?subject=${encodeURIComponent(`Website Query - ${payload.name || ""}`)}&body=${encodeURIComponent(`${payload.message || ""}\n\n${payload.email || ""}`)}`;
+      window.location.href = `mailto:info@tayseerdemo.xyz?subject=${encodeURIComponent(`Website Query - ${payload.name || ""}`)}&body=${encodeURIComponent(`${payload.message || ""}\n\n${payload.email || ""}`)}`;
     } finally {
       setSending(false);
     }

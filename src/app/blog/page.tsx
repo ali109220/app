@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import Blog from "@/pages/Blog";
 import { POSTS } from "@/pages/blogData";
 import StructuredData from "@/site/StructuredData";
-
-const siteUrl = "https://tayseer.me";
+import { SITE_URL as siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "FinTech, AI & Digital Banking Insights",

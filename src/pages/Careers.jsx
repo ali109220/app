@@ -27,7 +27,7 @@ export default function Careers() {
       clearErrors();
     } catch {
       toast.message("Opening your email app… please attach your résumé manually.");
-      window.location.href = `mailto:info@tayseer.me?subject=${encodeURIComponent("Career Application - " + (fd.get("name") || ""))}&body=${encodeURIComponent("Position: " + (fd.get("position") || "") + "\nPhone: " + (fd.get("phone") || "") + "\nEmail: " + (fd.get("email") || "") + "\n\n" + (fd.get("message") || ""))}`;
+      window.location.href = `mailto:info@tayseerdemo.xyz?subject=${encodeURIComponent("Career Application - " + (fd.get("name") || ""))}&body=${encodeURIComponent("Position: " + (fd.get("position") || "") + "\nPhone: " + (fd.get("phone") || "") + "\nEmail: " + (fd.get("email") || "") + "\n\n" + (fd.get("message") || ""))}`;
     } finally {
       setSending(false);
     }

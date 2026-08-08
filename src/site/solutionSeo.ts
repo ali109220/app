@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-
-const siteUrl = "https://tayseer.me";
+import { SITE_URL as siteUrl } from "@/lib/site";
 const socialImage = "/opengraph-image";
 
 export type SolutionSeoKey =

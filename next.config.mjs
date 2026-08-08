@@ -12,8 +12,8 @@ const nextConfig = {
     minimumCacheTTL: 86400,
     remotePatterns: [
       { protocol: "https", hostname: "images.unsplash.com" },
-      { protocol: "https", hostname: "tayseer.me" },
-      { protocol: "https", hostname: "www.tayseer.me" },
+      { protocol: "https", hostname: "tayseerdemo.xyz" },
+      { protocol: "https", hostname: "www.tayseerdemo.xyz" },
       { protocol: "https", hostname: "static.prod-images.emergentagent.com" }
     ]
   },

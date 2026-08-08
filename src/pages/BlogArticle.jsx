@@ -8,6 +8,19 @@ import { ContactSection } from "@/site/ContactSection";
 import { T } from "@/site/theme";
 import { getPost, POSTS } from "./blogData";
 
+const RELATED = {
+  "open-banking-uae-ksa": [
+    { label: "Core Banking", href: "/solutions/core-banking", copy: "Explore the banking platform capabilities behind modern payments, remittance, security and customer experiences." },
+    { label: "Software Management Systems", href: "/solutions/software-management-systems", copy: "See the API, integration, DevOps and operational tooling that supports modern banking ecosystems." },
+    { label: "Talk to Tayseer", href: "/connect", copy: "Discuss an Open Banking or digital transformation requirement with our regional team." }
+  ],
+  "rise-of-fintech-uae": [
+    { label: "Fahim AI", href: "/solutions/fahim-ai", copy: "Discover Tayseer’s agentic AI capabilities for intelligent customer interaction and business operations." },
+    { label: "MBuke", href: "/solutions/mbuke", copy: "Explore a white-label mobile banking platform for onboarding, payments, transfers and digital engagement." },
+    { label: "Talk to Tayseer", href: "/connect", copy: "Discuss your FinTech, AI or digital banking transformation priorities with our team." }
+  ]
+};
+
 export default function BlogArticle({ slug }) {
   const post = getPost(slug);
 
@@ -23,6 +36,7 @@ export default function BlogArticle({ slug }) {
   }
 
   const more = POSTS.filter((p) => p.slug !== slug);
+  const related = RELATED[slug] || [];
 
   return (
     <div style={{ background: T.bg, color: T.text }} className="font-archivo">
@@ -61,6 +75,23 @@ export default function BlogArticle({ slug }) {
           </div>
         </Reveal>
       </article>
+
+      {related.length > 0 && (
+        <section className="border-t px-6 py-16 md:px-12" style={{ borderColor: T.border }} aria-labelledby="related-solutions-heading">
+          <div className="mx-auto max-w-[1400px]">
+            <div id="related-solutions-heading" className="mb-8 font-jbmono text-[12px] uppercase tracking-[0.25em]" style={{ color: T.signal }}>Related Solutions</div>
+            <div className="grid grid-cols-1 gap-px overflow-hidden rounded-lg border md:grid-cols-3" style={{ borderColor: T.border, background: T.border }}>
+              {related.map((item) => (
+                <Link key={item.href} href={item.href} className="group p-7" style={{ background: T.bg }}>
+                  <h2 className="text-lg font-semibold group-hover:text-[#0D5A8C]" style={{ transition: "color .2s" }}>{item.label}</h2>
+                  <p className="mt-3 text-sm leading-relaxed" style={{ color: T.muted }}>{item.copy}</p>
+                  <span className="mt-5 inline-flex items-center gap-2 font-jbmono text-[11px] uppercase tracking-widest" style={{ color: T.signal }}>Explore <ArrowUpRight size={13} /></span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       <section className="border-t px-6 py-20 md:px-12" style={{ borderColor: T.border, background: T.panel }}>
         <div className="mx-auto max-w-[1400px]">

@@ -1,12 +1,14 @@
-import type { Metadata } from "next";
 import FahimAI from "@/pages/FahimAI";
+import StructuredData from "@/site/StructuredData";
+import { buildSolutionMetadata, buildSolutionSchemas } from "@/site/solutionSeo";
 
-export const metadata: Metadata = {
-  title: "Fahim AI",
-  description: "Fahim is Tayseer's agentic AI platform for intelligent onboarding, customer interaction, task execution and business operations.",
-  alternates: { canonical: "/solutions/fahim-ai" }
-};
+export const metadata = buildSolutionMetadata("fahim-ai");
 
 export default function FahimAIPage() {
-  return <FahimAI />;
+  return (
+    <>
+      <StructuredData data={buildSolutionSchemas("fahim-ai")} />
+      <FahimAI />
+    </>
+  );
 }

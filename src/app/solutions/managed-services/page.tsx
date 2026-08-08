@@ -1,12 +1,14 @@
-import type { Metadata } from "next";
 import ManagedServices from "@/pages/ManagedServices";
+import StructuredData from "@/site/StructuredData";
+import { buildSolutionMetadata, buildSolutionSchemas } from "@/site/solutionSeo";
 
-export const metadata: Metadata = {
-  title: "Managed Services",
-  description: "Managed technology services for Temenos T24, big data, security, ATM and STM operations, and cloud infrastructure.",
-  alternates: { canonical: "/solutions/managed-services" }
-};
+export const metadata = buildSolutionMetadata("managed-services");
 
 export default function ManagedServicesPage() {
-  return <ManagedServices />;
+  return (
+    <>
+      <StructuredData data={buildSolutionSchemas("managed-services")} />
+      <ManagedServices />
+    </>
+  );
 }

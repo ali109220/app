@@ -1,12 +1,14 @@
-import type { Metadata } from "next";
 import CoreBanking from "@/pages/CoreBanking";
+import StructuredData from "@/site/StructuredData";
+import { buildSolutionMetadata, buildSolutionSchemas } from "@/site/solutionSeo";
 
-export const metadata: Metadata = {
-  title: "Core Banking",
-  description: "Modern core banking capabilities for payments, remittance, consumer banking, security, analytics, financial management and treasury.",
-  alternates: { canonical: "/solutions/core-banking" }
-};
+export const metadata = buildSolutionMetadata("core-banking");
 
 export default function CoreBankingPage() {
-  return <CoreBanking />;
+  return (
+    <>
+      <StructuredData data={buildSolutionSchemas("core-banking")} />
+      <CoreBanking />
+    </>
+  );
 }

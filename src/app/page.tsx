@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import HomeClient from "@/next/HomeClient";
+import Home from "@/pages/Home";
 
 export const metadata: Metadata = {
   title: "Tayseer Innovations | AI & Digital Banking Solutions",
@@ -14,5 +14,5 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
-  return <HomeClient />;
+  return <Home />;
 }

@@ -1,12 +1,14 @@
-import type { Metadata } from "next";
 import MBuke from "@/pages/MBuke";
+import StructuredData from "@/site/StructuredData";
+import { buildSolutionMetadata, buildSolutionSchemas } from "@/site/solutionSeo";
 
-export const metadata: Metadata = {
-  title: "MBuke",
-  description: "MBuke is Tayseer's white-label mobile banking platform for onboarding, payments, transfers, analytics, agent banking and offline access.",
-  alternates: { canonical: "/solutions/mbuke" }
-};
+export const metadata = buildSolutionMetadata("mbuke");
 
 export default function MBukePage() {
-  return <MBuke />;
+  return (
+    <>
+      <StructuredData data={buildSolutionSchemas("mbuke")} />
+      <MBuke />
+    </>
+  );
 }

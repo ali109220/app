@@ -1,12 +1,14 @@
-import type { Metadata } from "next";
 import Solutions from "@/pages/Solutions";
+import StructuredData from "@/site/StructuredData";
+import { buildSolutionMetadata, buildSolutionsIndexSchemas } from "@/site/solutionSeo";
 
-export const metadata: Metadata = {
-  title: "Solutions",
-  description: "Explore Tayseer Innovations solutions across core banking, AI, digital banking, managed services and banking systems.",
-  alternates: { canonical: "/solutions" }
-};
+export const metadata = buildSolutionMetadata("solutions");
 
 export default function SolutionsPage() {
-  return <Solutions />;
+  return (
+    <>
+      <StructuredData data={buildSolutionsIndexSchemas()} />
+      <Solutions />
+    </>
+  );
 }

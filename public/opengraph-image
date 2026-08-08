@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Tayseer Innovations — AI &amp; Digital Banking Solutions</title>
+  <desc id="desc">Branded Tayseer Innovations social sharing image for AI, core banking, digital banking and managed technology solutions.</desc>
+  <defs>
+    <radialGradient id="glow" cx="85%" cy="10%" r="65%">
+      <stop offset="0%" stop-color="#0D5A8C" stop-opacity="0.55"/>
+      <stop offset="70%" stop-color="#0D5A8C" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#090B0E" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#090B0E"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <rect x="72" y="72" width="18" height="18" fill="#5CF0CE"/>
+  <text x="108" y="89" fill="#F7F6F2" font-family="Arial,Helvetica,sans-serif" font-size="26" font-weight="700" letter-spacing="2">TAYSEER INNOVATIONS</text>
+  <text x="72" y="285" fill="#F7F6F2" font-family="Arial,Helvetica,sans-serif" font-size="70" font-weight="800" letter-spacing="-2">FUTURE-READY AI &amp;</text>
+  <text x="72" y="360" fill="#F7F6F2" font-family="Arial,Helvetica,sans-serif" font-size="70" font-weight="800" letter-spacing="-2">DIGITAL BANKING SOLUTIONS</text>
+  <text x="72" y="430" fill="#B7C0C8" font-family="Arial,Helvetica,sans-serif" font-size="27">Core banking, digital banking, AI and managed technology solutions</text>
+  <text x="72" y="470" fill="#B7C0C8" font-family="Arial,Helvetica,sans-serif" font-size="27">for financial institutions across the Middle East.</text>
+  <text x="72" y="560" fill="#8F9AA4" font-family="Arial,Helvetica,sans-serif" font-size="20">Saudi Arabia · UAE</text>
+  <text x="1030" y="560" fill="#5CF0CE" font-family="Arial,Helvetica,sans-serif" font-size="20">tayseer.me</text>
+</svg>

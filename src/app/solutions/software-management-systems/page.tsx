@@ -1,12 +1,14 @@
-import type { Metadata } from "next";
 import SoftwareManagementSystems from "@/pages/SoftwareManagementSystems";
+import StructuredData from "@/site/StructuredData";
+import { buildSolutionMetadata, buildSolutionSchemas } from "@/site/solutionSeo";
 
-export const metadata: Metadata = {
-  title: "Software Management Systems",
-  description: "Software management capabilities covering version control, development tools, APIs, log management, authorization and CI/CD.",
-  alternates: { canonical: "/solutions/software-management-systems" }
-};
+export const metadata = buildSolutionMetadata("software-management-systems");
 
 export default function SoftwareManagementSystemsPage() {
-  return <SoftwareManagementSystems />;
+  return (
+    <>
+      <StructuredData data={buildSolutionSchemas("software-management-systems")} />
+      <SoftwareManagementSystems />
+    </>
+  );
 }

@@ -5,7 +5,7 @@ export const POSTS = [
     title: "Unleashing Financial Innovation: Open Banking’s Potential in the UAE and KSA",
     date: "May 1, 2024",
     author: "AdminTayseer",
-    excerpt: "The financial sectors of the UAE and KSA are undergoing a period of exciting transformation. Open Banking, a revolutionary concept,",
+    excerpt: "Explore how Open Banking is reshaping financial services in the UAE and KSA through secure APIs, greater customer choice and new FinTech collaboration models.",
     titleFlag: null,
     lead: "The financial sectors of the UAE and KSA are undergoing a period of exciting transformation. Open Banking, a revolutionary concept, is unlocking a new era of financial innovation that empowers customers and drives competition. Let’s delve into how Open Banking is redefining financial services in these dynamic markets.",
     sections: [
@@ -20,13 +20,11 @@ export const POSTS = [
   },
   {
     slug: "rise-of-fintech-uae",
-    // NEEDS VERIFICATION — title appears garbled/duplicated in the live site (two headings concatenated);
-    // carried verbatim, awaiting owner's corrected title. Body also references "2024" while title says "2025".
-    title: "The Rise of FinTech in the UAE: Innovations Shaping the Future of Finance in 2025 On Site Deployment Insights",
-    titleFlag: "Title appears garbled/duplicated on the live site — verbatim, pending a corrected version.",
+    title: "The Rise of FinTech in the UAE: Innovations Shaping the Future of Finance",
+    titleFlag: null,
     date: "May 4, 2024",
     author: "AdminTayseer",
-    excerpt: "The UAE’s financial services sector is poised for a transformation driven by cutting-edge FinTech solutions. Here’s a glimpse into some",
+    excerpt: "A look at the FinTech innovations shaping the UAE financial sector, including digital lending, AI-powered wealth management, cybersecurity and machine learning.",
     lead: "The UAE’s financial services sector is poised for a transformation driven by cutting-edge FinTech solutions. Here’s a glimpse into some of the key innovations expected to reshape the financial landscape in 2024:",
     sections: [
       { h: "1. Flourishing Digital Lending Platforms:", p: "Following global trends, the UAE is also witnessing a surge in digital lending platforms. These platforms leverage advanced algorithms and vast datasets to offer inclusive and accessible credit solutions. By expanding their reach beyond major cities, these platforms will cater to the underbanked population in remote areas, fostering financial inclusion across the Emirates." },

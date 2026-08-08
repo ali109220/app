@@ -1,12 +1,14 @@
-import type { Metadata } from "next";
 import BankingSystems from "@/pages/BankingSystems";
+import StructuredData from "@/site/StructuredData";
+import { buildSolutionMetadata, buildSolutionSchemas } from "@/site/solutionSeo";
 
-export const metadata: Metadata = {
-  title: "Banking Systems",
-  description: "Advanced banking hardware and self-service solutions including ATMs, STMs, cash processing, card processing and biometrics.",
-  alternates: { canonical: "/solutions/banking-systems" }
-};
+export const metadata = buildSolutionMetadata("banking-systems");
 
 export default function BankingSystemsPage() {
-  return <BankingSystems />;
+  return (
+    <>
+      <StructuredData data={buildSolutionSchemas("banking-systems")} />
+      <BankingSystems />
+    </>
+  );
 }

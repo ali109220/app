@@ -69,36 +69,101 @@
     --ring: 204 83% 45%;
   }
 
-  * {
-    @apply border-border;
-  }
+  * { @apply border-border; }
+
+  html { overflow-x: hidden; }
 
   body {
     @apply bg-background text-foreground;
+    overflow-wrap: anywhere;
+  }
+
+  :where(a, button, input, textarea, select, summary):focus-visible {
+    outline: 3px solid #0d5a8c;
+    outline-offset: 3px;
+  }
+
+  :where(input, textarea, select):focus-visible {
+    outline-width: 2px;
+    outline-offset: 1px;
+  }
+
+  :where(button, a, input, select, textarea) {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+@media (max-width: 639px) {
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
   }
 }
 
 @keyframes route-progress {
-  0% {
-    transform: translateX(-140%);
+  0% { transform: translateX(-140%); }
+  50% { transform: translateX(160%); }
+  100% { transform: translateX(360%); }
+}
+
+@keyframes hero-actions-in {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes line-reveal-in {
+  from { opacity: 0; transform: translateY(110%); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.phase3-hero-actions {
+  animation: hero-actions-in 0.8s 0.7s both cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.motion-line-reveal {
+  animation: line-reveal-in 0.9s both cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+.motion-marquee {
+  animation-name: marquee-scroll;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within { scroll-behavior: auto; }
+
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
   }
-  50% {
-    transform: translateX(160%);
-  }
-  100% {
-    transform: translateX(360%);
+
+  .phase3-hero-actions,
+  .motion-line-reveal,
+  .motion-marquee {
+    animation: none !important;
+    transform: none !important;
   }
 }
 
-/* --- Reconstructed decorative utilities ---
-   Not present in the recovered source map; `grain` and `hairline-grid`
-   classNames appear throughout src/site and src/pages with no matching CSS.
-   Rebuilt here as a subtle paper-grain overlay and a hairline background
-   grid (color driven by the --hl custom property each call site sets inline). */
-@layer utilities {
-  .grain {
-    isolation: isolate;
+@media (forced-colors: active) {
+  :where(a, button, input, textarea, select, summary):focus-visible {
+    outline: 2px solid Highlight;
   }
+}
+
+@layer utilities {
+  .grain { isolation: isolate; }
 
   .grain::after {
     content: "";
@@ -108,7 +173,7 @@
     z-index: 1;
     opacity: 0.035;
     mix-blend-mode: overlay;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitchTiles'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 
   .hairline-grid {

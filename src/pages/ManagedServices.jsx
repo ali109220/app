@@ -2,6 +2,7 @@ import { Server, Database, ShieldCheck, Banknote, Cloud, Activity, Layers3 } fro
 import { EnterpriseSolutionPage } from "@/site/phase8/EnterpriseSolutionLayout";
 import { T } from "@/site/theme";
 
+// ALL copy SOURCED from managed-services.html.
 const CAPS = [
   { icon: Server, h: "Managed T24 Temenos Service", p: "Expert administration, performance optimization and ongoing maintenance to help keep Temenos T24 environments operating efficiently." },
   { icon: Database, h: "Big Data Management", p: "Data storage, processing and analytics services that help institutions organize large datasets and turn them into useful operational insight." },

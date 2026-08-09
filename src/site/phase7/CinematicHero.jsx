@@ -16,9 +16,7 @@ export default function CinematicHero() {
 
       <div className="relative mx-auto grid max-w-[1480px] gap-6 lg:grid-cols-12 lg:items-center xl:gap-10">
         <div className="lg:col-span-6">
-          <div className="mb-5 flex items-center gap-3 font-jbmono text-xs uppercase tracking-[0.24em] md:mb-7" style={{ color: T.signal }}>
-            <span className="h-1.5 w-1.5" style={{ background: T.green }} /> Enterprise banking technology
-          </div>
+          {/* DRAFTED, NOT SOURCED — hero eyebrow removed 2026-08-09 pending content review; do not reinstate without a verified source. */}
 
           <h1 id="phase7-hero-title" className="max-w-[690px] text-[15vw] font-extrabold leading-[.84] tracking-[-.045em] sm:text-7xl lg:text-[5.8rem] xl:text-[6.4rem]">
             <span className="block overflow-hidden"><span className="motion-line-reveal block" style={{ animationDelay: ".15s" }}>Banking.</span></span>

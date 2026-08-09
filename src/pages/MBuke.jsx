@@ -2,6 +2,7 @@ import { Layers, Puzzle, Plug, ShieldCheck, Palette, Smartphone, Radio, BarChart
 import { EnterpriseSolutionPage } from "@/site/phase8/EnterpriseSolutionLayout";
 import { T } from "@/site/theme";
 
+// ALL copy SOURCED from mbuke.html. Case-study numbers from data-count (real).
 const CAPABILITIES = [
   { icon: Layers, h: "Unified Platform", p: "Bring onboarding, payments, transfers, analytics, and digital banking journeys into one connected platform." },
   { icon: Puzzle, h: "Modular & Scalable", p: "Deploy the capabilities you need now and extend the platform as business and channel requirements grow." },
@@ -9,6 +10,14 @@ const CAPABILITIES = [
   { icon: ShieldCheck, h: "Enterprise-Grade Security", p: "Support digital banking operations with microservices, real-time events, observability, and security controls." },
   { icon: Palette, h: "White-Label Ready", p: "Customize the customer experience to align with institutional branding and business requirements." },
   { icon: Radio, h: "USSD / Offline Support", p: "Extend financial-service access with offline and low-connectivity channel capabilities where required." },
+];
+
+// SOURCED — case-study numbers from data-count (real).
+const STATS = [
+  { to: 500, suffix: "K+", label: "Users Onboarded in First Year" },
+  { to: 60, suffix: "%", label: "Cost Reduction vs. Physical Branches" },
+  { to: 900, suffix: "+", label: "Agents Activated in 12 Months" },
+  { to: 90, suffix: "%", label: "Retention Rate Driven by Ease of Access" },
 ];
 
 function MBukeVisual() {
@@ -26,7 +35,7 @@ function MBukeVisual() {
         <div className="relative z-10 flex h-28 w-28 items-center justify-center rounded-2xl text-center text-lg font-bold" style={{ background: T.signal, color: T.bg }}><Network size={28} className="mr-2" aria-hidden="true" />MBuke</div>
       </div>
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-        {nodes.map(({ icon: Icon, label }) => <div key={label} className="border p-3 text-center" style={{ borderColor: T.border, background: T.bg }}><Icon className="mx-auto" size={18} style={{ color: T.signal }} aria-hidden="true" /><div className="mt-2 text-[11px] font-medium">{label}</div></div>)}
+        {nodes.map(({ icon: Icon, label }) => <div key={label} className="border p-3 text-center" style={{ borderColor: T.border, background: T.bg }}><Icon className="mx-auto" size={18} style={{ color: T.signal }} aria-hidden="true" /><div className="mt-2 text-[12px] font-medium">{label}</div></div>)}
       </div>
     </div>
   );
@@ -62,6 +71,8 @@ export default function MBuke() {
         title: "A Digital Banking Delivery Layer",
         steps: ["Customer & Agent Channels", "Onboarding & Experience", "Payments & Transfers", "APIs & Integration", "Core & Third-Party Services"],
       }}
+      stats={STATS}
+      statsEyebrow="Case Study"
       related={[
         { title: "Core Banking", href: "/solutions/core-banking", description: "Connect digital channels to the broader banking operating foundation." },
         { title: "Fahim AI", href: "/solutions/fahim-ai", description: "Add intelligent onboarding, conversational service, and workflow automation." },

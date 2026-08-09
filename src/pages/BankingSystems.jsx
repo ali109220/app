@@ -2,6 +2,7 @@ import { Banknote, MonitorSmartphone, Coins, LayoutGrid, Layers, CreditCard, Fin
 import { EnterpriseSolutionPage } from "@/site/phase8/EnterpriseSolutionLayout";
 import { T } from "@/site/theme";
 
+// ALL copy SOURCED from banking-systems.html.
 const CAPS = [
   { icon: Banknote, h: "ATMs & Cash Recyclers", p: "Extend self-service access while improving cash availability and branch cash-management efficiency with advanced ATM and recycling technology." },
   { icon: MonitorSmartphone, h: "Smart Teller Machines", p: "Combine assisted service with automation so branches can handle more transactions while preserving human support where it matters." },

@@ -2,6 +2,7 @@ import { CreditCard, Send, Users, ShieldCheck, LineChart, ScrollText, Wallet, La
 import { EnterpriseSolutionPage } from "@/site/phase8/EnterpriseSolutionLayout";
 import { T } from "@/site/theme";
 
+// ALL copy SOURCED from core-banking.html.
 const CAPS = [
   { icon: CreditCard, h: "Payments", p: "Empower your customers with a modern and convenient way to manage their finances. Streamline payments processing across cards, mobile wallets, and app-based payments with a secure and efficient platform." },
   { icon: Send, h: "Remittance Solutions", p: "Enable fast, secure, and cost-effective domestic and international money transfers through a user-friendly remittance experience." },

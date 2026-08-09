@@ -20,14 +20,14 @@ export default function Blog() {
               <Reveal key={post.slug} delay={i * 0.06}>
                 <Link href={`/blog/${post.slug}`} data-testid={`blog-card-${i}`} className="group flex h-full flex-col justify-between p-10 transition-colors" style={{ background: T.panel }}>
                   <div>
-                    <div className="font-jbmono text-[11px] uppercase tracking-widest" style={{ color: T.signal }}>{post.date}</div>
+                    <div className="font-jbmono text-[12px] uppercase tracking-widest" style={{ color: T.signal }}>{post.date}</div>
                     <h2 className="mt-4 text-2xl font-semibold leading-snug group-hover:text-[#0D5A8C]" style={{ transition: "color .2s" }}>{post.title}</h2>
                     {post.titleFlag && (
                       <p className="mt-3 rounded border px-3 py-1.5 font-jbmono text-[10px] uppercase tracking-wider" style={{ borderColor: "rgba(13,90,140,0.35)", color: T.faint }}>⚑ {post.titleFlag}</p>
                     )}
                     <p className="mt-4 text-sm leading-relaxed" style={{ color: T.muted }}>{post.excerpt}</p>
                   </div>
-                  <span className="mt-8 inline-flex items-center gap-2 font-jbmono text-[11px] uppercase tracking-widest" style={{ color: T.signal }}>Read Article <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" /></span>
+                  <span className="mt-8 inline-flex items-center gap-2 font-jbmono text-[12px] uppercase tracking-widest" style={{ color: T.signal }}>Read Article <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" /></span>
                 </Link>
               </Reveal>
             ))}

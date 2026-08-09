@@ -44,13 +44,13 @@ export default function BlogArticle({ slug }) {
 
       <article className="mx-auto max-w-[820px] px-6 py-20 md:px-12">
         <Reveal>
-          <div className="flex flex-wrap items-center gap-3 border-b pb-6 font-jbmono text-[11px] uppercase tracking-widest" style={{ borderColor: T.border, color: T.faint }}>
+          <div className="flex flex-wrap items-center gap-3 border-b pb-6 font-jbmono text-[12px] uppercase tracking-widest" style={{ borderColor: T.border, color: T.faint }}>
             <span style={{ color: T.signal }}>{post.date}</span><span>·</span><span>{post.author}</span>
           </div>
         </Reveal>
         {post.titleFlag && (
           <Reveal>
-            <div className="mt-6 rounded-lg border px-4 py-3 font-jbmono text-[11px] uppercase tracking-wider" style={{ borderColor: "rgba(13,90,140,0.35)", color: T.faint }}>⚑ {post.titleFlag}</div>
+            <div className="mt-6 rounded-lg border px-4 py-3 font-jbmono text-[12px] uppercase tracking-wider" style={{ borderColor: "rgba(13,90,140,0.35)", color: T.faint }}>⚑ {post.titleFlag}</div>
           </Reveal>
         )}
         <Reveal delay={0.05}>
@@ -85,7 +85,7 @@ export default function BlogArticle({ slug }) {
                 <Link key={item.href} href={item.href} className="group p-7" style={{ background: T.bg }}>
                   <h2 className="text-lg font-semibold group-hover:text-[#0D5A8C]" style={{ transition: "color .2s" }}>{item.label}</h2>
                   <p className="mt-3 text-sm leading-relaxed" style={{ color: T.muted }}>{item.copy}</p>
-                  <span className="mt-5 inline-flex items-center gap-2 font-jbmono text-[11px] uppercase tracking-widest" style={{ color: T.signal }}>Explore <ArrowUpRight size={13} /></span>
+                  <span className="mt-5 inline-flex items-center gap-2 font-jbmono text-[12px] uppercase tracking-widest" style={{ color: T.signal }}>Explore <ArrowUpRight size={13} /></span>
                 </Link>
               ))}
             </div>
@@ -99,9 +99,9 @@ export default function BlogArticle({ slug }) {
           <div className="grid grid-cols-1 gap-px overflow-hidden rounded-lg border md:grid-cols-2" style={{ borderColor: T.border, background: T.border }}>
             {more.map((p) => (
               <Link key={p.slug} href={`/blog/${p.slug}`} className="group p-8" style={{ background: T.bg }}>
-                <div className="font-jbmono text-[11px] uppercase tracking-widest" style={{ color: T.faint }}>{p.date}</div>
+                <div className="font-jbmono text-[12px] uppercase tracking-widest" style={{ color: T.faint }}>{p.date}</div>
                 <h3 className="mt-3 text-lg font-semibold leading-snug group-hover:text-[#0D5A8C]" style={{ transition: "color .2s" }}>{p.title}</h3>
-                <span className="mt-4 inline-flex items-center gap-2 font-jbmono text-[11px] uppercase tracking-widest" style={{ color: T.signal }}>Read <ArrowUpRight size={13} /></span>
+                <span className="mt-4 inline-flex items-center gap-2 font-jbmono text-[12px] uppercase tracking-widest" style={{ color: T.signal }}>Read <ArrowUpRight size={13} /></span>
               </Link>
             ))}
           </div>

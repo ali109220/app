@@ -2,6 +2,7 @@ import { GitBranch, Wrench, FolderTree, Plug, ScrollText, Lock, Rocket, Code2, W
 import { EnterpriseSolutionPage } from "@/site/phase8/EnterpriseSolutionLayout";
 import { T } from "@/site/theme";
 
+// ALL copy SOURCED from software-management-systems.html.
 const CAPS = [
   { icon: GitBranch, h: "Version Control Systems", p: "Track code changes, maintain integrity and support collaborative development through centralized version-control practices." },
   { icon: Wrench, h: "Development Tooling", p: "Support mobile and software engineering with development environments, debugging and testing tools that improve delivery quality." },

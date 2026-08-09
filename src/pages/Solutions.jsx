@@ -46,7 +46,7 @@ export default function Solutions() {
                     <h3 className="mt-4 text-xl font-semibold group-hover:text-[#0D5A8C]" style={{ transition: "color .2s" }}>{s.name}</h3>
                     <p className="mt-3 text-sm leading-relaxed" style={{ color: T.muted }}>{s.p}</p>
                   </div>
-                  <span className="mt-8 inline-flex items-center gap-2 font-jbmono text-[11px] uppercase tracking-widest" style={{ color: T.signal }}>Read More <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" /></span>
+                  <span className="mt-8 inline-flex items-center gap-2 font-jbmono text-[12px] uppercase tracking-widest" style={{ color: T.signal }}>Read More <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" /></span>
                 </Link>
               </Reveal>
             ))}

@@ -28,7 +28,7 @@ export const Footer = () => (
             <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full" style={{ background: "rgba(13,90,140,0.28)" }}>
               <img src="/iso-27001-badge.png" alt="ISO 27001:2022 Certified" width="48" height="48" className="h-12 w-12" loading="lazy" decoding="async" />
             </div>
-            <span className="font-jbmono text-[11px] uppercase leading-tight tracking-[0.18em]" style={{ color: T.muted }}>ISO 27001:2022<br />Certified</span>
+            <span className="font-jbmono text-[12px] uppercase leading-tight tracking-[0.18em]" style={{ color: T.muted }}>ISO 27001:2022<br />Certified</span>
           </div>
         </div>
         <Col title="Solutions" links={SOLUTIONS} />

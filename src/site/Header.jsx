@@ -80,9 +80,10 @@ export const Header = () => {
   };
 
   const directLinks = [
-    { label: "About", to: "/about" },
-    { label: "Insights", to: "/blog" },
+    { label: "About Us", to: "/about" },
+    { label: "Blogs and Resources", to: "/blog" },
     { label: "Careers", to: "/careers" },
+    { label: "Connect", to: "/connect" },
   ];
 
   return (

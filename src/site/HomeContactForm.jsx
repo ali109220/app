@@ -53,12 +53,12 @@ export default function HomeContactForm() {
         <FormErrorSummary errors={errors} />
         <div>
           <label htmlFor="home-contact-name" className="sr-only">Name</label>
-          <input id="home-contact-name" name="name" required autoComplete="name" placeholder="Name" data-testid="contact-name" aria-invalid={Boolean(errors.name)} aria-describedby={errors.name ? "home-contact-name-error" : undefined} className={`${fieldClass} w-full`} style={{ borderColor: T.border, color: T.text }} />
+          <input id="home-contact-name" name="name" required aria-required="true" autoComplete="name" placeholder="Name" data-testid="contact-name" aria-invalid={Boolean(errors.name)} aria-describedby={errors.name ? "home-contact-name-error" : undefined} className={`${fieldClass} w-full`} style={{ borderColor: T.border, color: T.text }} />
           <FieldError id="home-contact-name-error" message={errors.name} />
         </div>
         <div>
           <label htmlFor="home-contact-email" className="sr-only">Email address</label>
-          <input id="home-contact-email" name="email" type="email" required autoComplete="email" inputMode="email" placeholder="Email" data-testid="contact-email" aria-invalid={Boolean(errors.email)} aria-describedby={errors.email ? "home-contact-email-error" : undefined} className={`${fieldClass} w-full`} style={{ borderColor: T.border, color: T.text }} />
+          <input id="home-contact-email" name="email" type="email" required aria-required="true" autoComplete="email" inputMode="email" placeholder="Email" data-testid="contact-email" aria-invalid={Boolean(errors.email)} aria-describedby={errors.email ? "home-contact-email-error" : undefined} className={`${fieldClass} w-full`} style={{ borderColor: T.border, color: T.text }} />
           <FieldError id="home-contact-email-error" message={errors.email} />
         </div>
         <div className="sm:col-span-2">
@@ -67,7 +67,7 @@ export default function HomeContactForm() {
         </div>
         <div className="sm:col-span-2">
           <label htmlFor="home-contact-message" className="sr-only">How may we help you?</label>
-          <textarea id="home-contact-message" name="message" required rows={4} placeholder="How may we help you?" data-testid="contact-message" aria-invalid={Boolean(errors.message)} aria-describedby={errors.message ? "home-contact-message-error" : undefined} className={`${fieldClass} w-full`} style={{ borderColor: T.border, color: T.text }} />
+          <textarea id="home-contact-message" name="message" required aria-required="true" rows={4} placeholder="How may we help you?" data-testid="contact-message" aria-invalid={Boolean(errors.message)} aria-describedby={errors.message ? "home-contact-message-error" : undefined} className={`${fieldClass} w-full`} style={{ borderColor: T.border, color: T.text }} />
           <FieldError id="home-contact-message-error" message={errors.message} />
         </div>
         <button type="submit" disabled={sending} data-testid="contact-submit" className="inline-flex min-h-11 w-full items-center justify-center gap-2 px-8 py-4 text-sm font-semibold uppercase tracking-wider transition-transform hover:-translate-y-0.5 disabled:cursor-wait disabled:opacity-60 sm:w-auto" style={{ background: T.signal, color: T.bg }}>

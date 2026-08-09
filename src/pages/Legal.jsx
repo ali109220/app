@@ -28,7 +28,7 @@ function LegalShell({ index, title, updated, sections }) {
         </Reveal>
 
         <Reveal delay={0.1}>
-          <p className="mt-6 font-jbmono text-[11px] uppercase tracking-widest" style={{ color: T.faint }}>Last updated: {updated}</p>
+          <p className="mt-6 font-jbmono text-[12px] uppercase tracking-widest" style={{ color: T.faint }}>Last updated: {updated}</p>
         </Reveal>
 
         <div className="mt-12 space-y-10">
@@ -43,7 +43,7 @@ function LegalShell({ index, title, updated, sections }) {
         </div>
 
         <Reveal delay={0.1}>
-          <div className="mt-14 border-t pt-6 font-jbmono text-[11px] uppercase tracking-widest" style={{ borderColor: T.border, color: T.faint }}>
+          <div className="mt-14 border-t pt-6 font-jbmono text-[12px] uppercase tracking-widest" style={{ borderColor: T.border, color: T.faint }}>
             {/* SOURCED — contact from live site footer */}
             Questions? info@tayseerdemo.xyz · +966 555203079 · +971 43997558
           </div>

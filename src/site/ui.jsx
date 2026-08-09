@@ -45,7 +45,7 @@ export const InnerHero = ({ index, crumbs, title, tagline, lead }) => (
     <div className="pointer-events-none absolute -left-40 top-0 h-[420px] w-[420px] rounded-full" style={{ background: T.signal, filter: "blur(220px)", opacity: 0.05 }} />
     <div className="relative mx-auto max-w-[1400px] px-6 pt-36 pb-20 md:px-12 md:pt-44">
       <Reveal>
-        <nav aria-label="Breadcrumb" className="mb-6 flex flex-wrap items-center gap-2 font-jbmono text-[11px] uppercase tracking-[0.2em]" style={{ color: T.faint }} data-testid="breadcrumb">
+        <nav aria-label="Breadcrumb" className="mb-6 flex flex-wrap items-center gap-2 font-jbmono text-[12px] uppercase tracking-[0.2em]" style={{ color: T.faint }} data-testid="breadcrumb">
           {crumbs.map((crumb, i) => {
             const isCurrent = i === crumbs.length - 1;
             const href = BREADCRUMB_HREFS[crumb];

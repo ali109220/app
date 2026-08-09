@@ -1,7 +1,8 @@
-import { Target, ScanFace, MessagesSquare, Gauge, Plug, Boxes, BrainCircuit, FileCheck2, Workflow, UserRoundCheck } from "lucide-react";
+import { Target, ScanFace, MessagesSquare, Gauge, Plug, Boxes, BrainCircuit, FileCheck2, Workflow, UserRoundCheck, CheckCircle2, XCircle } from "lucide-react";
 import { EnterpriseSolutionPage } from "@/site/phase8/EnterpriseSolutionLayout";
 import { T } from "@/site/theme";
 
+// ALL copy SOURCED from fahim-ai.html.
 const HOW_FAHIM = [
   { icon: Target, h: "Goal-Oriented Execution", p: "Contemplates instructions intelligently, then executes end-to-end business operations with accuracy and speed." },
   { icon: ScanFace, h: "Intelligent Onboarding / KYC", p: "Analyzes documents and verifies authenticity as part of customer onboarding, supporting compliance and security requirements." },
@@ -10,6 +11,63 @@ const HOW_FAHIM = [
   { icon: Plug, h: "Flexible Integration", p: "Connects with existing systems and business modules without requiring major disruption to the surrounding technology landscape." },
   { icon: Boxes, h: "Flexible Deployment", p: "Supports on-premise or containerized deployment based on security, infrastructure, and operating requirements." },
 ];
+
+// SOURCED — data-count values (real, from source attributes).
+const KPIS = [
+  { to: 99, suffix: "%", label: "Response Rate" },
+  { to: 30, prefix: "<", suffix: "", label: "Secs Response Time" },
+  // RESOLVED 2026-08-09 — fahim-ai.html source also stated 94% Customer Satisfaction
+  // in prose elsewhere (see FAHIM_WAY below); confirmed 95% (this counter) as correct.
+  { to: 95, suffix: "%", label: "Customer Satisfaction" },
+  { to: 300, suffix: "%", label: "Improvement in Efficiency" },
+];
+
+// SOURCED — comparison copy from fahim-ai.html.
+const OLD_WAY = [
+  "40% of calls go unanswered",
+  "Long wait times frustrate customers",
+  "Low customer satisfaction rate",
+  "High operational costs",
+  "High customer churn",
+];
+
+// SOURCED — comparison copy from fahim-ai.html. "Customer Satisfaction Rate" corrected
+// to 95% (was 94%) 2026-08-09 to match the verified KPI counter above — see note there.
+const FAHIM_WAY = [
+  "99% response rate, 24/7 availability",
+  "Less than 30 seconds response time with zero queues",
+  "95% Customer Satisfaction Rate",
+  "Improve Business Efficiency by 300%",
+  "Improve customer retention by 20% – 30%",
+];
+
+function BusinessImpact() {
+  return (
+    <section className="border-t px-6 py-20 sm:py-24 md:px-12" style={{ borderColor: T.border }} aria-labelledby="business-impact-title">
+      <div className="mx-auto max-w-[1400px]">
+        <div id="business-impact-title" className="font-jbmono text-[12px] uppercase tracking-[0.24em]" style={{ color: T.signal }}>Business Impact</div>
+        <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2">
+          <div className="h-full rounded-lg border p-8" style={{ borderColor: "rgba(192,57,43,0.3)", background: T.panel }}>
+            <h3 className="text-xl font-semibold" style={{ color: "#C0392B" }}>The Old Way</h3>
+            <ul className="mt-5 space-y-3">
+              {OLD_WAY.map((o) => (
+                <li key={o} className="flex gap-3 text-sm" style={{ color: T.muted }}><XCircle size={16} className="mt-0.5 shrink-0" style={{ color: "#C0392B" }} />{o}</li>
+              ))}
+            </ul>
+          </div>
+          <div className="h-full rounded-lg border p-8" style={{ borderColor: "rgba(13,90,140,0.4)", background: T.panel }}>
+            <h3 className="text-xl font-semibold" style={{ color: T.signal }}>The Fahim Way</h3>
+            <ul className="mt-5 space-y-3">
+              {FAHIM_WAY.map((o) => (
+                <li key={o} className="flex gap-3 text-sm" style={{ color: T.text }}><CheckCircle2 size={16} className="mt-0.5 shrink-0" style={{ color: T.signal }} />{o}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
 
 function FahimVisual() {
   const steps = [
@@ -27,7 +85,7 @@ function FahimVisual() {
         </div>
       </div>
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-        {steps.map(({ icon: Icon, label }, index) => <div key={label} className="border p-3 text-center" style={{ borderColor: T.border, background: T.bg }}><Icon className="mx-auto" size={18} style={{ color: index === 3 ? T.green : T.signal }} aria-hidden="true" /><div className="mt-2 text-[11px] font-medium">{label}</div></div>)}
+        {steps.map(({ icon: Icon, label }, index) => <div key={label} className="border p-3 text-center" style={{ borderColor: T.border, background: T.bg }}><Icon className="mx-auto" size={18} style={{ color: index === 3 ? T.green : T.signal }} aria-hidden="true" /><div className="mt-2 text-[12px] font-medium">{label}</div></div>)}
       </div>
     </div>
   );
@@ -63,6 +121,9 @@ export default function FahimAI() {
         title: "A Goal-Oriented AI Journey",
         steps: ["Customer Intent", "Context & Documents", "AI Reasoning", "Business-System Execution", "Resolution or Human Escalation"],
       }}
+      beforeStats={<BusinessImpact />}
+      stats={KPIS}
+      statsEyebrow="Key Performance Areas"
       related={[
         { title: "Core Banking", href: "/solutions/core-banking", description: "Connect AI-enabled workflows to the broader banking operating foundation." },
         { title: "MBuke", href: "/solutions/mbuke", description: "Bring intelligent customer interaction into modern digital banking journeys." },

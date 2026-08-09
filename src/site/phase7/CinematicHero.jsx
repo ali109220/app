@@ -43,7 +43,9 @@ export default function CinematicHero() {
           </div>
 
           <div className="mt-5 flex max-w-xl items-center gap-3 border-t pt-5" style={{ borderColor: T.border }}>
-            <img src="/iso-27001-badge.png" alt="ISO 27001:2022 Certified" width="56" height="56" className="h-14 w-14 shrink-0" loading="lazy" decoding="async" />
+            <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full" style={{ background: "rgba(13,90,140,0.28)" }}>
+              <img src="/iso-27001-badge.png" alt="ISO 27001:2022 Certified" width="42" height="42" className="h-[42px] w-[42px]" loading="lazy" decoding="async" />
+            </div>
             <span className="font-jbmono text-xs uppercase tracking-[0.18em]" style={{ color: T.muted }}>ISO 27001:2022 Certified</span>
           </div>
         </div>

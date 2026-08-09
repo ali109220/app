@@ -6,12 +6,12 @@ import { BrainCircuit, Landmark, Smartphone, ServerCog, Wrench, Layers3, ArrowUp
 import { T } from "@/site/theme";
 
 const NODES = [
-  { id: "core", label: "Core Banking", copy: "Foundation for transactions, integration and banking operations.", icon: Landmark, to: "/solutions/core-banking", x: 50, y: 50 },
+  { id: "core", label: "Core Banking", copy: "The central platform that supports transactions, integration and day-to-day banking operations.", icon: Landmark, to: "/solutions/core-banking", x: 50, y: 50 },
   { id: "digital", label: "Digital Channels", copy: "Connected mobile and customer-facing banking experiences.", icon: Smartphone, to: "/solutions/mbuke", x: 18, y: 25 },
-  { id: "ai", label: "Fahim AI", copy: "Decision support, intelligence and automation across workflows.", icon: BrainCircuit, to: "/solutions/fahim-ai", x: 82, y: 23 },
+  { id: "ai", label: "Fahim AI", copy: "Decision support, intelligence and automation across banking workflows.", icon: BrainCircuit, to: "/solutions/fahim-ai", x: 82, y: 23 },
   { id: "systems", label: "Business Systems", copy: "Operational software shaped around enterprise workflows.", icon: Layers3, to: "/solutions/software-management-systems", x: 18, y: 76 },
-  { id: "infra", label: "Banking Systems", copy: "Infrastructure and system integration across the technology estate.", icon: ServerCog, to: "/solutions/banking-systems", x: 82, y: 76 },
-  { id: "managed", label: "Managed Services", copy: "Expertise and operating support around critical technology.", icon: Wrench, to: "/solutions/managed-services", x: 50, y: 89 },
+  { id: "infra", label: "Banking Systems", copy: "Infrastructure and system integration across the bank’s technology environment.", icon: ServerCog, to: "/solutions/banking-systems", x: 82, y: 76 },
+  { id: "managed", label: "Managed Services", copy: "Expert delivery and operating support around critical banking technology.", icon: Wrench, to: "/solutions/managed-services", x: 50, y: 89 },
 ];
 
 export default function InteractiveEcosystem() {
@@ -19,18 +19,18 @@ export default function InteractiveEcosystem() {
   const selected = NODES.find((node) => node.id === active) || NODES[0];
 
   return (
-    <section className="relative border-b px-6 py-24 md:px-12" style={{ borderColor: T.border, background: T.panel }} aria-labelledby="ecosystem-v2-heading">
+    <section className="relative border-b px-6 py-20 md:px-12 md:py-24" style={{ borderColor: T.border, background: T.panel }} aria-labelledby="ecosystem-v2-heading">
       <div className="mx-auto max-w-[1400px]">
         <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
           <div className="lg:col-span-4">
-            <div className="font-jbmono text-[11px] uppercase tracking-[.26em]" style={{ color: T.signal }}>Connected ecosystem</div>
-            <h2 id="ecosystem-v2-heading" className="mt-5 text-4xl font-bold uppercase leading-[.94] tracking-[-.03em] sm:text-5xl">One banking architecture</h2>
-            <p className="mt-5 max-w-lg text-base leading-relaxed" style={{ color: T.muted }}>Explore how Tayseer’s capabilities connect around the banking core instead of operating as isolated products.</p>
+            <div className="font-jbmono text-xs uppercase tracking-[.22em]" style={{ color: T.signal }}>Connected ecosystem</div>
+            <h2 id="ecosystem-v2-heading" className="mt-5 text-4xl font-bold leading-[.94] tracking-[-.03em] sm:text-5xl">One banking architecture</h2>
+            <p className="mt-5 max-w-lg text-base leading-relaxed" style={{ color: T.muted }}>Explore how Tayseer’s capabilities connect around the core banking platform instead of operating as isolated products.</p>
             <div className="mt-8 rounded-xl border p-5" style={{ borderColor: T.border, background: T.bg }} aria-live="polite">
-              <div className="font-jbmono text-[10px] uppercase tracking-[.2em]" style={{ color: T.green }}>Selected layer</div>
+              <div className="font-jbmono text-xs tracking-wide" style={{ color: T.signal }}>Selected layer</div>
               <div className="mt-3 text-xl font-semibold">{selected.label}</div>
               <p className="mt-2 text-sm leading-relaxed" style={{ color: T.muted }}>{selected.copy}</p>
-              <Link href={selected.to} className="mt-5 inline-flex min-h-11 items-center gap-2 font-jbmono text-[10px] uppercase tracking-widest" style={{ color: T.signal }}>Explore capability <ArrowUpRight size={13} aria-hidden="true" /></Link>
+              <Link href={selected.to} className="mt-5 inline-flex min-h-11 items-center gap-2 font-jbmono text-xs tracking-wide" style={{ color: T.signal }}>Explore capability <ArrowUpRight size={13} aria-hidden="true" /></Link>
             </div>
           </div>
 
@@ -45,13 +45,13 @@ export default function InteractiveEcosystem() {
               {NODES.map((node) => {
                 const Icon = node.icon;
                 const isActive = node.id === active;
-                return <button key={node.id} type="button" onMouseEnter={() => setActive(node.id)} onFocus={() => setActive(node.id)} onClick={() => setActive(node.id)} aria-pressed={isActive} aria-label={`Show ${node.label}`} className="absolute flex -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-2 rounded-2xl border px-3 py-3 text-center transition-[transform,background,border-color] duration-300 hover:scale-105 focus-visible:scale-105" style={{ left: `${node.x}%`, top: `${node.y}%`, borderColor: isActive ? T.signal : T.border, background: isActive ? T.bg : T.panel, color: isActive ? T.signal : T.text, minWidth: node.id === "core" ? "124px" : "104px", boxShadow: isActive ? "0 16px 44px rgba(13,90,140,.14)" : "none" }}>
+                return <button key={node.id} type="button" onMouseEnter={() => setActive(node.id)} onFocus={() => setActive(node.id)} onClick={() => setActive(node.id)} aria-pressed={isActive} aria-label={`Show ${node.label}`} className="absolute flex min-h-11 -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center gap-1.5 rounded-2xl border px-3 py-2.5 text-center transition-[transform,background,border-color] duration-300 hover:scale-105 focus-visible:scale-105" style={{ left: `${node.x}%`, top: `${node.y}%`, borderColor: isActive ? T.signal : T.border, background: isActive ? T.bg : T.panel, color: isActive ? T.signal : T.text, minWidth: node.id === "core" ? "124px" : "104px", boxShadow: isActive ? "0 16px 44px rgba(13,90,140,.14)" : "none" }}>
                   <Icon size={node.id === "core" ? 22 : 18} aria-hidden="true" />
-                  <span className="text-[10px] font-medium leading-tight sm:text-xs">{node.label}</span>
+                  <span className="text-xs font-medium leading-tight">{node.label}</span>
                 </button>;
               })}
 
-              <div className="pointer-events-none absolute inset-x-0 bottom-4 text-center font-jbmono text-[9px] uppercase tracking-[.24em]" style={{ color: T.faint }}>Hover or focus a layer</div>
+              <div className="pointer-events-none absolute inset-x-0 bottom-3 text-center font-jbmono text-xs tracking-wide" style={{ color: T.muted }}>Hover or focus a layer</div>
             </div>
           </div>
         </div>

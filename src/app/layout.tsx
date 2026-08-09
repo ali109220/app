@@ -99,14 +99,14 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="preload" href="/fonts/Archivo-Variable.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        <link rel="preload" href="/fonts/InstrumentSans-Variable.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
       </head>
       <body suppressHydrationWarning>
         <StructuredData data={[organizationSchema, websiteSchema]} />
-        <a className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:bg-[#5CF0CE] focus:px-4 focus:py-3 focus:text-[#090B0E]" href="#main-content">
+        <a className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:bg-[#0F5CBF] focus:px-4 focus:py-3 focus:text-white" href="#main-content">
           Skip to content
         </a>
-        <div style={{ background: T.bg, color: T.text }} className="min-h-screen font-archivo antialiased">
+        <div style={{ background: T.bg, color: T.text }} className="min-h-screen font-instrument antialiased">
           <Header />
           <main id="main-content" tabIndex={-1} data-testid="page-main">{children}</main>
           <Footer />

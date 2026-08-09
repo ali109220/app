@@ -15,10 +15,23 @@ export default {
     },
     extend: {
       fontFamily: {
-        archivo: ["Archivo", "sans-serif"],
+        instrument: ["\"Instrument Sans\"", "sans-serif"],
         jbmono: ["\"JetBrains Mono\"", "monospace"],
       },
       colors: {
+        // Confirmed final tokens (replaces the earlier petrol-navy/viridian palette).
+        // Kept as flat hex utilities (bg-navy, text-steel, etc.) separate from the
+        // shadcn semantic scale below, so `amber` never leaks into generic
+        // hover/accent states — it's reserved for pending-verification badges only.
+        white: "#FFFFFF",
+        mist: "#F7FAFD",
+        tint: "#EAF2FB",
+        edge: "#C3D9F0",
+        blue: "#0F5CBF",
+        navy: "#0A2846",
+        steel: "#526B84",
+        amber: "#9A6410",
+        "amber-tint": "#FBF2E3",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

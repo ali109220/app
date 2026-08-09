@@ -11,7 +11,7 @@ export default function Layout() {
   useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
   return (
     <SmoothScroll>
-      <div style={{ background: T.bg, color: T.text }} className="min-h-screen font-archivo antialiased">
+      <div style={{ background: T.bg, color: T.text }} className="min-h-screen font-instrument antialiased">
         <Header />
         <main data-testid="page-main">
           <Outlet />

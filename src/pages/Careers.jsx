@@ -6,7 +6,7 @@ import { InnerHero, SectionLabel } from "@/site/ui";
 import { T } from "@/site/theme";
 import { FieldError, FormErrorSummary, useAccessibleFormValidation } from "@/site/useAccessibleFormValidation";
 
-const fieldClass = "rounded-md border bg-transparent px-4 py-3.5 text-sm outline-none focus:border-[#0D5A8C]";
+const fieldClass = "rounded-md border bg-transparent px-4 py-3.5 text-sm outline-none focus:border-[#0F5CBF]";
 
 export default function Careers() {
   const [sending, setSending] = useState(false);
@@ -34,7 +34,7 @@ export default function Careers() {
   };
 
   return (
-    <div style={{ background: T.bg, color: T.text }} className="font-archivo">
+    <div style={{ background: T.bg, color: T.text }} className="font-instrument">
       <InnerHero index="04" crumbs={["Home", "Careers"]} title="Careers" tagline="Shape the Future of Intelligent Solutions in the Region" lead="Please fill the form below along with your detailed resume." />
       <section className="px-6 py-24 md:px-12" aria-labelledby="careers-apply-heading">
         <div className="mx-auto max-w-[900px]">

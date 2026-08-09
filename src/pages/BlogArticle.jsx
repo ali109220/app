@@ -26,7 +26,7 @@ export default function BlogArticle({ slug }) {
 
   if (!post) {
     return (
-      <div style={{ background: T.bg, color: T.text }} className="font-archivo">
+      <div style={{ background: T.bg, color: T.text }} className="font-instrument">
         <InnerHero index="05.x" crumbs={["Home", "Blogs and Resources", "Not Found"]} title="Article Not Found" />
         <div className="mx-auto max-w-[900px] px-6 py-24 md:px-12">
           <Link href="/blog" className="inline-flex items-center gap-2 font-jbmono text-[12px] uppercase tracking-widest" style={{ color: T.signal }}><ArrowLeft size={14} /> Back to all posts</Link>
@@ -39,7 +39,7 @@ export default function BlogArticle({ slug }) {
   const related = RELATED[slug] || [];
 
   return (
-    <div style={{ background: T.bg, color: T.text }} className="font-archivo">
+    <div style={{ background: T.bg, color: T.text }} className="font-instrument">
       <InnerHero index="05" crumbs={["Home", "Blogs and Resources", post.title.length > 40 ? "Article" : post.title]} title={post.title} />
 
       <article className="mx-auto max-w-[820px] px-6 py-20 md:px-12">
@@ -83,7 +83,7 @@ export default function BlogArticle({ slug }) {
             <div className="grid grid-cols-1 gap-px overflow-hidden rounded-lg border md:grid-cols-3" style={{ borderColor: T.border, background: T.border }}>
               {related.map((item) => (
                 <Link key={item.href} href={item.href} className="group p-7" style={{ background: T.bg }}>
-                  <h2 className="text-lg font-semibold group-hover:text-[#0D5A8C]" style={{ transition: "color .2s" }}>{item.label}</h2>
+                  <h2 className="text-lg font-semibold group-hover:text-[#0F5CBF]" style={{ transition: "color .2s" }}>{item.label}</h2>
                   <p className="mt-3 text-sm leading-relaxed" style={{ color: T.muted }}>{item.copy}</p>
                   <span className="mt-5 inline-flex items-center gap-2 font-jbmono text-[12px] uppercase tracking-widest" style={{ color: T.signal }}>Explore <ArrowUpRight size={13} /></span>
                 </Link>
@@ -100,7 +100,7 @@ export default function BlogArticle({ slug }) {
             {more.map((p) => (
               <Link key={p.slug} href={`/blog/${p.slug}`} className="group p-8" style={{ background: T.bg }}>
                 <div className="font-jbmono text-[12px] uppercase tracking-widest" style={{ color: T.faint }}>{p.date}</div>
-                <h3 className="mt-3 text-lg font-semibold leading-snug group-hover:text-[#0D5A8C]" style={{ transition: "color .2s" }}>{p.title}</h3>
+                <h3 className="mt-3 text-lg font-semibold leading-snug group-hover:text-[#0F5CBF]" style={{ transition: "color .2s" }}>{p.title}</h3>
                 <span className="mt-4 inline-flex items-center gap-2 font-jbmono text-[12px] uppercase tracking-widest" style={{ color: T.signal }}>Read <ArrowUpRight size={13} /></span>
               </Link>
             ))}

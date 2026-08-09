@@ -14,7 +14,7 @@ const sectionClass = "scroll-mt-28";
 
 export default function Home() {
   return (
-    <div style={{ background: T.bg, color: T.text }} className="overflow-x-clip font-archivo">
+    <div style={{ background: T.bg, color: T.text }} className="overflow-x-clip font-instrument">
       <CinematicHero />
       <div id="transformation" className={sectionClass}><TransformationStory /></div>
       <div id="solutions" className={`defer-render ${sectionClass}`}><ProductShowcase /></div>

@@ -4,11 +4,11 @@
    Both files are variable fonts; one file per family covers the full weight
    range used across the site, matching how Google Fonts itself serves them. */
 @font-face {
-  font-family: "Archivo";
+  font-family: "Instrument Sans";
   font-style: normal;
-  font-weight: 400 900;
+  font-weight: 400 700;
   font-display: swap;
-  src: url("/fonts/Archivo-Variable.woff2") format("woff2");
+  src: url("/fonts/InstrumentSans-Variable.woff2") format("woff2");
 }
 
 @font-face {
@@ -25,48 +25,63 @@
 
 @layer base {
   :root {
-    --background: 48 24% 96%;
-    --foreground: 207 55% 13%;
-    --card: 48 24% 96%;
-    --card-foreground: 207 55% 13%;
-    --popover: 48 24% 96%;
-    --popover-foreground: 207 55% 13%;
-    --primary: 204 83% 30%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 210 20% 95%;
-    --secondary-foreground: 207 55% 13%;
-    --muted: 210 20% 95%;
-    --muted-foreground: 211 20% 35%;
-    --accent: 103 42% 47%;
-    --accent-foreground: 0 0% 100%;
+    /* Confirmed final tokens — white/mist/tint/edge/blue/navy/steel/amber.
+       Replaces the earlier petrol-navy/viridian palette. */
+    --white: 0 0% 100%;
+    --mist: 210 60% 98%;
+    --tint: 212 68% 95%;
+    --edge: 211 60% 85%;
+    --blue: 214 85% 40%;
+    --navy: 210 75% 16%;
+    --steel: 210 23% 42%;
+    --amber: 37 81% 33%;
+    --amber-tint: 38 75% 94%;
+
+    --background: var(--mist);
+    --foreground: var(--navy);
+    --card: var(--white);
+    --card-foreground: var(--navy);
+    --popover: var(--white);
+    --popover-foreground: var(--navy);
+    --primary: var(--blue);
+    --primary-foreground: var(--white);
+    --secondary: var(--tint);
+    --secondary-foreground: var(--navy);
+    --muted: var(--tint);
+    --muted-foreground: var(--steel);
+    --accent: var(--tint);
+    --accent-foreground: var(--navy);
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
-    --border: 210 15% 88%;
-    --input: 210 15% 88%;
-    --ring: 204 83% 30%;
+    --border: var(--edge);
+    --input: var(--edge);
+    --ring: var(--blue);
     --radius: 0.5rem;
   }
 
   .dark {
-    --background: 207 55% 8%;
-    --foreground: 48 24% 96%;
-    --card: 207 45% 11%;
-    --card-foreground: 48 24% 96%;
-    --popover: 207 45% 11%;
-    --popover-foreground: 48 24% 96%;
-    --primary: 204 83% 45%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 207 30% 16%;
-    --secondary-foreground: 48 24% 96%;
-    --muted: 207 30% 16%;
-    --muted-foreground: 211 15% 65%;
-    --accent: 103 42% 47%;
-    --accent-foreground: 0 0% 100%;
+    /* Not part of the confirmed palette brief — inverted from the same
+       tokens for consistency, since no dark-mode toggle is exposed on the
+       live site today. Revisit if dark mode becomes an actual requirement. */
+    --background: var(--navy);
+    --foreground: var(--mist);
+    --card: 210 60% 12%;
+    --card-foreground: var(--mist);
+    --popover: 210 60% 12%;
+    --popover-foreground: var(--mist);
+    --primary: 214 85% 55%;
+    --primary-foreground: var(--white);
+    --secondary: 210 40% 20%;
+    --secondary-foreground: var(--mist);
+    --muted: 210 40% 20%;
+    --muted-foreground: 211 20% 75%;
+    --accent: 210 40% 20%;
+    --accent-foreground: var(--mist);
     --destructive: 0 63% 40%;
     --destructive-foreground: 0 0% 98%;
-    --border: 207 30% 20%;
-    --input: 207 30% 20%;
-    --ring: 204 83% 45%;
+    --border: 210 40% 24%;
+    --input: 210 40% 24%;
+    --ring: 214 85% 55%;
   }
 
   * { @apply border-border; }
@@ -79,7 +94,7 @@
   }
 
   :where(a, button, input, textarea, select, summary):focus-visible {
-    outline: 3px solid #0d5a8c;
+    outline: 3px solid #0F5CBF;
     outline-offset: 3px;
   }
 

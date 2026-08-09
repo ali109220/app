@@ -12,7 +12,7 @@ const OFFICES = [
   { region: "UAE", addr: "601, One Lake Plaza, Cluster T, JLT, Dubai, UAE" },
 ];
 
-const fieldClass = "rounded-md border bg-transparent px-4 py-3.5 text-sm outline-none focus:border-[#0D5A8C]";
+const fieldClass = "rounded-md border bg-transparent px-4 py-3.5 text-sm outline-none focus:border-[#0F5CBF]";
 
 export default function Connect() {
   const [sending, setSending] = useState(false);
@@ -40,7 +40,7 @@ export default function Connect() {
   };
 
   return (
-    <div style={{ background: T.bg, color: T.text }} className="font-archivo">
+    <div style={{ background: T.bg, color: T.text }} className="font-instrument">
       <InnerHero index="03" crumbs={["Home", "Connect"]} title="Connect" tagline="Connect with Tayseer – The Trusted Partner for Your Business" />
       <section className="relative overflow-hidden px-6 py-24 md:px-12" aria-labelledby="connect-form-heading">
         <ContactAccentArt className="pointer-events-none absolute -right-10 top-0 hidden h-64 w-64 opacity-70 lg:block" />

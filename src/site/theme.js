@@ -1,15 +1,21 @@
-// Brand palette — navy dominant on paper/white, green as a SPARING accent.
+// Confirmed final design tokens — white/mist/tint/edge/blue/navy/steel/amber.
+// Replaces the earlier petrol-navy/viridian palette (bg #F7F6F2, signal #0D5A8C,
+// green #62A945). No gradients, no glass — flat tokens only.
 export const T = {
-  bg: "#F7F6F2",      // paper background
-  panel: "#FFFFFF",   // cards / panels
-  panel2: "#EEF1F4",  // alternate sections
-  text: "#0F2333",    // ink
-  muted: "#47586A",   // slate body
-  faint: "#5C6B7A",   // slate / labels — darkened from #8090A0 to meet 4.5:1 contrast on white/paper (was 3.27:1)
-  signal: "#0D5A8C",  // NAVY — primary/dominant accent
-  green: "#62A945",   // sparing green accent only
-  border: "rgba(13,35,51,0.12)",
-  hl: "rgba(13,90,140,0.07)", // hairline grid, navy tint
+  bg: "#F7FAFD",       // mist — paper background
+  panel: "#FFFFFF",    // white — cards / panels
+  panel2: "#EAF2FB",   // tint — alternate sections
+  text: "#0A2846",     // navy — ink
+  muted: "#526B84",    // steel — slate body
+  faint: "#526B84",    // steel — labels (palette has one mid-tone, not two)
+  signal: "#0F5CBF",   // blue — primary/dominant accent
+  green: "#0F5CBF",    // retired: old sparing green accent now maps to blue —
+                        // the confirmed palette has a single accent, not two
+  amber: "#9A6410",       // reserved for a pending-verification state, if one is needed later —
+                           // not currently used anywhere in the UI
+  amberTint: "#FBF2E3",   // backing fill for the above, same status
+  border: "#C3D9F0",   // edge
+  hl: "#EAF2FB",        // tint — hairline grid backing
 };
 
 // Navigation model — the 15 sections defined by the client, no invented sections.

@@ -10,7 +10,7 @@ import { POSTS } from "./blogData";
 
 export default function Blog() {
   return (
-    <div style={{ background: T.bg, color: T.text }} className="font-archivo">
+    <div style={{ background: T.bg, color: T.text }} className="font-instrument">
       <InnerHero index="05" crumbs={["Home", "Blogs and Resources"]} title="Blogs and Resources" />
 
       <section className="px-6 py-24 md:px-12">
@@ -21,7 +21,7 @@ export default function Blog() {
                 <Link href={`/blog/${post.slug}`} data-testid={`blog-card-${i}`} className="group flex h-full flex-col justify-between p-10 transition-colors" style={{ background: T.panel }}>
                   <div>
                     <div className="font-jbmono text-[12px] uppercase tracking-widest" style={{ color: T.signal }}>{post.date}</div>
-                    <h2 className="mt-4 text-2xl font-semibold leading-snug group-hover:text-[#0D5A8C]" style={{ transition: "color .2s" }}>{post.title}</h2>
+                    <h2 className="mt-4 text-2xl font-semibold leading-snug group-hover:text-[#0F5CBF]" style={{ transition: "color .2s" }}>{post.title}</h2>
                     {post.titleFlag && (
                       <p className="mt-3 rounded border px-3 py-1.5 font-jbmono text-[10px] uppercase tracking-wider" style={{ borderColor: "rgba(13,90,140,0.35)", color: T.faint }}>⚑ {post.titleFlag}</p>
                     )}

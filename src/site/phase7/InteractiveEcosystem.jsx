@@ -37,7 +37,7 @@ export default function InteractiveEcosystem() {
           <div className="lg:col-span-8">
             <div className="relative mx-auto aspect-[1.25/1] w-full max-w-[760px] overflow-hidden rounded-[2rem] border" style={{ borderColor: T.border, background: "radial-gradient(circle at center, rgba(13,90,140,.12), transparent 47%)" }}>
               <svg className="pointer-events-none absolute inset-0 h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-                {NODES.filter(n => n.id !== "core").map((n) => <line key={n.id} x1="50" y1="50" x2={n.x} y2={n.y} stroke={n.id === active || active === "core" ? "#0D5A8C" : "currentColor"} strokeOpacity={n.id === active || active === "core" ? ".72" : ".13"} strokeWidth={n.id === active ? ".55" : ".25"} strokeDasharray={n.id === active ? "0" : "1.2 1.2"} />)}
+                {NODES.filter(n => n.id !== "core").map((n) => <line key={n.id} x1="50" y1="50" x2={n.x} y2={n.y} stroke={n.id === active || active === "core" ? "#0F5CBF" : "currentColor"} strokeOpacity={n.id === active || active === "core" ? ".72" : ".13"} strokeWidth={n.id === active ? ".55" : ".25"} strokeDasharray={n.id === active ? "0" : "1.2 1.2"} />)}
                 <ellipse cx="50" cy="52" rx="34" ry="25" fill="none" stroke="currentColor" strokeOpacity=".08" strokeWidth=".3" />
                 <ellipse cx="50" cy="52" rx="43" ry="34" fill="none" stroke="currentColor" strokeOpacity=".05" strokeWidth=".3" />
               </svg>

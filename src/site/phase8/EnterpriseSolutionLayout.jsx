@@ -8,7 +8,7 @@ import { T } from "@/site/theme";
 export function SolutionHero({ eyebrow, title, tagline, lead, visual, primaryHref = "/connect", secondaryHref = "/solutions" }) {
   return (
     <section className="relative overflow-hidden border-b px-6 pb-16 pt-28 sm:pb-20 sm:pt-32 md:px-12" style={{ borderColor: T.border }} aria-labelledby="solution-page-title">
-      <div className="pointer-events-none absolute inset-0 opacity-60" style={{ background: "radial-gradient(circle at 78% 30%, rgba(13,90,140,.14), transparent 34%), linear-gradient(180deg, rgba(13,90,140,.035), transparent 62%)" }} />
+      <div className="pointer-events-none absolute inset-0" style={{ background: T.panel2 }} />
       <div className="relative mx-auto grid max-w-[1400px] gap-10 lg:grid-cols-12 lg:items-center lg:gap-14">
         <div className="min-w-0 lg:col-span-6">
           <div className="font-jbmono text-[12px] uppercase tracking-[0.28em]" style={{ color: T.signal }}>{eyebrow}</div>
@@ -36,7 +36,7 @@ export function SolutionHero({ eyebrow, title, tagline, lead, visual, primaryHre
 export function SolutionPageNav() {
   const links = [["Outcomes", "#outcomes"], ["Capabilities", "#capabilities"], ["Architecture", "#architecture"], ["Related", "#related-solutions"]];
   return (
-    <nav aria-label="On this solution page" className="sticky top-[68px] z-40 border-b px-4 backdrop-blur-lg sm:px-6 md:px-12" style={{ borderColor: T.border, background: "rgba(247,246,242,.94)" }}>
+    <nav aria-label="On this solution page" className="sticky top-[68px] z-40 border-b px-4 backdrop-blur-lg sm:px-6 md:px-12" style={{ borderColor: T.border, background: "rgba(247,250,253,.94)" }}>
       <div className="mx-auto flex max-w-[1400px] items-center gap-1 overflow-x-auto py-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         {links.map(([label, href]) => <a key={href} href={href} className="inline-flex min-h-11 shrink-0 items-center px-3 text-xs font-semibold uppercase tracking-wider" style={{ color: T.muted }}>{label}</a>)}
         <span className="ml-auto hidden sm:block" aria-hidden="true" />
@@ -81,7 +81,7 @@ export function CapabilityGrid({ title = "Capabilities", intro, items = [] }) {
         <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {items.map((item, index) => (
             <Reveal key={item.h} delay={(index % 3) * 0.05}>
-              <article className="group h-full border p-6 transition-[border-color,transform] duration-300 hover:-translate-y-0.5 hover:border-[#0D5A8C] motion-reduce:transform-none motion-reduce:transition-none" style={{ borderColor: T.border, background: T.panel }}>
+              <article className="group h-full border p-6 transition-[border-color,transform] duration-300 hover:-translate-y-0.5 hover:border-[#0F5CBF] motion-reduce:transform-none motion-reduce:transition-none" style={{ borderColor: T.border, background: T.panel }}>
                 <div className="flex items-center justify-between">
                   <div className="flex h-11 w-11 items-center justify-center" style={{ background: "rgba(13,90,140,.10)", color: T.signal }}>{item.icon ? <item.icon size={21} aria-hidden="true" /> : null}</div>
                   <span className="font-jbmono text-[10px]" style={{ color: T.faint }}>{String(index + 1).padStart(2, "0")}</span>
@@ -158,7 +158,7 @@ export function RelatedSolutions({ items = [] }) {
           <Link href="/solutions" className="inline-flex min-h-11 items-center py-3 text-sm font-semibold" style={{ color: T.signal }}>View all solutions →</Link>
         </div>
         <div className="mt-8 grid gap-4 md:grid-cols-3">
-          {items.map((item) => <Link key={item.href} href={item.href} className="group border p-6 transition-[border-color,transform] duration-300 hover:-translate-y-0.5 hover:border-[#0D5A8C] motion-reduce:transform-none motion-reduce:transition-none" style={{ borderColor: T.border, background: T.panel }}><div className="text-lg font-semibold">{item.title}</div><p className="mt-2 text-sm leading-relaxed" style={{ color: T.muted }}>{item.description}</p><span className="mt-5 inline-flex items-center text-sm font-semibold" style={{ color: T.signal }}>Explore <ArrowRight size={15} className="ml-2 transition-transform group-hover:translate-x-1 motion-reduce:transform-none" aria-hidden="true" /></span></Link>)}
+          {items.map((item) => <Link key={item.href} href={item.href} className="group border p-6 transition-[border-color,transform] duration-300 hover:-translate-y-0.5 hover:border-[#0F5CBF] motion-reduce:transform-none motion-reduce:transition-none" style={{ borderColor: T.border, background: T.panel }}><div className="text-lg font-semibold">{item.title}</div><p className="mt-2 text-sm leading-relaxed" style={{ color: T.muted }}>{item.description}</p><span className="mt-5 inline-flex items-center text-sm font-semibold" style={{ color: T.signal }}>Explore <ArrowRight size={15} className="ml-2 transition-transform group-hover:translate-x-1 motion-reduce:transform-none" aria-hidden="true" /></span></Link>)}
         </div>
       </div>
     </section>
@@ -167,7 +167,7 @@ export function RelatedSolutions({ items = [] }) {
 
 export function EnterpriseSolutionPage({ hero, challenges, outcomes, capabilityTitle, capabilityIntro, capabilities, architecture, beforeStats, stats, statsEyebrow, related }) {
   return (
-    <div className="font-archivo" style={{ background: T.bg, color: T.text }}>
+    <div className="font-instrument" style={{ background: T.bg, color: T.text }}>
       <SolutionHero {...hero} />
       <SolutionPageNav />
       <ChallengeOutcome challenges={challenges} outcomes={outcomes} />

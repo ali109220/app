@@ -43,7 +43,7 @@ const PARTNERS = [
 
 export default function About() {
   return (
-    <div style={{ background: T.bg, color: T.text }} className="font-archivo">
+    <div style={{ background: T.bg, color: T.text }} className="font-instrument">
       <InnerHero
         index="02"
         crumbs={["Home", "About Us"]}

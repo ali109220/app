@@ -7,7 +7,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { T } from "./theme";
 import { FieldError, FormErrorSummary, useAccessibleFormValidation } from "./useAccessibleFormValidation";
 
-const fieldClass = "rounded-md border bg-transparent px-4 py-3.5 text-sm outline-none focus:border-[#0D5A8C]";
+const fieldClass = "rounded-md border bg-transparent px-4 py-3.5 text-sm outline-none focus:border-[#0F5CBF]";
 
 export default function HomeContactForm() {
   const [sending, setSending] = useState(false);

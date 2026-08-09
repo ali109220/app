@@ -4,8 +4,8 @@ import {
   Server, Database, Radar, Banknote, CloudCog,
 } from "lucide-react";
 
-const NAVY = "#0D5A8C";
-const GREEN = "#62A945";
+const NAVY = "#0F5CBF";
+const GREEN = "#0F5CBF";
 const INK = "#0F2333";
 const PAPER = "#F7F6F2";
 
@@ -44,11 +44,11 @@ const Row = ({ title, icons, dark }) => (
 
 export default function IconPreview() {
   return (
-    <div style={{ background: PAPER, color: INK, minHeight: "100vh" }} className="font-archivo px-8 py-14">
+    <div style={{ background: PAPER, color: INK, minHeight: "100vh" }} className="font-instrument px-8 py-14">
       <div className="mx-auto max-w-[1100px]">
         <div className="font-mono text-xs uppercase tracking-[0.3em]" style={{ color: NAVY }}>Icon direction — proposal</div>
         <h1 className="mt-2 text-3xl font-bold" style={{ color: INK }}>Navy default · green as sparing accent · varied per section</h1>
-        <p className="mt-3 max-w-2xl text-sm" style={{ color: "#475569" }}>Line/geometric lucide icons. Default stroke is navy #0D5A8C; green #62A945 appears once per section as an accent (marked). Different concepts use different symbols so sections don't repeat the same six.</p>
+        <p className="mt-3 max-w-2xl text-sm" style={{ color: "#475569" }}>Line/geometric lucide icons. Default stroke is navy #0F5CBF; green #0F5CBF appears once per section as an accent (marked). Different concepts use different symbols so sections don't repeat the same six.</p>
 
         <div className="mt-10 rounded-xl border p-8" style={{ borderColor: "rgba(13,90,140,0.15)", background: "#fff" }}>
           {SECTIONS.map((s) => <Row key={s.title} {...s} />)}

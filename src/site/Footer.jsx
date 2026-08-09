@@ -16,7 +16,7 @@ const Col = ({ title, links }) => (
 );
 
 export const Footer = () => (
-  <footer data-testid="site-footer" className="font-archivo" style={{ background: T.panel, color: T.text, borderTop: `1px solid ${T.border}` }}>
+  <footer data-testid="site-footer" className="font-instrument" style={{ background: T.panel, color: T.text, borderTop: `1px solid ${T.border}` }}>
     <div className="mx-auto max-w-[1400px] px-6 py-16 md:px-12">
       <div className="grid grid-cols-2 gap-10 md:grid-cols-5">
         <div className="col-span-2 md:col-span-1">

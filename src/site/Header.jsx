@@ -87,7 +87,7 @@ export const Header = () => {
   ];
 
   return (
-    <header data-testid="site-header" className="fixed inset-x-0 top-0 z-50 border-b font-archivo backdrop-blur-xl" style={{ background: "rgba(247,246,242,0.9)", borderColor: T.border, color: T.text }}>
+    <header data-testid="site-header" className="fixed inset-x-0 top-0 z-50 border-b font-instrument backdrop-blur-xl" style={{ background: "rgba(247,250,253,0.9)", borderColor: T.border, color: T.text }}>
       <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-3.5 md:px-12">
         <Logo />
         <nav className="hidden items-center gap-7 lg:flex" data-testid="desktop-nav" aria-label="Primary navigation">

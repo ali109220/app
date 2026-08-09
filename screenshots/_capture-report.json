@@ -1,0 +1,386 @@
+[
+  {
+    "pageName": "home",
+    "route": "/",
+    "vpName": "360",
+    "outFile": "c:\\Users\\Ali\\Downloads\\tayseer-v3\\app\\screenshots\\home\\360.png",
+    "size": 1021000,
+    "status": "ok"
+  },
+  {
+    "pageName": "home",
+    "route": "/",
+    "vpName": "768",
+    "outFile": "c:\\Users\\Ali\\Downloads\\tayseer-v3\\app\\screenshots\\home\\768.png",
+    "size": 1498747,
+    "status": "ok"
+  },
+  {
+    "pageName": "home",
+    "route": "/",
+    "vpName": "1440",
+    "outFile": "c:\\Users\\Ali\\Downloads\\tayseer-v3\\app\\screenshots\\home\\1440.png",
+    "size": 1453676,
+    "status": "ok"
+  },
+  {
+    "pageName": "solutions",
+    "route": "/solutions",
+    "vpName": "360",
+    "outFile": "c:\\Users\\Ali\\Downloads\\tayseer-v3\\app\\screenshots\\solutions\\360.png",
+    "size": 342925,
+    "status": "ok"
+  },
+  {
+    "pageName": "solutions",
+    "route": "/solutions",
+    "vpName": "768",
+    "outFile": "c:\\Users\\Ali\\Downloads\\tayseer-v3\\app\\screenshots\\solutions\\768.png",
+    "size": 366873,
+    "status": "ok"
+  },
+  {
+    "pageName": "solutions",
+    "route": "/solutions",
+    "vpName": "1440",
+    "outFile": "c:\\Users\\Ali\\Downloads\\tayseer-v3\\app\\screenshots\\solutions\\1440.png",
+    "size": 370106,
+    "status": "ok"
+  },
+  {
+    "pageName": "solutions-core-banking",
+    "route": "/solutions/core-banking",
+    "vpName": "360",
+    "outFile": "c:\\Users\\Ali\\Downloads\\tayseer-v3\\app\\screenshots\\solutions-core-banking\\360.png",
+    "size": 626824,
+    "status": "ok"
+  },
+  {
+    "pageName": "solutions-core-banking",
+    "route": "/solutions/core-banking",
+    "vpName": "768",
+    "outFile": "c:\\Users\\Ali\\Downloads\\tayseer-v3\\app\\screenshots\\solutions-core-banking\\768.png",
+    "size": 694979,
+    "status": "ok"
+  },
+  {
+    "pageName": "solutions-core-banking",
+    "route": "/solutions/core-banking",
+    "vpName": "1440",
+    "outFile": "c:\\Users\\Ali\\Downloads\\tayseer-v3\\app\\screenshots\\solutions-core-banking\\1440.png",
+    "size": 694911,
+    "status": "ok"
+  },
+  {
+    "pageName": "solutions-fahim-ai",
+    "route": "/solutions/fahim-ai",
+    "vpName": "360",
+    "outFile": "c:\\Users\\Ali\\Downloads\\tayseer-v3\\app\\screenshots\\solutions-fahim-ai\\360.png",
+    "size": 658739,
+    "status": "ok"
+  },
+  {
+    "pageName": "solutions-fahim-ai",
+    "route": "/solutions/fahim-ai",
+    "vpName": "768",
+    "outFile": "c:\\Users\\Ali\\Downloads\\tayseer-v3\\app\\screenshots\\solutions-fahim-ai\\768.png",
+    "size": 776623,
+    "status": "ok"
+  },
+  {
+    "pageName": "solutions-fahim-ai",
+    "route": "/solutions/fahim-ai",
+    "vpName": "1440",
+    "outFile": "c:\\Users\\Ali\\Downloads\\tayseer-v3\\app\\screenshots\\solutions-fahim-ai\\1440.png",
+    "size": 751206,
+    "status": "ok"
+  },
+  {
+    "pageName": "solutions-mbuke",
+    "route": "/solutions/mbuke",
+    "vpName": "360",
+    "outFile": "c:\\Users\\Ali\\Downloads\\tayseer-v3\\app\\screenshots\\solutions-mbuke\\360.png",
+    "size": 595268,
+    "status": "ok"
+  },
+  {
+    "pageName": "solutions-mbuke",
+    "route": "/solutions/mbuke",
+    "vpName": "768",
+    "outFile": "c:\\Users\\Ali\\Downloads\\tayseer-v3\\app\\screenshots\\solutions-mbuke\\768.png",
+    "size": 696686,
+    "status": "ok"
+  },
+  {
+    "pageName": "solutions-mbuke",
+    "route": "/solutions/mbuke",
+    "vpName": "1440",
+    "outFile": "c:\\Users\\Ali\\Downloads\\tayseer-v3\\app\\screenshots\\solutions-mbuke\\1440.png",
+    "size": 705584,
+    "status": "ok"
+  },
+  {
+    "pageName": "solutions-managed-services",
+    "route": "/solutions/managed-services",
+    "vpName": "360",
+    "outFile": "c:\\Users\\Ali\\Downloads\\tayseer-v3\\app\\screenshots\\solutions-managed-services\\360.png",
+    "size": 508234,
+    "status": "ok"
+  },
+  {
+    "pageName": "solutions-managed-services",
+    "route": "/solutions/managed-services",
+    "vpName": "768",
+    "outFile": "c:\\Users\\Ali\\Downloads\\tayseer-v3\\app\\screenshots\\solutions-managed-services\\768.png",
+    "size": 576689,
+    "status": "ok"
+  },
+  {
+    "pageName": "solutions-managed-services",
+    "route": "/solutions/managed-services",
+    "vpName": "1440",
+    "outFile": "c:\\Users\\Ali\\Downloads\\tayseer-v3\\app\\screenshots\\solutions-managed-services\\1440.png",
+    "size": 517076,
+    "status": "ok"
+  },
+  {
+    "pageName": "solutions-banking-systems",
+    "route": "/solutions/banking-systems",
+    "vpName": "360",
+    "outFile": "c:\\Users\\Ali\\Downloads\\tayseer-v3\\app\\screenshots\\solutions-banking-systems\\360.png",
+    "size": 512336,
+    "status": "ok"
+  },
+  {
+    "pageName": "solutions-banking-systems",
+    "route": "/solutions/banking-systems",
+    "vpName": "768",
+    "outFile": "c:\\Users\\Ali\\Downloads\\tayseer-v3\\app\\screenshots\\solutions-banking-systems\\768.png",
+    "size": 574182,
+    "status": "ok"
+  },
+  {
+    "pageName": "solutions-banking-systems",
+    "route": "/solutions/banking-systems",
+    "vpName": "1440",
+    "outFile": "c:\\Users\\Ali\\Downloads\\tayseer-v3\\app\\screenshots\\solutions-banking-systems\\1440.png",
+    "size": 532031,
+    "status": "ok"
+  },
+  {
+    "pageName": "solutions-software-management-systems",
+    "route": "/solutions/software-management-systems",
+    "vpName": "360",
+    "outFile": "c:\\Users\\Ali\\Downloads\\tayseer-v3\\app\\screenshots\\solutions-software-management-systems\\360.png",
+    "size": 512605,
+    "status": "ok"
+  },
+  {
+    "pageName": "solutions-software-management-systems",
+    "route": "/solutions/software-management-systems",
+    "vpName": "768",
+    "outFile": "c:\\Users\\Ali\\Downloads\\tayseer-v3\\app\\screenshots\\solutions-software-management-systems\\768.png",
+    "size": 568501,
+    "status": "ok"
+  },
+  {
+    "pageName": "solutions-software-management-systems",
+    "route": "/solutions/software-management-systems",
+    "vpName": "1440",
+    "outFile": "c:\\Users\\Ali\\Downloads\\tayseer-v3\\app\\screenshots\\solutions-software-management-systems\\1440.png",
+    "size": 503771,
+    "status": "ok"
+  },
+  {
+    "pageName": "about",
+    "route": "/about",
+    "vpName": "360",
+    "outFile": "c:\\Users\\Ali\\Downloads\\tayseer-v3\\app\\screenshots\\about\\360.png",
+    "size": 653114,
+    "status": "ok"
+  },
+  {
+    "pageName": "about",
+    "route": "/about",
+    "vpName": "768",
+    "outFile": "c:\\Users\\Ali\\Downloads\\tayseer-v3\\app\\screenshots\\about\\768.png",
+    "size": 702552,
+    "status": "ok"
+  },
+  {
+    "pageName": "about",
+    "route": "/about",
+    "vpName": "1440",
+    "outFile": "c:\\Users\\Ali\\Downloads\\tayseer-v3\\app\\screenshots\\about\\1440.png",
+    "size": 670530,
+    "status": "ok"
+  },
+  {
+    "pageName": "connect",
+    "route": "/connect",
+    "vpName": "360",
+    "outFile": "c:\\Users\\Ali\\Downloads\\tayseer-v3\\app\\screenshots\\connect\\360.png",
+    "size": 147231,
+    "status": "ok"
+  },
+  {
+    "pageName": "connect",
+    "route": "/connect",
+    "vpName": "768",
+    "outFile": "c:\\Users\\Ali\\Downloads\\tayseer-v3\\app\\screenshots\\connect\\768.png",
+    "size": 160085,
+    "status": "ok"
+  },
+  {
+    "pageName": "connect",
+    "route": "/connect",
+    "vpName": "1440",
+    "outFile": "c:\\Users\\Ali\\Downloads\\tayseer-v3\\app\\screenshots\\connect\\1440.png",
+    "size": 181587,
+    "status": "ok"
+  },
+  {
+    "pageName": "careers",
+    "route": "/careers",
+    "vpName": "360",
+    "outFile": "c:\\Users\\Ali\\Downloads\\tayseer-v3\\app\\screenshots\\careers\\360.png",
+    "size": 129324,
+    "status": "ok"
+  },
+  {
+    "pageName": "careers",
+    "route": "/careers",
+    "vpName": "768",
+    "outFile": "c:\\Users\\Ali\\Downloads\\tayseer-v3\\app\\screenshots\\careers\\768.png",
+    "size": 143611,
+    "status": "ok"
+  },
+  {
+    "pageName": "careers",
+    "route": "/careers",
+    "vpName": "1440",
+    "outFile": "c:\\Users\\Ali\\Downloads\\tayseer-v3\\app\\screenshots\\careers\\1440.png",
+    "size": 159825,
+    "status": "ok"
+  },
+  {
+    "pageName": "blog",
+    "route": "/blog",
+    "vpName": "360",
+    "outFile": "c:\\Users\\Ali\\Downloads\\tayseer-v3\\app\\screenshots\\blog\\360.png",
+    "size": 199737,
+    "status": "ok"
+  },
+  {
+    "pageName": "blog",
+    "route": "/blog",
+    "vpName": "768",
+    "outFile": "c:\\Users\\Ali\\Downloads\\tayseer-v3\\app\\screenshots\\blog\\768.png",
+    "size": 223058,
+    "status": "ok"
+  },
+  {
+    "pageName": "blog",
+    "route": "/blog",
+    "vpName": "1440",
+    "outFile": "c:\\Users\\Ali\\Downloads\\tayseer-v3\\app\\screenshots\\blog\\1440.png",
+    "size": 245495,
+    "status": "ok"
+  },
+  {
+    "pageName": "blog-rise-of-fintech-uae",
+    "route": "/blog/rise-of-fintech-uae",
+    "vpName": "360",
+    "outFile": "c:\\Users\\Ali\\Downloads\\tayseer-v3\\app\\screenshots\\blog-rise-of-fintech-uae\\360.png",
+    "size": 514196,
+    "status": "ok"
+  },
+  {
+    "pageName": "blog-rise-of-fintech-uae",
+    "route": "/blog/rise-of-fintech-uae",
+    "vpName": "768",
+    "outFile": "c:\\Users\\Ali\\Downloads\\tayseer-v3\\app\\screenshots\\blog-rise-of-fintech-uae\\768.png",
+    "size": 584428,
+    "status": "ok"
+  },
+  {
+    "pageName": "blog-rise-of-fintech-uae",
+    "route": "/blog/rise-of-fintech-uae",
+    "vpName": "1440",
+    "outFile": "c:\\Users\\Ali\\Downloads\\tayseer-v3\\app\\screenshots\\blog-rise-of-fintech-uae\\1440.png",
+    "size": 627977,
+    "status": "ok"
+  },
+  {
+    "pageName": "blog-open-banking-uae-ksa",
+    "route": "/blog/open-banking-uae-ksa",
+    "vpName": "360",
+    "outFile": "c:\\Users\\Ali\\Downloads\\tayseer-v3\\app\\screenshots\\blog-open-banking-uae-ksa\\360.png",
+    "size": 564723,
+    "status": "ok"
+  },
+  {
+    "pageName": "blog-open-banking-uae-ksa",
+    "route": "/blog/open-banking-uae-ksa",
+    "vpName": "768",
+    "outFile": "c:\\Users\\Ali\\Downloads\\tayseer-v3\\app\\screenshots\\blog-open-banking-uae-ksa\\768.png",
+    "size": 631564,
+    "status": "ok"
+  },
+  {
+    "pageName": "blog-open-banking-uae-ksa",
+    "route": "/blog/open-banking-uae-ksa",
+    "vpName": "1440",
+    "outFile": "c:\\Users\\Ali\\Downloads\\tayseer-v3\\app\\screenshots\\blog-open-banking-uae-ksa\\1440.png",
+    "size": 687400,
+    "status": "ok"
+  },
+  {
+    "pageName": "privacy",
+    "route": "/privacy",
+    "vpName": "360",
+    "outFile": "c:\\Users\\Ali\\Downloads\\tayseer-v3\\app\\screenshots\\privacy\\360.png",
+    "size": 373257,
+    "status": "ok"
+  },
+  {
+    "pageName": "privacy",
+    "route": "/privacy",
+    "vpName": "768",
+    "outFile": "c:\\Users\\Ali\\Downloads\\tayseer-v3\\app\\screenshots\\privacy\\768.png",
+    "size": 390571,
+    "status": "ok"
+  },
+  {
+    "pageName": "privacy",
+    "route": "/privacy",
+    "vpName": "1440",
+    "outFile": "c:\\Users\\Ali\\Downloads\\tayseer-v3\\app\\screenshots\\privacy\\1440.png",
+    "size": 407656,
+    "status": "ok"
+  },
+  {
+    "pageName": "terms",
+    "route": "/terms",
+    "vpName": "360",
+    "outFile": "c:\\Users\\Ali\\Downloads\\tayseer-v3\\app\\screenshots\\terms\\360.png",
+    "size": 265777,
+    "status": "ok"
+  },
+  {
+    "pageName": "terms",
+    "route": "/terms",
+    "vpName": "768",
+    "outFile": "c:\\Users\\Ali\\Downloads\\tayseer-v3\\app\\screenshots\\terms\\768.png",
+    "size": 285534,
+    "status": "ok"
+  },
+  {
+    "pageName": "terms",
+    "route": "/terms",
+    "vpName": "1440",
+    "outFile": "c:\\Users\\Ali\\Downloads\\tayseer-v3\\app\\screenshots\\terms\\1440.png",
+    "size": 301016,
+    "status": "ok"
+  }
+]

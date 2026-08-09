@@ -26,7 +26,7 @@ const DESIGNED_TO = [
 
 export default function Solutions() {
   return (
-    <div style={{ background: T.bg, color: T.text }} className="font-archivo">
+    <div style={{ background: T.bg, color: T.text }} className="font-instrument">
       <InnerHero
         index="01"
         crumbs={["Home", "Solutions"]}
@@ -43,7 +43,7 @@ export default function Solutions() {
                 <Link href={s.to} data-testid={`sol-card-${i}`} className="group flex h-full flex-col justify-between p-8 transition-colors" style={{ background: T.panel }}>
                   <div>
                     <div className="font-jbmono text-[11px]" style={{ color: T.faint }}>0{i + 1}</div>
-                    <h3 className="mt-4 text-xl font-semibold group-hover:text-[#0D5A8C]" style={{ transition: "color .2s" }}>{s.name}</h3>
+                    <h3 className="mt-4 text-xl font-semibold group-hover:text-[#0F5CBF]" style={{ transition: "color .2s" }}>{s.name}</h3>
                     <p className="mt-3 text-sm leading-relaxed" style={{ color: T.muted }}>{s.p}</p>
                   </div>
                   <span className="mt-8 inline-flex items-center gap-2 font-jbmono text-[12px] uppercase tracking-widest" style={{ color: T.signal }}>Read More <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" /></span>

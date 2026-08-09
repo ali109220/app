@@ -29,9 +29,9 @@ export default function GlobalPresence() {
               <ellipse cx="300" cy="300" rx="230" ry="160" fill="none" stroke="currentColor" strokeOpacity=".06" />
               <ellipse cx="300" cy="300" rx="95" ry="230" fill="none" stroke="currentColor" strokeOpacity=".08" />
               <ellipse cx="300" cy="300" rx="170" ry="230" fill="none" stroke="currentColor" strokeOpacity=".06" />
-              <path d="M104 378 C190 188 400 177 500 320" fill="none" stroke="#0D5A8C" strokeOpacity=".52" strokeWidth="2" strokeDasharray="7 8" />
-              <path d="M138 222 C256 372 394 410 488 266" fill="none" stroke="#68A63C" strokeOpacity=".38" strokeWidth="2" strokeDasharray="5 9" />
-              {[{x:104,y:378},{x:171,y:249},{x:300,y:300},{x:402,y:202},{x:500,y:320},{x:421,y:414},{x:138,y:222}].map((p,i)=><g key={i}><circle cx={p.x} cy={p.y} r={i===2?12:7} fill={i===2?'#0D5A8C':'#68A63C'} opacity={i===2?.95:.72}/>{i===2 && <circle cx={p.x} cy={p.y} r="23" fill="none" stroke="#0D5A8C" opacity=".26" />}</g>)}
+              <path d="M104 378 C190 188 400 177 500 320" fill="none" stroke="#0F5CBF" strokeOpacity=".52" strokeWidth="2" strokeDasharray="7 8" />
+              <path d="M138 222 C256 372 394 410 488 266" fill="none" stroke="#0F5CBF" strokeOpacity=".38" strokeWidth="2" strokeDasharray="5 9" />
+              {[{x:104,y:378},{x:171,y:249},{x:300,y:300},{x:402,y:202},{x:500,y:320},{x:421,y:414},{x:138,y:222}].map((p,i)=><g key={i}><circle cx={p.x} cy={p.y} r={i===2?12:7} fill={i===2?'#0F5CBF':'#0F5CBF'} opacity={i===2?.95:.72}/>{i===2 && <circle cx={p.x} cy={p.y} r="23" fill="none" stroke="#0F5CBF" opacity=".26" />}</g>)}
             </svg>
             <div className="absolute inset-0 flex items-center justify-center text-center"><div className="rounded-2xl border px-6 py-5" style={{ borderColor: T.border, background: T.bg }}><div className="font-jbmono text-xs tracking-wide" style={{ color: T.signal }}>Delivery network</div><div className="mt-2 text-2xl font-semibold">15+ countries</div><div className="mt-2 max-w-[190px] text-xs leading-relaxed" style={{ color: T.muted }}>Abstract network view. It does not represent specific client locations.</div></div></div>
           </div>

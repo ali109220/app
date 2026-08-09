@@ -1,11 +1,10 @@
-import { Globe2, Users, Layers3, MapPinned } from "lucide-react";
+import { Globe2, Users, MapPinned } from "lucide-react";
 import { CountUp } from "@/site/ui";
 import { T } from "@/site/theme";
 
 const METRICS = [
   { n: 15, suffix: "+", label: "Countries", icon: Globe2 },
   { n: 100, suffix: "+", label: "Satisfied clients", icon: Users },
-  { n: 600, suffix: "+", label: "Finished products", icon: Layers3 },
   { n: 100, suffix: "+", label: "Skilled experts", icon: MapPinned },
 ];
 
@@ -17,7 +16,7 @@ export default function GlobalPresence() {
           <div className="font-jbmono text-xs uppercase tracking-[.22em]" style={{ color: T.signal }}>Scale & presence</div>
           <h2 id="presence-heading" className="mt-5 text-4xl font-bold leading-[.94] tracking-[-.03em] sm:text-5xl">Built with regional perspective</h2>
           <p className="mt-5 max-w-xl text-base leading-relaxed" style={{ color: T.muted }}>Tayseer’s published company figures reflect delivery across more than 15 countries, supported by a broad portfolio and specialist technology teams.</p>
-          <div className="mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-xl border" style={{ borderColor: T.border, background: T.border }}>
+          <div className="mt-8 grid grid-cols-3 gap-px overflow-hidden rounded-xl border" style={{ borderColor: T.border, background: T.border }}>
             {METRICS.map((m) => <div key={m.label} className="p-5 sm:p-6" style={{ background: T.panel }}><m.icon size={17} aria-hidden="true" style={{ color: T.signal }} /><div className="mt-5 text-3xl font-semibold"><CountUp to={m.n} suffix={m.suffix} /></div><div className="mt-2 text-xs tracking-wide" style={{ color: T.muted }}>{m.label}</div></div>)}
           </div>
         </div>

@@ -70,9 +70,14 @@ export default function CountUp({ to, prefix = "", suffix = "" }) {
     };
   }, [to]);
 
+  // The visible text animates through intermediate counts (0, 1, 2… → 15+); the
+  // custom label holds it at the final value so screen readers announce "15+" once
+  // instead of every incrementing frame. role="text" is what makes aria-label valid
+  // here — without it, a bare <span> fails aria-prohibited-attr (spans don't get a
+  // naming-eligible role by default).
   const finalValue = `${prefix}${to}${suffix}`;
   return (
-    <span ref={ref} aria-label={finalValue}>
+    <span ref={ref} role="text" aria-label={finalValue}>
       <span aria-hidden="true">{prefix}{value}{suffix}</span>
     </span>
   );

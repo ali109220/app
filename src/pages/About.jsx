@@ -4,6 +4,7 @@ import { ContactSection } from "@/site/ContactSection";
 import { T } from "@/site/theme";
 import { Building2, Sparkles, Globe, CheckCircle2, Target, Compass, Gem } from "lucide-react";
 
+
 // ALL copy SOURCED from about-us.html.
 const KURAIMI = [
   { icon: Building2, h: "Unmatched Industry Insights", p: "Our affiliation with two prominent banks within the group enriches our understanding of the financial sector, enabling us to tailor solutions that effectively tackle practical challenges." },

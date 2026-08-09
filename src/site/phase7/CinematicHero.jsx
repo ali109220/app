@@ -41,6 +41,11 @@ export default function CinematicHero() {
           <div className="mt-6 grid max-w-xl grid-cols-3 gap-3 border-t pt-5 md:mt-8" style={{ borderColor: T.border }} aria-label="Published Tayseer company figures">
             {PROOF.map(([value, label]) => <div key={label}><div className="text-lg font-semibold sm:text-xl">{value}</div><div className="mt-1 text-xs leading-tight" style={{ color: T.muted }}>{label}</div></div>)}
           </div>
+
+          <div className="mt-5 flex max-w-xl items-center gap-3 border-t pt-5" style={{ borderColor: T.border }}>
+            <img src="/iso-27001-badge.png" alt="ISO 27001:2022 Certified" width="56" height="56" className="h-14 w-14 shrink-0" loading="lazy" decoding="async" />
+            <span className="font-jbmono text-xs uppercase tracking-[0.18em]" style={{ color: T.muted }}>ISO 27001:2022 Certified</span>
+          </div>
         </div>
 
         <div className="relative mx-auto w-full lg:col-span-6">

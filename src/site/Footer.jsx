@@ -24,6 +24,10 @@ export const Footer = () => (
           <p className="mt-5 max-w-xs text-sm leading-relaxed" style={{ color: T.muted }}>
             Tayseer is a financial technology company based in Saudi Arabia and the UAE, focused on AI, digital banking and enterprise banking transformation across the region.
           </p>
+          <div className="mt-5 flex items-center gap-3">
+            <img src="/iso-27001-badge.png" alt="ISO 27001:2022 Certified" width="64" height="64" className="h-16 w-16 shrink-0" loading="lazy" decoding="async" />
+            <span className="font-jbmono text-[11px] uppercase leading-tight tracking-[0.18em]" style={{ color: T.muted }}>ISO 27001:2022<br />Certified</span>
+          </div>
         </div>
         <Col title="Solutions" links={SOLUTIONS} />
         <Col title="Company" links={[{ label: "About", to: "/about" }, { label: "Careers", to: "/careers" }, { label: "Blog", to: "/blog" }, { label: "Connect", to: "/connect" }]} />

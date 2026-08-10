@@ -49,7 +49,7 @@ export const Footer = () => (
       </div>
       <div className="mt-14 flex flex-col items-start justify-between gap-4 border-t pt-6 font-jbmono text-xs tracking-wide md:flex-row md:items-center" style={{ borderColor: T.border, color: T.muted }}>
         <span>© Tayseer Innovations. All rights reserved.</span>
-        <span>Built on proof, not inflated claims</span>
+        <span>Built on proof, powered by Cyborgs</span>
       </div>
     </div>
   </footer>

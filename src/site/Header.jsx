@@ -79,11 +79,14 @@ export const Header = () => {
     else if (event.key === "End") { event.preventDefault(); focusSolutionLink(links.length - 1); }
   };
 
+  // No "Connect" entry: the "Talk to us" CTA below points at /connect too, so a
+  // nav link beside it was the same destination twice. /connect stays reachable
+  // from the CTA (desktop and mobile), the Solutions panel's "Talk to our team"
+  // and the footer's Company column.
   const directLinks = [
     { label: "About Us", to: "/about" },
     { label: "Blogs and Resources", to: "/blog" },
     { label: "Careers", to: "/careers" },
-    { label: "Connect", to: "/connect" },
   ];
 
   return (

@@ -9,13 +9,19 @@
 
 **2026-08-09 (later same day) — Screenshot & content refresh.** This is not the original version of this report. Since it was first produced, a source-provenance audit ("Hamada-migration" commits) surfaced and fixed several regressions, and a separate bug was found in the screenshot capture method itself. Specifically:
 
-- **Navigation rolled back** (`src/site/Header.jsx`) to the verified spec: `About` → `About Us`, `Insights` → `Blogs and Resources`, and `Connect` added as a direct nav link (previously reachable only via the "Talk to us" CTA button, which remains). §2.1 below is updated to match.
+- **Navigation rolled back** (`src/site/Header.jsx`) to the verified spec: `About` → `About Us`, `Insights` → `Blogs and Resources`, and `Connect` added as a direct nav link (previously reachable only via the "Talk to us" CTA button, which remains). §2.1 below is updated to match. **Superseded 2026-08-10** — see the entry below; the `Connect` nav link has since been removed again as a duplicate of the CTA. The two label fixes stand. Not a reversal — the 2026-08-09 change restored a nav that unsourced "Hamada-migration" edits had drifted away from the verified spec, and re-adding `Connect` was part of returning to a known baseline rather than a judgement that the link was needed; 2026-08-10 is a deliberate design decision taken on top of that restored baseline, after confirming reachability via CTA + Solutions dropdown + footer. Sequential, compatible decisions.
 - **Homepage hero eyebrow removed.** "Enterprise banking technology" was unsourced, drafted copy with no approval record — removed from `CinematicHero.jsx` pending content review, not live copy anymore.
 - **Homepage secondary jump-nav deleted.** The pill row under the hero ("Client proof," "Insights," etc.) was a same-page-anchor regression with no source — the component (`HomeSectionNav.jsx`) was deleted outright, not just re-labeled.
 - **FahimAI and MBuke statistics restored**, verbatim from pre-regression git history, with their `SOURCED` provenance comments reinstated (along with 4 other solution pages that lost the same comment in the same commit).
 - **All 45 screenshots re-captured — twice.** The first re-capture (same method as the original set) silently produced broken images: below-the-fold content on most pages rendered as large blank gaps, because Playwright's full-page capture never actually scrolls the real viewport, so this site's scroll-triggered reveal animations (`Reveal` in `motion.jsx`) and lazy-render sections (`.defer-render` / `content-visibility: auto` in `performance.css`) never resolved. This was a capture-methodology bug, confirmed by comparing a no-scroll capture against a real scripted scroll-through — not a live content bug. Fixed by emulating `prefers-reduced-motion: reduce` (the same escape hatch `Reveal` already uses) and force-overriding `content-visibility` before capture. §1.1 below reflects the corrected, verified set.
 - **Section 4 (Security)** was checked against this task's premise that the ISO 27001 badge note needed correcting — it didn't; the report already stated the badge is live, not missing. No change made there.
 - Cost estimate, timeline, and hosting sections were **not** touched — out of scope for this refresh.
+
+**2026-08-10 — Header nav and ecosystem diagram.**
+
+- **`Connect` removed from the header nav** (`src/site/Header.jsx`). Verified first that the "Talk to us" CTA is a plain `<Link href="/connect">` in both the desktop and mobile headers — not a modal, not an in-page scroll — so the nav link was the same destination rendered twice, side by side. `/connect` remains reachable from that CTA, from "Talk to our team" in the Solutions dropdown, and from the footer's Company column, and is still in `sitemap.ts`. This reverses part of the 2026-08-09 rollback above.
+- **Mobile ecosystem diagram overlap fixed** (`src/site/phase7/InteractiveEcosystem.jsx`, `src/index.css`). At 390px the 1.25:1 stage was 274px tall, which put the Managed Services node flush on the frame's bottom edge and directly on top of the "Select any layer" caption, and pushed the Business Systems label underneath it. The stage is now portrait below `sm`, the caption sits under the frame rather than inside it at that width, and the nodes take a fixed narrow-viewport width so shrink-to-fit stops sizing the right-hand nodes smaller than the left-hand ones.
+- **Ecosystem green arrival dot gated to real interaction.** It was rendering on Fahim AI on first paint, before any hover, focus or tap, because the default `core` selection routes the ambient data particle to the intelligence layer. The dot now waits for the visitor's first selection.
 
 ---
 
@@ -122,7 +128,9 @@ Tayseer Innovations
 │   ├── The Rise of FinTech in the UAE (/blog/rise-of-fintech-uae)
 │   └── Unleashing Financial Innovation... (/blog/open-banking-uae-ksa)
 ├── Careers (/careers)
-├── Connect (/connect)                              [now a direct nav link; "Talk to us" CTA also still present]
+├── Connect (/connect)                              [reached via the "Talk to us" CTA, the Solutions panel's
+│                                                    "Talk to our team", and the footer's Company column —
+│                                                    the duplicate direct nav link was removed 2026-08-10]
 └── Footer-only:
     ├── Privacy Policy (/privacy)
     └── Terms & Conditions (/terms)

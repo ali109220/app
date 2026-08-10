@@ -354,6 +354,54 @@
   opacity: 1;
 }
 
+/* ── Interaction: selection ─────────────────────────────────────────────────
+   A selector option: a tab pill, a scenario button, a diagram node. Hover and
+   focus already get the shared green promise from .cta-secondary; what this adds
+   is the part specific to a SELECTION.
+
+   Note what is deliberately absent — a rule painting the selected option green.
+   A selection is held indefinitely, and a green border held indefinitely is the
+   "generally green site" the colour rule exists to prevent. The selected option
+   instead carries an ActivityIndicator: it pings on arrival, then settles to a
+   single quiet dot. Green marks the thing that is live, blue still marks what it
+   IS, and the interface returns to blue at rest exactly as before.
+
+   Options outside the selected path are dimmed rather than hidden — an
+   architecture diagram has to keep reading as one system while a path in it is
+   emphasised. The opacity is applied by the component (inline, per option)
+   because RevealOnScroll owns the wrapper's opacity; this rule only times it. */
+.selector-option {
+  transition: opacity var(--motion-normal) var(--motion-ease),
+              border-color var(--motion-fast) var(--motion-ease),
+              background-color var(--motion-fast) var(--motion-ease),
+              color var(--motion-fast) var(--motion-ease);
+}
+
+/* An option that fills a cell of a clipped container draws its focus ring on the
+   inside. The shared 3px blue indicator is otherwise untouched — only the offset
+   flips, because at +3px the panel's own overflow-hidden eats the top and
+   leading edges and what a keyboard user sees is half a box. */
+.selector-option-inset:focus-visible {
+  outline-offset: -3px;
+}
+
+/* ── Interaction: content swap ──────────────────────────────────────────────
+   What a selection buys visually. 380ms — inside the 200–450ms band a state
+   change is supposed to occupy — of opacity and a 6px rise on the panel that
+   actually changed. Everything around it stays put, so the visitor's eye is
+   pointed at the difference rather than at the page reflowing.
+
+   Driven by StateSwap re-keying the subtree, and only on a real change; first
+   paint is left to whichever reveal already owns it. */
+@keyframes motion-swap-in {
+  from { opacity: 0; transform: translate3d(0, 6px, 0); }
+  to   { opacity: 1; transform: none; }
+}
+
+.motion-swap {
+  animation: motion-swap-in var(--motion-normal) both var(--motion-ease);
+}
+
 /* ── Live status ────────────────────────────────────────────────────────── */
 
 /* Status dots ping a few times on arrival and then hold as a plain green dot.
@@ -636,6 +684,13 @@
   .motion-activity-halo {
     animation-duration: 3600ms;
   }
+
+  /* Selections are made with a thumb here, often several in a row. The swap
+     stays at the fast end of the band so the panel has already settled by the
+     time the next tap lands. */
+  .motion-swap {
+    animation-duration: var(--motion-fast);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -661,9 +716,14 @@
   .page-transition-shell,
   .hero-node,
   .hero-link,
-  .motion-stage-arrive,
+  /* These two mark a persistent live state — the current data point, the
+     selected surface — so their final state is legitimately visible. */
   .motion-data-pulse,
-  .motion-activity-halo {
+  .motion-activity-halo,
+  /* The swap loses its movement but not its purpose: the panel still changes,
+     instantly and completely, which is the half of the interaction that
+     actually tells the visitor something. */
+  .motion-swap {
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;
@@ -671,9 +731,20 @@
   }
 
   /* Travelling particles are removed outright rather than frozen — a stationary
-     dot mid-connector would read as a real element in the diagram. */
+     dot mid-connector would read as a real element in the diagram.
+
+     The arrival wash belongs here for the same reason, not with the group above.
+     It reports a momentary event ("a packet just landed"), and collapsing it to
+     its "final state" pins that event on permanently: every stage of every
+     architecture diagram wearing a green background at rest, on the homepage and
+     all seven solution pages. That is the one thing the colour rule forbids
+     outright, and to a reduced-motion visitor it is not even reporting anything,
+     because under reduced motion no packet ever travels. The path a selection
+     traces is still legible without it — the off-path stages dim, the selected
+     stage keeps its green dot, and the readout names the route in words. */
   .motion-flow-particle,
-  .motion-stage-pulse {
+  .motion-stage-pulse,
+  .motion-stage-arrive {
     display: none !important;
   }
 

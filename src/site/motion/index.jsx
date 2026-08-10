@@ -14,10 +14,12 @@ export {
   activityAlpha,
 } from "./tokens";
 export { useReducedMotion, useReducedMotionRef, useInView, useHasFinePointer } from "./hooks";
+export { useTabs } from "./useTabs";
 
 export { default as RevealOnScroll } from "./RevealOnScroll";
 export { default as FlowStage } from "./FlowStage";
 export { default as PageTransition } from "./PageTransition";
+export { default as StateSwap } from "./StateSwap";
 export { default as AnimatedMetric } from "./AnimatedMetric";
 export { default as AnimatedChart } from "./AnimatedChart";
 export { default as ActivityIndicator } from "./ActivityIndicator";

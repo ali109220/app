@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { BrainCircuit, Landmark, Smartphone, ServerCog, Wrench, Layers3, ArrowUpRight } from "lucide-react";
 import { T } from "@/site/theme";
-import { ActivityIndicator, FlowParticle, RevealOnScroll, TIER, activityAlpha, activityGreen } from "@/site/motion";
+import { ActivityIndicator, FlowParticle, RevealOnScroll, StateSwap, TIER, activityAlpha, activityGreen } from "@/site/motion";
 
 const CORE = { x: 50, y: 50 };
 
@@ -37,11 +37,21 @@ export default function InteractiveEcosystem() {
             <div className="font-jbmono text-xs uppercase tracking-[.22em]" style={{ color: T.signal }}>Connected ecosystem</div>
             <h2 id="ecosystem-v2-heading" className="mt-5 text-4xl font-bold leading-[.94] tracking-[-.03em] sm:text-5xl">One banking architecture</h2>
             <p className="mt-5 max-w-lg text-base leading-relaxed" style={{ color: T.muted }}>Explore how Tayseer’s capabilities connect around the core banking platform instead of operating as isolated products.</p>
-            <div className="mt-8 rounded-xl border p-5" style={{ borderColor: T.border, background: T.bg }} aria-live="polite">
-              <div className="flex items-center gap-2.5 font-jbmono text-xs tracking-wide" style={{ color: T.signal }}><ActivityIndicator />Selected layer</div>
-              <div className="mt-3 text-xl font-semibold">{selected.label}</div>
-              <p className="mt-2 text-sm leading-relaxed" style={{ color: T.muted }}>{selected.copy}</p>
-              <Link href={selected.to} className="group mt-5 inline-flex min-h-11 items-center gap-2 font-jbmono text-xs tracking-wide" style={{ color: T.signal }}>Explore capability <ArrowUpRight size={13} aria-hidden="true" className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-0.5" /></Link>
+            {/* The one thing a selection changes. It transitions rather than
+                jump-cuts, so the panel visibly answers the node that was picked;
+                everything around it holds still.
+
+                The live region is the OUTER element and is never re-keyed. A
+                live region that is removed and re-inserted alongside its own new
+                content is generally not announced — the swap has to happen
+                inside it, not to it. */}
+            <div id="ecosystem-detail" className="mt-8 rounded-xl border p-5" style={{ borderColor: T.border, background: T.bg }} aria-live="polite">
+              <StateSwap value={active}>
+                <div className="flex items-center gap-2.5 font-jbmono text-xs tracking-wide" style={{ color: T.signal }}><ActivityIndicator />Selected layer</div>
+                <div className="mt-3 text-xl font-semibold">{selected.label}</div>
+                <p className="mt-2 text-sm leading-relaxed" style={{ color: T.muted }}>{selected.copy}</p>
+                <Link href={selected.to} className="group mt-5 inline-flex min-h-11 items-center gap-2 font-jbmono text-xs tracking-wide" style={{ color: T.signal }}>Explore capability <ArrowUpRight size={13} aria-hidden="true" className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-0.5" /></Link>
+              </StateSwap>
             </div>
           </RevealOnScroll>
 
@@ -62,7 +72,7 @@ export default function InteractiveEcosystem() {
                 const Icon = node.icon;
                 const isActive = node.id === active;
                 const isLive = target?.id === node.id;
-                return <button key={node.id} type="button" onMouseEnter={() => setActive(node.id)} onFocus={() => setActive(node.id)} onClick={() => setActive(node.id)} aria-pressed={isActive} aria-label={`Show ${node.label}`} className="eco-node absolute flex min-h-11 -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center gap-1.5 rounded-2xl border px-3 py-2.5 text-center transition-[transform,background,border-color,box-shadow] duration-300" style={{ left: `${node.x}%`, top: `${node.y}%`, borderColor: isActive ? T.signal : T.border, background: isActive ? T.bg : T.panel, color: isActive ? T.signal : T.text, minWidth: node.id === "core" ? "124px" : "104px", boxShadow: isActive ? "0 16px 44px rgba(13,90,140,.14)" : "none" }}>
+                return <button key={node.id} type="button" onMouseEnter={() => setActive(node.id)} onFocus={() => setActive(node.id)} onClick={() => setActive(node.id)} aria-pressed={isActive} aria-controls="ecosystem-detail" aria-label={`Show ${node.label}`} className="eco-node absolute flex min-h-11 -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center gap-1.5 rounded-2xl border px-3 py-2.5 text-center transition-[transform,background,border-color,box-shadow] duration-300" style={{ left: `${node.x}%`, top: `${node.y}%`, borderColor: isActive ? T.signal : T.border, background: isActive ? T.bg : T.panel, color: isActive ? T.signal : T.text, minWidth: node.id === "core" ? "124px" : "104px", boxShadow: isActive ? "0 16px 44px rgba(13,90,140,.14)" : "none" }}>
                   <Icon size={node.id === "core" ? 22 : 18} aria-hidden="true" />
                   <span className="text-xs font-medium leading-tight">{node.label}</span>
                   {/* The receiving node is the only one wearing green. */}
@@ -70,7 +80,10 @@ export default function InteractiveEcosystem() {
                 </button>;
               })}
 
-              <div className="pointer-events-none absolute inset-x-0 bottom-3 text-center font-jbmono text-xs tracking-wide" style={{ color: T.muted }}>Hover or focus a layer</div>
+              {/* The prompt has to name a gesture every visitor actually has.
+                  Hover is not one of them on a phone, and the nodes have always
+                  responded to tap and to keyboard focus as well. */}
+              <div className="pointer-events-none absolute inset-x-0 bottom-3 text-center font-jbmono text-xs tracking-wide" style={{ color: T.muted }}>Select any layer</div>
             </div>
           </RevealOnScroll>
         </div>

@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { ArrowUpRight, Landmark, Smartphone, BrainCircuit, Wrench } from "lucide-react";
 import { T } from "@/site/theme";
-import { ActivityIndicator, AnimatedChart, AnimatedMetric, RevealOnScroll, STAGGER, TIER } from "@/site/motion";
+import { ActivityIndicator, AnimatedChart, AnimatedMetric, RevealOnScroll, STAGGER, StateSwap, TIER, useTabs } from "@/site/motion";
 
 // The chart geometry is the design's own curve, unchanged — AnimatedChart draws
 // this exact path and reads its point positions off it rather than resampling.
@@ -20,24 +20,45 @@ const PRODUCTS = [
   { id: "managed", name: "Managed Services", eyebrow: "Operate & evolve", title: "Extend capability without adding complexity.", copy: "Specialized delivery and operational expertise around business-critical platforms.", to: "/solutions/managed-services", icon: Wrench },
 ];
 
+/**
+ * The dashboard. Selecting a product is the control that drives it, and the
+ * three things that actually differ per product are the three things that
+ * re-run: the workspace label, the metric row, and the chart.
+ *
+ * Nothing here is invented for the interaction — the per-product metric values
+ * and chart titles were already in this component. What changed is that
+ * switching now *transitions* them instead of silently substituting them, so
+ * the visitor can see that their click reached the dashboard.
+ *
+ * The left sidebar stays inert on purpose. It is scene-setting for the mock, not
+ * a control, and there is no second set of data behind it to show.
+ */
 function MockWindow({ active }) {
   const isAI = active === "ai";
   const isDigital = active === "digital";
   const isManaged = active === "managed";
   return <div className="overflow-hidden rounded-2xl border" style={{ borderColor: T.border, background: T.panel }}>
-    <div className="flex items-center justify-between border-b px-4 py-3" style={{ borderColor: T.border }}><div className="flex gap-1.5"><span className="h-2.5 w-2.5 rounded-full" style={{ background: T.border }} /><span className="h-2.5 w-2.5 rounded-full" style={{ background: T.border }} /><span className="h-2.5 w-2.5 rounded-full" style={{ background: T.border }} /></div><span className="inline-flex items-center gap-2 font-jbmono text-xs tracking-wide" style={{ color: T.muted }}><ActivityIndicator />{active} workspace</span></div>
+    {/* The indicator is mounted fresh per product, so each selection gets its
+        three pings and then settles — green confirming the switch landed. */}
+    <div className="flex items-center justify-between border-b px-4 py-3" style={{ borderColor: T.border }}><div className="flex gap-1.5"><span className="h-2.5 w-2.5 rounded-full" style={{ background: T.border }} /><span className="h-2.5 w-2.5 rounded-full" style={{ background: T.border }} /><span className="h-2.5 w-2.5 rounded-full" style={{ background: T.border }} /></div><StateSwap as="span" value={active} className="inline-flex items-center gap-2 font-jbmono text-xs tracking-wide" style={{ color: T.muted }}><ActivityIndicator />{active} workspace</StateSwap></div>
     <div className="grid min-h-[430px] md:grid-cols-[180px_1fr]">
       <aside className="hidden border-r p-4 md:block" style={{ borderColor: T.border }}><div className="mb-6 h-8 rounded-lg" style={{ background: "rgba(13,90,140,.12)" }} />{['Overview','Customers','Accounts','Transactions','Analytics','Operations'].map((x,i)=><div key={x} className="mb-2 rounded-lg px-3 py-2 text-xs" style={{ background: i===0 ? T.bg : 'transparent', color: i===0 ? T.signal : T.muted }}>{x}</div>)}</aside>
       <div className="p-5 sm:p-6">
         {/* Step 1 — the metrics count up to the values already in the design.
             No reveal on the tiles themselves: the counting number IS the motion,
-            and fading the card in around it makes two animations do one job. */}
-        <div className="grid gap-3 sm:grid-cols-3">{[['Portfolio','$2.45B'],['Activity','128.4K'],['Availability','99.9%']].map(([l,v],i)=><div key={l} className="rounded-xl border p-4" style={{ borderColor: T.border, background: T.bg }}><div className="text-xs tracking-wide" style={{ color: T.muted }}>{l}</div><div className="mt-3 text-xl font-semibold"><AnimatedMetric value={isAI && i===0 ? 'AI-ready' : isDigital && i===1 ? 'Omnichannel' : isManaged && i===2 ? 'Always-on' : v} /></div></div>)}</div>
+            and fading the card in around it makes two animations do one job.
+            Re-keyed per product so a switch re-counts rather than jump-cutting. */}
+        <StateSwap value={active} className="grid gap-3 sm:grid-cols-3">{[['Portfolio','$2.45B'],['Activity','128.4K'],['Availability','99.9%']].map(([l,v],i)=><div key={l} className="rounded-xl border p-4" style={{ borderColor: T.border, background: T.bg }}><div className="text-xs tracking-wide" style={{ color: T.muted }}>{l}</div><div className="mt-3 text-xl font-semibold"><AnimatedMetric value={isAI && i===0 ? 'AI-ready' : isDigital && i===1 ? 'Omnichannel' : isManaged && i===2 ? 'Always-on' : v} /></div></div>)}</StateSwap>
         <div className="mt-4 grid gap-4 lg:grid-cols-[1.4fr_.8fr]">
           {/* Steps 2–4 — line draws left to right, points land in sequence, the
-              most recent reading is the green one. */}
-          <div className="rounded-xl border p-5" style={{ borderColor: T.border, background: T.bg }}><div className="text-xs font-medium">{isAI ? 'Decision intelligence' : isDigital ? 'Digital engagement' : isManaged ? 'Service health' : 'Transaction flow'}</div><AnimatedChart className="mt-5" d={CHART_D} fillD={CHART_FILL_D} gridLines={[50,105,160]} label="Illustrative product analytics" /></div>
-          {/* Step 5 — supporting cards follow with a small stagger. */}
+              most recent reading is the green one. `replay` re-runs that draw
+              for the newly selected product; the card around it does not move,
+              so only the data appears to change. Deliberately not a re-key —
+              see the note on `replay` in AnimatedChart. */}
+          <div className="rounded-xl border p-5" style={{ borderColor: T.border, background: T.bg }}><StateSwap as="div" value={active} className="text-xs font-medium">{isAI ? 'Decision intelligence' : isDigital ? 'Digital engagement' : isManaged ? 'Service health' : 'Transaction flow'}</StateSwap><AnimatedChart replay={active} className="mt-5" d={CHART_D} fillD={CHART_FILL_D} gridLines={[50,105,160]} label="Illustrative product analytics" /></div>
+          {/* Step 5 — supporting cards follow with a small stagger. These are the
+              same four for every product, so they are left mounted: re-revealing
+              unchanged content on each tab would be motion reporting nothing. */}
           <div className="space-y-3">{SUPPORTING.map((x,i)=><RevealOnScroll key={x} variant="fade-left" delay={400+i*STAGGER} className="motion-card motion-card-accent overflow-hidden rounded-xl border p-4" style={{ borderColor: T.border, background: T.bg }}><div className="flex items-center gap-3"><span className="motion-card-icon flex h-7 w-7 items-center justify-center rounded-full text-xs" style={{ background: "rgba(13,90,140,.12)", color: T.signal }}>0{i+1}</span><span className="text-xs">{x}</span></div></RevealOnScroll>)}</div>
         </div>
       </div>
@@ -49,13 +70,17 @@ export default function ProductShowcase() {
   const [active, setActive] = useState(PRODUCTS[0].id);
   const product = PRODUCTS.find(p => p.id === active) || PRODUCTS[0];
   const Icon = product.icon;
+  const { tablistProps, getTabProps, panelProps } = useTabs({ id: "product-showcase", items: PRODUCTS.map(p => p.id), value: active, onChange: setActive });
+
   return <section className="relative border-b px-6 py-20 md:px-12 md:py-24" style={{ borderColor: T.border }} aria-labelledby="product-showcase-heading">
     <div className="mx-auto max-w-[1400px]">
       {/* Layout unchanged; heading leads, description follows one beat later. */}
       <div className="grid gap-10 lg:grid-cols-12 lg:items-end"><RevealOnScroll delay={TIER.heading} className="lg:col-span-7"><div className="font-jbmono text-xs uppercase tracking-[.22em]" style={{ color: T.signal }}>Product experience</div><h2 id="product-showcase-heading" className="mt-5 text-4xl font-bold leading-[.94] tracking-[-.03em] sm:text-5xl">See the platform, not just the promise</h2></RevealOnScroll><RevealOnScroll as="p" delay={TIER.body} className="max-w-xl text-base leading-relaxed lg:col-span-5" style={{ color: T.muted }}>Explore representative product experiences that show how Tayseer’s capabilities come together in practice. These are design previews, not claims of a specific client deployment.</RevealOnScroll></div>
-      {/* Tab pills are controls — present immediately, no reveal. */}
-      <div className="mt-12 flex flex-wrap gap-2" role="tablist" aria-label="Product showcase">{PRODUCTS.map(p => <button key={p.id} type="button" role="tab" aria-selected={active===p.id} onClick={()=>setActive(p.id)} className="cta-secondary min-h-11 rounded-full border px-4 py-2 text-xs font-medium transition-colors" style={{ borderColor: active===p.id ? T.signal : T.border, color: active===p.id ? T.signal : T.muted, background: active===p.id ? T.panel : 'transparent' }}>{p.name}</button>)}</div>
-      <div className="mt-8 grid gap-10 lg:grid-cols-12 lg:items-center"><RevealOnScroll variant="fade-right" delay={TIER.body} className="lg:col-span-4"><div className="flex h-12 w-12 items-center justify-center rounded-xl" style={{ background: "rgba(13,90,140,.1)", color: T.signal }}><Icon size={21} aria-hidden="true" /></div><div className="mt-7 font-jbmono text-xs tracking-wide" style={{ color: T.signal }}>{product.eyebrow}</div><h3 className="mt-3 text-3xl font-semibold leading-tight tracking-[-.03em] sm:text-4xl">{product.title}</h3><p className="mt-5 text-sm leading-relaxed" style={{ color: T.muted }}>{product.copy}</p><Link href={product.to} className="group mt-7 inline-flex min-h-11 items-center gap-2 font-jbmono text-xs tracking-wide" style={{ color: T.signal }}>Explore {product.name} <ArrowUpRight size={13} aria-hidden="true" className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-0.5" /></Link></RevealOnScroll><RevealOnScroll variant="scale" delay={TIER.visual} className="lg:col-span-8"><MockWindow active={active} /></RevealOnScroll></div>
+      {/* Tab pills are controls — present immediately, no reveal. The indicator
+          slot is always rendered, selected or not, so switching tabs cannot
+          reflow the row it lives in. */}
+      <div className="mt-12 flex flex-wrap gap-2" {...tablistProps} aria-label="Product showcase">{PRODUCTS.map(p => { const isActive = p.id === active; return <button key={p.id} {...getTabProps(p.id)} className="cta-secondary selector-option inline-flex min-h-11 items-center gap-2 rounded-full border px-4 py-2 text-xs font-medium" style={{ borderColor: isActive ? T.signal : T.border, color: isActive ? T.signal : T.muted, background: isActive ? T.panel : 'transparent' }}><span className="inline-flex h-[5px] w-[5px] shrink-0">{isActive && <ActivityIndicator size={5} />}</span>{p.name}</button>; })}</div>
+      <div {...panelProps} className="mt-8 grid gap-10 lg:grid-cols-12 lg:items-center"><RevealOnScroll variant="fade-right" delay={TIER.body} className="lg:col-span-4"><StateSwap value={active}><div className="flex h-12 w-12 items-center justify-center rounded-xl" style={{ background: "rgba(13,90,140,.1)", color: T.signal }}><Icon size={21} aria-hidden="true" /></div><div className="mt-7 font-jbmono text-xs tracking-wide" style={{ color: T.signal }}>{product.eyebrow}</div><h3 className="mt-3 text-3xl font-semibold leading-tight tracking-[-.03em] sm:text-4xl">{product.title}</h3><p className="mt-5 text-sm leading-relaxed" style={{ color: T.muted }}>{product.copy}</p><Link href={product.to} className="group mt-7 inline-flex min-h-11 items-center gap-2 font-jbmono text-xs tracking-wide" style={{ color: T.signal }}>Explore {product.name} <ArrowUpRight size={13} aria-hidden="true" className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-0.5" /></Link></StateSwap></RevealOnScroll><RevealOnScroll variant="scale" delay={TIER.visual} className="lg:col-span-8"><MockWindow active={active} /></RevealOnScroll></div>
     </div>
   </section>;
 }

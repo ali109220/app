@@ -7,13 +7,14 @@
  * "use client" makes every one of those pages throw at render time.
  *
  * Client-only behaviour therefore lives in the imported client components
- * (RevealOnScroll, FlowStage, StagePulse), which is fine: a server component may
- * render a client component freely.
+ * (RevealOnScroll, ArchitectureFlowStages), which is fine: a server component
+ * may render a client component freely.
  */
 
 import Link from "next/link";
-import { ArrowDown, ArrowRight, ArrowUpRight, CheckCircle2 } from "lucide-react";
-import { FlowStage, RevealOnScroll, STAGGER, TIER, StageArrival, StagePulse, activityAlpha } from "@/site/motion";
+import { ArrowRight, ArrowUpRight, CheckCircle2 } from "lucide-react";
+import { RevealOnScroll, STAGGER, TIER } from "@/site/motion";
+import ArchitectureFlowStages from "@/site/phase8/ArchitectureFlowStages";
 import { ContactSection } from "@/site/ContactSection";
 import { CountUp } from "@/site/ui";
 import { T } from "@/site/theme";
@@ -144,45 +145,18 @@ export function CapabilityGrid({ title = "Capabilities", intro, items = [] }) {
  * That is the test for reusing NetworkFlow: it goes on diagrams that represent
  * data or system relationships, never on decorative graphics.
  *
- * Same finite model as the homepage pipeline: shared cycle, staggered delays,
- * one packet at a time, two passes, then permanently still.
+ * It is also the only diagram on these pages with meaningful nodes, so it is the
+ * only one that became selectable. The steps themselves live in
+ * ArchitectureFlowStages, which is a client component: this file cannot hold the
+ * selection state without becoming one too (see the note at the top).
  */
-const FLOW_CYCLE = 7000;
-const HOP_OFFSET = FLOW_CYCLE * 0.16;
-const HOP_TRAVEL = FLOW_CYCLE * 0.14;
-const FLOW_PASSES = 2;
-
 export function ArchitectureFlow({ title, steps = [] }) {
   return (
     <section id="architecture" className="scroll-mt-40 border-y px-6 py-20 sm:py-24 md:px-12" style={{ borderColor: T.border, background: T.panel }} aria-labelledby="architecture-title">
       <div className="mx-auto max-w-[1400px]">
         <RevealOnScroll delay={TIER.heading} className="font-jbmono text-[12px] uppercase tracking-[0.24em]" style={{ color: T.signal }}>Architecture</RevealOnScroll>
         <RevealOnScroll as="h2" id="architecture-title" delay={TIER.body} className="mt-4 max-w-3xl text-3xl font-bold uppercase tracking-tight sm:text-4xl">{title}</RevealOnScroll>
-        <FlowStage as="ol" className="relative mt-10 grid gap-3 md:grid-cols-5 md:gap-4" aria-label={`${title} flow`}>
-          <li className="pointer-events-none absolute left-[8%] right-[8%] top-1/2 hidden h-px md:block" style={{ background: "linear-gradient(90deg, transparent, rgba(13,90,140,.35), transparent)" }} aria-hidden="true" />
-          {steps.map((step, index) => {
-            const isLast = index === steps.length - 1;
-            return (
-              <RevealOnScroll
-                as="li"
-                key={step}
-                variant="scale"
-                delay={TIER.visual + index * STAGGER}
-                /* No overflow-hidden: the step connectors sit at -right-[18px]
-                   and -bottom-[15px], outside the box, and would be clipped. */
-                className="arch-node relative z-10 border p-5 text-sm font-medium"
-                style={{ borderColor: T.border, background: T.bg }}
-              >
-                <span className="mb-3 block font-jbmono text-[10px]" style={{ color: T.faint }}>Step {String(index + 1).padStart(2, "0")}</span>
-                {step}
-                {index > 0 && <StageArrival className="inset-0" delay={(index - 1) * HOP_OFFSET + HOP_TRAVEL} cycle={FLOW_CYCLE} passes={FLOW_PASSES} style={{ background: `radial-gradient(circle at 50% 40%, ${activityAlpha(0.16)}, transparent 66%)` }} />}
-                {!isLast && <StagePulse delay={index * HOP_OFFSET} cycle={FLOW_CYCLE} passes={FLOW_PASSES} />}
-                {!isLast ? <ArrowDown size={14} className="absolute -bottom-[15px] left-1/2 -translate-x-1/2 md:hidden" aria-hidden="true" style={{ color: T.signal }} /> : null}
-                {!isLast ? <ArrowRight size={15} className="arch-node-link absolute -right-[18px] top-1/2 hidden -translate-y-1/2 md:block" aria-hidden="true" style={{ color: T.signal }} /> : null}
-              </RevealOnScroll>
-            );
-          })}
-        </FlowStage>
+        <ArchitectureFlowStages title={title} steps={steps} />
       </div>
     </section>
   );

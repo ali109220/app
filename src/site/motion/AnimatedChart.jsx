@@ -15,6 +15,15 @@ import { D, EASE, STAGGER, activityAlpha, activityGreen } from "./tokens";
  *
  * Line draw uses stroke-dashoffset (a compositor-friendly paint on the GPU in
  * modern engines, and cheap regardless since the path is ~500px long).
+ *
+ * `replay` is the interaction hook: pass a value that changes when the chart is
+ * showing different data (a selected tab, say) and the draw runs again. It has
+ * to be a prop rather than the caller simply re-keying this component, because
+ * a remount restarts the IntersectionObserver gate — and that gate is built for
+ * "scrolled into view", not "replaced in place". Remounted below the fold, the
+ * chart measures its path, finds itself not yet in view, and animates its line
+ * *backwards* into the undrawn state; remounted in view, it arrives already
+ * drawn and there is no animation at all. Replaying explicitly avoids both.
  */
 export default function AnimatedChart({
   d,
@@ -28,12 +37,19 @@ export default function AnimatedChart({
   gridWidth = 520,
   label,
   className = "",
+  replay,
 }) {
   const [wrapRef, inView] = useInView({ threshold: 0.25 });
   const reduced = useReducedMotion();
   const pathRef = useRef(null);
   const [length, setLength] = useState(0);
   const [dots, setDots] = useState([]);
+  // `parked` is the single undrawn frame a replay needs so the browser has a
+  // state to animate away from; `cycle` re-keys the live point's pulse, which is
+  // a CSS animation and so only restarts on a fresh element.
+  const [parked, setParked] = useState(false);
+  const [cycle, setCycle] = useState(0);
+  const lastReplay = useRef(replay);
 
   // Measure once the path exists. Falls back silently if the browser has no
   // path-measurement support (the line still draws; only the dots are skipped).
@@ -53,8 +69,31 @@ export default function AnimatedChart({
     setDots(next);
   }, [d, points]);
 
-  const drawn = reduced || (inView && length > 0);
+  // Park undrawn for one painted frame, then release. Two rAFs, because a state
+  // change and its release inside a single frame collapse into one paint and the
+  // transition never has a start value to run from.
+  useEffect(() => {
+    if (lastReplay.current === replay) return;
+    lastReplay.current = replay;
+    // Nothing to replay if the chart has not been watched yet, or if the visitor
+    // asked for no motion: the new data is simply there.
+    if (reduced || !inView) return;
+
+    setParked(true);
+    setCycle(c => c + 1);
+
+    let inner;
+    const outer = requestAnimationFrame(() => { inner = requestAnimationFrame(() => setParked(false)); });
+    return () => {
+      cancelAnimationFrame(outer);
+      if (inner) cancelAnimationFrame(inner);
+    };
+  }, [replay, reduced, inView]);
+
+  const drawn = reduced || (inView && length > 0 && !parked);
   const drawDuration = reduced ? 0 : D.activity;
+  // Erasing has to be instant; only the draw is animated.
+  const ease = (property, duration, delay = 0) => (parked ? "none" : `${property} ${duration}ms ${EASE} ${delay}ms`);
 
   return (
     <div ref={wrapRef} className={className}>
@@ -72,7 +111,7 @@ export default function AnimatedChart({
             fill={fill}
             style={{
               opacity: drawn ? 1 : 0,
-              transition: reduced ? "none" : `opacity ${D.reveal}ms ${EASE} ${Math.round(drawDuration * 0.45)}ms`,
+              transition: reduced ? "none" : ease("opacity", D.reveal, Math.round(drawDuration * 0.45)),
             }}
           />
         )}
@@ -89,7 +128,7 @@ export default function AnimatedChart({
               ? {
                   strokeDasharray: length,
                   strokeDashoffset: drawn ? 0 : length,
-                  transition: `stroke-dashoffset ${drawDuration}ms ${EASE}`,
+                  transition: ease("stroke-dashoffset", drawDuration),
                 }
               : undefined
           }
@@ -104,7 +143,7 @@ export default function AnimatedChart({
               key={`${dot.x}-${dot.y}`}
               style={{
                 opacity: drawn ? 1 : 0,
-                transition: reduced ? "none" : `opacity ${D.fast}ms ${EASE} ${delay}ms`,
+                transition: reduced ? "none" : ease("opacity", D.fast, delay),
               }}
             >
               {/* The live point is the only green thing in the chart: one
@@ -114,6 +153,7 @@ export default function AnimatedChart({
                   while the section is still below the fold. */}
               {isLive && inView && !reduced && (
                 <circle
+                  key={`pulse-${cycle}`}
                   cx={dot.x}
                   cy={dot.y}
                   r="11"

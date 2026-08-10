@@ -1,9 +1,12 @@
 const { chromium } = require('playwright');
 
+// No trailing slashes: the static export writes `out/sectors/banks.html`, not
+// `out/sectors/banks/index.html`, so `/sectors/banks/` 404s — and under a server
+// with SPA fallback (`serve -s`) that 404 silently returns index.html, i.e. you
+// screenshot the homepage and file it as the Banks page.
 const PAGES = {
   'home': '/',
-  'trust-center': '/trust-center/',
-  'sectors-banks': '/sectors/banks/',
+  'sectors-banks': '/solutions/banking-systems',
 };
 
 (async () => {

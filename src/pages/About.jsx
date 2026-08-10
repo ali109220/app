@@ -1,4 +1,4 @@
-import { Reveal } from "@/site/motion";
+import { RevealOnScroll, STAGGER, TIER } from "@/site/motion";
 import { InnerHero, SectionLabel } from "@/site/ui";
 import { ContactSection } from "@/site/ContactSection";
 import { T } from "@/site/theme";
@@ -55,19 +55,17 @@ export default function About() {
       {/* KURAIMI GROUP */}
       <section className="px-6 py-24 md:px-12">
         <div className="mx-auto max-w-[1400px]">
-          <Reveal><SectionLabel>Backed by Strength</SectionLabel></Reveal>
-          <Reveal delay={0.05}>
+          <RevealOnScroll delay={TIER.heading}><SectionLabel>Backed by Strength</SectionLabel></RevealOnScroll>
+          <RevealOnScroll delay={TIER.heading}>
             <p className="max-w-3xl text-2xl font-medium leading-snug">Tayseer Innovations is built upon the solid foundation of the Kuraimi Group, a diversified multinational conglomerate. This powerful partnership provides us with:</p>
-          </Reveal>
+          </RevealOnScroll>
           <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
             {KURAIMI.map((k, i) => (
-              <Reveal key={k.h} delay={i * 0.08}>
-                <div className="h-full rounded-lg border p-8" style={{ borderColor: T.border, background: T.panel }}>
-                  <k.icon size={24} style={{ color: T.signal }} />
-                  <h3 className="mt-5 text-lg font-semibold">{k.h}</h3>
-                  <p className="mt-3 text-sm leading-relaxed" style={{ color: T.muted }}>{k.p}</p>
-                </div>
-              </Reveal>
+              <RevealOnScroll key={k.h} delay={TIER.support + i * STAGGER} className="motion-card motion-card-accent h-full overflow-hidden rounded-lg border p-8" style={{ borderColor: T.border, background: T.panel }}>
+                <k.icon size={24} className="motion-card-icon" style={{ color: T.signal }} />
+                <h3 className="mt-5 text-lg font-semibold">{k.h}</h3>
+                <p className="mt-3 text-sm leading-relaxed" style={{ color: T.muted }}>{k.p}</p>
+              </RevealOnScroll>
             ))}
           </div>
         </div>
@@ -76,13 +74,13 @@ export default function About() {
       {/* WHY TAYSEER */}
       <section className="border-t px-6 py-24 md:px-12" style={{ borderColor: T.border, background: T.panel }}>
         <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-12 lg:grid-cols-12">
-          <div className="lg:col-span-4"><Reveal><SectionLabel>Why About ‘Tayseer’?</SectionLabel></Reveal></div>
+          <div className="lg:col-span-4"><RevealOnScroll delay={TIER.heading}><SectionLabel>Why About ‘Tayseer’?</SectionLabel></RevealOnScroll></div>
           <div className="lg:col-span-8">
-            <Reveal delay={0.05}>
+            <RevealOnScroll delay={TIER.heading}>
               <p className="text-2xl font-medium leading-snug">
                 The name “Tayseer,” which translates from Arabic as “to facilitate” or “to make easier,” encapsulates our mission: <span style={{ color: T.signal }}>To simplify complex financial processes with the sharpest FinTech solutions.</span>
               </p>
-            </Reveal>
+            </RevealOnScroll>
           </div>
         </div>
       </section>
@@ -90,19 +88,17 @@ export default function About() {
       {/* COMMITMENTS */}
       <section className="border-t px-6 py-24 md:px-12" style={{ borderColor: T.border }}>
         <div className="mx-auto max-w-[1400px]">
-          <Reveal><SectionLabel>Our Commitments to You</SectionLabel></Reveal>
-          <Reveal delay={0.05}><p className="max-w-3xl text-lg" style={{ color: T.muted }}>At Tayseer Innovations, our passion lies in transforming your financial operations by making them:</p></Reveal>
+          <RevealOnScroll delay={TIER.heading}><SectionLabel>Our Commitments to You</SectionLabel></RevealOnScroll>
+          <RevealOnScroll delay={TIER.heading}><p className="max-w-3xl text-lg" style={{ color: T.muted }}>At Tayseer Innovations, our passion lies in transforming your financial operations by making them:</p></RevealOnScroll>
           <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {COMMITMENTS.map((c, i) => (
-              <Reveal key={c.h} delay={(i % 3) * 0.05}>
-                <div className="flex h-full gap-4 rounded-lg border p-6" style={{ borderColor: T.border, background: T.panel }}>
-                  <CheckCircle2 size={20} className="mt-0.5 shrink-0" style={{ color: T.signal }} />
-                  <div>
-                    <div className="font-semibold">{c.h}</div>
-                    <p className="mt-1.5 text-sm leading-relaxed" style={{ color: T.muted }}>{c.p}</p>
-                  </div>
+              <RevealOnScroll key={c.h} delay={TIER.support + (i % 3) * STAGGER} className="motion-card motion-card-accent flex h-full gap-4 overflow-hidden rounded-lg border p-6" style={{ borderColor: T.border, background: T.panel }}>
+                <CheckCircle2 size={20} className="motion-card-icon mt-0.5 shrink-0" style={{ color: T.signal }} />
+                <div>
+                  <div className="font-semibold">{c.h}</div>
+                  <p className="mt-1.5 text-sm leading-relaxed" style={{ color: T.muted }}>{c.p}</p>
                 </div>
-              </Reveal>
+              </RevealOnScroll>
             ))}
           </div>
         </div>
@@ -112,7 +108,7 @@ export default function About() {
       <section className="border-t px-6 py-24 md:px-12" style={{ borderColor: T.border, background: T.panel }}>
         <div className="mx-auto max-w-[1400px] space-y-6">
           {VMV.map((v, i) => (
-            <Reveal key={v.h} delay={i * 0.06}>
+            <RevealOnScroll key={v.h} delay={TIER.support + i * STAGGER}>
               <div className="grid grid-cols-1 gap-6 border-t pt-8 md:grid-cols-12" style={{ borderColor: "rgba(13,90,140,0.4)" }}>
                 <div className="flex items-center gap-3 md:col-span-4">
                   <v.icon size={22} style={{ color: T.signal }} />
@@ -120,7 +116,7 @@ export default function About() {
                 </div>
                 <p className="text-base leading-relaxed md:col-span-8" style={{ color: T.muted }}>{v.p}</p>
               </div>
-            </Reveal>
+            </RevealOnScroll>
           ))}
         </div>
       </section>
@@ -128,17 +124,15 @@ export default function About() {
       {/* EFFICIENCY / LOWER COSTS */}
       <section className="border-t px-6 py-24 md:px-12" style={{ borderColor: T.border }}>
         <div className="mx-auto max-w-[1400px]">
-          <Reveal><SectionLabel>Partnership Value</SectionLabel></Reveal>
-          <Reveal delay={0.05}><h2 className="max-w-4xl text-4xl font-bold uppercase leading-[0.95] tracking-[-0.02em] sm:text-5xl">Our Partnership Aims to Improve Your Business Efficiency &amp; Lower Your Operating Costs</h2></Reveal>
+          <RevealOnScroll delay={TIER.heading}><SectionLabel>Partnership Value</SectionLabel></RevealOnScroll>
+          <RevealOnScroll delay={TIER.heading}><h2 className="max-w-4xl text-4xl font-bold uppercase leading-[0.95] tracking-[-0.02em] sm:text-5xl">Our Partnership Aims to Improve Your Business Efficiency &amp; Lower Your Operating Costs</h2></RevealOnScroll>
           <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-3">
             {EFFICIENCY.map((e, i) => (
-              <Reveal key={e.h} delay={i * 0.08}>
-                <div className="h-full rounded-lg border p-8" style={{ borderColor: T.border, background: T.panel }}>
-                  <div className="font-jbmono text-[11px]" style={{ color: T.faint }}>{String(i + 1).padStart(2, "0")}</div>
-                  <h3 className="mt-4 text-lg font-semibold">{e.h}</h3>
-                  <p className="mt-3 text-sm leading-relaxed" style={{ color: T.muted }}>{e.p}</p>
-                </div>
-              </Reveal>
+              <RevealOnScroll key={e.h} delay={TIER.support + i * STAGGER} className="motion-card motion-card-accent h-full overflow-hidden rounded-lg border p-8" style={{ borderColor: T.border, background: T.panel }}>
+                <div className="font-jbmono text-[11px]" style={{ color: T.faint }}>{String(i + 1).padStart(2, "0")}</div>
+                <h3 className="mt-4 text-lg font-semibold">{e.h}</h3>
+                <p className="mt-3 text-sm leading-relaxed" style={{ color: T.muted }}>{e.p}</p>
+              </RevealOnScroll>
             ))}
           </div>
         </div>
@@ -147,17 +141,16 @@ export default function About() {
       {/* PARTNER ECOSYSTEM */}
       <section className="border-t px-6 py-24 md:px-12" style={{ borderColor: T.border, background: T.panel }}>
         <div className="mx-auto max-w-[1400px]">
-          <Reveal><SectionLabel>Partner Ecosystem</SectionLabel></Reveal>
-          <Reveal delay={0.05}><h2 className="max-w-4xl text-3xl font-bold uppercase leading-[0.95] tracking-[-0.02em] sm:text-4xl">Our Robust Partner Ecosystem Helps You Accelerate Your Digital Transformation Journey</h2></Reveal>
+          <RevealOnScroll delay={TIER.heading}><SectionLabel>Partner Ecosystem</SectionLabel></RevealOnScroll>
+          <RevealOnScroll delay={TIER.heading}><h2 className="max-w-4xl text-3xl font-bold uppercase leading-[0.95] tracking-[-0.02em] sm:text-4xl">Our Robust Partner Ecosystem Helps You Accelerate Your Digital Transformation Journey</h2></RevealOnScroll>
           {/* NEEDS VERIFICATION — partner logo image assets available in mirror /images; names/taglines sourced. */}
           <div className="mt-12 grid grid-cols-1 gap-px overflow-hidden rounded-lg border sm:grid-cols-2 lg:grid-cols-3" style={{ borderColor: T.border, background: T.border }}>
-            {PARTNERS.map((p) => (
-              <Reveal key={p.h}>
-                <div className="h-full p-8" style={{ background: T.bg }}>
-                  <h4 className="text-lg font-semibold" style={{ color: T.signal }}>{p.h}</h4>
-                  <p className="mt-2 text-sm leading-relaxed" style={{ color: T.muted }}>{p.p}</p>
-                </div>
-              </Reveal>
+            {/* Seamless hairline grid — flat variant, no lift. */}
+            {PARTNERS.map((p, i) => (
+              <RevealOnScroll key={p.h} delay={TIER.support + (i % 3) * STAGGER} className="motion-card-flat motion-card-accent h-full p-8" style={{ background: T.bg }}>
+                <h4 className="text-lg font-semibold" style={{ color: T.signal }}>{p.h}</h4>
+                <p className="mt-2 text-sm leading-relaxed" style={{ color: T.muted }}>{p.p}</p>
+              </RevealOnScroll>
             ))}
           </div>
         </div>

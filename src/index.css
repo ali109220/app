@@ -181,6 +181,19 @@
    trigger layout during a scroll.
    ══════════════════════════════════════════════════════════════════════════ */
 
+/* ── Fallback: no scripting ─────────────────────────────────────────────────
+   RevealOnScroll server-renders opacity:0 and relies on an IntersectionObserver
+   to reveal. If scripting is unavailable that observer never runs, and on the
+   editorial routes that would hide the whole page. `scripting: none` covers
+   modern engines; the <noscript> block in app/layout.tsx covers the rest.
+   (A missing IntersectionObserver API is handled separately, in useInView.) */
+@media (scripting: none) {
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
 /* ── Entrance: the hero load sequence ───────────────────────────────────── */
 
 @keyframes motion-rise-in {
@@ -324,14 +337,20 @@
 
 /* The outgoing connector of a hovered node becomes more visible — the path, not
    the whole diagram, is what lights up. */
+/* Two shapes of connector exist: a rotated bordered <span> (homepage pipeline)
+   and a lucide arrow <svg> (solution-page architecture flow). The first is drawn
+   with border-color, the second with color, so both are declared here and each
+   element simply ignores the property it does not use. */
 .arch-node-link {
   transition: border-color var(--motion-normal) var(--motion-ease),
+              color var(--motion-normal) var(--motion-ease),
               opacity var(--motion-normal) var(--motion-ease);
 }
 
 .arch-node:hover .arch-node-link,
 .arch-node:focus-within .arch-node-link {
   border-color: var(--activity-green) !important;
+  color: var(--activity-green) !important;
   opacity: 1;
 }
 
@@ -407,6 +426,39 @@
 .eco-node:focus-visible {
   transform: translate(-50%, -50%) scale(1.04);
   border-color: rgba(98, 169, 69, 0.6) !important;
+}
+
+/* ── Interaction: form fields ───────────────────────────────────────────────
+   Applied globally with :where() so every form on the site gets the same
+   response without any form component being edited — and so specificity stays
+   at zero and per-field classes still win.
+
+   Fields are never reveal-gated and never transition anything that affects
+   layout, so typing is unaffected: only the border and ring move. */
+:where(input, textarea, select) {
+  transition: border-color var(--motion-fast) var(--motion-ease),
+              box-shadow var(--motion-fast) var(--motion-ease);
+}
+
+/* Validation state. Both site forms already drive `aria-invalid`, so the error
+   and recovered states come for free. `!important` because the resting border
+   colour is an inline style prop (see the .arch-node-chip note). */
+:where(input, textarea, select)[aria-invalid="true"] {
+  border-color: hsl(var(--destructive)) !important;
+}
+
+/* Focus gets an activityGreen ring: focusing a field is the visitor acting on
+   the system, which is precisely what green marks everywhere else. The blue
+   :focus-visible outline in @layer base still provides the accessible
+   indicator — this only softens the resting-to-focused transition. */
+:where(input, textarea, select):focus {
+  border-color: var(--activity-green) !important;
+  box-shadow: 0 0 0 3px rgba(98, 169, 69, 0.14);
+}
+
+:where(input, textarea, select)[aria-invalid="true"]:focus {
+  border-color: hsl(var(--destructive)) !important;
+  box-shadow: 0 0 0 3px hsl(var(--destructive) / 0.14);
 }
 
 /* ── Interaction: navigation ────────────────────────────────────────────── */
@@ -487,7 +539,17 @@
    No blanket lift. The card barely moves (3px ceiling); what actually changes is
    a green accent arriving, the border waking up, and the icon/arrow reacting. */
 
-.motion-card {
+/* Two card variants share one interaction vocabulary:
+
+     .motion-card       — a free-standing card. Lifts 3px.
+     .motion-card-flat  — a cell in a seamless hairline grid (`gap-px` cells that
+                          share a 1px border background). These must NOT lift:
+                          translating one cell tears the shared seam and the grid
+                          visibly breaks. They get everything except the lift.
+
+   Both are `position: relative` so the accent rail can anchor to them. */
+.motion-card,
+.motion-card-flat {
   position: relative;
   transition: transform var(--motion-normal) var(--motion-ease),
               border-color var(--motion-normal) var(--motion-ease),
@@ -503,6 +565,11 @@
   box-shadow: 0 12px 30px -18px rgba(10, 40, 70, 0.35);
 }
 
+.motion-card-flat:hover,
+.motion-card-flat:focus-within {
+  border-color: rgba(98, 169, 69, 0.55) !important;
+}
+
 /* Accent rail — grows from the leading edge on hover. */
 .motion-card-accent::before {
   content: "";
@@ -515,11 +582,19 @@
   transform: scaleY(0);
   transform-origin: top center;
   transition: transform var(--motion-normal) var(--motion-ease);
+  z-index: 1;
 }
 
 .motion-card:hover .motion-card-accent::before,
 .motion-card:focus-within .motion-card-accent::before,
-.motion-card-accent:hover::before {
+.motion-card-flat:hover .motion-card-accent::before,
+.motion-card-flat:focus-within .motion-card-accent::before,
+/* Self rules, for when one element carries BOTH classes (the common case for a
+   card that is itself the reveal wrapper). The descendant selectors above cannot
+   match then, and :focus-within is what makes the rail appear for keyboard
+   users tabbing into a card that contains a link. */
+.motion-card-accent:hover::before,
+.motion-card-accent:focus-within::before {
   transform: scaleY(1);
 }
 
@@ -529,7 +604,9 @@
 }
 
 .motion-card:hover .motion-card-icon,
-.motion-card:focus-within .motion-card-icon {
+.motion-card:focus-within .motion-card-icon,
+.motion-card-flat:hover .motion-card-icon,
+.motion-card-flat:focus-within .motion-card-icon {
   transform: translateY(-3px);
 }
 
@@ -538,7 +615,9 @@
 }
 
 .motion-card:hover .motion-card-arrow,
-.motion-card:focus-within .motion-card-arrow {
+.motion-card:focus-within .motion-card-arrow,
+.motion-card-flat:hover .motion-card-arrow,
+.motion-card-flat:focus-within .motion-card-arrow {
   transform: translateX(4px);
 }
 
@@ -607,6 +686,10 @@
      change still confirm the hover, which is the accessible part. */
   .motion-card:hover,
   .motion-card:focus-within,
+  .motion-card-flat:hover .motion-card-icon,
+  .motion-card-flat:hover .motion-card-arrow,
+  .motion-card:hover .motion-card-icon,
+  .motion-card:hover .motion-card-arrow,
   .cta-primary:hover,
   .cta-secondary:hover,
   .cta-primary:active,

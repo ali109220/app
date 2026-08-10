@@ -106,6 +106,12 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             block the parser or move LCP; it resolves long before hydration,
             which is the earliest point the intro can mount. */}
         <script src="/intro-flag.js" async />
+        {/* Companion to the (scripting: none) rule in index.css, for engines that
+            do not support that media feature. Scroll reveals start at opacity 0;
+            without scripting they must not stay there. */}
+        <noscript>
+          <style>{`[data-reveal]{opacity:1 !important;transform:none !important}`}</style>
+        </noscript>
       </head>
       <body suppressHydrationWarning>
         <StructuredData data={[organizationSchema, websiteSchema]} />

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { Reveal } from "@/site/motion";
+import { RevealOnScroll, STAGGER, TIER } from "@/site/motion";
 import { InnerHero } from "@/site/ui";
 import { ContactSection } from "@/site/ContactSection";
 import { T } from "@/site/theme";
@@ -16,9 +16,10 @@ export default function Blog() {
       <section className="px-6 py-24 md:px-12">
         <div className="mx-auto max-w-[1400px]">
           <div className="grid grid-cols-1 gap-px overflow-hidden rounded-lg border md:grid-cols-2" style={{ borderColor: T.border, background: T.border }}>
+            {/* Seamless hairline grid — flat variant, no lift. */}
             {POSTS.map((post, i) => (
-              <Reveal key={post.slug} delay={i * 0.06}>
-                <Link href={`/blog/${post.slug}`} data-testid={`blog-card-${i}`} className="group flex h-full flex-col justify-between p-10 transition-colors" style={{ background: T.panel }}>
+              <RevealOnScroll key={post.slug} delay={TIER.support + i * STAGGER} className="motion-card-flat motion-card-accent" style={{ background: T.panel }}>
+                <Link href={`/blog/${post.slug}`} data-testid={`blog-card-${i}`} className="group flex h-full flex-col justify-between p-10">
                   <div>
                     <div className="font-jbmono text-[12px] uppercase tracking-widest" style={{ color: T.signal }}>{post.date}</div>
                     <h2 className="mt-4 text-2xl font-semibold leading-snug group-hover:text-[#0F5CBF]" style={{ transition: "color .2s" }}>{post.title}</h2>
@@ -27,9 +28,9 @@ export default function Blog() {
                     )}
                     <p className="mt-4 text-sm leading-relaxed" style={{ color: T.muted }}>{post.excerpt}</p>
                   </div>
-                  <span className="mt-8 inline-flex items-center gap-2 font-jbmono text-[12px] uppercase tracking-widest" style={{ color: T.signal }}>Read Article <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" /></span>
+                  <span className="mt-8 inline-flex items-center gap-2 font-jbmono text-[12px] uppercase tracking-widest" style={{ color: T.signal }}>Read Article <ArrowUpRight size={14} className="motion-card-arrow" /></span>
                 </Link>
-              </Reveal>
+              </RevealOnScroll>
             ))}
           </div>
         </div>

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ArrowRight, Upload } from "lucide-react";
 import { toast } from "sonner";
-import { Reveal } from "@/site/motion";
+import { RevealOnScroll, STAGGER, TIER } from "@/site/motion";
 import { InnerHero, SectionLabel } from "@/site/ui";
 import { T } from "@/site/theme";
 import { FieldError, FormErrorSummary, useAccessibleFormValidation } from "@/site/useAccessibleFormValidation";
@@ -38,8 +38,8 @@ export default function Careers() {
       <InnerHero index="04" crumbs={["Home", "Careers"]} title="Careers" tagline="Shape the Future of Intelligent Solutions in the Region" lead="Please fill the form below along with your detailed resume." />
       <section className="px-6 py-24 md:px-12" aria-labelledby="careers-apply-heading">
         <div className="mx-auto max-w-[900px]">
-          <Reveal><div id="careers-apply-heading"><SectionLabel>Apply</SectionLabel></div></Reveal>
-          <Reveal delay={0.05}>
+          <RevealOnScroll delay={TIER.heading}><div id="careers-apply-heading"><SectionLabel>Apply</SectionLabel></div></RevealOnScroll>
+          {/* Not reveal-gated — a form must be immediately usable. */}
             <form data-testid="careers-form" onSubmit={handleSubmit} onInvalid={onInvalid} onInput={onInput} noValidate aria-busy={sending} className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
               <FormErrorSummary errors={errors} />
               <div><label htmlFor="careers-name" className="sr-only">Your name</label><input id="careers-name" name="name" required aria-required="true" autoComplete="name" placeholder="Your Name*" data-testid="careers-name" aria-invalid={Boolean(errors.name)} aria-describedby={errors.name ? "careers-name-error" : undefined} className={`${fieldClass} w-full`} style={{ borderColor: T.border, color: T.text }} /><FieldError id="careers-name-error" message={errors.name} /></div>
@@ -48,10 +48,9 @@ export default function Careers() {
               <div><label htmlFor="careers-position" className="sr-only">Position applied for</label><select id="careers-position" name="position" required aria-required="true" defaultValue="" data-testid="careers-position" aria-invalid={Boolean(errors.position)} aria-describedby={errors.position ? "careers-position-error" : undefined} className={`${fieldClass} min-h-11 w-full`} style={{ borderColor: T.border, color: T.text }}><option value="" disabled style={{ background: T.panel }}>Position Applied For*</option><option value="Software Development" style={{ background: T.panel }}>Software Development</option><option value="Sales" style={{ background: T.panel }}>Sales</option><option value="Others" style={{ background: T.panel }}>Others</option></select><FieldError id="careers-position-error" message={errors.position} /></div>
               <div className="sm:col-span-2"><label htmlFor="careers-resume" className="flex min-h-11 cursor-pointer items-center gap-3 rounded-md border border-dashed px-4 py-3.5 text-sm" style={{ borderColor: T.border, color: T.muted }}><Upload aria-hidden="true" size={16} style={{ color: T.signal }} /> Resume/CV* — .pdf, .txt, .jpg, .jpeg, .png, .gif, .doc, .docx, .ppt</label><input id="careers-resume" name="resume" type="file" required aria-required="true" accept=".pdf,.txt,.jpg,.jpeg,.png,.gif,.doc,.docx,.ppt" data-testid="careers-resume" aria-invalid={Boolean(errors.resume)} aria-describedby={errors.resume ? "careers-resume-error" : undefined} className="sr-only" /><FieldError id="careers-resume-error" message={errors.resume} /></div>
               <div className="sm:col-span-2"><label htmlFor="careers-message" className="sr-only">Your message</label><textarea id="careers-message" name="message" rows={4} placeholder="Your Message" data-testid="careers-message" className={`${fieldClass} w-full`} style={{ borderColor: T.border, color: T.text }} /></div>
-              <button type="submit" disabled={sending} data-testid="careers-submit" className="inline-flex min-h-11 w-full items-center justify-center gap-2 px-8 py-4 text-sm font-semibold uppercase tracking-wider transition-transform hover:-translate-y-0.5 disabled:cursor-wait disabled:opacity-60 sm:w-auto" style={{ background: T.signal, color: T.bg }}>{sending ? "Submitting…" : "Submit"} <ArrowRight aria-hidden="true" size={16} /></button>
+              <button type="submit" disabled={sending} data-testid="careers-submit" className="cta-primary inline-flex min-h-11 w-full items-center justify-center gap-2 px-8 py-4 text-sm font-semibold uppercase tracking-wider disabled:cursor-wait disabled:opacity-60 sm:w-auto" style={{ background: T.signal, color: T.bg }}>{sending ? "Submitting…" : "Submit"} <ArrowRight aria-hidden="true" size={16} className="motion-card-arrow" /></button>
               <span className="sr-only" role="status" aria-live="polite">{sending ? "Submitting your application" : ""}</span>
             </form>
-          </Reveal>
         </div>
       </section>
     </div>

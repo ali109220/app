@@ -1,5 +1,5 @@
 import { AlertTriangle } from "lucide-react";
-import { Reveal } from "@/site/motion";
+import { RevealOnScroll, STAGGER, TIER } from "@/site/motion";
 import { T } from "@/site/theme";
 
 // Legal pages are intentional PLACEHOLDERS, flagged for real legal review.
@@ -9,13 +9,13 @@ function LegalShell({ index, title, updated, sections }) {
     <section className="grain relative min-h-screen overflow-hidden" style={{ background: T.bg }}>
       <div className="hairline-grid absolute inset-0" style={{ "--hl": T.hl, backgroundSize: "8.33% 6rem" }} />
       <div className="relative mx-auto max-w-[900px] px-6 pt-32 pb-24 md:px-12">
-        <Reveal>
+        <RevealOnScroll delay={TIER.heading}>
           <div className="mb-5 font-jbmono text-[12px] uppercase tracking-[0.25em]" style={{ color: T.signal }}>{index} — Legal</div>
           <h1 className="text-4xl font-extrabold uppercase leading-[0.92] tracking-[-0.02em] sm:text-6xl" style={{ color: T.text }}>{title}</h1>
-        </Reveal>
+        </RevealOnScroll>
 
         {/* NEEDS VERIFICATION — placeholder banner, must be replaced by counsel-approved copy */}
-        <Reveal delay={0.05}>
+        <RevealOnScroll delay={TIER.heading}>
           <div className="mt-8 flex items-start gap-3 rounded-lg border p-5" style={{ borderColor: "rgba(13,90,140,0.4)", background: "rgba(13,90,140,0.06)" }}>
             <AlertTriangle size={18} className="mt-0.5 shrink-0" style={{ color: T.signal }} />
             <p className="text-sm leading-relaxed" style={{ color: T.muted }}>
@@ -25,29 +25,29 @@ function LegalShell({ index, title, updated, sections }) {
               binding {title.toLowerCase()}. Do not publish until replaced with counsel-approved language.
             </p>
           </div>
-        </Reveal>
+        </RevealOnScroll>
 
-        <Reveal delay={0.1}>
+        <RevealOnScroll delay={TIER.body}>
           <p className="mt-6 font-jbmono text-[12px] uppercase tracking-widest" style={{ color: T.faint }}>Last updated: {updated}</p>
-        </Reveal>
+        </RevealOnScroll>
 
         <div className="mt-12 space-y-10">
           {sections.map((s, i) => (
-            <Reveal key={s.h} delay={0.05 * i}>
+            <RevealOnScroll key={s.h} delay={TIER.support + i * STAGGER}>
               <div>
                 <h2 className="text-xl font-semibold" style={{ color: T.text }}>{i + 1}. {s.h}</h2>
                 <p className="mt-3 text-base leading-relaxed" style={{ color: T.muted }}>{s.p}</p>
               </div>
-            </Reveal>
+            </RevealOnScroll>
           ))}
         </div>
 
-        <Reveal delay={0.1}>
+        <RevealOnScroll delay={TIER.body}>
           <div className="mt-14 border-t pt-6 font-jbmono text-[12px] uppercase tracking-widest" style={{ borderColor: T.border, color: T.faint }}>
             {/* SOURCED — contact from live site footer */}
             Questions? info@tayseerdemo.xyz · +966 555203079 · +971 43997558
           </div>
-        </Reveal>
+        </RevealOnScroll>
       </div>
     </section>
   );

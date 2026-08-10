@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { MapPin, ArrowRight } from "lucide-react";
 import { toast } from "sonner";
-import { Reveal } from "@/site/motion";
+import { RevealOnScroll, STAGGER, TIER } from "@/site/motion";
 import { InnerHero, SectionLabel } from "@/site/ui";
 import { T } from "@/site/theme";
 import { ContactAccentArt } from "@/site/DecorativeArt";
@@ -46,22 +46,24 @@ export default function Connect() {
         <ContactAccentArt className="pointer-events-none absolute -right-10 top-0 hidden h-64 w-64 opacity-70 lg:block" />
         <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-14 lg:grid-cols-12">
           <div className="lg:col-span-5">
-            <Reveal><SectionLabel>Visit Us</SectionLabel></Reveal>
+            <RevealOnScroll delay={TIER.heading}><SectionLabel>Visit Us</SectionLabel></RevealOnScroll>
             <div className="mt-6 space-y-5">
-              {OFFICES.map((o) => (
-                <Reveal key={o.region} delay={0.05}>
+              {OFFICES.map((o, i) => (
+                <RevealOnScroll key={o.region} delay={TIER.support + i * STAGGER}>
                   <address className="rounded-lg border p-6 not-italic" style={{ borderColor: T.border, background: T.panel }}>
                     <div className="flex items-center gap-2 font-jbmono text-[12px] uppercase tracking-widest" style={{ color: T.signal }}><MapPin aria-hidden="true" size={15} /> {o.region}</div>
                     <p className="mt-3 text-sm leading-relaxed" style={{ color: T.muted }}>{o.addr}</p>
                   </address>
-                </Reveal>
+                </RevealOnScroll>
               ))}
-              <Reveal delay={0.1}><div className="space-y-1 font-jbmono text-sm" style={{ color: T.muted }}><div><a href="mailto:info@tayseerdemo.xyz" className="rounded-sm hover:text-white">info@tayseerdemo.xyz</a></div><div><a href="tel:+966555203079" className="rounded-sm hover:text-white">+966 555203079</a></div><div><a href="tel:+97143997558" className="rounded-sm hover:text-white">+971 43997558</a></div></div></Reveal>
+              <RevealOnScroll delay={TIER.body}><div className="space-y-1 font-jbmono text-sm" style={{ color: T.muted }}><div><a href="mailto:info@tayseerdemo.xyz" className="rounded-sm hover:text-white">info@tayseerdemo.xyz</a></div><div><a href="tel:+966555203079" className="rounded-sm hover:text-white">+966 555203079</a></div><div><a href="tel:+97143997558" className="rounded-sm hover:text-white">+971 43997558</a></div></div></RevealOnScroll>
             </div>
           </div>
           <div className="lg:col-span-7">
-            <Reveal><p id="connect-form-heading" className="text-lg" style={{ color: T.muted }}>Fill out the form below, and we will contact you as soon as possible!</p></Reveal>
-            <Reveal delay={0.05}>
+            <RevealOnScroll delay={TIER.heading}><p id="connect-form-heading" className="text-lg" style={{ color: T.muted }}>Fill out the form below, and we will contact you as soon as possible!</p></RevealOnScroll>
+            {/* Not reveal-gated: a form behind an opacity-0 reveal is not
+                immediately usable. Field focus/validation transitions come from
+                the global :where(input, textarea, select) rules in index.css. */}
               <form data-testid="connect-form" onSubmit={handleSubmit} onInvalid={onInvalid} onInput={onInput} noValidate aria-busy={sending} className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <FormErrorSummary errors={errors} />
                 <div><label htmlFor="connect-name" className="sr-only">Your name</label><input id="connect-name" name="name" required aria-required="true" autoComplete="name" placeholder="Your Name*" data-testid="connect-name" aria-invalid={Boolean(errors.name)} aria-describedby={errors.name ? "connect-name-error" : undefined} className={`${fieldClass} w-full`} style={{ borderColor: T.border, color: T.text }} /><FieldError id="connect-name-error" message={errors.name} /></div>
@@ -69,10 +71,9 @@ export default function Connect() {
                 <div><label htmlFor="connect-phone" className="sr-only">Your phone number</label><input id="connect-phone" name="phone" type="tel" autoComplete="tel" inputMode="tel" placeholder="Your Phone" data-testid="connect-phone" className={`${fieldClass} w-full`} style={{ borderColor: T.border, color: T.text }} /></div>
                 <div><label htmlFor="connect-organization" className="sr-only">Organization</label><input id="connect-organization" name="organization" required aria-required="true" autoComplete="organization" placeholder="Organization*" data-testid="connect-organization" aria-invalid={Boolean(errors.organization)} aria-describedby={errors.organization ? "connect-organization-error" : undefined} className={`${fieldClass} w-full`} style={{ borderColor: T.border, color: T.text }} /><FieldError id="connect-organization-error" message={errors.organization} /></div>
                 <div className="sm:col-span-2"><label htmlFor="connect-message" className="sr-only">Your message</label><textarea id="connect-message" name="message" required aria-required="true" rows={5} placeholder="Your Message*" data-testid="connect-message" aria-invalid={Boolean(errors.message)} aria-describedby={errors.message ? "connect-message-error" : undefined} className={`${fieldClass} w-full`} style={{ borderColor: T.border, color: T.text }} /><FieldError id="connect-message-error" message={errors.message} /></div>
-                <button type="submit" disabled={sending} data-testid="connect-submit" className="inline-flex min-h-11 w-full items-center justify-center gap-2 px-8 py-4 text-sm font-semibold uppercase tracking-wider transition-transform hover:-translate-y-0.5 disabled:cursor-wait disabled:opacity-60 sm:w-auto" style={{ background: T.signal, color: T.bg }}>{sending ? "Sending…" : "Submit"} <ArrowRight aria-hidden="true" size={16} /></button>
+                <button type="submit" disabled={sending} data-testid="connect-submit" className="cta-primary inline-flex min-h-11 w-full items-center justify-center gap-2 px-8 py-4 text-sm font-semibold uppercase tracking-wider disabled:cursor-wait disabled:opacity-60 sm:w-auto" style={{ background: T.signal, color: T.bg }}>{sending ? "Sending…" : "Submit"} <ArrowRight aria-hidden="true" size={16} className="motion-card-arrow" /></button>
                 <span className="sr-only" role="status" aria-live="polite">{sending ? "Sending your message" : ""}</span>
               </form>
-            </Reveal>
           </div>
         </div>
       </section>

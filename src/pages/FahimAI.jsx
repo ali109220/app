@@ -1,5 +1,6 @@
 import { Target, ScanFace, MessagesSquare, Gauge, Plug, Boxes, BrainCircuit, FileCheck2, Workflow, UserRoundCheck, CheckCircle2, XCircle } from "lucide-react";
 import { EnterpriseSolutionPage } from "@/site/phase8/EnterpriseSolutionLayout";
+import { ActivityIndicator, activityAlpha, activityGreen } from "@/site/motion";
 import { T } from "@/site/theme";
 
 // ALL copy SOURCED from fahim-ai.html.
@@ -81,11 +82,28 @@ function FahimVisual() {
       <div className="flex min-h-80 items-center justify-center">
         <div className="relative flex h-44 w-44 items-center justify-center rounded-full border" style={{ borderColor: "rgba(13,90,140,.35)" }}>
           <div className="absolute h-32 w-32 rounded-full border" style={{ borderColor: "rgba(104,166,60,.28)" }} />
+          {/* Processing indicator: the reasoning core pings three times on arrival
+              and then holds still. This page already states that it runs an
+              agentic workflow, so the pulse reports something real rather than
+              inventing AI activity. */}
+          <div className="motion-data-pulse absolute h-32 w-32 rounded-full border" style={{ borderColor: activityAlpha(0.55) }} aria-hidden="true" />
           <div className="relative z-10 text-center"><BrainCircuit className="mx-auto" size={42} style={{ color: T.signal }} /><div className="mt-3 text-lg font-semibold">Fahim AI</div><div className="mt-1 font-jbmono text-[9px] uppercase tracking-widest" style={{ color: T.faint }}>Agentic workflow</div></div>
         </div>
       </div>
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-        {steps.map(({ icon: Icon, label }, index) => <div key={label} className="border p-3 text-center" style={{ borderColor: T.border, background: T.bg }}><Icon className="mx-auto" size={18} style={{ color: index === 3 ? T.green : T.signal }} aria-hidden="true" /><div className="mt-2 text-[12px] font-medium">{label}</div></div>)}
+        {/* "Resolve" is the outcome stage the design already singled out. It is
+            the one green step: current/success state, per the colour rule. The
+            other three stay structural blue. */}
+        {steps.map(({ icon: Icon, label }, index) => {
+          const isResolved = index === steps.length - 1;
+          return (
+            <div key={label} className="relative border p-3 text-center" style={{ borderColor: isResolved ? activityAlpha(0.45) : T.border, background: T.bg }}>
+              {isResolved && <ActivityIndicator className="absolute right-2 top-2" size={5} />}
+              <Icon className="mx-auto" size={18} style={{ color: isResolved ? activityGreen : T.signal }} aria-hidden="true" />
+              <div className="mt-2 text-[12px] font-medium">{label}</div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

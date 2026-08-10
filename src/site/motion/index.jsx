@@ -16,6 +16,7 @@ export {
 export { useReducedMotion, useReducedMotionRef, useInView, useHasFinePointer } from "./hooks";
 
 export { default as RevealOnScroll } from "./RevealOnScroll";
+export { default as FlowStage } from "./FlowStage";
 export { default as PageTransition } from "./PageTransition";
 export { default as AnimatedMetric } from "./AnimatedMetric";
 export { default as AnimatedChart } from "./AnimatedChart";

@@ -51,6 +51,11 @@ export function RevealOnScroll({
     <Tag
       ref={ref}
       className={className}
+      /* Hook for the no-scripting fallback in index.css. The server renders
+         opacity:0 here, so without scripting the reveal would never fire and the
+         content would stay invisible — on editorial routes that is the entire
+         page. See the (scripting: none) / noscript rules. */
+      data-reveal=""
       style={{
         ...style,
         opacity: inView ? 1 : 0,

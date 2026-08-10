@@ -1,63 +1,40 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { useReducedMotion } from "./hooks";
+import RevealOnScroll from "./RevealOnScroll";
 
 /**
- * Pre-existing motion primitives, moved here unchanged when `site/motion.jsx`
- * became the `site/motion/` directory. Eighteen files across the non-homepage
- * routes import `Reveal` from `@/site/motion`, so the names and behaviour are
- * kept exactly as they were rather than migrated in the same pass.
+ * `Reveal` — the original reveal component, now a thin adapter over
+ * RevealOnScroll rather than a second implementation.
  *
- * New work should use RevealOnScroll, which shares one reduced-motion hook,
- * supports variants/stagger, and reads its timing from the motion tokens.
+ * Eighteen files across the non-home routes call this. Rewiring it here rather
+ * than editing all of them means every route inherits the fixes that were made
+ * for the homepage, in one place:
+ *
+ *  · No persistent inline transform. The old version always wrote
+ *    `transform: translateY(0px)` once visible, which outranks any stylesheet
+ *    :hover rule — so a card wrapped in Reveal could never lift, and the
+ *    site-wide card interaction would have silently done nothing.
+ *  · The verified observer thresholds (-8% bottom margin, 0.01) instead of the
+ *    old `rect.top <= innerHeight + 80` guess, which skipped the animation
+ *    entirely for anything near the fold and could leave content stranded.
+ *  · Centralised duration and easing, instead of a hardcoded .8s/(.16,1,.3,1)
+ *    that drifted from the motion tokens.
+ *
+ * API is preserved exactly, including the awkward part: **`delay` is in
+ * SECONDS here** (call sites pass `delay={0.05}`), while RevealOnScroll and the
+ * motion tokens are in milliseconds. The conversion happens below. New code
+ * should use RevealOnScroll and TIER directly.
  */
-
-export const Reveal = ({ children, delay = 0, y = 24, className = "", as = "div" }) => {
-  const ref = useRef(null);
-  const [visible, setVisible] = useState(true);
-  const reducedMotion = useReducedMotion();
-  const Tag = as;
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el || reducedMotion || !("IntersectionObserver" in window)) {
-      setVisible(true);
-      return;
-    }
-
-    const rect = el.getBoundingClientRect();
-    const alreadyNearViewport = rect.top <= window.innerHeight + 80;
-    if (alreadyNearViewport) return;
-
-    setVisible(false);
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry?.isIntersecting) return;
-        setVisible(true);
-        observer.disconnect();
-      },
-      { rootMargin: "0px 0px 80px 0px", threshold: 0.01 },
-    );
-
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, [reducedMotion]);
-
-  return (
-    <Tag
-      ref={ref}
-      className={className}
-      style={{
-        opacity: visible || reducedMotion ? 1 : 0,
-        transform: `translateY(${visible || reducedMotion ? 0 : y}px)`,
-        transition: reducedMotion ? "none" : `opacity .8s ${visible ? delay : 0}s cubic-bezier(.16,1,.3,1), transform .8s ${visible ? delay : 0}s cubic-bezier(.16,1,.3,1)`,
-      }}
-    >
-      {children}
-    </Tag>
-  );
-};
+export const Reveal = ({ children, delay = 0, y = 24, className = "", as = "div" }) => (
+  <RevealOnScroll
+    as={as}
+    className={className}
+    delay={delay * 1000}
+    variant={y === 0 ? "fade" : "fade-up"}
+  >
+    {children}
+  </RevealOnScroll>
+);
 
 export const LineReveal = ({ lines, className = "", stagger = 0.11 }) => (
   <span className={className}>

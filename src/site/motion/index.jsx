@@ -3,7 +3,16 @@
 // `@/site/motion` used to be a single file; it is now this directory, so every
 // existing `import { Reveal } from "@/site/motion"` keeps resolving unchanged.
 
-export { D, EASE, STAGGER, GREEN, GREEN_DARK, GREEN_SOFT, green } from "./tokens";
+export {
+  D,
+  EASE,
+  STAGGER,
+  TIER,
+  activityGreen,
+  activityGreenDark,
+  activityGreenSoft,
+  activityAlpha,
+} from "./tokens";
 export { useReducedMotion, useReducedMotionRef, useInView, useHasFinePointer } from "./hooks";
 
 export { default as RevealOnScroll } from "./RevealOnScroll";

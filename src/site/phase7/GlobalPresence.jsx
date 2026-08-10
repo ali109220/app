@@ -1,7 +1,7 @@
 import { Globe2, Users, MapPinned } from "lucide-react";
 import { CountUp } from "@/site/ui";
 import { T } from "@/site/theme";
-import { RevealOnScroll, STAGGER } from "@/site/motion";
+import { RevealOnScroll, TIER } from "@/site/motion";
 
 const METRICS = [
   { n: 15, suffix: "+", label: "Countries", icon: Globe2 },
@@ -13,16 +13,17 @@ export default function GlobalPresence() {
   return <section className="relative overflow-hidden border-b px-6 py-20 md:px-12 md:py-24" style={{ borderColor: T.border }} aria-labelledby="presence-heading">
     <div className="mx-auto max-w-[1400px]">
       <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
-        <RevealOnScroll variant="fade-right" className="lg:col-span-5">
+        <RevealOnScroll variant="fade-right" delay={TIER.heading} className="lg:col-span-5">
           <div className="font-jbmono text-xs uppercase tracking-[.22em]" style={{ color: T.signal }}>Scale & presence</div>
           <h2 id="presence-heading" className="mt-5 text-4xl font-bold leading-[.94] tracking-[-.03em] sm:text-5xl">Built with regional perspective</h2>
           <p className="mt-5 max-w-xl text-base leading-relaxed" style={{ color: T.muted }}>Tayseer’s published company figures reflect delivery across more than 15 countries, supported by a broad portfolio and specialist technology teams.</p>
           <div className="mt-8 grid grid-cols-3 gap-px overflow-hidden rounded-xl border" style={{ borderColor: T.border, background: T.border }}>
-            {METRICS.map((m, index) => <RevealOnScroll key={m.label} delay={index * STAGGER} className="p-5 sm:p-6" style={{ background: T.panel }}><m.icon size={17} aria-hidden="true" style={{ color: T.signal }} /><div className="mt-5 text-3xl font-semibold"><CountUp to={m.n} suffix={m.suffix} /></div><div className="mt-2 text-xs tracking-wide" style={{ color: T.muted }}>{m.label}</div></RevealOnScroll>)}
+            {/* CountUp is already the motion here — no reveal on the tiles. */}
+            {METRICS.map((m) => <div key={m.label} className="p-5 sm:p-6" style={{ background: T.panel }}><m.icon size={17} aria-hidden="true" style={{ color: T.signal }} /><div className="mt-5 text-3xl font-semibold"><CountUp to={m.n} suffix={m.suffix} /></div><div className="mt-2 text-xs tracking-wide" style={{ color: T.muted }}>{m.label}</div></div>)}
           </div>
         </RevealOnScroll>
 
-        <RevealOnScroll variant="scale" delay={STAGGER} className="lg:col-span-7">
+        <RevealOnScroll variant="scale" delay={TIER.visual} className="lg:col-span-7">
           <div className="relative mx-auto aspect-square w-full max-w-[620px] rounded-full border" style={{ borderColor: T.border, background: "radial-gradient(circle at 50% 50%, rgba(13,90,140,.11), transparent 58%)" }} role="img" aria-label="Abstract visualization of Tayseer's regional and international delivery network">
             <svg viewBox="0 0 600 600" className="absolute inset-0 h-full w-full" aria-hidden="true">
               <circle cx="300" cy="300" r="230" fill="none" stroke="currentColor" strokeOpacity=".08" />

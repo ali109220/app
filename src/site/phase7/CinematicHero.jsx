@@ -9,15 +9,25 @@ const PROOF = [
   ["100+", "Skilled experts"],
 ];
 
-// The first-screen sequence, in ms. Heading leads, the visual wakes up last —
-// all of it CSS-driven (see .motion-rise / .hero-node in index.css) so nothing
-// waits on hydration to become visible.
+// The first-screen sequence, in ms.
+//
+//     150  heading
+//     300  supporting copy
+//     450  CTA
+//     540  proof figures
+//     600  certification badge
+//     650  technology visual begins (see HeroTechVisual)
+//
+// Deliberately spaced so no two beats land together — the visitor should read
+// the page being built, one line at a time, rather than watch it all fade in at
+// once. All CSS-driven, so nothing waits on hydration to become visible.
 const SEQ = {
-  heading: 0,
-  supporting: 100,
-  cta: 180,
-  proof: 260,
-  badge: 320,
+  heading: 150,
+  headingSecondLine: 240,
+  supporting: 300,
+  cta: 450,
+  proof: 540,
+  badge: 600,
 };
 
 export default function CinematicHero() {
@@ -32,7 +42,7 @@ export default function CinematicHero() {
 
           <h1 id="phase7-hero-title" className="max-w-[690px] text-[15vw] font-extrabold leading-[.84] tracking-[-.045em] sm:text-7xl lg:text-[5.8rem] xl:text-[6.4rem]">
             <span className="block overflow-hidden"><span className="motion-line-reveal block" style={{ animationDelay: `${SEQ.heading}ms`, animationDuration: "620ms" }}>Banking.</span></span>
-            <span className="block overflow-hidden"><span className="motion-line-reveal block" style={{ color: T.signal, animationDelay: `${SEQ.heading + 90}ms`, animationDuration: "620ms" }}>Reinvented.</span></span>
+            <span className="block overflow-hidden"><span className="motion-line-reveal block" style={{ color: T.signal, animationDelay: `${SEQ.headingSecondLine}ms`, animationDuration: "620ms" }}>Reinvented.</span></span>
           </h1>
 
           <p className="motion-rise mt-6 max-w-xl text-base leading-relaxed sm:text-lg md:mt-7" style={{ color: T.muted, "--delay": `${SEQ.supporting}ms` }}>

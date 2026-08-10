@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useInView, useReducedMotion } from "./hooks";
-import { D, EASE, GREEN, STAGGER, green } from "./tokens";
+import { D, EASE, STAGGER, activityAlpha, activityGreen } from "./tokens";
 
 /**
  * Draws an existing chart line left-to-right, then pops its data points in
@@ -108,13 +108,16 @@ export default function AnimatedChart({
               }}
             >
               {/* The live point is the only green thing in the chart: one
-                  reading is currently arriving, the rest are history. */}
-              {isLive && (
+                  reading is currently arriving, the rest are history. It pings
+                  three times and stops — the dashboard has to end stable.
+                  Mounted only once in view, so those three pings can't be spent
+                  while the section is still below the fold. */}
+              {isLive && inView && !reduced && (
                 <circle
                   cx={dot.x}
                   cy={dot.y}
                   r="11"
-                  fill={green(0.18)}
+                  fill={activityAlpha(0.18)}
                   className="motion-data-pulse"
                   style={{ animationDelay: `${delay + 120}ms`, transformOrigin: `${dot.x}px ${dot.y}px` }}
                 />
@@ -123,7 +126,7 @@ export default function AnimatedChart({
                 cx={dot.x}
                 cy={dot.y}
                 r={isLive ? 6 : 4}
-                fill={isLive ? GREEN : stroke}
+                fill={isLive ? activityGreen : stroke}
                 stroke="#FFFFFF"
                 strokeWidth="2"
               />

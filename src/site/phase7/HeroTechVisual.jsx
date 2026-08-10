@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import { FlowParticle } from "@/site/motion/NetworkFlow";
 import { useHasFinePointer, useReducedMotionRef } from "@/site/motion/hooks";
-import { GREEN, green } from "@/site/motion/tokens";
+import { activityAlpha, activityGreen } from "@/site/motion/tokens";
 
 /**
  * The hero illustration, inlined from /tayseer-banking-hero.svg.
@@ -32,10 +32,27 @@ const NODES = [
 // The only green node: intelligence is the thing that is "live" in this diagram.
 const ACTIVE_NODE = NODES[4];
 
-const NODE_DELAY = 250;   // brief: visual activates from 250ms
-const NODE_STEP = 70;
-const LINK_DELAY = 300;
-const LINK_STEP = 60;
+/**
+ * The wake-up sequence. Read top to bottom, this is the story:
+ * the structure appears, then it connects, then — only once it is all there —
+ * a part of it comes alive.
+ *
+ *    650ms  visual begins: node discs appear one after another
+ *    700ms  connectors draw outward from the centre
+ *    950ms  FIRST GREEN — the intelligence node activates
+ *   1200ms  connection activity — a packet crosses to it
+ *   1500ms  settled
+ *
+ * Nothing here animates simultaneously; each beat has the stage to itself.
+ */
+const NODE_DELAY = 650;
+const NODE_STEP = 45;
+const NODE_DUR = 480;
+const LINK_DELAY = 700;
+const LINK_STEP = 40;
+const LINK_DUR = 600;
+const FIRST_ACTIVITY = 950;
+const CONNECTION_ACTIVITY = 1200;
 
 const MAX_SHIFT = 4; // px — hard ceiling on cursor response
 
@@ -121,7 +138,7 @@ export default function HeroTechVisual({ className = "" }) {
                 className="hero-link"
                 pathLength="1"
                 d={`M${CENTRE.x} ${CENTRE.y}L${node.x} ${node.y}`}
-                style={{ "--delay": `${LINK_DELAY + index * LINK_STEP}ms`, "--dur": "720ms" }}
+                style={{ "--delay": `${LINK_DELAY + index * LINK_STEP}ms`, "--dur": `${LINK_DUR}ms` }}
               />
             ))}
           </g>
@@ -135,7 +152,7 @@ export default function HeroTechVisual({ className = "" }) {
                 cx={node.x}
                 cy={node.y}
                 r="48"
-                style={{ "--delay": `${NODE_DELAY + index * NODE_STEP}ms`, "--dur": "520ms" }}
+                style={{ "--delay": `${NODE_DELAY + index * NODE_STEP}ms`, "--dur": `${NODE_DUR}ms` }}
               />
             ))}
           </g>
@@ -147,32 +164,32 @@ export default function HeroTechVisual({ className = "" }) {
               positioned group directly would drop every glyph at the origin. */}
           <g fill="none" stroke="#fff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
             <g transform="translate(165 120)">
-              <g className="hero-node" style={{ "--delay": `${NODE_DELAY + 40}ms`, "--dur": "520ms" }}>
+              <g className="hero-node" style={{ "--delay": `${NODE_DELAY + 40}ms`, "--dur": `${NODE_DUR}ms` }}>
                 <rect x="-17" y="-25" width="34" height="50" rx="6" />
                 <circle cy="8" r="8" />
                 <path d="M-8-13h16" />
               </g>
             </g>
             <g transform="translate(555 110)">
-              <g className="hero-node" style={{ "--delay": `${NODE_DELAY + NODE_STEP + 40}ms`, "--dur": "520ms" }}>
+              <g className="hero-node" style={{ "--delay": `${NODE_DELAY + NODE_STEP + 40}ms`, "--dur": `${NODE_DUR}ms` }}>
                 <path d="M-24 8c13-24 35-24 48 0M-17 15c9-15 25-15 34 0M-8 23c4-7 12-7 16 0" />
                 <circle cy="30" r="3" fill="#fff" stroke="none" />
               </g>
             </g>
             <g transform="translate(610 250)">
-              <g className="hero-node" style={{ "--delay": `${NODE_DELAY + NODE_STEP * 2 + 40}ms`, "--dur": "520ms" }}>
+              <g className="hero-node" style={{ "--delay": `${NODE_DELAY + NODE_STEP * 2 + 40}ms`, "--dur": `${NODE_DUR}ms` }}>
                 <rect x="-22" y="-16" width="44" height="32" rx="4" />
                 <circle r="8" />
               </g>
             </g>
             <g transform="translate(535 380)">
-              <g className="hero-node" style={{ "--delay": `${NODE_DELAY + NODE_STEP * 3 + 40}ms`, "--dur": "520ms" }}>
+              <g className="hero-node" style={{ "--delay": `${NODE_DELAY + NODE_STEP * 3 + 40}ms`, "--dur": `${NODE_DUR}ms` }}>
                 <rect x="-24" y="-23" width="48" height="46" rx="8" />
                 <path d="M-14-9h28M-14 0h28M-14 9h28" />
               </g>
             </g>
             <g transform="translate(108 248)">
-              <g className="hero-node" style={{ "--delay": `${NODE_DELAY + NODE_STEP * 5 + 40}ms`, "--dur": "520ms" }}>
+              <g className="hero-node" style={{ "--delay": `${NODE_DELAY + NODE_STEP * 5 + 40}ms`, "--dur": `${NODE_DUR}ms` }}>
                 <path d="M-22-6h13v-13M22 6H9v13M-9-19l-13 13M9 19L22 6" />
                 <circle cx="-4" cy="4" r="6" />
                 <circle cx="7" cy="-7" r="6" />
@@ -181,7 +198,7 @@ export default function HeroTechVisual({ className = "" }) {
           </g>
 
           <g transform="translate(175 370)" fontFamily="Arial,sans-serif" textAnchor="middle" fill="#fff">
-            <g className="hero-node" style={{ "--delay": `${NODE_DELAY + NODE_STEP * 4 + 40}ms`, "--dur": "520ms" }}>
+            <g className="hero-node" style={{ "--delay": `${NODE_DELAY + NODE_STEP * 4 + 40}ms`, "--dur": `${NODE_DUR}ms` }}>
               <rect x="-22" y="-22" width="44" height="44" rx="8" fill="none" stroke="#fff" strokeWidth="3" />
               <text y="7" fontSize="18" fontWeight="700">AI</text>
             </g>
@@ -191,24 +208,41 @@ export default function HeroTechVisual({ className = "" }) {
               One node is live and two connectors carry traffic. Everything else
               in the diagram stays deliberately still — the green has to mean
               something, which it only does if it is rare. */}
+          {/* ── Activity layer ──────────────────────────────────────────────
+              The whole green budget for the first screen is spent here: one
+              active node and one connector carrying data. The other five nodes
+              and five connectors stay structural blue, which is the only reason
+              the green means anything at all. */}
           <g aria-hidden="true" fill="none">
-            {/* Steady green outline = this node is the active one. */}
-            <circle cx={ACTIVE_NODE.x} cy={ACTIVE_NODE.y} r="48" stroke={green(0.75)} strokeWidth="2.5" />
-            {/* Expanding ring = it is doing something right now. */}
+            {/* 950ms — first green. A steady outline: this node is the active one.
+                It fades in rather than being present from the start, so the
+                activation reads as the system waking up, not as decoration. */}
+            <circle
+              className="motion-rise"
+              cx={ACTIVE_NODE.x}
+              cy={ACTIVE_NODE.y}
+              r="48"
+              stroke={activityAlpha(0.75)}
+              strokeWidth="2.5"
+              style={{ "--delay": `${FIRST_ACTIVITY}ms`, "--rise": "0px" }}
+            />
+            {/* Expanding ring — three pings, then it stops and the steady
+                outline above is all that remains. */}
             <circle
               className="motion-data-pulse"
               cx={ACTIVE_NODE.x}
               cy={ACTIVE_NODE.y}
               r="48"
-              stroke={GREEN}
+              stroke={activityGreen}
               strokeWidth="2"
-              style={{ transformOrigin: `${ACTIVE_NODE.x}px ${ACTIVE_NODE.y}px`, animationDelay: "1400ms" }}
+              style={{ transformOrigin: `${ACTIVE_NODE.x}px ${ACTIVE_NODE.y}px`, animationDelay: `${FIRST_ACTIVITY}ms` }}
             />
 
-            {/* Two connectors carry traffic, offset so they are almost never in
-                flight at the same time. The other four stay quiet. */}
-            <FlowParticle from={CENTRE} to={ACTIVE_NODE} delay={1500} radius={4} />
-            <FlowParticle from={CENTRE} to={NODES[1]} delay={3400} radius={4} />
+            {/* 1200ms — connection activity. A single packet on a single
+                connector, on a long cycle: this is the hero's ambient heartbeat
+                once the entrance has settled, and it is intentionally the only
+                thing still moving anywhere above the fold. */}
+            <FlowParticle from={CENTRE} to={ACTIVE_NODE} delay={CONNECTION_ACTIVITY} radius={4} />
           </g>
         </g>
 

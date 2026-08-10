@@ -65,9 +65,9 @@
        point, interaction feedback. Never used for static decoration.
        Deliberately separate from the retired `T.green` token, which still maps
        to blue for ~20 components outside the homepage. */
-    --tayseer-green: #62A945;
-    --tayseer-green-dark: #4D9136;
-    --tayseer-green-soft: #EAF5E5;
+    --activity-green: #62A945;
+    --activity-green-dark: #4D9136;
+    --activity-green-soft: #EAF5E5;
 
     /* ── Motion tokens ─────────────────────────────────────────────────────
        Mirrors src/site/motion/tokens.js. Durations live in exactly these two
@@ -221,15 +221,19 @@
 }
 
 .motion-flow-particle {
-  /* The declared duration is one trip; the cycle is ~2.6x that, so a path is
-     idle far longer than it is busy. */
-  animation: motion-flow-travel calc(var(--flow-dur, 1400ms) * 2.6) infinite var(--motion-ease);
+  /* The declared duration is one trip; the cycle is ~3.4x that, so a connector
+     spends roughly a third of its time carrying data and the rest at rest. */
+  /* `both` is load-bearing whenever --flow-count is finite: the shorthand resets
+     animation-fill-mode to `none`, and on the final iteration the element would
+     snap back to its base style — which declares no opacity, i.e. fully opaque.
+     A stranded green dot parked mid-connector is exactly what must not happen. */
+  animation: motion-flow-travel calc(var(--flow-dur, 1400ms) * 3.4) var(--flow-count, infinite) both var(--motion-ease);
   will-change: transform, opacity;
 }
 
 /* The pipeline dot. Percentages are relative to the SHARED cycle length, not to
    a single hop: every stage runs the same cycle and is offset by animation-delay,
-   so the hops stay in sequence indefinitely instead of drifting out of phase.
+   so the hops stay in sequence instead of drifting out of phase.
    Travel occupies only the first 14% of the cycle — the remainder is the dwell
    that keeps the flow reading as "active" rather than "busy". */
 @keyframes motion-stage-travel {
@@ -246,13 +250,15 @@
   border-radius: 9999px;
   /* Travels the full cell, less its own width, so it lands on the chevron. */
   --stage-travel: calc(100% - 5px);
-  animation: motion-stage-travel var(--stage-cycle, 9000ms) infinite linear;
+  /* `both` — see the note on .motion-flow-particle. Without it the dot is left
+     visible and motionless in the middle of a cell once the passes finish. */
+  animation: motion-stage-travel var(--stage-cycle, 7000ms) var(--stage-count, 2) both linear;
   will-change: transform, opacity;
 }
 
 /* Destination acknowledgement — a brief brightening as the dot lands, then gone.
-   Also cycle-relative, and delayed to the arrival time by its caller. */
-/* Visible for 10% of the cycle, against a 16% gap between arrivals — so the
+   Also cycle-relative, and delayed to the arrival time by its caller.
+   Visible for 10% of the cycle, against a 16% gap between arrivals — so the
    glow has fully faded from one stage before the next lights up. A wider window
    lets two adjacent cells glow at once, which reads as the row blinking rather
    than as one packet moving through it. */
@@ -264,8 +270,31 @@
 }
 
 .motion-stage-arrive {
-  animation: motion-stage-arrive var(--stage-cycle, 9000ms) infinite var(--motion-ease);
+  /* `both` — otherwise the green wash stays painted over the destination cell
+     permanently, and the section never returns to blue/navy/white at rest. */
+  animation: motion-stage-arrive var(--stage-cycle, 7000ms) var(--stage-count, 2) both var(--motion-ease);
   will-change: opacity;
+}
+
+/* ── Settling, and only running when watched ────────────────────────────────
+   The pipeline is a finite story: a packet leaves, crosses, arrives, briefly
+   lights the destination, stops. It runs two passes and then the section is
+   permanently still — the final keyframe of every rule above is opacity 0, so
+   "finished" and "invisible" are the same state and nothing is left frozen
+   mid-flight.
+
+   Both rules start PAUSED. Without that, a section further down the page would
+   spend its two passes while off-screen and the visitor would arrive to a
+   diagram that has already finished moving. The [data-flow="active"] attribute
+   is set by an IntersectionObserver when the section is actually in view. */
+.motion-stage-pulse,
+.motion-stage-arrive {
+  animation-play-state: paused;
+}
+
+[data-flow="active"] .motion-stage-pulse,
+[data-flow="active"] .motion-stage-arrive {
+  animation-play-state: running;
 }
 
 /* ── Interaction: architecture nodes ────────────────────────────────────────
@@ -289,8 +318,8 @@
 .arch-node:hover .arch-node-chip,
 .arch-node:focus-within .arch-node-chip {
   transform: translateY(-2px);
-  color: var(--tayseer-green-dark) !important;
-  background-color: var(--tayseer-green-soft) !important;
+  color: var(--activity-green-dark) !important;
+  background-color: var(--activity-green-soft) !important;
 }
 
 /* The outgoing connector of a hovered node becomes more visible — the path, not
@@ -302,12 +331,15 @@
 
 .arch-node:hover .arch-node-link,
 .arch-node:focus-within .arch-node-link {
-  border-color: var(--tayseer-green) !important;
+  border-color: var(--activity-green) !important;
   opacity: 1;
 }
 
 /* ── Live status ────────────────────────────────────────────────────────── */
 
+/* Status dots ping a few times on arrival and then hold as a plain green dot.
+   An indicator that pulses forever competes with the data particles for the
+   visitor's attention, and green everywhere at once stops meaning anything. */
 @keyframes motion-activity-halo {
   0%   { opacity: 0.55; transform: scale(1); }
   70%  { opacity: 0; transform: scale(2.6); }
@@ -315,9 +347,11 @@
 }
 
 .motion-activity-halo {
-  animation: motion-activity-halo 2600ms infinite var(--motion-ease);
+  animation: motion-activity-halo 2600ms 3 both var(--motion-ease);
 }
 
+/* The live chart point announces itself, then settles into a static green dot.
+   The dashboard must end visually stable — nothing on it loops. */
 @keyframes motion-data-pulse {
   0%, 100% { opacity: 0; transform: scale(0.6); }
   30%      { opacity: 1; transform: scale(1); }
@@ -325,7 +359,7 @@
 }
 
 .motion-data-pulse {
-  animation: motion-data-pulse 2400ms infinite var(--motion-ease);
+  animation: motion-data-pulse 2400ms var(--pulse-count, 3) both var(--motion-ease);
   will-change: transform, opacity;
 }
 
@@ -388,7 +422,7 @@
   right: 0;
   bottom: 0.5rem;
   height: 2px;
-  background: var(--tayseer-green);
+  background: var(--activity-green);
   transform: scaleX(0);
   transform-origin: left center;
   transition: transform var(--motion-fast) var(--motion-ease);
@@ -433,7 +467,7 @@
 
 .cta-secondary:hover {
   transform: translateY(-1px);
-  border-color: var(--tayseer-green) !important;
+  border-color: var(--activity-green) !important;
 }
 
 .cta-secondary:active {
@@ -477,7 +511,7 @@
   top: 0;
   bottom: 0;
   width: 2px;
-  background: var(--tayseer-green);
+  background: var(--activity-green);
   transform: scaleY(0);
   transform-origin: top center;
   transition: transform var(--motion-normal) var(--motion-ease);
@@ -516,7 +550,7 @@
   .motion-rise { --rise: 10px; }
 
   .motion-flow-particle {
-    animation-duration: calc(var(--flow-dur, 1400ms) * 4);
+    animation-duration: calc(var(--flow-dur, 1400ms) * 5);
   }
 
   .motion-data-pulse,
@@ -524,10 +558,6 @@
     animation-duration: 3600ms;
   }
 }
-
-/* Nothing that moves on its own should run while the tab is in the background
-   or the section is off-screen; content-visibility already parks the deferred
-   sections, and these are all inside them. */
 
 @media (prefers-reduced-motion: reduce) {
   html:focus-within { scroll-behavior: auto; }

@@ -1,7 +1,7 @@
 import { Quote, ArrowRight, BadgeCheck } from "lucide-react";
 import Link from "next/link";
 import { T } from "@/site/theme";
-import { RevealOnScroll, STAGGER } from "@/site/motion";
+import { RevealOnScroll, STAGGER, TIER } from "@/site/motion";
 
 const STORIES = [
   { initials: "SA", name: "Saber Alkahtani", role: "Head of Individual Services Sector", theme: "Growth & innovation", quote: "Tayseer Innovations has been a key partner in driving growth and innovation within our individual banking services." },
@@ -13,11 +13,11 @@ const STORIES = [
 export default function ClientSuccessStories() {
   return <section className="relative border-b px-6 py-20 md:px-12 md:py-24" style={{ borderColor: T.border, background: T.panel }} aria-labelledby="client-success-heading">
     <div className="mx-auto max-w-[1400px]">
-      <RevealOnScroll className="font-jbmono text-xs uppercase tracking-[.22em]" style={{ color: T.signal }}>Client perspective</RevealOnScroll>
-      <RevealOnScroll delay={STAGGER} className="mt-5 grid gap-8 lg:grid-cols-12 lg:items-end"><h2 id="client-success-heading" className="text-4xl font-bold leading-[.94] tracking-[-.03em] sm:text-5xl lg:col-span-7">Partnership, seen through our clients</h2><p className="max-w-xl text-base leading-relaxed lg:col-span-5" style={{ color: T.muted }}>Published client feedback consistently points to the same themes: collaboration, adaptability, delivery capability and long-term support.</p></RevealOnScroll>
+      <RevealOnScroll delay={TIER.heading} className="font-jbmono text-xs uppercase tracking-[.22em]" style={{ color: T.signal }}>Client perspective</RevealOnScroll>
+      <div className="mt-5 grid gap-8 lg:grid-cols-12 lg:items-end"><RevealOnScroll as="h2" id="client-success-heading" delay={TIER.heading} className="text-4xl font-bold leading-[.94] tracking-[-.03em] sm:text-5xl lg:col-span-7">Partnership, seen through our clients</RevealOnScroll><RevealOnScroll as="p" delay={TIER.body} className="max-w-xl text-base leading-relaxed lg:col-span-5" style={{ color: T.muted }}>Published client feedback consistently points to the same themes: collaboration, adaptability, delivery capability and long-term support.</RevealOnScroll></div>
 
       <div className="mt-14 grid gap-5 md:grid-cols-2">
-        {STORIES.map((story, index) => <RevealOnScroll as="article" key={`${story.name}-${story.theme}`} delay={index * STAGGER} className="motion-card motion-card-accent group flex h-full min-h-[320px] flex-col overflow-hidden rounded-2xl border" style={{ borderColor: T.border, background: T.bg }}>
+        {STORIES.map((story, index) => <RevealOnScroll as="article" key={`${story.name}-${story.theme}`} delay={TIER.support + index * STAGGER} className="motion-card motion-card-accent group flex h-full min-h-[320px] flex-col overflow-hidden rounded-2xl border" style={{ borderColor: T.border, background: T.bg }}>
           <div className="flex items-center justify-between border-b px-6 py-5" style={{ borderColor: T.border }}><div className="flex items-center gap-4"><div className="motion-card-icon flex h-12 w-12 items-center justify-center rounded-xl font-jbmono text-xs font-semibold" style={{ background: "rgba(13,90,140,.12)", color: T.signal }}>{story.initials}</div><div><div className="font-semibold">{story.name}</div><div className="mt-1 text-xs" style={{ color: T.muted }}>{story.role}</div></div></div><BadgeCheck size={19} aria-hidden="true" style={{ color: T.signal }} /></div>
           <div className="flex flex-1 flex-col p-6 sm:p-7"><div className="font-jbmono text-xs tracking-wide" style={{ color: T.signal }}>{story.theme}</div><Quote size={22} aria-hidden="true" className="mt-7" style={{ color: T.signal }} /><blockquote className="mt-4 text-xl leading-relaxed sm:text-2xl">“{story.quote}”</blockquote><div className="mt-auto pt-7 text-xs leading-relaxed" style={{ color: T.muted }}>Excerpted from feedback already published by Tayseer. “FinTech” means financial technology. No additional outcome claims have been added.</div></div>
         </RevealOnScroll>)}

@@ -53,12 +53,19 @@ export function useReducedMotionRef() {
  * costs nothing per frame. Disconnects itself on first intersection: entrance
  * animations must never re-run when the user scrolls back up.
  *
+ * The defaults are deliberately forgiving. A larger bottom inset combined with a
+ * meaningful threshold (say -12% and 0.15) leaves an element that comes to rest
+ * inside the viewport's bottom band sitting there fully transparent — it never
+ * crosses the threshold, so it stays blank until the visitor happens to scroll
+ * further. Triggering on the first sliver instead keeps the reveal feeling
+ * deliberate while guaranteeing nothing visible is ever left invisible.
+ *
  * Under reduced motion (or without IO support) it reports `true` immediately,
  * so callers render their final state and skip animating entirely.
  *
  * @returns [ref, inView]
  */
-export function useInView({ rootMargin = "0px 0px -12% 0px", threshold = 0.15 } = {}) {
+export function useInView({ rootMargin = "0px 0px -8% 0px", threshold = 0.01 } = {}) {
   const ref = useRef(null);
   const [inView, setInView] = useState(false);
   const reduced = useReducedMotion();

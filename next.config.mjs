@@ -57,6 +57,14 @@ const nextConfig = {
 
     return [
       { source: "/:path*", headers: security },
+      {
+        // The entrance-intro kill switch must never be cached, otherwise
+        // "switch it off without a redeploy" becomes "switch it off and wait
+        // for a TTL". Note: headers() is inert under output:"export" — the
+        // host/CDN must be configured to match this.
+        source: "/intro-flag.js",
+        headers: [{ key: "Cache-Control", value: "no-store, must-revalidate" }]
+      },
       { source: "/fonts/:path*", headers: immutable },
       { source: "/logo-light.svg", headers: immutable },
       { source: "/tayseer-banking-hero.svg", headers: immutable },

@@ -7,6 +7,7 @@ import { Footer } from "@/site/Footer";
 import StructuredData from "@/site/StructuredData";
 import { T } from "@/site/theme";
 import { SITE_URL } from "@/lib/site";
+import TayseerEntrance from "@/site/intro/TayseerEntrance";
 
 
 export const metadata: Metadata = {
@@ -100,6 +101,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="preload" href="/fonts/InstrumentSans-Variable.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        {/* Runtime kill switch for the entrance intro. `async` so it can never
+            block the parser or move LCP; it resolves long before hydration,
+            which is the earliest point the intro can mount. */}
+        <script src="/intro-flag.js" async />
       </head>
       <body suppressHydrationWarning>
         <StructuredData data={[organizationSchema, websiteSchema]} />
@@ -111,6 +116,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <main id="main-content" tabIndex={-1} data-testid="page-main">{children}</main>
           <Footer />
         </div>
+        {/* Sibling of the page, never a wrapper: it renders null on the server
+            and on the hydration pass, so it cannot gate rendering or LCP. */}
+        <TayseerEntrance />
       </body>
     </html>
   );

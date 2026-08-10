@@ -216,30 +216,6 @@
     "status": "ok"
   },
   {
-    "pageName": "sectors-banks",
-    "route": "/sectors/banks",
-    "vpName": "360",
-    "outFile": "c:\\Users\\Ali\\Downloads\\tayseer-v3\\app\\screenshots\\sectors-banks\\360.png",
-    "size": 422430,
-    "status": "ok"
-  },
-  {
-    "pageName": "sectors-banks",
-    "route": "/sectors/banks",
-    "vpName": "768",
-    "outFile": "c:\\Users\\Ali\\Downloads\\tayseer-v3\\app\\screenshots\\sectors-banks\\768.png",
-    "size": 462349,
-    "status": "ok"
-  },
-  {
-    "pageName": "sectors-banks",
-    "route": "/sectors/banks",
-    "vpName": "1440",
-    "outFile": "c:\\Users\\Ali\\Downloads\\tayseer-v3\\app\\screenshots\\sectors-banks\\1440.png",
-    "size": 459638,
-    "status": "ok"
-  },
-  {
     "pageName": "connect",
     "route": "/connect",
     "vpName": "360",

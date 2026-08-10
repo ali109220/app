@@ -1,8 +1,8 @@
 /**
  * NOTE: this file must stay a SERVER module — no "use client".
  *
- * All seven callers (six /solutions/* pages and /sectors/banks) are server
- * components and they pass lucide icon *components* through `capabilities[].icon`.
+ * All six callers (the /solutions/* pages) are server components and they pass
+ * lucide icon *components* through `capabilities[].icon`.
  * Functions cannot cross the server→client boundary, so marking this file
  * "use client" makes every one of those pages throw at render time.
  *
@@ -20,11 +20,11 @@ import { CountUp } from "@/site/ui";
 import { T } from "@/site/theme";
 
 /**
- * Shared layout behind all six /solutions/* pages and /sectors/banks.
+ * Shared layout behind all six /solutions/* pages.
  *
  * Motion here is Level 1 + Level 2 only. These pages deliberately do NOT get a
  * signature hero animation — the technology illustration that wakes up node by
- * node belongs to Home, and repeating it on seven more routes would make them
+ * node belongs to Home, and repeating it on six more routes would make them
  * read as copies of the homepage rather than pages of the same site.
  */
 

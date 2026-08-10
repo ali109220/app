@@ -10,7 +10,7 @@
 
 This proposal's core differentiator, stated plainly rather than implied: it's backed by a real, working, buyer-first prototype and a verified/corrected technical audit — not a slide deck. Everything in this document is grounded in one of three sources, and each claim is labeled so a judge can tell which:
 
-1. **A real, working Next.js prototype** — not slides. The screenshots in the UI/UX section are of pages actually running on the build in this submission, including a brand-new "Banks" sector page built specifically to demonstrate the proposed information architecture.
+1. **A real, working Next.js prototype** — not slides. The screenshot in the UI/UX section is of a page actually running on the build in this submission, deployed at a URL a judge can open, and the design-token and typography corrections behind it are applied across the whole codebase, not just the one screen.
 2. **A real audit of the current live site** (`tayseer.me`) — Semrush's 2026-08-02 Site Audit (PDF + four data exports), independently re-checked against a live crawl on 2026-08-10 (the submission date) rather than taken at face value.
 3. **Explicitly flagged target-state decisions** — the recommended technology stack, hosting, support tiers, and cost/timeline figures are presented as the team's recommendation, clearly separated from what the working prototype proves today.
 
@@ -70,23 +70,20 @@ The prototype previously carried an old petrol-navy/viridian palette (`#0D5A8C` 
 
 **One honest exception, not glossed over:** the primary navigation uses a `backdrop-blur` on its sticky header (a translucent scroll-through blur so nav stays legible over scrolling content). That is a functional use of blur, not decorative glassmorphism — no frosted card panels, no glass borders elsewhere — but it is technically a blur effect, and the brief's "no glass" instruction is stated as a hard rule, so it's flagged here rather than quietly kept. Removing it is a five-minute change if the judges want zero exceptions; we left it because dropping it makes the header unreadable over busy hero content without a redesign of that section.
 
-### 1.2 The two screens
+### 1.2 The working screen
 
-Two real screenshots (1440px, Chromium via Playwright) of the actual build in this submission — not mockups. Given the deadline, this is presented honestly as two working screens rather than padded with a third invented page.
+One real screenshot (1440px, Chromium via Playwright) of the actual build in this submission — not a mockup. Given the deadline, this is presented honestly as **one finished, working screen** rather than padded out with invented pages: a single screen we can stand behind is worth more than three we'd have to caveat.
 
 **Home** — the existing homepage, now on-token.
 ![Home screen](screenshots/proposal/home.png)
 
-**Banks — sector page** *(new page, built for this proposal — `/sectors/banks`)* — demonstrates one of the four proposed buyer segments. Every capability shown is reused verbatim from the site's existing, real Core Banking and Banking Systems pages, regrouped under a buyer-first lens rather than a product-catalogue one — nothing here is new copy.
-![Banks sector screen](screenshots/proposal/sectors-banks.png)
-
-The new page builds and renders on the same production toolchain as the rest of the site (`npm run build`, static export) — it's not a Figma mockup grafted on top.
+This is not a Figma mockup grafted on top: it builds and renders on the same production toolchain as the rest of the site (`npm run build`, static export), it's deployed live at [tayseerdemo.xyz](https://tayseerdemo.xyz/), and the Lighthouse numbers above were measured against it. The token and typography corrections in §1.1 are applied sitewide — every `/solutions/*` page, About, Blog, Careers, Connect and the legal pages render on the corrected palette too, they're just not screenshotted here.
 
 ---
 
 ## 2. Sitemap & content structure
 
-This section is the clearest evidence of this proposal's differentiator (a working prototype and a verified audit, not a slide deck): the contrast below isn't described in the abstract, it's built — the Banks page in §1.2 is the proposed structure on the right, actually running.
+**Read this section as a recommendation, not as something already shipped.** The current-state IA below is read directly from the live site and is factual; the proposed IA is our recommended restructure, and no sector page is built in this submission to demonstrate it. It is argued from the existing content and the audit rather than shown running — and this document's standard is to say which of those two it is.
 
 ### 2.1 What the current site actually asks a visitor to do
 
@@ -122,9 +119,11 @@ Tayseer Innovations (proposed)
 ├── About Us / Blogs and Resources / Careers / Connect   [unchanged]
 ```
 
-The six product lines don't disappear — Core Banking, Fahim AI, MBuke, Managed Services, Banking Systems, and Software Management Systems remain real pages with the same content. What changes is the **entry point**: a buyer opens the sector door with their name on it, and the relevant products are already assembled behind it. The Banks page built for this submission (§1.2) demonstrates this works without rewriting a single capability description.
+The six product lines don't disappear — Core Banking, Fahim AI, MBuke, Managed Services, Banking Systems, and Software Management Systems remain real pages with the same content. What changes is the **entry point**: a buyer opens the sector door with their name on it, and the relevant products are already assembled behind it.
 
-**What shipped as working proof vs. what's a scoped recommendation:** Banks is a real, running page today (§1.2). Telecom, Exchange & MTO, and Government are the same pattern, not yet built — each is a repeat of the same regrouping exercise applied to different existing product content, scoped at roughly half a day each once the Banks template is approved.
+**Why we're confident this is low-risk to build, even though it isn't built yet:** each sector page is a *regrouping* exercise, not a content-writing one. A Banks page, for example, assembles capabilities that already exist verbatim on `/solutions/core-banking` and `/solutions/banking-systems` under a buyer-first heading — no new claims, no new copy to approve, and the six product pages stay exactly as they are underneath. That's what keeps the estimate honest: we scope each sector page at roughly half a day of build once the first template and the segment list are approved, and the four segments named above are our recommended starting set, subject to Tayseer confirming they match the actual pipeline.
+
+**Status, stated plainly:** all four sector pages — Banks, Telecom, Exchange & MTO, Government — are **recommended, not built**. Nothing in this submission demonstrates the proposed IA running; §7 prices building it out.
 
 ---
 
@@ -255,7 +254,7 @@ The prototype is a fully static export — no application server, no database, s
 |---|---|---|---|
 | **Essential** | $14,500 | 6 weeks | Buyer-first IA (Banks, Telecom, Exchange & MTO, Government) built out, design-token/typography fix, security headers + CSP hardening, robots/sitemap/hreflang fixes. |
 | **Recommended** | $22,500 | 7 weeks | Essential, plus the Next 16 / Tailwind v4 / next-intl stack migration (§3.2), Sanity CMS integration, full SEO remediation (structured data, canonical/redirect cleanup from §5.1). |
-| **Premium** | $32,000 | 9 weeks | Recommended, plus Gold support-tier onboarding, performance hardening pass, and a second sector-page batch beyond Banks. |
+| **Premium** | $32,000 | 9 weeks | Recommended, plus Gold support-tier onboarding, performance hardening pass, and a second sector-page batch beyond the initial four (§2.2). |
 
 **The timeline arithmetic, shown openly rather than asserted:** the Recommended tier's scope is estimated at **72 person-days**. Two people working in parallel (a build lead and a design/content lead, the realistic team size for this project) divides that into **72 ÷ 2 = 36 elapsed working days ≈ 7.2 weeks**, stated in the timeline as 7 weeks (see §8 for why we don't round to 6). This is the actual arithmetic behind the middle tier's number, not a number picked to sound reasonable.
 
@@ -272,9 +271,10 @@ The prototype is a fully static export — no application server, no database, s
 Specific, not generic, because this is a named judging criterion:
 
 - **Content verification against the live site.** Every claim in §4 and §5 was checked against the actual Semrush audit export for `tayseer.me`, re-parsed from the raw PDF and four `.xlsx` files rather than accepted as summarized — and where the original working brief's figures (119 URLs, 5 missing headers, 7.8MB images) didn't match the source data, this document says so explicitly instead of repeating them.
-- **Fabrication-catching across multiple review passes.** The proposal went through a design-token consistency check (surfacing 22 files still carrying the old hardcoded palette), a title-metadata check (catching a duplicate-title bug in a new page this exact proposal introduced — the same bug class an earlier audit had already flagged elsewhere in the codebase), and a live re-verification pass on 2026-08-10 that caught the robots.txt/sitemap.xml status having changed since the original 2026-08-02 audit.
+- **Fabrication-catching across multiple review passes.** The proposal went through a design-token consistency check (surfacing 22 files still carrying the old hardcoded palette), a title-metadata check across the route tree (catching the same duplicate-title bug class an earlier audit had already flagged elsewhere in the codebase), and a live re-verification pass on 2026-08-10 that caught the robots.txt/sitemap.xml status having changed since the original 2026-08-02 audit.
 - **AI-assisted audit tooling.** The Semrush PDF and xlsx exports were parsed programmatically (Node.js + the `xlsx` package, since no Python was available in this environment) rather than read once and summarized from memory — and cross-checked against a fresh live HTTP/protocol/robots check run the same day this document was written.
-- **AI-assisted scaffold build with verified technical claims.** The new Banks sector page in §1.2 is a real, building, static-exported Next.js route — not a Figma file — and the "corrections" claimed in §3.2 (`proxy.ts`, `@theme`, `next/font`) were checked against what those frameworks actually changed, not asserted from a general sense of "modern Next.js."
+- **Verified technical claims rather than asserted ones.** The prototype in §1.2 is a real, building, static-exported Next.js route — not a Figma file — and the "corrections" claimed in §3.2 (`proxy.ts`, `@theme`, `next/font`) were checked against what those frameworks actually changed, not asserted from a general sense of "modern Next.js."
+- **Cutting work rather than shipping it half-done.** A prototype sector page was built during preparation to demonstrate §2's buyer-first IA, then removed before submission because it wasn't at the standard of the rest of the build. §2 was rewritten to present that IA as a recommendation instead of implying a running example — the same treatment given to the audit figures in §5.1, applied to our own work.
 - **The same scrutiny applied to our own reported numbers, not just the audit's.** When asked to add the team's live Lighthouse scores, we re-ran Lighthouse against the deployed URL ourselves rather than transcribing the reported figures. Accessibility/Best Practices/SEO/Agentic Browsing reproduced at 100 across 4 runs — confirmed. Performance did not reproduce as a stable 97 (we saw 82–98 across the same 4 runs) — reported as a range with the discrepancy stated plainly, the same treatment given to the original brief's audit figures in §5.1, applied here to our own team's claim just as rigorously.
 
 This is the accurate description of the process, not a marketing claim about AI capability.

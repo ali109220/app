@@ -19,7 +19,6 @@ Motion levels, per the Phase 2 hierarchy:
 | `/solutions/managed-services` | Product | `EnterpriseSolutionLayout` | `SolutionHero` | capability + related | `StatsStrip` | `ArchitectureFlow` | **L1 + L2** | — |
 | `/solutions/banking-systems` | Product | `EnterpriseSolutionLayout` | `SolutionHero` | capability + related | `StatsStrip` | `ArchitectureFlow` | **L1 + L2** | — |
 | `/solutions/software-management-systems` | Product | `EnterpriseSolutionLayout` | `SolutionHero` | capability + related | `StatsStrip` | `ArchitectureFlow` | **L1 + L2** | — |
-| `/sectors/banks` | Sector | `pages/sectors/Banks` → `EnterpriseSolutionLayout` | `SolutionHero` | capability + related | `StatsStrip` | `ArchitectureFlow` | **L1 + L2**, more restrained than Home | no signature hero animation |
 | `/blog` | Index / editorial | `pages/Blog` + `ContactSection` | `InnerHero` | post cards | none | none | **L1** reveal + card interaction | no data motion — editorial |
 | `/blog/[slug]` | Article | `pages/BlogArticle` + `ContactSection` | `InnerHero` | related posts | none | none | **L1** reveal, prose left calm | body copy not animated per-paragraph |
 | `/careers` | Corporate | `next/CareersClient` → `pages/Careers` | `InnerHero` | role cards | none | application form | **L1** + form field transitions | form itself never reveal-gated |
@@ -39,8 +38,8 @@ code was needed:
 | `site/motion/PageTransition` (in `app/layout.tsx`) | all |
 | `site/motion/RevealOnScroll` + the `Reveal` adapter | all |
 | `site/ui.jsx` → `InnerHero` | about, solutions, blog, blog/[slug], careers, connect, privacy, terms |
-| `site/phase8/EnterpriseSolutionLayout` | 6 × solutions/*, sectors/banks |
-| `site/ContactSection` | about, solutions, blog, blog/[slug], 6 × solutions/*, sectors/banks |
+| `site/phase8/EnterpriseSolutionLayout` | 6 × solutions/* |
+| `site/ContactSection` | about, solutions, blog, blog/[slug], 6 × solutions/* |
 | `index.css` interaction classes (`.motion-card`, `.cta-*`, `.nav-link`, field focus) | all |
 
 ## Unreachable files — intentionally left alone
@@ -53,8 +52,3 @@ motion to them would be work with no user-visible effect:
 `phase6/ExecutiveTestimonials`, `phase6/FahimShowcase`, `phase6/PremiumSolutions`,
 `phase6/VisualMedia`, `pages/SolutionDetail`, `site/PageStub` (only `src/App.jsx`,
 itself not a route since `pageExtensions` is `ts`/`tsx`).
-
-## Known gap, pre-existing
-
-Nothing in the site links to `/sectors/banks`. It renders correctly and its motion
-works, but it is reachable only by direct URL or `sitemap.xml`.

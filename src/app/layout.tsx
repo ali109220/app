@@ -8,6 +8,7 @@ import StructuredData from "@/site/StructuredData";
 import { T } from "@/site/theme";
 import { SITE_URL } from "@/lib/site";
 import TayseerEntrance from "@/site/intro/TayseerEntrance";
+import PageTransition from "@/site/motion/PageTransition";
 
 
 export const metadata: Metadata = {
@@ -113,7 +114,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         </a>
         <div style={{ background: T.bg, color: T.text }} className="min-h-screen font-instrument antialiased">
           <Header />
-          <main id="main-content" tabIndex={-1} data-testid="page-main">{children}</main>
+          <main id="main-content" tabIndex={-1} data-testid="page-main">
+            <PageTransition>{children}</PageTransition>
+          </main>
           <Footer />
         </div>
         {/* Sibling of the page, never a wrapper: it renders null on the server

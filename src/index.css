@@ -57,6 +57,27 @@
     --input: var(--edge);
     --ring: var(--blue);
     --radius: 0.5rem;
+
+    /* ── Activity green ────────────────────────────────────────────────────
+       Additive to the confirmed palette, not a replacement for any of it.
+       Blue above stays the structural brand colour; green means "something is
+       happening right now" — active nodes, data in flight, the live chart
+       point, interaction feedback. Never used for static decoration.
+       Deliberately separate from the retired `T.green` token, which still maps
+       to blue for ~20 components outside the homepage. */
+    --tayseer-green: #62A945;
+    --tayseer-green-dark: #4D9136;
+    --tayseer-green-soft: #EAF5E5;
+
+    /* ── Motion tokens ─────────────────────────────────────────────────────
+       Mirrors src/site/motion/tokens.js. Durations live in exactly these two
+       places so retiming the site never means grepping components. */
+    --motion-fast: 200ms;     /* hover / press feedback */
+    --motion-normal: 380ms;   /* state changes, page transitions */
+    --motion-reveal: 680ms;   /* content entrances */
+    --motion-activity: 1400ms;/* one data-particle trip */
+    --motion-stagger: 80ms;
+    --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   .dark {
@@ -153,6 +174,361 @@
   will-change: transform;
 }
 
+/* ══════════════════════════════════════════════════════════════════════════
+   MOTION SYSTEM
+   Every animation below moves only `opacity`, `transform` or `stroke-dashoffset`.
+   Nothing here animates width/height/top/left/margin/padding, so none of it can
+   trigger layout during a scroll.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Entrance: the hero load sequence ───────────────────────────────────── */
+
+@keyframes motion-rise-in {
+  from { opacity: 0; transform: translate3d(0, var(--rise, 16px), 0); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Set --delay (and optionally --dur / --rise) per element to order a sequence. */
+.motion-rise {
+  animation: motion-rise-in var(--dur, var(--motion-reveal)) var(--delay, 0ms) both var(--motion-ease);
+}
+
+/* ── Page transitions ───────────────────────────────────────────────────────
+   Enter-only, by design. Holding the outgoing route on screen to animate it out
+   is what makes SPA transitions feel like loading screens; this stays out of the
+   navigation's way entirely. */
+
+@keyframes page-enter {
+  from { opacity: 0; transform: translate3d(0, 10px, 0); }
+  to   { opacity: 1; transform: none; }
+}
+
+.page-transition-shell {
+  animation: page-enter var(--page-dur, var(--motion-normal)) both var(--page-ease, var(--motion-ease));
+}
+
+/* ── Data in flight ─────────────────────────────────────────────────────────
+   One particle leaves the source, crosses the connector, and vanishes as the
+   destination lights up. The long tail of the cycle is dead time on purpose:
+   continuous traffic on every path reads as noise, not activity. */
+
+@keyframes motion-flow-travel {
+  0%        { opacity: 0; transform: translate3d(0, 0, 0); }
+  8%        { opacity: 1; }
+  /* 8%–46% of the cycle is the trip; the rest is dwell. */
+  42%       { opacity: 1; }
+  46%, 100% { opacity: 0; transform: translate3d(var(--flow-dx), var(--flow-dy), 0); }
+}
+
+.motion-flow-particle {
+  /* The declared duration is one trip; the cycle is ~2.6x that, so a path is
+     idle far longer than it is busy. */
+  animation: motion-flow-travel calc(var(--flow-dur, 1400ms) * 2.6) infinite var(--motion-ease);
+  will-change: transform, opacity;
+}
+
+/* The pipeline dot. Percentages are relative to the SHARED cycle length, not to
+   a single hop: every stage runs the same cycle and is offset by animation-delay,
+   so the hops stay in sequence indefinitely instead of drifting out of phase.
+   Travel occupies only the first 14% of the cycle — the remainder is the dwell
+   that keeps the flow reading as "active" rather than "busy". */
+@keyframes motion-stage-travel {
+  0%        { opacity: 0; transform: translate3d(0, -50%, 0); }
+  2%        { opacity: 1; }
+  12%       { opacity: 1; }
+  14%, 100% { opacity: 0; transform: translate3d(var(--stage-travel, 100%), -50%, 0); }
+}
+
+.motion-stage-pulse {
+  left: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 9999px;
+  /* Travels the full cell, less its own width, so it lands on the chevron. */
+  --stage-travel: calc(100% - 5px);
+  animation: motion-stage-travel var(--stage-cycle, 9000ms) infinite linear;
+  will-change: transform, opacity;
+}
+
+/* Destination acknowledgement — a brief brightening as the dot lands, then gone.
+   Also cycle-relative, and delayed to the arrival time by its caller. */
+/* Visible for 10% of the cycle, against a 16% gap between arrivals — so the
+   glow has fully faded from one stage before the next lights up. A wider window
+   lets two adjacent cells glow at once, which reads as the row blinking rather
+   than as one packet moving through it. */
+@keyframes motion-stage-arrive {
+  0%, 100% { opacity: 0; }
+  2%       { opacity: 1; }
+  7%       { opacity: 0.5; }
+  10%      { opacity: 0; }
+}
+
+.motion-stage-arrive {
+  animation: motion-stage-arrive var(--stage-cycle, 9000ms) infinite var(--motion-ease);
+  will-change: opacity;
+}
+
+/* ── Interaction: architecture nodes ────────────────────────────────────────
+   Hovering one node brightens it and brings out its green accent. Neighbours are
+   untouched by design — the brief asks for "other nodes remain unchanged". */
+.arch-node {
+  transition: background-color var(--motion-normal) var(--motion-ease);
+}
+
+.arch-node-chip {
+  transition: background-color var(--motion-normal) var(--motion-ease),
+              color var(--motion-normal) var(--motion-ease),
+              transform var(--motion-normal) var(--motion-ease);
+}
+
+/* `!important` throughout the interaction states below is load-bearing, not
+   sloppiness: these components set their resting colours as inline `style`
+   props (the T.* token object), and an inline declaration outranks any
+   stylesheet selector. Without it the green accents silently never appear.
+   Only the colour that a hover is meant to change is forced. */
+.arch-node:hover .arch-node-chip,
+.arch-node:focus-within .arch-node-chip {
+  transform: translateY(-2px);
+  color: var(--tayseer-green-dark) !important;
+  background-color: var(--tayseer-green-soft) !important;
+}
+
+/* The outgoing connector of a hovered node becomes more visible — the path, not
+   the whole diagram, is what lights up. */
+.arch-node-link {
+  transition: border-color var(--motion-normal) var(--motion-ease),
+              opacity var(--motion-normal) var(--motion-ease);
+}
+
+.arch-node:hover .arch-node-link,
+.arch-node:focus-within .arch-node-link {
+  border-color: var(--tayseer-green) !important;
+  opacity: 1;
+}
+
+/* ── Live status ────────────────────────────────────────────────────────── */
+
+@keyframes motion-activity-halo {
+  0%   { opacity: 0.55; transform: scale(1); }
+  70%  { opacity: 0; transform: scale(2.6); }
+  100% { opacity: 0; transform: scale(2.6); }
+}
+
+.motion-activity-halo {
+  animation: motion-activity-halo 2600ms infinite var(--motion-ease);
+}
+
+@keyframes motion-data-pulse {
+  0%, 100% { opacity: 0; transform: scale(0.6); }
+  30%      { opacity: 1; transform: scale(1); }
+  70%      { opacity: 0; transform: scale(1.5); }
+}
+
+.motion-data-pulse {
+  animation: motion-data-pulse 2400ms infinite var(--motion-ease);
+  will-change: transform, opacity;
+}
+
+/* ── Hero illustration wake-up ──────────────────────────────────────────── */
+
+@keyframes motion-hero-node-in {
+  from { opacity: 0; transform: scale(0.82); }
+  to   { opacity: 1; transform: none; }
+}
+
+.hero-node {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: motion-hero-node-in var(--dur, var(--motion-reveal)) var(--delay, 0ms) both var(--motion-ease);
+}
+
+/* pathLength="1" on the markup normalises the dash units, so one rule draws
+   every connector correctly regardless of its real length. */
+@keyframes motion-hero-link-draw {
+  from { stroke-dashoffset: 1; }
+  to   { stroke-dashoffset: 0; }
+}
+
+.hero-link {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: motion-hero-link-draw var(--dur, var(--motion-activity)) var(--delay, 0ms) both var(--motion-ease);
+}
+
+/* ── Cursor parallax layers ─────────────────────────────────────────────────
+   Driven by --px/--py written from a rAF-throttled pointermove handler. Depth is
+   per-layer so the illustration gains a little dimension; total travel is capped
+   at 4px by the handler, well short of anything that reads as parallax. */
+.hero-parallax-layer {
+  transform: translate3d(calc(var(--px, 0) * var(--depth, 1)), calc(var(--py, 0) * var(--depth, 1)), 0);
+  transition: transform 420ms var(--motion-ease);
+  will-change: transform;
+}
+
+/* Ecosystem stage nodes. The full transform is rewritten rather than layered on
+   Tailwind's translate utilities, so the -50%/-50% centring survives the hover
+   scale. Neighbouring nodes get no treatment at all. */
+.eco-node:hover,
+.eco-node:focus-visible {
+  transform: translate(-50%, -50%) scale(1.04);
+  border-color: rgba(98, 169, 69, 0.6) !important;
+}
+
+/* ── Interaction: navigation ────────────────────────────────────────────── */
+
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.5rem;
+  height: 2px;
+  background: var(--tayseer-green);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--motion-fast) var(--motion-ease);
+}
+
+.nav-link:hover::after,
+.nav-link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* The active route keeps a short green tick rather than a full underline, so
+   "where I am" and "where I'm pointing" stay visually distinct. */
+.nav-link[aria-current="page"]::after,
+.nav-link[data-active="true"]::after {
+  transform: scaleX(1);
+  right: auto;
+  width: 14px;
+}
+
+/* ── Interaction: CTAs ──────────────────────────────────────────────────── */
+
+.cta-primary {
+  transition: transform var(--motion-fast) var(--motion-ease),
+              box-shadow var(--motion-fast) var(--motion-ease);
+}
+
+.cta-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px -12px rgba(10, 40, 70, 0.45);
+}
+
+.cta-primary:active {
+  transform: scale(0.98);
+  box-shadow: none;
+}
+
+.cta-secondary {
+  position: relative;
+  transition: transform var(--motion-fast) var(--motion-ease),
+              border-color var(--motion-fast) var(--motion-ease);
+}
+
+.cta-secondary:hover {
+  transform: translateY(-1px);
+  border-color: var(--tayseer-green) !important;
+}
+
+.cta-secondary:active {
+  transform: scale(0.98);
+}
+
+/* The arrow leads the button by 4px on hover — the same gesture on CTAs as on
+   cards, so "this goes somewhere" always looks the same. */
+.cta-primary:hover .motion-card-arrow,
+.cta-secondary:hover .motion-card-arrow,
+.cta-primary:focus-visible .motion-card-arrow,
+.cta-secondary:focus-visible .motion-card-arrow {
+  transform: translateX(4px);
+}
+
+/* ── Interaction: cards ─────────────────────────────────────────────────────
+   No blanket lift. The card barely moves (3px ceiling); what actually changes is
+   a green accent arriving, the border waking up, and the icon/arrow reacting. */
+
+.motion-card {
+  position: relative;
+  transition: transform var(--motion-normal) var(--motion-ease),
+              border-color var(--motion-normal) var(--motion-ease),
+              box-shadow var(--motion-normal) var(--motion-ease);
+}
+
+.motion-card:hover,
+.motion-card:focus-within {
+  transform: translateY(-3px);
+  /* See the note on .arch-node-chip: the resting border colour is an inline
+     style prop, so only !important can change it on hover. */
+  border-color: rgba(98, 169, 69, 0.55) !important;
+  box-shadow: 0 12px 30px -18px rgba(10, 40, 70, 0.35);
+}
+
+/* Accent rail — grows from the leading edge on hover. */
+.motion-card-accent::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--tayseer-green);
+  transform: scaleY(0);
+  transform-origin: top center;
+  transition: transform var(--motion-normal) var(--motion-ease);
+}
+
+.motion-card:hover .motion-card-accent::before,
+.motion-card:focus-within .motion-card-accent::before,
+.motion-card-accent:hover::before {
+  transform: scaleY(1);
+}
+
+.motion-card-icon {
+  transition: transform var(--motion-normal) var(--motion-ease),
+              color var(--motion-normal) var(--motion-ease);
+}
+
+.motion-card:hover .motion-card-icon,
+.motion-card:focus-within .motion-card-icon {
+  transform: translateY(-3px);
+}
+
+.motion-card-arrow {
+  transition: transform var(--motion-normal) var(--motion-ease);
+}
+
+.motion-card:hover .motion-card-arrow,
+.motion-card:focus-within .motion-card-arrow {
+  transform: translateX(4px);
+}
+
+/* ── Mobile: less travel, less traffic ──────────────────────────────────────
+   Touch devices get shorter entrance distances and roughly half the particle
+   activity, both to cut compositing work and because dense motion on a small
+   viewport reads as busy rather than alive. */
+@media (max-width: 767px) {
+  .motion-rise { --rise: 10px; }
+
+  .motion-flow-particle {
+    animation-duration: calc(var(--flow-dur, 1400ms) * 4);
+  }
+
+  .motion-data-pulse,
+  .motion-activity-halo {
+    animation-duration: 3600ms;
+  }
+}
+
+/* Nothing that moves on its own should run while the tab is in the background
+   or the section is off-screen; content-visibility already parks the deferred
+   sections, and these are all inside them. */
+
 @media (prefers-reduced-motion: reduce) {
   html:focus-within { scroll-behavior: auto; }
 
@@ -168,6 +544,49 @@
   .motion-marquee {
     animation: none !important;
     transform: none !important;
+  }
+
+  /* Everything in the motion system collapses to its final state: content is
+     fully present and legible, just not animated. */
+  .motion-rise,
+  .page-transition-shell,
+  .hero-node,
+  .hero-link,
+  .motion-stage-arrive,
+  .motion-data-pulse,
+  .motion-activity-halo {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    stroke-dashoffset: 0 !important;
+  }
+
+  /* Travelling particles are removed outright rather than frozen — a stationary
+     dot mid-connector would read as a real element in the diagram. */
+  .motion-flow-particle,
+  .motion-stage-pulse {
+    display: none !important;
+  }
+
+  .hero-parallax-layer {
+    transform: none !important;
+    transition: none !important;
+  }
+
+  /* Interaction feedback stays, minus the movement: the green accent and border
+     change still confirm the hover, which is the accessible part. */
+  .motion-card:hover,
+  .motion-card:focus-within,
+  .cta-primary:hover,
+  .cta-secondary:hover,
+  .cta-primary:active,
+  .cta-secondary:active {
+    transform: none !important;
+  }
+
+  .motion-card-accent::before,
+  .nav-link::after {
+    transition: none !important;
   }
 }
 

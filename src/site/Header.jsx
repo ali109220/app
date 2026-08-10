@@ -92,7 +92,7 @@ export const Header = () => {
         <Logo />
         <nav className="hidden items-center gap-7 lg:flex" data-testid="desktop-nav" aria-label="Primary navigation">
           <div ref={solutionsGroupRef} className="relative" onMouseEnter={() => { setSolOpen(true); warmRoute("/solutions"); }} onMouseLeave={() => setSolOpen(false)} onFocusCapture={() => setSolOpen(true)} onBlurCapture={handleSolutionsBlur} onKeyDown={handleSolutionsKeyDown}>
-            <Link ref={solutionsTriggerRef} href="/solutions" aria-haspopup="true" aria-expanded={solOpen} aria-controls="desktop-solutions-menu" className="flex min-h-11 items-center gap-1.5 rounded-sm text-xs font-semibold uppercase tracking-[0.16em]" style={{ color: pathname.startsWith("/solutions") ? T.signal : T.muted }}>
+            <Link ref={solutionsTriggerRef} href="/solutions" aria-haspopup="true" aria-expanded={solOpen} aria-controls="desktop-solutions-menu" data-active={pathname.startsWith("/solutions") ? "true" : undefined} className="nav-link flex min-h-11 items-center gap-1.5 rounded-sm text-xs font-semibold uppercase tracking-[0.16em]" style={{ color: pathname.startsWith("/solutions") ? T.signal : T.muted }}>
               Solutions <ChevronDown aria-hidden="true" size={14} className="transition-transform" style={{ transform: solOpen ? "rotate(180deg)" : "none" }} />
             </Link>
             {solOpen && (
@@ -114,8 +114,8 @@ export const Header = () => {
               </div>
             )}
           </div>
-          {directLinks.map((n) => <Link key={n.to} href={n.to} onMouseEnter={() => warmRoute(n.to)} onFocus={() => warmRoute(n.to)} aria-current={pathname === n.to ? "page" : undefined} className="flex min-h-11 items-center rounded-sm text-xs font-semibold uppercase tracking-[0.16em]" style={{ color: pathname === n.to ? T.signal : T.muted }}>{n.label}</Link>)}
-          <Link href="/connect" className="inline-flex min-h-11 items-center gap-2 px-5 py-2.5 text-xs font-semibold tracking-[0.12em]" style={{ background: T.signal, color: T.bg }}>Talk to us <ArrowRight aria-hidden="true" size={14} /></Link>
+          {directLinks.map((n) => <Link key={n.to} href={n.to} onMouseEnter={() => warmRoute(n.to)} onFocus={() => warmRoute(n.to)} aria-current={pathname === n.to ? "page" : undefined} className="nav-link flex min-h-11 items-center rounded-sm text-xs font-semibold uppercase tracking-[0.16em]" style={{ color: pathname === n.to ? T.signal : T.muted }}>{n.label}</Link>)}
+          <Link href="/connect" className="cta-primary group inline-flex min-h-11 items-center gap-2 px-5 py-2.5 text-xs font-semibold tracking-[0.12em]" style={{ background: T.signal, color: T.bg }}>Talk to us <ArrowRight aria-hidden="true" size={14} className="motion-card-arrow" /></Link>
         </nav>
 
         <button ref={mobileToggleRef} type="button" className="flex min-h-11 min-w-11 items-center justify-center rounded-md lg:hidden" onClick={() => setOpen((v) => !v)} aria-label={open ? "Close navigation menu" : "Open navigation menu"} aria-expanded={open} aria-controls="mobile-navigation">{open ? <X aria-hidden="true" size={22} /> : <Menu aria-hidden="true" size={22} />}</button>

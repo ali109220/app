@@ -1,21 +1,17 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useReducedMotion } from "./hooks";
 
-function useReducedMotion() {
-  const [reduced, setReduced] = useState(false);
-
-  useEffect(() => {
-    const query = window.matchMedia?.("(prefers-reduced-motion: reduce)");
-    if (!query) return;
-    const sync = () => setReduced(query.matches);
-    sync();
-    query.addEventListener?.("change", sync);
-    return () => query.removeEventListener?.("change", sync);
-  }, []);
-
-  return reduced;
-}
+/**
+ * Pre-existing motion primitives, moved here unchanged when `site/motion.jsx`
+ * became the `site/motion/` directory. Eighteen files across the non-homepage
+ * routes import `Reveal` from `@/site/motion`, so the names and behaviour are
+ * kept exactly as they were rather than migrated in the same pass.
+ *
+ * New work should use RevealOnScroll, which shares one reduced-motion hook,
+ * supports variants/stagger, and reads its timing from the motion tokens.
+ */
 
 export const Reveal = ({ children, delay = 0, y = 24, className = "", as = "div" }) => {
   const ref = useRef(null);

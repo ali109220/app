@@ -1,4 +1,5 @@
 import { T } from "@/site/theme";
+import HeroIntro from "@/components/intro/HeroIntro";
 import CinematicHero from "@/site/phase7/CinematicHero";
 import TransformationStory from "@/site/phase7/TransformationStory";
 import ProductShowcase from "@/site/phase7/ProductShowcase";
@@ -15,6 +16,7 @@ const sectionClass = "scroll-mt-28";
 export default function Home() {
   return (
     <div style={{ background: T.bg, color: T.text }} className="overflow-x-clip font-instrument">
+      <HeroIntro />
       <CinematicHero />
       <div id="transformation" className={sectionClass}><TransformationStory /></div>
       <div id="solutions" className={`defer-render ${sectionClass}`}><ProductShowcase /></div>

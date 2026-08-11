@@ -2,13 +2,11 @@ import type { Metadata, Viewport } from "next";
 import "@/index.css";
 import "@/App.css";
 import "@/performance.css";
-import "@/site/intro/intro.css";
 import { Header } from "@/site/Header";
 import { Footer } from "@/site/Footer";
 import StructuredData from "@/site/StructuredData";
 import { T } from "@/site/theme";
 import { SITE_URL } from "@/lib/site";
-import IntroScene from "@/site/intro/IntroScene";
 import PageTransition from "@/site/motion/PageTransition";
 
 
@@ -103,11 +101,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="preload" href="/fonts/InstrumentSans-Variable.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
-        {/* Synchronous by design: this gate decides and applies data-intro
-            before <body> parses, which is what puts the entrance in the
-            first painted frame. It also carries the intro's runtime kill
-            switch — see intro-gate.js. */}
-        <script src="/intro-gate.js" />
         {/* Companion to the (scripting: none) rule in index.css, for engines that
             do not support that media feature. Scroll reveals start at opacity 0;
             without scripting they must not stay there. */}
@@ -127,9 +120,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           </main>
           <Footer />
         </div>
-        {/* Sibling of the page, never a wrapper: server-rendered, hidden by
-            default, revealed by /intro-gate.js before first paint. */}
-        <IntroScene />
       </body>
     </html>
   );

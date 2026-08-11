@@ -1,0 +1,562 @@
+{
+    "meta":  {
+                 "generatedUtc":  "2026-08-11T04:50:03Z",
+                 "repo":  "tayseer-v3/app",
+                 "gitHead":  "bad3ca3",
+                 "gitBranch":  "moremotions",
+                 "buildCommand":  "npm run build  (next 15.5.22, output:\"export\")",
+                 "buildResult":  "clean; \"Generating static pages (22/22)\" then \"Exporting (2/2)\"",
+                 "exportDir":  "out/"
+             },
+    "counts":  {
+                   "htmlFilesEmitted":  17,
+                   "routes":  16,
+                   "primaryUserFacing":  14,
+                   "supporting":  2,
+                   "system":  1,
+                   "nextStaticPagesReported":  22,
+                   "exportedSitemapUrls":  16,
+                   "classificationNote":  "primary = a route a visitor is meant to land on and read. supporting = legal boilerplate. system = the 404 shell, not a destination. Next reports 22 \"static pages\" because it counts /_not-found, /robots.txt, /sitemap.xml and /manifest.webmanifest as routes; only 17 of them are HTML files."
+               },
+    "routes":  [
+                   {
+                       "route":  "/404",
+                       "sourceFile":  "out/404.html",
+                       "classification":  "system",
+                       "title":  "Tayseer Innovations | AI \u0026amp; Digital Banking Solutions",
+                       "h1":  "Page not found",
+                       "canonical":  "https://tayseerdemo.xyz",
+                       "jsonLdBlocks":  1,
+                       "bytes":  121739,
+                       "inExportedSitemap":  false
+                   },
+                   {
+                       "route":  "/about",
+                       "sourceFile":  "out/about.html",
+                       "classification":  "primary",
+                       "title":  "About Tayseer Innovations | Banking Technology \u0026amp; AI Partner | Tayseer Innovations",
+                       "h1":  "About Us",
+                       "canonical":  "https://tayseerdemo.xyz/about",
+                       "jsonLdBlocks":  1,
+                       "bytes":  180966,
+                       "inExportedSitemap":  true
+                   },
+                   {
+                       "route":  "/blog",
+                       "sourceFile":  "out/blog.html",
+                       "classification":  "primary",
+                       "title":  "FinTech, AI \u0026amp; Digital Banking Insights | Tayseer Innovations",
+                       "h1":  "Blogs and Resources",
+                       "canonical":  "https://tayseerdemo.xyz/blog",
+                       "jsonLdBlocks":  2,
+                       "bytes":  133282,
+                       "inExportedSitemap":  true
+                   },
+                   {
+                       "route":  "/blog/open-banking-uae-ksa",
+                       "sourceFile":  "out/blog/open-banking-uae-ksa.html",
+                       "classification":  "primary",
+                       "title":  "Unleashing Financial Innovation: Open Banking’s Potential in the UAE and KSA | Tayseer Innovations",
+                       "h1":  "Unleashing Financial Innovation: Open Banking’s Potential in the UAE and KSA",
+                       "canonical":  "https://tayseerdemo.xyz/blog/open-banking-uae-ksa",
+                       "jsonLdBlocks":  2,
+                       "bytes":  146232,
+                       "inExportedSitemap":  true
+                   },
+                   {
+                       "route":  "/blog/rise-of-fintech-uae",
+                       "sourceFile":  "out/blog/rise-of-fintech-uae.html",
+                       "classification":  "primary",
+                       "title":  "The Rise of FinTech in the UAE: Innovations Shaping the Future of Finance | Tayseer Innovations",
+                       "h1":  "The Rise of FinTech in the UAE: Innovations Shaping the Future of Finance",
+                       "canonical":  "https://tayseerdemo.xyz/blog/rise-of-fintech-uae",
+                       "jsonLdBlocks":  2,
+                       "bytes":  145733,
+                       "inExportedSitemap":  true
+                   },
+                   {
+                       "route":  "/careers",
+                       "sourceFile":  "out/careers.html",
+                       "classification":  "primary",
+                       "title":  "Careers at Tayseer Innovations | FinTech, AI \u0026amp; Banking Technology | Tayseer Innovations",
+                       "h1":  "Careers",
+                       "canonical":  "https://tayseerdemo.xyz/careers",
+                       "jsonLdBlocks":  1,
+                       "bytes":  128828,
+                       "inExportedSitemap":  true
+                   },
+                   {
+                       "route":  "/connect",
+                       "sourceFile":  "out/connect.html",
+                       "classification":  "primary",
+                       "title":  "Contact Tayseer Innovations | Banking Technology \u0026amp; AI Solutions | Tayseer Innovations",
+                       "h1":  "Connect",
+                       "canonical":  "https://tayseerdemo.xyz/connect",
+                       "jsonLdBlocks":  1,
+                       "bytes":  131434,
+                       "inExportedSitemap":  true
+                   },
+                   {
+                       "route":  "/",
+                       "sourceFile":  "out/index.html",
+                       "classification":  "primary",
+                       "title":  "Tayseer Innovations | AI \u0026amp; Digital Banking Solutions",
+                       "h1":  "Banking.Reinvented.",
+                       "canonical":  "https://tayseerdemo.xyz",
+                       "jsonLdBlocks":  1,
+                       "bytes":  264862,
+                       "inExportedSitemap":  true
+                   },
+                   {
+                       "route":  "/privacy",
+                       "sourceFile":  "out/privacy.html",
+                       "classification":  "supporting",
+                       "title":  "Privacy Policy | Tayseer Innovations",
+                       "h1":  "Privacy Policy",
+                       "canonical":  "https://tayseerdemo.xyz/privacy",
+                       "jsonLdBlocks":  1,
+                       "bytes":  133509,
+                       "inExportedSitemap":  true
+                   },
+                   {
+                       "route":  "/solutions",
+                       "sourceFile":  "out/solutions.html",
+                       "classification":  "primary",
+                       "title":  "Banking \u0026amp; FinTech Solutions | Tayseer Innovations",
+                       "h1":  "Solutions",
+                       "canonical":  "https://tayseerdemo.xyz/solutions",
+                       "jsonLdBlocks":  2,
+                       "bytes":  146744,
+                       "inExportedSitemap":  true
+                   },
+                   {
+                       "route":  "/solutions/banking-systems",
+                       "sourceFile":  "out/solutions/banking-systems.html",
+                       "classification":  "primary",
+                       "title":  "Banking Systems \u0026amp; Self-Service Technology | Tayseer Innovations",
+                       "h1":  "Modernize the branch.",
+                       "canonical":  "https://tayseerdemo.xyz/solutions/banking-systems",
+                       "jsonLdBlocks":  2,
+                       "bytes":  208436,
+                       "inExportedSitemap":  true
+                   },
+                   {
+                       "route":  "/solutions/core-banking",
+                       "sourceFile":  "out/solutions/core-banking.html",
+                       "classification":  "primary",
+                       "title":  "Enterprise Core Banking Platform | Tayseer Innovations",
+                       "h1":  "The Banking Core, Modernized.",
+                       "canonical":  "https://tayseerdemo.xyz/solutions/core-banking",
+                       "jsonLdBlocks":  2,
+                       "bytes":  206439,
+                       "inExportedSitemap":  true
+                   },
+                   {
+                       "route":  "/solutions/fahim-ai",
+                       "sourceFile":  "out/solutions/fahim-ai.html",
+                       "classification":  "primary",
+                       "title":  "Fahim AI — Agentic AI for Banking \u0026amp; Business | Tayseer Innovations",
+                       "h1":  "AI That Moves Work Forward.",
+                       "canonical":  "https://tayseerdemo.xyz/solutions/fahim-ai",
+                       "jsonLdBlocks":  2,
+                       "bytes":  224177,
+                       "inExportedSitemap":  true
+                   },
+                   {
+                       "route":  "/solutions/managed-services",
+                       "sourceFile":  "out/solutions/managed-services.html",
+                       "classification":  "primary",
+                       "title":  "Managed Banking \u0026amp; Technology Services | Tayseer Innovations",
+                       "h1":  "Operate with confidence.",
+                       "canonical":  "https://tayseerdemo.xyz/solutions/managed-services",
+                       "jsonLdBlocks":  2,
+                       "bytes":  202587,
+                       "inExportedSitemap":  true
+                   },
+                   {
+                       "route":  "/solutions/mbuke",
+                       "sourceFile":  "out/solutions/mbuke.html",
+                       "classification":  "primary",
+                       "title":  "MBuke White-Label Digital Banking Platform | Tayseer Innovations",
+                       "h1":  "Digital Banking, Built Around Your Brand.",
+                       "canonical":  "https://tayseerdemo.xyz/solutions/mbuke",
+                       "jsonLdBlocks":  2,
+                       "bytes":  210143,
+                       "inExportedSitemap":  true
+                   },
+                   {
+                       "route":  "/solutions/software-management-systems",
+                       "sourceFile":  "out/solutions/software-management-systems.html",
+                       "classification":  "primary",
+                       "title":  "Software Engineering \u0026amp; Management Systems | Tayseer Innovations",
+                       "h1":  "Engineer with control.",
+                       "canonical":  "https://tayseerdemo.xyz/solutions/software-management-systems",
+                       "jsonLdBlocks":  2,
+                       "bytes":  209881,
+                       "inExportedSitemap":  true
+                   },
+                   {
+                       "route":  "/terms",
+                       "sourceFile":  "out/terms.html",
+                       "classification":  "supporting",
+                       "title":  "Terms \u0026amp; Conditions | Tayseer Innovations",
+                       "h1":  "Terms \u0026 Conditions",
+                       "canonical":  "https://tayseerdemo.xyz/terms",
+                       "jsonLdBlocks":  1,
+                       "bytes":  131766,
+                       "inExportedSitemap":  true
+                   }
+               ],
+    "liveFetch":  {
+                      "workingHost":  {
+                                          "host":  "https://tayseer-demo.pages.dev",
+                                          "fetchedUtc":  "2026-08-11T05:07:25Z",
+                                          "allReachable":  true,
+                                          "non200":  0,
+                                          "results":  {
+                                                          "value":  [
+                                                                        {
+                                                                            "route":  "/",
+                                                                            "status":  200,
+                                                                            "redirects":  0,
+                                                                            "finalUrl":  "https://tayseer-demo.pages.dev/",
+                                                                            "kind":  "built route (expected 200)"
+                                                                        },
+                                                                        {
+                                                                            "route":  "/about",
+                                                                            "status":  200,
+                                                                            "redirects":  0,
+                                                                            "finalUrl":  "https://tayseer-demo.pages.dev/about",
+                                                                            "kind":  "built route (expected 200)"
+                                                                        },
+                                                                        {
+                                                                            "route":  "/blog",
+                                                                            "status":  200,
+                                                                            "redirects":  0,
+                                                                            "finalUrl":  "https://tayseer-demo.pages.dev/blog",
+                                                                            "kind":  "built route (expected 200)"
+                                                                        },
+                                                                        {
+                                                                            "route":  "/blog/open-banking-uae-ksa",
+                                                                            "status":  200,
+                                                                            "redirects":  0,
+                                                                            "finalUrl":  "https://tayseer-demo.pages.dev/blog/open-banking-uae-ksa",
+                                                                            "kind":  "built route (expected 200)"
+                                                                        },
+                                                                        {
+                                                                            "route":  "/blog/rise-of-fintech-uae",
+                                                                            "status":  200,
+                                                                            "redirects":  0,
+                                                                            "finalUrl":  "https://tayseer-demo.pages.dev/blog/rise-of-fintech-uae",
+                                                                            "kind":  "built route (expected 200)"
+                                                                        },
+                                                                        {
+                                                                            "route":  "/careers",
+                                                                            "status":  200,
+                                                                            "redirects":  0,
+                                                                            "finalUrl":  "https://tayseer-demo.pages.dev/careers",
+                                                                            "kind":  "built route (expected 200)"
+                                                                        },
+                                                                        {
+                                                                            "route":  "/connect",
+                                                                            "status":  200,
+                                                                            "redirects":  0,
+                                                                            "finalUrl":  "https://tayseer-demo.pages.dev/connect",
+                                                                            "kind":  "built route (expected 200)"
+                                                                        },
+                                                                        {
+                                                                            "route":  "/privacy",
+                                                                            "status":  200,
+                                                                            "redirects":  0,
+                                                                            "finalUrl":  "https://tayseer-demo.pages.dev/privacy",
+                                                                            "kind":  "built route (expected 200)"
+                                                                        },
+                                                                        {
+                                                                            "route":  "/solutions",
+                                                                            "status":  200,
+                                                                            "redirects":  0,
+                                                                            "finalUrl":  "https://tayseer-demo.pages.dev/solutions",
+                                                                            "kind":  "built route (expected 200)"
+                                                                        },
+                                                                        {
+                                                                            "route":  "/solutions/banking-systems",
+                                                                            "status":  200,
+                                                                            "redirects":  0,
+                                                                            "finalUrl":  "https://tayseer-demo.pages.dev/solutions/banking-systems",
+                                                                            "kind":  "built route (expected 200)"
+                                                                        },
+                                                                        {
+                                                                            "route":  "/solutions/core-banking",
+                                                                            "status":  200,
+                                                                            "redirects":  0,
+                                                                            "finalUrl":  "https://tayseer-demo.pages.dev/solutions/core-banking",
+                                                                            "kind":  "built route (expected 200)"
+                                                                        },
+                                                                        {
+                                                                            "route":  "/solutions/fahim-ai",
+                                                                            "status":  200,
+                                                                            "redirects":  0,
+                                                                            "finalUrl":  "https://tayseer-demo.pages.dev/solutions/fahim-ai",
+                                                                            "kind":  "built route (expected 200)"
+                                                                        },
+                                                                        {
+                                                                            "route":  "/solutions/managed-services",
+                                                                            "status":  200,
+                                                                            "redirects":  0,
+                                                                            "finalUrl":  "https://tayseer-demo.pages.dev/solutions/managed-services",
+                                                                            "kind":  "built route (expected 200)"
+                                                                        },
+                                                                        {
+                                                                            "route":  "/solutions/mbuke",
+                                                                            "status":  200,
+                                                                            "redirects":  0,
+                                                                            "finalUrl":  "https://tayseer-demo.pages.dev/solutions/mbuke",
+                                                                            "kind":  "built route (expected 200)"
+                                                                        },
+                                                                        {
+                                                                            "route":  "/solutions/software-management-systems",
+                                                                            "status":  200,
+                                                                            "redirects":  0,
+                                                                            "finalUrl":  "https://tayseer-demo.pages.dev/solutions/software-management-systems",
+                                                                            "kind":  "built route (expected 200)"
+                                                                        },
+                                                                        {
+                                                                            "route":  "/terms",
+                                                                            "status":  200,
+                                                                            "redirects":  0,
+                                                                            "finalUrl":  "https://tayseer-demo.pages.dev/terms",
+                                                                            "kind":  "built route (expected 200)"
+                                                                        },
+                                                                        {
+                                                                            "route":  "/404",
+                                                                            "status":  200,
+                                                                            "redirects":  0,
+                                                                            "finalUrl":  "https://tayseer-demo.pages.dev/404",
+                                                                            "kind":  "built route (expected 200)"
+                                                                        },
+                                                                        {
+                                                                            "route":  "/solutions/banks",
+                                                                            "status":  404,
+                                                                            "redirects":  0,
+                                                                            "finalUrl":  "https://tayseer-demo.pages.dev/solutions/banks",
+                                                                            "kind":  "sector probe (expected 404)"
+                                                                        },
+                                                                        {
+                                                                            "route":  "/sectors/banks",
+                                                                            "status":  404,
+                                                                            "redirects":  0,
+                                                                            "finalUrl":  "https://tayseer-demo.pages.dev/sectors/banks",
+                                                                            "kind":  "sector probe (expected 404)"
+                                                                        },
+                                                                        {
+                                                                            "route":  "/sectors",
+                                                                            "status":  404,
+                                                                            "redirects":  0,
+                                                                            "finalUrl":  "https://tayseer-demo.pages.dev/sectors",
+                                                                            "kind":  "sector probe (expected 404)"
+                                                                        }
+                                                                    ],
+                                                          "Count":  20
+                                                      },
+                                          "note":  "Cloudflare Pages. This is the host that works today and the one the submission should cite."
+                                      },
+                      "brandedHost":  {
+                                          "host":  "https://tayseerdemo.xyz",
+                                          "fetchedUtc":  "2026-08-11T04:50:03Z",
+                                          "allReachable":  true,
+                                          "non200":  0,
+                                          "results":  {
+                                                          "fetchedUtc":  "2026-08-11T04:50:03Z",
+                                                          "host":  "https://tayseerdemo.xyz",
+                                                          "method":  "curl -sS -L --max-time 30 -o NUL -w \u0027%{http_code} redirs=%{num_redirects} final=%{url_effective}\u0027",
+                                                          "note":  "This run succeeded. The host stopped resolving at approximately 2026-08-11T04:57Z â€” see demo-dns-outage.txt.",
+                                                          "builtRoutes":  [
+                                                                              {
+                                                                                  "route":  "/",
+                                                                                  "status":  200,
+                                                                                  "redirects":  0,
+                                                                                  "finalUrl":  "https://tayseerdemo.xyz/"
+                                                                              },
+                                                                              {
+                                                                                  "route":  "/about",
+                                                                                  "status":  200,
+                                                                                  "redirects":  0,
+                                                                                  "finalUrl":  "https://tayseerdemo.xyz/about"
+                                                                              },
+                                                                              {
+                                                                                  "route":  "/blog",
+                                                                                  "status":  200,
+                                                                                  "redirects":  0,
+                                                                                  "finalUrl":  "https://tayseerdemo.xyz/blog"
+                                                                              },
+                                                                              {
+                                                                                  "route":  "/blog/open-banking-uae-ksa",
+                                                                                  "status":  200,
+                                                                                  "redirects":  0,
+                                                                                  "finalUrl":  "https://tayseerdemo.xyz/blog/open-banking-uae-ksa"
+                                                                              },
+                                                                              {
+                                                                                  "route":  "/blog/rise-of-fintech-uae",
+                                                                                  "status":  200,
+                                                                                  "redirects":  0,
+                                                                                  "finalUrl":  "https://tayseerdemo.xyz/blog/rise-of-fintech-uae"
+                                                                              },
+                                                                              {
+                                                                                  "route":  "/careers",
+                                                                                  "status":  200,
+                                                                                  "redirects":  0,
+                                                                                  "finalUrl":  "https://tayseerdemo.xyz/careers"
+                                                                              },
+                                                                              {
+                                                                                  "route":  "/connect",
+                                                                                  "status":  200,
+                                                                                  "redirects":  0,
+                                                                                  "finalUrl":  "https://tayseerdemo.xyz/connect"
+                                                                              },
+                                                                              {
+                                                                                  "route":  "/privacy",
+                                                                                  "status":  200,
+                                                                                  "redirects":  0,
+                                                                                  "finalUrl":  "https://tayseerdemo.xyz/privacy"
+                                                                              },
+                                                                              {
+                                                                                  "route":  "/solutions",
+                                                                                  "status":  200,
+                                                                                  "redirects":  0,
+                                                                                  "finalUrl":  "https://tayseerdemo.xyz/solutions"
+                                                                              },
+                                                                              {
+                                                                                  "route":  "/solutions/banking-systems",
+                                                                                  "status":  200,
+                                                                                  "redirects":  0,
+                                                                                  "finalUrl":  "https://tayseerdemo.xyz/solutions/banking-systems"
+                                                                              },
+                                                                              {
+                                                                                  "route":  "/solutions/core-banking",
+                                                                                  "status":  200,
+                                                                                  "redirects":  0,
+                                                                                  "finalUrl":  "https://tayseerdemo.xyz/solutions/core-banking"
+                                                                              },
+                                                                              {
+                                                                                  "route":  "/solutions/fahim-ai",
+                                                                                  "status":  200,
+                                                                                  "redirects":  0,
+                                                                                  "finalUrl":  "https://tayseerdemo.xyz/solutions/fahim-ai"
+                                                                              },
+                                                                              {
+                                                                                  "route":  "/solutions/managed-services",
+                                                                                  "status":  200,
+                                                                                  "redirects":  0,
+                                                                                  "finalUrl":  "https://tayseerdemo.xyz/solutions/managed-services"
+                                                                              },
+                                                                              {
+                                                                                  "route":  "/solutions/mbuke",
+                                                                                  "status":  200,
+                                                                                  "redirects":  0,
+                                                                                  "finalUrl":  "https://tayseerdemo.xyz/solutions/mbuke"
+                                                                              },
+                                                                              {
+                                                                                  "route":  "/solutions/software-management-systems",
+                                                                                  "status":  200,
+                                                                                  "redirects":  0,
+                                                                                  "finalUrl":  "https://tayseerdemo.xyz/solutions/software-management-systems"
+                                                                              },
+                                                                              {
+                                                                                  "route":  "/terms",
+                                                                                  "status":  200,
+                                                                                  "redirects":  0,
+                                                                                  "finalUrl":  "https://tayseerdemo.xyz/terms"
+                                                                              },
+                                                                              {
+                                                                                  "route":  "/404",
+                                                                                  "status":  200,
+                                                                                  "redirects":  0,
+                                                                                  "finalUrl":  "https://tayseerdemo.xyz/404",
+                                                                                  "note":  "the static 404 shell is itself a fetchable file under output:export; it is not a 404 response"
+                                                                              }
+                                                                          ],
+                                                          "sectorProbes":  [
+                                                                               {
+                                                                                   "route":  "/solutions/banks",
+                                                                                   "status":  404,
+                                                                                   "redirects":  0,
+                                                                                   "finalUrl":  "https://tayseerdemo.xyz/solutions/banks"
+                                                                               },
+                                                                               {
+                                                                                   "route":  "/sectors/banks",
+                                                                                   "status":  404,
+                                                                                   "redirects":  0,
+                                                                                   "finalUrl":  "https://tayseerdemo.xyz/sectors/banks"
+                                                                               },
+                                                                               {
+                                                                                   "route":  "/sectors",
+                                                                                   "status":  404,
+                                                                                   "redirects":  0,
+                                                                                   "finalUrl":  "https://tayseerdemo.xyz/sectors"
+                                                                               }
+                                                                           ],
+                                                          "summary":  {
+                                                                          "builtRoutesFetched":  17,
+                                                                          "non200":  0,
+                                                                          "sectorProbesFetched":  3,
+                                                                          "sectorProbes404":  3
+                                                                      }
+                                                      },
+                                          "note":  "Reachable at the time of this fetch; stopped resolving 7 minutes later. This is the host the .docx cites and the host the build is configured for."
+                                      },
+                      "dnsFailure":  {
+                                         "host":  "tayseerdemo.xyz",
+                                         "firstObservedUtc":  "2026-08-11T04:57Z",
+                                         "reconfirmedUtc":  [
+                                                                "2026-08-11T05:01:13Z",
+                                                                "2026-08-11T05:05:42Z",
+                                                                "2026-08-11T05:09Z"
+                                                            ],
+                                         "symptom":  "No A, AAAA, CNAME or MX record. Apex returns NOERROR/NODATA (SOA in the authority section) on 1.1.1.1, 8.8.8.8 and 9.9.9.9 alike. www.tayseerdemo.xyz is NXDOMAIN. curl exits 6 (CURLE_COULDNT_RESOLVE_HOST).",
+                                         "zoneNotLapsed":  "Delegation intact (iris.ns.cloudflare.com / yevgen.ns.cloudflare.com) and a google-site-verification TXT record still answers. The address records are absent, not the zone.",
+                                         "control":  "https://www.tayseer.me/ returned 200 from the same machine at the same moment, so this is not local network loss.",
+                                         "artifact":  "raw/demo-dns-outage.txt",
+                                         "knockOnEffects":  [
+                                                                "src/lib/site.ts:5 sets SITE_URL=\"https://tayseerdemo.xyz\", so the pages.dev deployment serves rel=canonical, og:url, robots.txt Host/Sitemap and all 16 sitemap \u003cloc\u003e entries on the non-resolving host.",
+                                                                "This contradicts the document\u0027s claim of canonical control as an architectural strength.",
+                                                                "With no MX and no A, mail to info@tayseerdemo.xyz cannot be delivered; that address is the contact/mailto fallback in Footer.jsx, ContactSection.jsx, HomeContactForm.jsx, Connect.jsx, Careers.jsx, Legal.jsx and layout.tsx."
+                                                            ],
+                                         "fix":  "Either restore the A record for tayseerdemo.xyz, or change SITE_URL to https://tayseer-demo.pages.dev and rebuild. Whichever host the submission cites, SITE_URL must match it.",
+                                         "severity":  "BLOCKING â€” the .docx executive summary and Â§13 both print https://tayseerdemo.xyz/ as judge-clickable evidence."
+                                     }
+                  },
+    "sectorRemoval":  {
+                          "removedInCommit":  "bad3ca3 \"removed the sectors\" (2026-08-11 00:26:35 +0400)",
+                          "deletedFiles":  [
+                                               "src/app/sectors/banks/page.tsx",
+                                               "src/pages/sectors/Banks.jsx",
+                                               "screenshots/sectors-banks/360.png",
+                                               "screenshots/sectors-banks/768.png",
+                                               "screenshots/sectors-banks/1440.png"
+                                           ],
+                          "alsoUpdated":  [
+                                              "screenshots/_capture-report.json (3 sectors-banks entries removed)",
+                                              "src/site/phase8/EnterpriseSolutionLayout.jsx",
+                                              "docs/motion-route-audit.md",
+                                              "capture_proposal.js",
+                                              "Cyborgs_TayseerWebsite_Proposal.md"
+                                          ],
+                          "routeFilesRemaining":  [
+
+                                                  ],
+                          "componentsRemaining":  [
+
+                                                  ],
+                          "navOrInPageLinksRemaining":  [
+
+                                                        ],
+                          "residualSourceMatches":  [
+                                                        "src/pages/About.jsx:10,25 - the words \"financial sector\" in prose",
+                                                        "src/pages/blogData.js:10,27,28 - the words \"financial sector(s)\" in blog copy",
+                                                        "src/site/phase7/ClientSuccessStories.jsx:7,10 - job titles \"Head of Individual Services Sector\", \"IT Sector Manager\"",
+                                                        "src/site/phase6/ExecutiveTestimonials.jsx:7,10 - the same two job titles"
+                                                    ],
+                          "residualVerdict":  "None of the residual matches is a route, a component, a nav entry or a link. They are prose and job titles. src/pages/*.jsx is dead code regardless: next.config.mjs sets pageExtensions:[\"ts\",\"tsx\"], so no .jsx file under src/pages is ever compiled into a route.",
+                          "verdict":  "CLEAN"
+                      }
+}

@@ -83,16 +83,17 @@ This is not a Figma mockup grafted on top: it builds and renders on the same pro
 
 ## 2. Sitemap & content structure
 
-**Read this section as a recommendation, not as something already shipped.** The current-state IA below is read directly from the live site and is factual; the proposed IA is our recommended restructure, and no sector page is built in this submission to demonstrate it. It is argued from the existing content and the audit rather than shown running — and this document's standard is to say which of those two it is.
+**This section is a proposed structure, not a built one.** The current structure below is read directly from the live navigation and is factual. The restructure that follows is our recommendation — there is no page in this submission that demonstrates it running. The working screen in §1.2 is the existing homepage; it is not an example of the proposed structure.
 
-### 2.1 What the current site actually asks a visitor to do
+### 2.1 Current structure (live)
 
-Read directly from the live navigation (both the working prototype's `Header.jsx` and the current production `tayseer.me`): organize by **product name**, and make the visitor figure out which of six products applies to them.
+Organized by **product name** — the visitor has to work out which of six products applies to them.
 
 ```
-Tayseer Innovations (current, live)
+tayseer.me — current
+│
 ├── Home
-├── Solutions                                 [mega-menu, product catalogue]
+├── Solutions                              [product catalogue]
 │   ├── Core Banking
 │   ├── Fahim AI
 │   ├── MBuke
@@ -105,25 +106,31 @@ Tayseer Innovations (current, live)
 └── Connect
 ```
 
-A bank, a telecom operator, an exchange/MTO, and a government buyer all land on the same "Solutions" menu and have to self-translate six product names into "is this for me?" — before they've learned anything about Tayseer's credibility on their specific problem.
+### 2.2 Proposed structure
 
-### 2.2 The proposed buyer-first IA
+Organized by **buyer segment** — the visitor enters through the door with their own name on it.
 
 ```
-Tayseer Innovations (proposed)
+tayseer.me — proposed
+│
 ├── Home
-├── Banks              → Core Banking + Banking Systems capabilities, reframed
-├── Telecom             → relevant capabilities regrouped by buyer, not by product
-├── Exchange & MTO       → relevant capabilities regrouped by buyer, not by product
-├── Government            → relevant capabilities regrouped by buyer, not by product
-├── About Us / Blogs and Resources / Careers / Connect   [unchanged]
+├── Banks                                  ┐
+├── Telecom                                │  buyer-first entry points
+├── Exchange & MTO                         │
+├── Government                             ┘
+├── About Us                               ┐
+├── Blogs and Resources                    │  unchanged
+├── Careers                                │
+└── Connect                                ┘
+
+        the same six product pages sit underneath, unchanged:
+        Core Banking · Fahim AI · MBuke · Managed Services ·
+        Banking Systems · Software Management Systems
 ```
 
-The six product lines don't disappear — Core Banking, Fahim AI, MBuke, Managed Services, Banking Systems, and Software Management Systems remain real pages with the same content. What changes is the **entry point**: a buyer opens the sector door with their name on it, and the relevant products are already assembled behind it.
+**This is a re-mapping of existing content, not new content.** All six product pages stay as they are — same copy, same claims, no rebuild of the underlying pages required. What changes is the top-level entry point: content is grouped by *who is buying* rather than by *what is being sold*, and each segment page assembles capabilities that already exist on those product pages. Which products sit behind each of the four segments is a grouping decision to confirm with Tayseer.
 
-**Why we're confident this is low-risk to build, even though it isn't built yet:** each sector page is a *regrouping* exercise, not a content-writing one. A Banks page, for example, assembles capabilities that already exist verbatim on `/solutions/core-banking` and `/solutions/banking-systems` under a buyer-first heading — no new claims, no new copy to approve, and the six product pages stay exactly as they are underneath. That's what keeps the estimate honest: we scope each sector page at roughly half a day of build once the first template and the segment list are approved, and the four segments named above are our recommended starting set, subject to Tayseer confirming they match the actual pipeline.
-
-**Status, stated plainly:** all four sector pages — Banks, Telecom, Exchange & MTO, Government — are **recommended, not built**. Nothing in this submission demonstrates the proposed IA running; §7 prices building it out.
+**Status:** proposed structure only. Banks, Telecom, Exchange & MTO and Government are recommendations — none of them is built or shown working in this submission.
 
 ---
 

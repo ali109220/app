@@ -1,0 +1,36 @@
+{
+  "fetchedUtc": "2026-08-11T04:50:03Z",
+  "host": "https://tayseerdemo.xyz",
+  "method": "curl -sS -L --max-time 30 -o NUL -w '%{http_code} redirs=%{num_redirects} final=%{url_effective}'",
+  "note": "This run succeeded. The host stopped resolving at approximately 2026-08-11T04:57Z — see demo-dns-outage.txt.",
+  "builtRoutes": [
+    { "route": "/", "status": 200, "redirects": 0, "finalUrl": "https://tayseerdemo.xyz/" },
+    { "route": "/about", "status": 200, "redirects": 0, "finalUrl": "https://tayseerdemo.xyz/about" },
+    { "route": "/blog", "status": 200, "redirects": 0, "finalUrl": "https://tayseerdemo.xyz/blog" },
+    { "route": "/blog/open-banking-uae-ksa", "status": 200, "redirects": 0, "finalUrl": "https://tayseerdemo.xyz/blog/open-banking-uae-ksa" },
+    { "route": "/blog/rise-of-fintech-uae", "status": 200, "redirects": 0, "finalUrl": "https://tayseerdemo.xyz/blog/rise-of-fintech-uae" },
+    { "route": "/careers", "status": 200, "redirects": 0, "finalUrl": "https://tayseerdemo.xyz/careers" },
+    { "route": "/connect", "status": 200, "redirects": 0, "finalUrl": "https://tayseerdemo.xyz/connect" },
+    { "route": "/privacy", "status": 200, "redirects": 0, "finalUrl": "https://tayseerdemo.xyz/privacy" },
+    { "route": "/solutions", "status": 200, "redirects": 0, "finalUrl": "https://tayseerdemo.xyz/solutions" },
+    { "route": "/solutions/banking-systems", "status": 200, "redirects": 0, "finalUrl": "https://tayseerdemo.xyz/solutions/banking-systems" },
+    { "route": "/solutions/core-banking", "status": 200, "redirects": 0, "finalUrl": "https://tayseerdemo.xyz/solutions/core-banking" },
+    { "route": "/solutions/fahim-ai", "status": 200, "redirects": 0, "finalUrl": "https://tayseerdemo.xyz/solutions/fahim-ai" },
+    { "route": "/solutions/managed-services", "status": 200, "redirects": 0, "finalUrl": "https://tayseerdemo.xyz/solutions/managed-services" },
+    { "route": "/solutions/mbuke", "status": 200, "redirects": 0, "finalUrl": "https://tayseerdemo.xyz/solutions/mbuke" },
+    { "route": "/solutions/software-management-systems", "status": 200, "redirects": 0, "finalUrl": "https://tayseerdemo.xyz/solutions/software-management-systems" },
+    { "route": "/terms", "status": 200, "redirects": 0, "finalUrl": "https://tayseerdemo.xyz/terms" },
+    { "route": "/404", "status": 200, "redirects": 0, "finalUrl": "https://tayseerdemo.xyz/404", "note": "the static 404 shell is itself a fetchable file under output:export; it is not a 404 response" }
+  ],
+  "sectorProbes": [
+    { "route": "/solutions/banks", "status": 404, "redirects": 0, "finalUrl": "https://tayseerdemo.xyz/solutions/banks" },
+    { "route": "/sectors/banks", "status": 404, "redirects": 0, "finalUrl": "https://tayseerdemo.xyz/sectors/banks" },
+    { "route": "/sectors", "status": 404, "redirects": 0, "finalUrl": "https://tayseerdemo.xyz/sectors" }
+  ],
+  "summary": {
+    "builtRoutesFetched": 17,
+    "non200": 0,
+    "sectorProbesFetched": 3,
+    "sectorProbes404": 3
+  }
+}

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { T } from "@/site/theme";
-import HeroTechVisual from "@/site/phase7/HeroTechVisual";
+import HeroArtwork from "@/site/phase7/HeroArtwork";
 
 const PROOF = [
   ["15+", "Countries"],
@@ -13,10 +13,15 @@ const PROOF = [
 //
 //     150  heading
 //     300  supporting copy
+//     320  hero artwork reveals (see HeroArtwork)
 //     450  CTA
 //     540  proof figures
 //     600  certification badge
-//     650  technology visual begins (see HeroTechVisual)
+//
+// The artwork moved from 650ms to 320ms when it became a raster asset: it is now
+// the LCP candidate, so it cannot be held at opacity 0 for as long as the old
+// inline illustration was. It still lands after the heading and copy, so the
+// "text leads, visual follows" reading order is intact.
 //
 // Deliberately spaced so no two beats land together — the visitor should read
 // the page being built, one line at a time, rather than watch it all fade in at
@@ -72,7 +77,7 @@ export default function CinematicHero() {
 
         <div className="relative mx-auto w-full lg:col-span-6">
           <div className="absolute inset-6 rounded-full blur-3xl" style={{ background: "rgba(13,90,140,.13)" }} />
-          <HeroTechVisual className="relative mx-auto w-full max-w-[720px]" />
+          <HeroArtwork className="relative mx-auto w-full max-w-[720px]" />
         </div>
       </div>
     </section>

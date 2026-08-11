@@ -1,0 +1,53 @@
+tayseerdemo.xyz — DNS state
+===========================
+Checked: 2026-08-11T04:57Z, re-confirmed 05:01:13Z, 05:05:42Z, 05:09Z (UTC)
+
+WHAT THIS IS
+------------
+The prototype IS live and fully reachable — at https://tayseer-demo.pages.dev (Cloudflare Pages).
+The problem is that the proposal document, and the prototype's own build configuration, both cite
+https://tayseerdemo.xyz, which does not resolve.
+
+TIMELINE
+--------
+04:50:03Z  All 17 built routes returned HTTP 200 on https://tayseerdemo.xyz
+           (raw/demo-live-status-0450.json). Sector probes returned 404 as expected.
+04:57Z     tayseerdemo.xyz stopped resolving.
+05:01:13Z  Confirmed still not resolving on 1.1.1.1, 8.8.8.8 and 9.9.9.9.
+05:05:42Z  Still not resolving.
+05:07:25Z  All 17 routes confirmed HTTP 200 on https://tayseer-demo.pages.dev,
+           sector probes 404 (raw/demo-live-status-pagesdev.json).
+05:09Z     Record-type sweep below.
+
+RECORD SWEEP  (tayseerdemo.xyz @ 1.1.1.1)
+-----------------------------------------
+A      -> no answer; SOA in authority section (NOERROR/NODATA)
+AAAA   -> no answer; SOA in authority section
+CNAME  -> no answer; SOA in authority section
+MX     -> no answer; SOA in authority section
+TXT    -> ANSWER: google-site-verification=PPQ7O8L67F4BfcEi4BcW3vrilHOhNx5o76sAc8_9kRA
+NS     -> ANSWER: iris.ns.cloudflare.com, yevgen.ns.cloudflare.com
+SOA    -> iris.ns.cloudflare.com / dns.cloudflare.com, serial 2411909756
+
+Identical NODATA result for A on 8.8.8.8 and 9.9.9.9.
+www.tayseerdemo.xyz -> NXDOMAIN.
+
+INTERPRETATION
+--------------
+The zone is live and served by Cloudflare, and it still holds a TXT verification record — so the domain
+has not lapsed and the delegation is intact. It simply has no address record and no MX record.
+
+Two consequences, both checkable:
+  1. Web: https://tayseerdemo.xyz/ is unreachable. curl exits 6 (CURLE_COULDNT_RESOLVE_HOST).
+  2. Email: with no MX and no A, mail to info@tayseerdemo.xyz cannot be delivered. That address is used
+     as the contact/fallback in Footer.jsx, ContactSection.jsx, HomeContactForm.jsx, Connect.jsx,
+     Careers.jsx, Legal.jsx and layout.tsx.
+
+CONTROL
+-------
+https://www.tayseer.me/ returned 200 from the same machine at the same moment, so this is not local
+network loss.
+
+    https://tayseerdemo.xyz/          -> code=000, curl exit 6
+    https://tayseer-demo.pages.dev/   -> code=200, curl exit 0
+    https://www.tayseer.me/           -> code=200, curl exit 0

@@ -1,0 +1,142 @@
+[
+    {
+        "route":  "/",
+        "status":  200,
+        "redirects":  0,
+        "finalUrl":  "https://tayseer-demo.pages.dev/",
+        "kind":  "built route (expected 200)"
+    },
+    {
+        "route":  "/about",
+        "status":  200,
+        "redirects":  0,
+        "finalUrl":  "https://tayseer-demo.pages.dev/about",
+        "kind":  "built route (expected 200)"
+    },
+    {
+        "route":  "/blog",
+        "status":  200,
+        "redirects":  0,
+        "finalUrl":  "https://tayseer-demo.pages.dev/blog",
+        "kind":  "built route (expected 200)"
+    },
+    {
+        "route":  "/blog/open-banking-uae-ksa",
+        "status":  200,
+        "redirects":  0,
+        "finalUrl":  "https://tayseer-demo.pages.dev/blog/open-banking-uae-ksa",
+        "kind":  "built route (expected 200)"
+    },
+    {
+        "route":  "/blog/rise-of-fintech-uae",
+        "status":  200,
+        "redirects":  0,
+        "finalUrl":  "https://tayseer-demo.pages.dev/blog/rise-of-fintech-uae",
+        "kind":  "built route (expected 200)"
+    },
+    {
+        "route":  "/careers",
+        "status":  200,
+        "redirects":  0,
+        "finalUrl":  "https://tayseer-demo.pages.dev/careers",
+        "kind":  "built route (expected 200)"
+    },
+    {
+        "route":  "/connect",
+        "status":  200,
+        "redirects":  0,
+        "finalUrl":  "https://tayseer-demo.pages.dev/connect",
+        "kind":  "built route (expected 200)"
+    },
+    {
+        "route":  "/privacy",
+        "status":  200,
+        "redirects":  0,
+        "finalUrl":  "https://tayseer-demo.pages.dev/privacy",
+        "kind":  "built route (expected 200)"
+    },
+    {
+        "route":  "/solutions",
+        "status":  200,
+        "redirects":  0,
+        "finalUrl":  "https://tayseer-demo.pages.dev/solutions",
+        "kind":  "built route (expected 200)"
+    },
+    {
+        "route":  "/solutions/banking-systems",
+        "status":  200,
+        "redirects":  0,
+        "finalUrl":  "https://tayseer-demo.pages.dev/solutions/banking-systems",
+        "kind":  "built route (expected 200)"
+    },
+    {
+        "route":  "/solutions/core-banking",
+        "status":  200,
+        "redirects":  0,
+        "finalUrl":  "https://tayseer-demo.pages.dev/solutions/core-banking",
+        "kind":  "built route (expected 200)"
+    },
+    {
+        "route":  "/solutions/fahim-ai",
+        "status":  200,
+        "redirects":  0,
+        "finalUrl":  "https://tayseer-demo.pages.dev/solutions/fahim-ai",
+        "kind":  "built route (expected 200)"
+    },
+    {
+        "route":  "/solutions/managed-services",
+        "status":  200,
+        "redirects":  0,
+        "finalUrl":  "https://tayseer-demo.pages.dev/solutions/managed-services",
+        "kind":  "built route (expected 200)"
+    },
+    {
+        "route":  "/solutions/mbuke",
+        "status":  200,
+        "redirects":  0,
+        "finalUrl":  "https://tayseer-demo.pages.dev/solutions/mbuke",
+        "kind":  "built route (expected 200)"
+    },
+    {
+        "route":  "/solutions/software-management-systems",
+        "status":  200,
+        "redirects":  0,
+        "finalUrl":  "https://tayseer-demo.pages.dev/solutions/software-management-systems",
+        "kind":  "built route (expected 200)"
+    },
+    {
+        "route":  "/terms",
+        "status":  200,
+        "redirects":  0,
+        "finalUrl":  "https://tayseer-demo.pages.dev/terms",
+        "kind":  "built route (expected 200)"
+    },
+    {
+        "route":  "/404",
+        "status":  200,
+        "redirects":  0,
+        "finalUrl":  "https://tayseer-demo.pages.dev/404",
+        "kind":  "built route (expected 200)"
+    },
+    {
+        "route":  "/solutions/banks",
+        "status":  404,
+        "redirects":  0,
+        "finalUrl":  "https://tayseer-demo.pages.dev/solutions/banks",
+        "kind":  "sector probe (expected 404)"
+    },
+    {
+        "route":  "/sectors/banks",
+        "status":  404,
+        "redirects":  0,
+        "finalUrl":  "https://tayseer-demo.pages.dev/sectors/banks",
+        "kind":  "sector probe (expected 404)"
+    },
+    {
+        "route":  "/sectors",
+        "status":  404,
+        "redirects":  0,
+        "finalUrl":  "https://tayseer-demo.pages.dev/sectors",
+        "kind":  "sector probe (expected 404)"
+    }
+]

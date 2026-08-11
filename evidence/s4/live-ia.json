@@ -1,0 +1,603 @@
+{
+    "meta":  {
+                 "generatedUtc":  "2026-08-11T04:43:07Z",
+                 "figureCaptureUtc":  "2026-08-11T04:55:48.020Z",
+                 "target":  "tayseer.me (live legacy site)",
+                 "method":  "curl 8.x over HTTPS; sitemap.xml parsed for the URL list; homepage + every crawled page re-scanned for internal links (depth 2); Playwright/Chromium 1.62.1 used only for the rendered nav confirmation",
+                 "toolNotes":  "Titles/headings/canonicals extracted from the saved raw HTML in raw/pages/, not re-fetched, so every value below is reproducible from the artifacts in this folder."
+             },
+    "hostBehaviour":  {
+                          "bareToWww":  {
+                                            "requested":  "https://tayseer.me/",
+                                            "status":  301,
+                                            "location":  "https://www.tayseer.me/",
+                                            "server":  "LiteSpeed"
+                                        },
+                          "httpToHttps":  {
+                                              "requested":  "http://tayseer.me/",
+                                              "finalUrl":  "https://www.tayseer.me/",
+                                              "redirects":  1,
+                                              "status":  200
+                                          },
+                          "canonicalHost":  "https://www.tayseer.me",
+                          "note":  "Every rel=canonical on the site points at the BARE host, which 301-redirects to www. See contradictions in SUMMARY.md."
+                      },
+    "robotsAndSitemaps":  [
+                              {
+                                  "url":  "https://tayseer.me/robots.txt",
+                                  "status":  200,
+                                  "redirects":  1,
+                                  "finalUrl":  "https://www.tayseer.me/robots.txt"
+                              },
+                              {
+                                  "url":  "https://www.tayseer.me/robots.txt",
+                                  "status":  200,
+                                  "redirects":  0,
+                                  "finalUrl":  "https://www.tayseer.me/robots.txt",
+                                  "body":  "User-agent: *`nDisallow: `n`nSitemap: https://www.tayseer.me",
+                                  "defect":  "Sitemap directive points at the homepage, not at /sitemap.xml"
+                              },
+                              {
+                                  "url":  "https://tayseer.me/sitemap.xml",
+                                  "status":  200,
+                                  "redirects":  1,
+                                  "finalUrl":  "https://www.tayseer.me/sitemap.xml"
+                              },
+                              {
+                                  "url":  "https://www.tayseer.me/sitemap.xml",
+                                  "status":  200,
+                                  "redirects":  0,
+                                  "finalUrl":  "https://www.tayseer.me/sitemap.xml",
+                                  "urlCount":  16
+                              },
+                              {
+                                  "url":  "https://tayseer.me/sitemap_index.xml",
+                                  "status":  404,
+                                  "redirects":  1,
+                                  "finalUrl":  "https://www.tayseer.me/sitemap_index.xml"
+                              },
+                              {
+                                  "url":  "https://www.tayseer.me/sitemap_index.xml",
+                                  "status":  404,
+                                  "redirects":  0,
+                                  "finalUrl":  "https://www.tayseer.me/sitemap_index.xml"
+                              }
+                          ],
+    "primaryNav":  {
+                       "selector":  "header#siteHeader \u003e div \u003e nav#mainNav",
+                       "domEvidence":  "raw/homepage.html lines 49-93",
+                       "renderedEvidence":  "fig-4a-current-nav-1440.png + raw/fig-4a-dropdown-items.json",
+                       "solutionsChildCount":  6,
+                       "hrefStyle":  "document-relative, no leading slash (e.g. href=\"core-banking\"); resolves correctly only because every page is served from the site root",
+                       "items":  [
+                                     {
+                                         "level":  "top",
+                                         "label":  "Home",
+                                         "href":  "https://www.tayseer.me",
+                                         "type":  "page",
+                                         "resolvesTo":  "https://www.tayseer.me/"
+                                     },
+                                     {
+                                         "level":  "top",
+                                         "label":  "Solutions",
+                                         "href":  "solutions",
+                                         "type":  "page",
+                                         "resolvesTo":  "https://www.tayseer.me/solutions",
+                                         "note":  "also the dropdown trigger"
+                                     },
+                                     {
+                                         "level":  "child",
+                                         "parent":  "Solutions",
+                                         "label":  "Core Banking",
+                                         "href":  "core-banking",
+                                         "type":  "page",
+                                         "resolvesTo":  "https://www.tayseer.me/core-banking"
+                                     },
+                                     {
+                                         "level":  "child",
+                                         "parent":  "Solutions",
+                                         "label":  "Fahim AI",
+                                         "href":  "fahim-ai",
+                                         "type":  "page",
+                                         "resolvesTo":  "https://www.tayseer.me/fahim-ai"
+                                     },
+                                     {
+                                         "level":  "child",
+                                         "parent":  "Solutions",
+                                         "label":  "MBuke",
+                                         "href":  "mbuke",
+                                         "type":  "page",
+                                         "resolvesTo":  "https://www.tayseer.me/mbuke"
+                                     },
+                                     {
+                                         "level":  "child",
+                                         "parent":  "Solutions",
+                                         "label":  "Software Management Systems",
+                                         "href":  "software-management-systems",
+                                         "type":  "page",
+                                         "resolvesTo":  "https://www.tayseer.me/software-management-systems"
+                                     },
+                                     {
+                                         "level":  "child",
+                                         "parent":  "Solutions",
+                                         "label":  "Managed Services",
+                                         "href":  "managed-services",
+                                         "type":  "page",
+                                         "resolvesTo":  "https://www.tayseer.me/managed-services"
+                                     },
+                                     {
+                                         "level":  "child",
+                                         "parent":  "Solutions",
+                                         "label":  "Banking Systems",
+                                         "href":  "banking-systems",
+                                         "type":  "page",
+                                         "resolvesTo":  "https://www.tayseer.me/banking-systems"
+                                     },
+                                     {
+                                         "level":  "top",
+                                         "label":  "About Us",
+                                         "href":  "about-us",
+                                         "type":  "page",
+                                         "resolvesTo":  "https://www.tayseer.me/about-us"
+                                     },
+                                     {
+                                         "level":  "top",
+                                         "label":  "Blogs and Resources",
+                                         "href":  "blogs-and-resources",
+                                         "type":  "page",
+                                         "resolvesTo":  "https://www.tayseer.me/blogs-and-resources"
+                                     },
+                                     {
+                                         "level":  "top",
+                                         "label":  "Careers",
+                                         "href":  "careers",
+                                         "type":  "page",
+                                         "resolvesTo":  "https://www.tayseer.me/careers",
+                                         "note":  "\u003cli\u003e carries class \"hidden\" - present in DOM, not rendered in the nav at any breakpoint"
+                                     },
+                                     {
+                                         "level":  "top",
+                                         "label":  "Connect",
+                                         "href":  "connect",
+                                         "type":  "page",
+                                         "resolvesTo":  "https://www.tayseer.me/connect"
+                                     },
+                                     {
+                                         "level":  "cta",
+                                         "label":  "Submit A Query",
+                                         "href":  "connect",
+                                         "type":  "page",
+                                         "resolvesTo":  "https://www.tayseer.me/connect",
+                                         "note":  "header CTA, outside \u003cnav\u003e"
+                                     }
+                                 ]
+                   },
+    "pages":  [
+                  {
+                      "url":  "https://www.tayseer.me/",
+                      "finalUrl":  "https://www.tayseer.me/",
+                      "status":  "200",
+                      "statusChain":  "200",
+                      "redirects":  0,
+                      "title":  "Tayseer Innovations – Future-Ready Fintech",
+                      "canonical":  "https://tayseer.me/",
+                      "canonicalHostMatchesLive":  false,
+                      "h1Count":  1,
+                      "h1":  [
+                                 "Innovativeapproach"
+                             ],
+                      "h2Count":  9,
+                      "h2":  [
+                                 "Future-ready AI \u0026 Digital Solutions",
+                                 "We Have All Your Business Needs Covered",
+                                 "About Us",
+                                 "Tayseer By Numbers",
+                                 "How May We Help You!",
+                                 "Our Client Speak",
+                                 "Become Future\u0026#8202;-\u0026#8202;Ready With Our Cutting Edge Products \u0026 Services",
+                                 "Our Success Mantra",
+                                 "We Pioneer Flexible Technology"
+                             ],
+                      "jsonLdBlocks":  0,
+                      "inSitemap":  true,
+                      "inPrimaryNav":  true,
+                      "rawFile":  "raw/pages/www_tayseer_me_.html"
+                  },
+                  {
+                      "url":  "https://www.tayseer.me/solutions",
+                      "finalUrl":  "https://www.tayseer.me/solutions",
+                      "status":  "200",
+                      "statusChain":  "200",
+                      "redirects":  0,
+                      "title":  "Solutions – Tayseer Innovations",
+                      "canonical":  "https://tayseer.me/solutions/",
+                      "canonicalHostMatchesLive":  false,
+                      "h1Count":  1,
+                      "h1":  [
+                                 "Solutions"
+                             ],
+                      "h2Count":  3,
+                      "h2":  [
+                                 "Intelligent Solutions for Your Business | Where Innovation Meets Global Excellence in Business Transformation.",
+                                 "Our Products \u0026 Services are designed to:",
+                                 "How May We Help You!"
+                             ],
+                      "jsonLdBlocks":  0,
+                      "inSitemap":  true,
+                      "inPrimaryNav":  true,
+                      "rawFile":  "raw/pages/www_tayseer_me_solutions.html"
+                  },
+                  {
+                      "url":  "https://www.tayseer.me/core-banking",
+                      "finalUrl":  "https://www.tayseer.me/core-banking",
+                      "status":  "200",
+                      "statusChain":  "200",
+                      "redirects":  0,
+                      "title":  "Core Banking – Tayseer Innovations",
+                      "canonical":  "https://tayseer.me/core-banking/",
+                      "canonicalHostMatchesLive":  false,
+                      "h1Count":  1,
+                      "h1":  [
+                                 "Core Banking"
+                             ],
+                      "h2Count":  1,
+                      "h2":  [
+                                 "How May We Help You!"
+                             ],
+                      "jsonLdBlocks":  0,
+                      "inSitemap":  true,
+                      "inPrimaryNav":  true,
+                      "rawFile":  "raw/pages/www_tayseer_me_core_banking.html"
+                  },
+                  {
+                      "url":  "https://www.tayseer.me/fahim-ai",
+                      "finalUrl":  "https://www.tayseer.me/fahim-ai",
+                      "status":  "200",
+                      "statusChain":  "200",
+                      "redirects":  0,
+                      "title":  "Fahim AI – Tayseer Innovations",
+                      "canonical":  "https://tayseer.me/fahim-ai/",
+                      "canonicalHostMatchesLive":  false,
+                      "h1Count":  1,
+                      "h1":  [
+                                 "Fahim AI"
+                             ],
+                      "h2Count":  5,
+                      "h2":  [
+                                 "How Fahim Works",
+                                 "End-to-End Journey Management",
+                                 "Business Impact",
+                                 "Key Performance Areas",
+                                 "How May We Help You!"
+                             ],
+                      "jsonLdBlocks":  0,
+                      "inSitemap":  true,
+                      "inPrimaryNav":  true,
+                      "rawFile":  "raw/pages/www_tayseer_me_fahim_ai.html"
+                  },
+                  {
+                      "url":  "https://www.tayseer.me/mbuke",
+                      "finalUrl":  "https://www.tayseer.me/mbuke",
+                      "status":  "200",
+                      "statusChain":  "200",
+                      "redirects":  0,
+                      "title":  "MBuke – Tayseer Innovations",
+                      "canonical":  "https://tayseer.me/mbuke/",
+                      "canonicalHostMatchesLive":  false,
+                      "h1Count":  1,
+                      "h1":  [
+                                 "MBuke"
+                             ],
+                      "h2Count":  5,
+                      "h2":  [
+                                 "Platform Overview",
+                                 "Who Uses MBuke?",
+                                 "The MBuke Advantage",
+                                 "Core Capabilities",
+                                 "Case Study"
+                             ],
+                      "jsonLdBlocks":  0,
+                      "inSitemap":  true,
+                      "inPrimaryNav":  true,
+                      "rawFile":  "raw/pages/www_tayseer_me_mbuke.html"
+                  },
+                  {
+                      "url":  "https://www.tayseer.me/software-management-systems",
+                      "finalUrl":  "https://www.tayseer.me/software-management-systems",
+                      "status":  "200",
+                      "statusChain":  "200",
+                      "redirects":  0,
+                      "title":  "Software Management Systems – Tayseer Innovations",
+                      "canonical":  "https://tayseer.me/software-management-systems/",
+                      "canonicalHostMatchesLive":  false,
+                      "h1Count":  1,
+                      "h1":  [
+                                 "Software Management Systems"
+                             ],
+                      "h2Count":  1,
+                      "h2":  [
+                                 "How May We Help You!"
+                             ],
+                      "jsonLdBlocks":  0,
+                      "inSitemap":  true,
+                      "inPrimaryNav":  true,
+                      "rawFile":  "raw/pages/www_tayseer_me_software_management_systems.html"
+                  },
+                  {
+                      "url":  "https://www.tayseer.me/managed-services",
+                      "finalUrl":  "https://www.tayseer.me/managed-services",
+                      "status":  "200",
+                      "statusChain":  "200",
+                      "redirects":  0,
+                      "title":  "Managed Services – Tayseer Innovations",
+                      "canonical":  "https://tayseer.me/managed-services/",
+                      "canonicalHostMatchesLive":  false,
+                      "h1Count":  1,
+                      "h1":  [
+                                 "Managed Services"
+                             ],
+                      "h2Count":  1,
+                      "h2":  [
+                                 "How May We Help You!"
+                             ],
+                      "jsonLdBlocks":  0,
+                      "inSitemap":  true,
+                      "inPrimaryNav":  true,
+                      "rawFile":  "raw/pages/www_tayseer_me_managed_services.html"
+                  },
+                  {
+                      "url":  "https://www.tayseer.me/banking-systems",
+                      "finalUrl":  "https://www.tayseer.me/banking-systems",
+                      "status":  "200",
+                      "statusChain":  "200",
+                      "redirects":  0,
+                      "title":  "Banking Systems – Tayseer Innovations",
+                      "canonical":  "https://tayseer.me/banking-systems/",
+                      "canonicalHostMatchesLive":  false,
+                      "h1Count":  1,
+                      "h1":  [
+                                 "Banking Systems"
+                             ],
+                      "h2Count":  2,
+                      "h2":  [
+                                 "GRG Banking Systems for UAE Banks | Advanced Cash \u0026 ATM Solutions",
+                                 "How May We Help You!"
+                             ],
+                      "jsonLdBlocks":  0,
+                      "inSitemap":  true,
+                      "inPrimaryNav":  true,
+                      "rawFile":  "raw/pages/www_tayseer_me_banking_systems.html"
+                  },
+                  {
+                      "url":  "https://www.tayseer.me/about-us",
+                      "finalUrl":  "https://www.tayseer.me/about-us",
+                      "status":  "200",
+                      "statusChain":  "200",
+                      "redirects":  0,
+                      "title":  "About Us – Tayseer Innovations",
+                      "canonical":  "https://tayseer.me/about-us/",
+                      "canonicalHostMatchesLive":  false,
+                      "h1Count":  1,
+                      "h1":  [
+                                 "About Us"
+                             ],
+                      "h2Count":  5,
+                      "h2":  [
+                                 "We are Tayseer - The Trusted Partner for Your Business",
+                                 "Why About \u0026lsquo;Tayseer\u0027?",
+                                 "Our Commitments to You",
+                                 "Our Robust Partner Ecosystem Helps You Accelerate Your Digital Transformation Journey",
+                                 "How May We Help You!"
+                             ],
+                      "jsonLdBlocks":  0,
+                      "inSitemap":  true,
+                      "inPrimaryNav":  true,
+                      "rawFile":  "raw/pages/www_tayseer_me_about_us.html"
+                  },
+                  {
+                      "url":  "https://www.tayseer.me/blogs-and-resources",
+                      "finalUrl":  "https://www.tayseer.me/blogs-and-resources",
+                      "status":  "200",
+                      "statusChain":  "200",
+                      "redirects":  0,
+                      "title":  "Blogs and Resources – Tayseer Innovations",
+                      "canonical":  "https://tayseer.me/blogs-and-resources/",
+                      "canonicalHostMatchesLive":  false,
+                      "h1Count":  1,
+                      "h1":  [
+                                 "Blogs and Resources"
+                             ],
+                      "h2Count":  0,
+                      "h2":  [
+
+                             ],
+                      "jsonLdBlocks":  0,
+                      "inSitemap":  true,
+                      "inPrimaryNav":  true,
+                      "rawFile":  "raw/pages/www_tayseer_me_blogs_and_resources.html"
+                  },
+                  {
+                      "url":  "https://www.tayseer.me/careers",
+                      "finalUrl":  "https://www.tayseer.me/careers",
+                      "status":  "200",
+                      "statusChain":  "200",
+                      "redirects":  0,
+                      "title":  "Careers – Tayseer Innovations",
+                      "canonical":  "https://tayseer.me/careers/",
+                      "canonicalHostMatchesLive":  false,
+                      "h1Count":  1,
+                      "h1":  [
+                                 "Careers"
+                             ],
+                      "h2Count":  1,
+                      "h2":  [
+                                 "Shape the Future of Intelligent Solutions in the Region"
+                             ],
+                      "jsonLdBlocks":  0,
+                      "inSitemap":  true,
+                      "inPrimaryNav":  true,
+                      "rawFile":  "raw/pages/www_tayseer_me_careers.html"
+                  },
+                  {
+                      "url":  "https://www.tayseer.me/connect",
+                      "finalUrl":  "https://www.tayseer.me/connect",
+                      "status":  "200",
+                      "statusChain":  "200",
+                      "redirects":  0,
+                      "title":  "Connect – Tayseer Innovations",
+                      "canonical":  "https://tayseer.me/connect/",
+                      "canonicalHostMatchesLive":  false,
+                      "h1Count":  2,
+                      "h1":  [
+                                 "Connect",
+                                 "Connect with Tayseer - The Trusted Partner for Your Business"
+                             ],
+                      "h2Count":  1,
+                      "h2":  [
+                                 "Visit Us"
+                             ],
+                      "jsonLdBlocks":  0,
+                      "inSitemap":  true,
+                      "inPrimaryNav":  true,
+                      "rawFile":  "raw/pages/www_tayseer_me_connect.html"
+                  },
+                  {
+                      "url":  "https://www.tayseer.me/terms-conditions",
+                      "finalUrl":  "https://www.tayseer.me/terms-conditions",
+                      "status":  "200",
+                      "statusChain":  "200",
+                      "redirects":  0,
+                      "title":  "Terms \u0026 Conditions – Tayseer Innovations",
+                      "canonical":  "https://tayseer.me/terms-conditions/",
+                      "canonicalHostMatchesLive":  false,
+                      "h1Count":  1,
+                      "h1":  [
+                                 "Terms \u0026 Conditions"
+                             ],
+                      "h2Count":  0,
+                      "h2":  [
+
+                             ],
+                      "jsonLdBlocks":  0,
+                      "inSitemap":  true,
+                      "inPrimaryNav":  false,
+                      "rawFile":  "raw/pages/www_tayseer_me_terms_conditions.html"
+                  },
+                  {
+                      "url":  "https://www.tayseer.me/privacy-policy",
+                      "finalUrl":  "https://www.tayseer.me/privacy-policy",
+                      "status":  "200",
+                      "statusChain":  "200",
+                      "redirects":  0,
+                      "title":  "Privacy Policy – Tayseer Innovations",
+                      "canonical":  "https://tayseer.me/terms-conditions/",
+                      "canonicalHostMatchesLive":  false,
+                      "h1Count":  1,
+                      "h1":  [
+                                 "Privacy Policy"
+                             ],
+                      "h2Count":  0,
+                      "h2":  [
+
+                             ],
+                      "jsonLdBlocks":  0,
+                      "inSitemap":  true,
+                      "inPrimaryNav":  false,
+                      "rawFile":  "raw/pages/www_tayseer_me_privacy_policy.html"
+                  },
+                  {
+                      "url":  "https://www.tayseer.me/on-site-deployment",
+                      "finalUrl":  "https://www.tayseer.me/on-site-deployment",
+                      "status":  "200",
+                      "statusChain":  "200",
+                      "redirects":  0,
+                      "title":  "The Rise of FinTech in the UAE – Tayseer Innovations",
+                      "canonical":  "https://tayseer.me/on-site-deployment/",
+                      "canonicalHostMatchesLive":  false,
+                      "h1Count":  1,
+                      "h1":  [
+                                 "The Rise of FinTech in the UAE: Innovations Shaping the Future of Finance in 2025 On Site Deployment Insights"
+                             ],
+                      "h2Count":  1,
+                      "h2":  [
+                                 "More Posts"
+                             ],
+                      "jsonLdBlocks":  0,
+                      "inSitemap":  true,
+                      "inPrimaryNav":  false,
+                      "rawFile":  "raw/pages/www_tayseer_me_on_site_deployment.html"
+                  },
+                  {
+                      "url":  "https://www.tayseer.me/unleashing-financial-innovation",
+                      "finalUrl":  "https://www.tayseer.me/unleashing-financial-innovation",
+                      "status":  "200",
+                      "statusChain":  "200",
+                      "redirects":  0,
+                      "title":  "Unleashing Financial Innovation: Open Banking’s Potential in the UAE and KSA – Tayseer Innovations",
+                      "canonical":  "https://tayseer.me/on-site-deployment/",
+                      "canonicalHostMatchesLive":  false,
+                      "h1Count":  1,
+                      "h1":  [
+                                 "Unleashing Financial Innovation: Open Banking’s Potential in the UAE and KSA"
+                             ],
+                      "h2Count":  1,
+                      "h2":  [
+                                 "More Posts"
+                             ],
+                      "jsonLdBlocks":  0,
+                      "inSitemap":  true,
+                      "inPrimaryNav":  false,
+                      "rawFile":  "raw/pages/www_tayseer_me_unleashing_financial_innovation.html"
+                  }
+              ],
+    "discoveredOutsideSitemap":  [
+                                     {
+                                         "url":  "https://www.tayseer.me/index",
+                                         "status":  200,
+                                         "linkedFrom":  [
+                                                            "https://www.tayseer.me/fahim-ai",
+                                                            "https://www.tayseer.me/mbuke"
+                                                        ],
+                                         "note":  "Duplicate of the homepage, reachable and indexable, absent from sitemap.xml"
+                                     }
+                                 ],
+    "sectorPatternProbes":  [
+                                {
+                                    "path":  "/sector",
+                                    "status":  404
+                                },
+                                {
+                                    "path":  "/sectors",
+                                    "status":  404
+                                },
+                                {
+                                    "path":  "/banks",
+                                    "status":  404
+                                },
+                                {
+                                    "path":  "/telecom",
+                                    "status":  404
+                                },
+                                {
+                                    "path":  "/government",
+                                    "status":  404
+                                },
+                                {
+                                    "path":  "/exchange",
+                                    "status":  404
+                                },
+                                {
+                                    "path":  "/banks-sector",
+                                    "status":  404
+                                },
+                                {
+                                    "path":  "/sectors/banks",
+                                    "status":  404
+                                },
+                                {
+                                    "path":  "/industries",
+                                    "status":  404
+                                }
+                            ],
+    "sectorVerdict":  "CONFIRMED: no sector-shaped URL exists on the live site. All 9 probed patterns return 404, and no internal link on any of the 16 crawled pages points at one."
+}

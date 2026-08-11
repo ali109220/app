@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com data:; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests;">
+<base href="https://www.tayseer.me/">
+<title>Tayseer Innovations – Future-Ready Fintech</title>
+<meta name="description" content="Tayseer Innovations is a UAE and Saudi Arabia based fintech company delivering core banking, AI, and digital transformation solutions.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Tayseer Innovations – Future-Ready Fintech">
+<meta property="og:description" content="Tayseer Innovations is a UAE and Saudi Arabia based fintech company delivering core banking, AI, and digital transformation solutions.">
+<link rel="canonical" href="https://tayseer.me/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<link href="css/swiper-bundle.min.css" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="css/custom.css">
+<link rel="icon" href="images/favicon.png" sizes="32x32">
+</head>
+<body class="font-['Kumbh Sans'] text-ink bg-paper">
+
+<!-- Top bar -->
+<div class="top-menu bg-[#DCDFE1] text-[#33394a] text-[0.85rem] py-2">
+  <div class="mx-auto px-4 lg:px-[10%] flex flex-wrap items-center justify-between gap-2">
+    <div class="flex flex-wrap items-center gap-5">
+      <a href="mailto:info@tayseer.me" class="flex items-center gap-2 hover:text-brandblue order-3 lg:order-1 text-[#261D1D] font-normal">
+        <svg aria-hidden="true" class="e-font-icon-svg e-far-envelope" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" style="
+    width: 14px;
+    height: 14px;
+"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm0 48v40.805c-22.422 18.259-58.168 46.651-134.587 106.49-16.841 13.247-50.201 45.072-73.413 44.701-23.208.375-56.579-31.459-73.413-44.701C106.18 199.465 70.425 171.067 48 152.805V112h416zM48 400V214.398c22.914 18.251 55.409 43.862 104.938 82.646 21.857 17.205 60.134 55.186 103.062 54.955 42.717.231 80.509-37.199 103.053-54.947 49.528-38.783 82.032-64.401 104.947-82.653V400H48z"></path></svg>
+        info@tayseer.me
+      </a>
+      <a href="tel:+966555203079" class="order-1 lg:order-1 flex items-center gap-2 hover:text-brandblue text-[#261D1D] font-normal">
+        <span><img src="images/saudi-arabia.png" alt="Saudi Arabia" class="w-6 h-6"></span> +966 555203079
+      </a>
+      <a href="tel:+97143997558" class="order-3 lg:order-3 flex items-center gap-2 hover:text-brandblue text-[#261D1D] font-normal">
+        <span><img src="images/united-arab-emirates.png" alt="UAE" class="w-6 h-6"></span> +971 43997558
+      </a>
+    </div>
+    <a href="https://www.linkedin.com/company/tayseer-innovations/" target="_blank" rel="noopener" aria-label="LinkedIn" class="hover:text-brandblue hidden md:flex">
+    <svg width="16" height="16" aria-hidden="true" class="e-font-icon-svg e-fab-linkedin" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path></svg>
+    </a>
+  </div>
+</div>
+
+<!-- Navbar -->
+<header id="siteHeader" class="bg-white border-b border-[#eceef2] sticky top-0 z-40">
+  <div class="mx-auto px-2 lg:px-[10%] py-[0.666rem] flex items-center justify-between gap-3">
+    <a href="https://www.tayseer.me" class="shrink-0">
+      <img src="images/logo-light.svg" alt="Tayseer Innovations" class="h-[32px] lg:h-[56px]">
+    </a>
+
+    <nav id="mainNav" class="hidden lg:flex items-center gap-6 font-['Kumbh_Sans'] text-[15px] fixed lg:static inset-x-0 lg:inset-auto  lg:bottom-auto bg-white lg:bg-transparent z-40 overflow-y-auto lg:overflow-visible">
+      <ul class="flex flex-col lg:flex-row items-stretch lg:items-center gap-0 lg:gap-10 font-semibold text-[#585858] w-full lg:w-auto">
+        <li><a href="https://www.tayseer.me" class="block py-4 px-6 lg:py-2 lg:px-0 text-brandblue border-b border-[#f1f1f1] lg:border-0">Home</a></li>
+        <li class="has-dropdown lg:relative lg:group border-b border-[#f1f1f1] lg:border-0">
+          <div class="flex items-center justify-between">
+            <a href="solutions" class="dropdown-link block flex-1 py-4 px-6 lg:py-2 lg:px-0 hover:text-brandblue">Solutions</a>
+            <button type="button" class="dropdown-arrow-btn px-6 lg:px-2 py-4 lg:py-2 flex items-center" aria-label="Toggle Solutions submenu" aria-expanded="false">
+              <svg aria-hidden="true" class="dropdown-chevron transition-transform duration-200" width="14" height="14" viewBox="0 0 320 512" xmlns="http://www.w3.org/2000/svg"><path d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"></path></svg>
+           
+            </button>
+          </div>
+          <ul class="dropdown-menu hidden lg:block lg:absolute lg:top-full lg:left-0 lg:w-72 lg:bg-white lg:shadow-lg lg:py-2 lg:opacity-0 lg:invisible lg:group-hover:opacity-100 lg:group-hover:visible transition lg:translate-y-1 lg:group-hover:translate-y-0">
+            <li><a href="core-banking" class="block px-6 lg:px-4 py-4 lg:py-3 hover:bg-[#f1f6fb] hover:text-brandblue lg:rounded">Core Banking</a></li>
+            <li><a href="fahim-ai" class="block px-6 lg:px-4 py-4 lg:py-3 hover:bg-[#f1f6fb] hover:text-brandblue lg:rounded">Fahim AI</a></li>
+            <li><a href="mbuke" class="block px-6 lg:px-4 py-4 lg:py-3 hover:bg-[#f1f6fb] hover:text-brandblue lg:rounded">MBuke</a></li>
+            <li><a href="software-management-systems" class="block px-6 lg:px-4 py-4 lg:py-3 hover:bg-[#f1f6fb] hover:text-brandblue lg:rounded">Software Management Systems</a></li>
+            <li><a href="managed-services" class="block px-6 lg:px-4 py-4 lg:py-3 hover:bg-[#f1f6fb] hover:text-brandblue lg:rounded">Managed Services</a></li>
+            <li><a href="banking-systems" class="block px-6 lg:px-4 py-4 lg:py-3 hover:bg-[#f1f6fb] hover:text-brandblue lg:rounded">Banking Systems</a></li>
+          </ul>
+        </li>
+        <li class="border-b border-[#f1f1f1] lg:border-0"><a href="about-us" class="block py-4 px-6 lg:py-2 lg:px-0 hover:text-brandblue">About Us</a></li>
+        <li class="border-b border-[#f1f1f1] lg:border-0"><a href="blogs-and-resources" class="block py-4 px-6 lg:py-2 lg:px-0 hover:text-brandblue">Blogs and Resources</a></li>
+        <li class="border-b border-[#f1f1f1] lg:border-0 hidden"><a href="careers" class="block py-4 px-6 lg:py-2 lg:px-0 hover:text-brandblue">Careers</a></li>
+        <li class="border-b border-[#f1f1f1] lg:border-0"><a href="connect" class="block py-4 px-6 lg:py-2 lg:px-0 hover:text-brandblue">Connect</a></li>
+      </ul>
+    </nav>
+
+    <div class="flex items-center gap-3 shrink-0">
+      <a href="connect" class="inline-flex items-center gap-2 bg-brand-gradient text-white text-[13px] lg:text-[14px] font-medium px-4 lg:px-5 py-2 rounded-full whitespace-nowrap">
+        Submit A Query
+         <svg aria-hidden="true" width="14" height="14"  class="e-font-icon-svg e-fas-long-arrow-alt-right" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" d="M313.941 216H12c-6.627 0-12 5.373-12 12v56c0 6.627 5.373 12 12 12h301.941v46.059c0 21.382 25.851 32.09 40.971 16.971l86.059-86.059c9.373-9.373 9.373-24.569 0-33.941l-86.059-86.059c-15.119-15.119-40.971-4.411-40.971 16.971V216z"></path></svg>
+      </a>
+      <button id="menuToggle" class="lg:hidden text-brandblue" aria-label="Toggle menu">
+        <svg id="iconHamburger" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="iconClose" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="hidden"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="relative flex items-center min-h-[307px] lg:min-h-[600px] text-white bg-cover bg-center"
+  style="background-image:linear-gradient(90deg, rgba(4,10,22,.86) 0%, rgba(4, 10, 22, 0) 55%, rgba(4, 10, 22, 0) 100%), url('images/banner-image.webp');">
+  <div class="max-w-[1230px] mx-auto px-6 w-full">
+    <div class="max-w-2xl">
+
+      <h1 class="font-kumbh font-extrabold uppercase text-[clamp(2rem,6vw,4.4rem)] lg:text-[89px] leading-[1.05] mb-4">Innovative<br>approach</h1>
+   
+    </div>
+  </div>
+</section>
+
+<!-- Solutions -->
+<section class="py-14 bg-white" id="solutions">
+  <div class="max-w-[1288px] mx-auto px-6">
+    <div class="flex flex-col lg:flex-row lg:items-start justify-between gap-6 mb-12">
+      <div class="lg:max-w-4xl">
+        <h2 class="font-kumbh font-bold text-brandblue text-[clamp(1.6rem,3vw,2.5rem)] mb-2">Future-ready AI &amp; Digital Solutions</h2>
+        <h2 class="font-kumbh font-bold text-brandblue text-[clamp(1.6rem,3vw,2.5rem)]">We Have All Your Business Needs Covered</h2>
+      </div>
+      <a href="solutions" class="text-[14px] btn-gradient-brand self-start inline-flex items-center gap-2 text-white font-medium px-6 py-2 rounded-full whitespace-nowrap">
+        View All Services
+        <svg aria-hidden="true" width="14" height="14"  class="e-font-icon-svg e-fas-long-arrow-alt-right" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" d="M313.941 216H12c-6.627 0-12 5.373-12 12v56c0 6.627 5.373 12 12 12h301.941v46.059c0 21.382 25.851 32.09 40.971 16.971l86.059-86.059c9.373-9.373 9.373-24.569 0-33.941l-86.059-86.059c-15.119-15.119-40.971-4.411-40.971 16.971V216z"></path></svg>
+        
+      </a>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="sol-card bg-white border border-[#e7e9f0] rounded-2xl p-7">
+        <img class="w-[50px] h-[50px] object-contain relative z-10 mb-4" src="images/banking-system.png" alt="Core Banking">
+        <h3 class="relative z-10 font-kumbh text-brandblue font-semibold text-[19px] mb-2">Core Banking</h3>
+        <p class="relative z-10 text-[15px] font-normal text-inksoft mb-0 text-[#5b6478]">Future-Proof Core Banking. Growth Unleashed.</p>
+      </div>
+      <div class="sol-card bg-white border border-[#e7e9f0] rounded-2xl p-7">
+        <img class="w-[50px] h-[50px] object-contain relative z-10 mb-4" src="images/chip.png" alt="Fahim AI">
+        <h3 class="relative z-10 font-kumbh text-brandblue font-semibold text-[19px] mb-2">Fahim AI</h3>
+        <p class="relative z-10 text-[15px] font-normal text-inksoft mb-0 text-[#5b6478]">Intelligence to Revolutionize Your Business</p>
+      </div>
+      <div class="sol-card bg-white border border-[#e7e9f0] rounded-2xl p-7">
+        <img class="w-[50px] h-[50px] object-contain relative z-10 mb-4" src="images/mbuke.png" alt="MBuke">
+        <h3 class="relative z-10 font-kumbh text-brandblue font-semibold text-[19px] mb-2">MBuke</h3>
+        <p class="relative z-10 text-[15px] font-normal text-inksoft mb-0 text-[#5b6478]">White-Label Mobile Banking Platform</p>
+      </div>
+      <div class="sol-card bg-white border border-[#e7e9f0] rounded-2xl p-7">
+        <img class="w-[50px] h-[50px] object-contain relative z-10 mb-4" src="images/software.png" alt="Software Management Systems">
+        <h3 class="relative z-10 font-kumbh text-brandblue font-semibold text-[19px] mb-2">Software Management Systems</h3>
+        <p class="relative z-10 text-[15px] font-normal text-inksoft mb-0 text-[#5b6478]">Effortless Solutions. Powerful Results.</p>
+      </div>
+      <div class="sol-card bg-white border border-[#e7e9f0] rounded-2xl p-7">
+        <img class="w-[50px] h-[50px] object-contain relative z-10 mb-4" src="images/setting-1.png" alt="Managed Services">
+        <h3 class="relative z-10 font-kumbh text-brandblue font-semibold text-[19px] mb-2">Managed Services</h3>
+        <p class="relative z-10 text-[15px] font-normal text-inksoft mb-0 text-[#5b6478]">Peak Performance via Managed Expertise.</p>
+      </div>
+      <div class="sol-card bg-white border border-[#e7e9f0] rounded-2xl p-7">
+        <img class="w-[50px] h-[50px] object-contain relative z-10 mb-4" src="images/technology.png" alt="Banking Systems">
+        <h3 class="relative z-10 font-kumbh text-brandblue font-semibold text-[19px] mb-2">Banking Systems</h3>
+        <p class="relative z-10 text-[15px] font-normal text-inksoft mb-0 text-[#5b6478]">Experience Next-Gen Banking with GRG Banking</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section class="py-10" style="background:#f5f5f5;">
+  <div class="max-w-[1288px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+    <div class="text-center">
+      <img src="images/about-image1.png" class="mx-auto max-w-[520px] w-full" alt="Tayseer Innovations team illustration">
+    </div>
+    <div>
+      <h2 class="font-kumbh font-semibold text-brandblue text-[clamp(2.3rem,3vw,2.5rem)] mb-4">About Us</h2>
+      <p class="font-bold mb-3 text-[#585858] mb-5">Born from Innovation, Backed by Strength</p>
+      
+      <p class="text-justify text-inksoft leading-[28px] mb-10">Established in 2016, Tayseer Innovations emerges as a premier FinTech company in the UAE. We specialize in elevating businesses through advanced financial technology solutions, enhancing financial accessibility and fostering regional growth. As more than just a service provider, we position ourselves as your committed ally in the digital landscape, dedicated to facilitating your journey towards digital excellence. Our approach exceeds traditional service; we engage in a partnership that jointly shapes your digital destiny.</p>
+      <a href="about-us" class="btn-gradient-brand inline-flex items-center gap-2 text-white font-normal text-[14px] px-6 py-2.5 rounded-full mt-2">
+        Read More
+         <svg aria-hidden="true" width="14" height="14"  class="e-font-icon-svg e-fas-long-arrow-alt-right" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" d="M313.941 216H12c-6.627 0-12 5.373-12 12v56c0 6.627 5.373 12 12 12h301.941v46.059c0 21.382 25.851 32.09 40.971 16.971l86.059-86.059c9.373-9.373 9.373-24.569 0-33.941l-86.059-86.059c-15.119-15.119-40.971-4.411-40.971 16.971V216z"></path></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Stats -->
+<section class="py-12 bg-white">
+  <div class="max-w-[1288px] mx-auto px-6">
+    <h2 class="text-center font-kumbh  font-semibold text-brandblue text-[clamp(1.6rem,3vw,2.5rem)] mb-8">Tayseer By Numbers</h2>
+    <div class="border border-[#e7e9f0] rounded-2xl p-8 lg:p-12">
+      
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-left">
+       
+        <div class="flex gap-4 items-start">
+          <img src="images/counter-icon1.png" alt="Satisfied Clients" class="w-[60px] h-[60px] mb-3">
+          <div>
+          <div class="stat-num font-kumbh font-bold text-[clamp(1.9rem,3.2vw,2.3rem)] text-[#423D3D]" data-count="100">0+</div>
+          <div class="text-brandblue font-normal text-[19px]">Satisfied Clients</div></div>
+        </div>
+
+        <div class="flex gap-4 items-start">
+          <img src="images/counter-icon4.png" alt="Countries" class="w-[60px] h-[60px] mb-3">
+          <div>
+          <div class="stat-num font-kumbh font-bold text-[clamp(1.9rem,3.2vw,2.3rem)] text-[#423D3D]" data-count="15">0+</div>
+          <div class="text-brandblue font-normal text-[19px]">Countries</div></div>
+        </div>
+        <div class="flex gap-4 items-start">
+          <img src="images/counter-icon3.png" alt="Finished Products" class="w-[60px] h-[60px] mb-3">
+          <div>
+          <div class="stat-num font-kumbh font-bold text-[clamp(1.9rem,3.2vw,2.3rem)] text-[#423D3D]" data-count="600">0+</div>
+          <div class="text-brandblue font-normal text-[19px]">Finished Products</div></div>
+        </div>
+        <div class="flex gap-4 items-start">
+          <img src="images/counter-icon2.png" alt="Skilled Experts" class="w-[60px] h-[60px] mb-3">
+          <div>
+          <div class="stat-num font-kumbh font-bold text-[clamp(1.9rem,3.2vw,2.3rem)] text-[#423D3D]" data-count="100">0+</div>
+          <div class="text-brandblue font-normal text-[19px]">Skilled Experts</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="contact-section py-24 hidden" id="contact">
+  <div class="max-w-[1288px] mx-auto px-6">
+    <div class="contact-card relative z-10 rounded-2xl bg-white p-8 lg:p-12 shadow-2xl">
+      <div class="grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr] gap-12">
+        <div>
+          <div class="toggle-eyebrow inline-flex items-center gap-2 text-brandblue font-bold text-sm uppercase tracking-wider mb-3">
+            <span class="switch"></span> Talk To Us
+          </div>
+          <h2 class="font-kumbh font-bold text-2xl text-ink">How May We Help You!</h2>
+        </div>
+        <div>
+          <form onsubmit="return false;" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-medium mb-1.5">Your Name <span class="text-red-500">*</span></label>
+              <input type="text" required class="w-full rounded-lg bg-[#F6F5FA] border border-[#e4e3ec] px-3.5 py-2.5 focus:outline-none focus:border-brandblue focus:ring-2 focus:ring-brandblue/10">
+            </div>
+            <div>
+              <label class="block text-sm font-medium mb-1.5">Organization <span class="text-red-500">*</span></label>
+              <input type="text" required class="w-full rounded-lg bg-[#F6F5FA] border border-[#e4e3ec] px-3.5 py-2.5 focus:outline-none focus:border-brandblue focus:ring-2 focus:ring-brandblue/10">
+            </div>
+            <div>
+              <label class="block text-sm font-medium mb-1.5">Designation <span class="text-red-500">*</span></label>
+              <input type="text" required class="w-full rounded-lg bg-[#F6F5FA] border border-[#e4e3ec] px-3.5 py-2.5 focus:outline-none focus:border-brandblue focus:ring-2 focus:ring-brandblue/10">
+            </div>
+            <div>
+              <label class="block text-sm font-medium mb-1.5">Your Email <span class="text-red-500">*</span></label>
+              <input type="email" required class="w-full rounded-lg bg-[#F6F5FA] border border-[#e4e3ec] px-3.5 py-2.5 focus:outline-none focus:border-brandblue focus:ring-2 focus:ring-brandblue/10">
+            </div>
+            <div>
+              <label class="block text-sm font-medium mb-1.5">Your Phone</label>
+              <input type="tel" class="w-full rounded-lg bg-[#F6F5FA] border border-[#e4e3ec] px-3.5 py-2.5 focus:outline-none focus:border-brandblue focus:ring-2 focus:ring-brandblue/10">
+            </div>
+            <div>
+              <label class="block text-sm font-medium mb-1.5">Country</label>
+              <select class="w-full rounded-lg bg-[#F6F5FA] border border-[#e4e3ec] px-3.5 py-2.5 focus:outline-none focus:border-brandblue focus:ring-2 focus:ring-brandblue/10">
+                <option>United Arab Emirates</option>
+                <option>Saudi Arabia</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="md:col-span-2">
+              <label class="block text-sm font-medium mb-1.5">Your Message <span class="text-red-500">*</span></label>
+              <textarea rows="4" required class="w-full rounded-lg bg-[#F6F5FA] border border-[#e4e3ec] px-3.5 py-2.5 focus:outline-none focus:border-brandblue focus:ring-2 focus:ring-brandblue/10"></textarea>
+            </div>
+            <div class="md:col-span-2">
+              <button type="submit" class="btn-gradient-brand w-full text-white font-semibold py-3 rounded-full">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="py-24" style="background:linear-gradient(90deg, rgba(4, 10, 22, 0) 0%, rgba(4, 10, 22, 0.1)0%, rgba(4, 10, 22, 0.1) 100%), url('images/testimonial-bg.webp'); background-size:cover; background-position:center;">
+  <div class="lg:max-w-[55%] w-full lg:ms-auto px-6">
+    <h2 class="font-kumbh font-semibold text-brandblue text-[clamp(1.6rem,3vw,2.5rem)] mb-12">Our Client Speak</h2>
+    <div class="t-carousel relative max-w-[600px]">
+    
+      <svg class="absolute -top-2.5 right-0 text-brandblue z-10" width="50" height="37" viewBox="0 0 50 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0V37L18.75 18.5V0H0ZM31.25 0V37L50 18.5V0H31.25Z" fill="#095a8d"></path>
+</svg>
+
+      <div class="swiper t-swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="font-bold text-xl text-ink">Saber Alkahtani</div>
+            <div class="text-brandblue text-[14px] font-medium mb-5">Head of Individual Services Sector</div>
+            <p class="text-inksoft leading-relaxed max-w-2xl">Tayseer Innovations has been a key partner in driving growth and innovation within our individual banking services. Their solutions empower us to stay ahead of the curve and cater to the evolving needs of our customers.</p>
+          </div>
+          <div class="swiper-slide">
+            <div class="font-bold text-xl text-ink">Abdulla Alttowi</div>
+            <div class="text-brandblue text-[14px] font-medium mb-5">Manager – R&amp;D</div>
+            <p class="text-inksoft leading-relaxed max-w-2xl">By partnering with Tayseer Innovations, our bank is well-positioned for the future. Their innovative FinTech solutions provide a robust foundation for continuous improvement and adaptation within the ever-evolving financial landscape.</p>
+          </div>
+          <div class="swiper-slide">
+            <div class="font-bold text-xl text-ink">Bassma Alzailay</div>
+            <div class="text-brandblue text-[14px] font-medium mb-5">Development &amp; Systems Analyst Manager</div>
+            <p class="text-inksoft leading-relaxed max-w-2xl">Tayseer Innovations developed a user-friendly and intuitive software application for our customers. The app has been a huge hit, and our customer satisfaction ratings have soared since its launch. The team of developers at Tayseer is highly skilled and experienced. They were able to understand our complex requirements and develop a software solution that meets all our needs. They also kept us informed throughout the development process, which was very important to us.</p>
+          </div>
+          <div class="swiper-slide">
+            <div class="font-bold text-xl text-ink">Amd Ali</div>
+            <div class="text-brandbluetext-[14px] font-medium mb-5">IT Sector Manager</div>
+            <p class="text-inksoft leading-relaxed max-w-2xl">The scalable products and services from Tayseer Innovations have seamlessly adapted to our evolving needs, proving essential to our growth. Their dedicated support team has been pivotal not only in smooth implementation but also as a partner in our ongoing success.	</p>
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center gap-3 mt-10">
+        <div class="h-px flex-1 bg-[#c9ccd6]"></div>
+        <button class="t-prev w-[46px] h-[46px] rounded-full border border-brandblue text-brandblue bg-white flex items-center justify-center hover:brightness-110" aria-label="Previous testimonial">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 6l-6 6 6 6"/></svg>
+        </button>
+        <button class="t-next w-[46px] h-[46px] rounded-full bg-brandblue text-white flex items-center justify-center hover:brightness-110" aria-label="Next testimonial">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
+        <div class="h-px flex-1 bg-[#c9ccd6]"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Features -->
+<section class="features-section py-14 text-white">
+  <div class="max-w-[1288px] mx-auto px-6">
+    <h2 class="font-kumbh font-semibold text-center max-w-4xl mx-auto mb-16 text-[clamp(1.6rem,3vw,2.5rem)]">Become Future&#8202;&ndash;&#8202;Ready With Our Cutting Edge Products &amp; Services</h2>
+    
+ <div class="grid grid-cols-1 lg:grid-cols-5 gap-y-12 gap-x-6 text-center pt-10 w-full">
+  
+  <!-- Card 1 -->
+  <div class="feat-card relative border border-white/20 rounded-lg px-4 pt-14 pb-8 overflow-visible min-h-[auto] lg:min-h-[180px] flex flex-col items-center justify-center">
+    <div class="feat-icon-badge absolute -top-8">
+      <img src="images/01.png" alt="Enhanced Customer Experience" class="w-[62px] h-[56px] object-contain">
+    </div>
+    <h4 class="font-semibold text-[1rem]">Enhanced Customer Experience</h4>
+    <span class="feat-corner tr"></span><span class="feat-corner bl"></span>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="feat-card relative border border-white/20 rounded-lg px-4 pt-14 pb-8 overflow-visible min-h-[auto] lg:min-h-[180px] flex flex-col items-center justify-center">
+    <div class="feat-icon-badge absolute -top-8">
+      <img src="images/02.png" alt="Data Driven Decision Making" class="w-[62px] h-[56px] object-contain">
+    </div>
+    <h4 class="font-semibold text-[1rem]">Data Driven Decision Making</h4>
+    <span class="feat-corner tr"></span><span class="feat-corner bl"></span>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="feat-card relative border border-white/20 rounded-lg px-4 pt-14 pb-8 overflow-visible min-h-[auto] lg:min-h-[180px] flex flex-col items-center justify-center">
+    <div class="feat-icon-badge absolute -top-8">
+      <img src="images/03.png" alt="Robust Fraud Detection" class="w-[62px] h-[56px] object-contain">
+    </div>
+    <h4 class="font-semibold text-[1rem]">Robust Fraud<br class="hidden sm:inline"> Detection</h4>
+    <span class="feat-corner tr"></span><span class="feat-corner bl"></span>
+  </div>
+
+  <!-- Card 4 -->
+  <div class="feat-card relative border border-white/20 rounded-lg px-4 pt-14 pb-8 overflow-visible min-h-[auto] lg:min-h-[180px] flex flex-col items-center justify-center">
+    <div class="feat-icon-badge absolute -top-8">
+      <img src="images/04.png" alt="Streamlined Operations" class="w-[62px] h-[56px] object-contain">
+    </div>
+    <h4 class="font-semibold text-[1rem]">Streamlined<br class="hidden sm:inline"> Operations</h4>
+    <span class="feat-corner tr"></span><span class="feat-corner bl"></span>
+  </div>
+
+  <!-- Card 5 -->
+  <div class="feat-card relative border border-white/20 rounded-lg px-4 pt-14 pb-8 overflow-visible min-h-[auto] lg:min-h-[180px] flex flex-col items-center justify-center">
+    <div class="feat-icon-badge absolute -top-8">
+      <img src="images/05.png" alt="Personalized Customer Strategies" class="w-[62px] h-[56px] object-contain">
+    </div>
+    <h4 class="font-semibold text-[1rem]">Personalized Customer Strategies</h4>
+    <span class="feat-corner tr"></span><span class="feat-corner bl"></span>
+  </div>
+
+</div>
+  </div>
+</section>
+
+<!-- Success Mantra -->
+<section class="py-16 bg-white">
+  <div class="max-w-[1220px] mx-auto px-4 lg:px-2">
+    <h2 class="text-center font-kumbh font-semibold text-brandblue text-[clamp(1.6rem,3vw,2.5rem)] mb-12">Our Success Mantra</h2>
+    <div class="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr_auto_1fr] gap-0 items-center">
+      <div class="text-center">
+        <div class="mantra-circle"><img src="images/process-image1.png" alt="Dedicated one project, one team"></div>
+        <div class="font-bold text-[#373737] text-[20px] mb-2">Dedicated One Project, One Team</div>
+        <p class="text-justify text-inksoft text-[16px]">Our team focuses exclusively on your business success.</p>
+      </div>
+      <div class="mantra-arrow hidden md:flex">
+        <img src="images/process-arry.png" alt="Arrow">
+      </div>
+      <div class="text-center">
+        <div class="mantra-circle"><img src="images/process-image2.png" alt="Complete transparency"></div>
+        <div class="font-bold text-[#373737] text-[20px] mb-2">Complete Transparency</div>
+        <p class="text-justify text-inksoft text-[16px]">Daily updates and direct communication with all key team members.</p>
+      </div>
+      <div class="mantra-arrow hidden md:flex">
+        <img src="images/process-arry.png" alt="Arrow">
+      </div>
+      <div class="text-center">
+        <div class="mantra-circle"><img src="images/process-image3.png" alt="Consistent quality"></div>
+        <div class="font-bold text-[#373737] text-[20px] mb-2">Consistent Quality</div>
+        <p class="text-justify text-inksoft text-[16px]">Polished and tailored business-ready products and services.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Deploy -->
+<section class="pt-6 pb-16">
+  <div class="max-w-[1288px] mx-auto px-6">
+    <h2 class="text-center font-kumbh font-bold text-brandblue text-[clamp(1.6rem,3vw,2.5rem)] mb-12">We Pioneer Flexible Technology</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div>
+        <img class="deploy-card mb-6" src="images/blog2.webp" alt="On-site deployment">
+        <div class="font-semibold text-ink text-lg mb-2">On-Site Deployment</div>
+        <p class="text-justify text-inksoft mb-0 justify text-[18px]">A traditional approach for those who prioritize control &amp; customization with seamless integration.</p>
+      </div>
+      <div>
+        <img class="deploy-card mb-6" src="images/blog-image1-scaled.webp" alt="Cloud deployment">
+        <div class="font-semibold text-ink text-lg mb-2">Cloud Deployment</div>
+        <p class="text-justify text-inksoft mb-0 justify text-[18px]">Designed for agility, scalability, cost-effectiveness and enhanced operational efficiency.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="pt-16 pb-6" style="background:#3A3737; color:#c7c7c7;">
+  <div class="max-w-[1288px] mx-auto px-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1fr_1.1fr_0.8fr_1.2fr] gap-10 pb-10">
+      <div>
+        <a href="https://www.tayseer.me"><img src="images/logo.svg" alt="Tayseer Innovations" class="h-[54px]"></a>
+        <p class="text-justify text-[15px] leading-[1.8] mt-3 mb-4 max-w-[265px] text-[#dadada]">Tayseer is a premier fintech company based in Saudi Arabia and the UAE with an aim to spearhead the AI and digital banking revolution in the region.</p>
+        <div class="flex items-center gap-3 mt-3">
+          <a href="https://www.linkedin.com/company/tayseer-innovations/" class="footer-social" aria-label="LinkedIn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.15 1.45-2.15 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+          </a>
+          <img src="images/iso.png" alt="ISO 27001 Certified" class="h-[74px] ms-3">
+        </div>
+      </div>
+      <div>
+        <h4 class="text-[#dedede] text-[24px] font-semibold mb-3">Our Service</h4>
+         <ul class="space-y-2.5">
+          <li class="flex items-center gap-2"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-[#9a9a9a] shrink-0"><path d="M7 4l6 8-6 8M13 4l6 8-6 8"/></svg><a href="core-banking" class="hover:text-inksoft">Core Banking</a></li>
+          <li class="flex items-center gap-2"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-[#9a9a9a] shrink-0"><path d="M7 4l6 8-6 8M13 4l6 8-6 8"/></svg><a href="fahim-ai" class="hover:text-inksoft">Fahim AI</a></li>
+          <li class="flex items-center gap-2"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-[#9a9a9a] shrink-0"><path d="M7 4l6 8-6 8M13 4l6 8-6 8"/></svg><a href="mbuke" class="hover:text-inksoft">MBuke</a></li>
+          <li class="flex items-center gap-2"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-[#9a9a9a] shrink-0"><path d="M7 4l6 8-6 8M13 4l6 8-6 8"/></svg><a href="software-management-systems" class="hover:text-inksoft">Software Management Systems</a></li>
+          <li class="flex items-center gap-2"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-[#9a9a9a] shrink-0"><path d="M7 4l6 8-6 8M13 4l6 8-6 8"/></svg><a href="managed-services" class="hover:text-inksoft">Managed Services</a></li>
+          
+          <li class="flex items-center gap-2"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-[#9a9a9a] shrink-0"><path d="M7 4l6 8-6 8M13 4l6 8-6 8"/></svg><a href="banking-systems" class="hover:text-inksoft">Banking Systems</a></li>
+        </ul>
+      </div>
+      <div>
+         <h4 class="text-[#dedede] text-[24px] font-semibold mb-3">Quick Links</h4>
+        <ul class="space-y-2.5">
+          <li class="flex items-center gap-2"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-[#9a9a9a] shrink-0"><path d="M7 4l6 8-6 8M13 4l6 8-6 8"/></svg><a href="https://www.tayseer.me" class="hover:text-inksoft">Home</a></li>
+          <li class="flex items-center gap-2"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-[#9a9a9a] shrink-0"><path d="M7 4l6 8-6 8M13 4l6 8-6 8"/></svg><a href="solutions" class="hover:text-inksoft">Solutions</a></li>
+          <li class="flex items-center gap-2"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-[#9a9a9a] shrink-0"><path d="M7 4l6 8-6 8M13 4l6 8-6 8"/></svg><a href="about-us" class="hover:text-inksoft">About Us</a></li>
+          <li class="flex items-center gap-2"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-[#9a9a9a] shrink-0"><path d="M7 4l6 8-6 8M13 4l6 8-6 8"/></svg><a href="blogs-and-resources" class="hover:text-inksoft">Blogs and Resources</a></li>
+          <li class="hidden flex items-center gap-2"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-[#9a9a9a] shrink-0"><path d="M7 4l6 8-6 8M13 4l6 8-6 8"/></svg><a href="careers" class="hover:text-inksoft">Careers</a></li>
+          <li class="flex items-center gap-2"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-[#9a9a9a] shrink-0"><path d="M7 4l6 8-6 8M13 4l6 8-6 8"/></svg><a href="connect" class="hover:text-inksoft">Connect</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-[#dedede] text-[24px] font-semibold mb-3">Contact Us</h4>
+        <p class="mb-2"><strong class="text-white">Saudi Arabia</strong><br>Office 7, 2nd Floor, Selam Building,<br>Prince Saad bin Abdulrahman Alawal Branch Road,<br>Al Rawabi, Riyadh,<br>Kingdom of Saudi Arabia</p>
+        <p class="mb-3"><strong class="text-white">UAE</strong><br>601, One Lake Plaza, Cluster T, JLT, Dubai, UAE</p>
+        <p class="mb-2 flex items-center"><svg aria-hidden="true" class="w-[17px] h-[17px] me-3 e-font-icon-svg e-fas-phone-alt" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" d="M497.39 361.8l-112-48a24 24 0 0 0-28 6.9l-49.6 60.6A370.66 370.66 0 0 1 130.6 204.11l60.6-49.6a23.94 23.94 0 0 0 6.9-28l-48-112A24.16 24.16 0 0 0 122.6.61l-104 24A24 24 0 0 0 0 48c0 256.5 207.9 464 464 464a24 24 0 0 0 23.4-18.6l24-104a24.29 24.29 0 0 0-14.01-27.6z"></path></svg><strong class="text-white">Phone:</strong>&nbsp;&nbsp; <a href="tel:+966555203079" class="hover:text-inksoft">+966 555203079</a>, <a href="tel:+97143997558" class="hover:text-inksoft">+971 43997558</a></p>
+        <p class="flex items-center"><svg aria-hidden="true" class="w-[17px] h-[17px] me-3 e-font-icon-svg e-far-envelope" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm0 48v40.805c-22.422 18.259-58.168 46.651-134.587 106.49-16.841 13.247-50.201 45.072-73.413 44.701-23.208.375-56.579-31.459-73.413-44.701C106.18 199.465 70.425 171.067 48 152.805V112h416zM48 400V214.398c22.914 18.251 55.409 43.862 104.938 82.646 21.857 17.205 60.134 55.186 103.062 54.955 42.717.231 80.509-37.199 103.053-54.947 49.528-38.783 82.032-64.401 104.947-82.653V400H48z"></path></svg><strong class="text-white">Email:</strong>&nbsp;&nbsp; <a href="mailto:info@tayseer.me" class="hover:text-inksoft">info@tayseer.me</a></p>
+      </div>
+    </div>
+  
+    
+  </div>
+  <div class="w-full border-t border-white/10">
+   <div class="max-w-[1288px] mx-auto px-6">
+  <div class="flex flex-wrap justify-center lg:justify-between items-center pt-4 text-sm">
+      <span>© <span id="year"></span> Tayseer Innovations. All Rights Reserved.</span>
+      <div class="flex flex-col md:flex-column items-center lg:items-end gap-2 md:gap-2">
+         <span class="flex gap-4">
+        <a href="terms-conditions" class="hover:text-inksoft">Terms &amp; Conditions</a>
+        <a href="privacy-policy" class="hover:text-inksoft">Privacy Policy</a>
+      </span>
+        <small class="text-center text-sm mt-2" style="color:#8a8a8a;">powered by spiderdesigners</small>
+      </div>
+     
+    </div>
+   </div></div>
+</footer>
+
+<button id="backToTop" aria-label="Back to top" class="fixed bottom-6 right-6 z-50 w-11 h-11 rounded bg-brandblue text-white flex items-center justify-center shadow-lg opacity-0 pointer-events-none transition-opacity duration-300 hover:brightness-110">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<script src="js/swiper-bundle.min.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
